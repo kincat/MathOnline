@@ -1,0 +1,560 @@
+﻿<style>
+       #mytable .layui-btn-xs {
+            margin-left:12px
+        }
+        #mytable .layu-dropdown-root .layu-dropdown-content .layu-dropdown-menu-wrap .layu-dropdown-menu .layu-menu-item-wrap .layu-menu-item a:hover {
+            background-color:#fff
+        }
+   #mytable .divideclass {
+        padding:0 5px;
+    }
+</style>
+<div class="content7">
+    <div class="contbox">
+        <div class="label fl">详情</div>
+    </div>
+</div>
+<div class="content8">
+    <div class="niceScrollbox" id="rtl-test">
+        <div class="content9 content77">
+            <div class="contbox">
+                <div class="userimg fl"><img src="/Content/images/userimg.png" /></div>
+                <div class="studentsinfo">
+                    <div class="contitle">
+                        
+
+                    </div>
+                    <div class="infotext infotext1">
+                        <div class="fl label">
+                            
+                        </div>
+                    </div>
+                    <div class="goldbox">
+                        <div class="gold1 fr" id="getgold">
+                            <div class="imgbox"><img src="/Content/images/gold.png"></div>
+                            <div class="infotext">奖惩金币</div>
+                        </div>
+                       
+                        <div class="gold1 fr" id="focusone">
+                            <div class="imgbox">
+                                <img src="/Content/images/rw.png">
+                            </div>
+                            <div class="infotext">创建任务</div>
+                        </div>
+                        <div class="gold1 fl" id="gzStudent">
+                            <div class="imgbox">
+                                <img src="/Content/images/xx.png" />
+                                <img src="/Content/images/xx1.png" />
+                            </div>
+                            <div class="infotext">重点关注</div>
+                        </div>
+                        <div class="gold1 fr" id="printLog">
+                            <div class="imgbox">
+                            <img src="/Content/images/printLog.png">
+                                <img src="/Content/images/printLog.png">
+                            </div>
+                            <div class="infotext">打印记录</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content78">
+            <div class="contbox">
+                <div class="tabbox fl">
+                    <a href="#" onclick="LoadHtml(4)">上课记录</a>
+                    <a href="#" onclick="LoadHtml(5)">任务记录</a>
+                    <a href="#" onclick="LoadHtml(6)">错题记录</a>
+                    <a href="#" class="ljlactive" onclick="LoadHtml(7)">学习进度</a>
+                </div>
+                <div class="searchbox fr" style="display:none">
+                    <div class="layui-form fl ljltimediv" style="width: 230px;">
+                        <input type="text" id="searchtime" class="layui-input" />
+                    </div>
+                    <div class="layui-form fl">
+                        <select lay-verify="required" id="status">
+                            <option value="-1">全部状态</option>
+                            <option value="1">完成</option>
+                            <option value="0">未完成</option>
+                        </select>
+                    </div>
+
+                    <a href="#" id="mySearch">搜 索</a>
+                </div>
+            </div>
+            <div class="mytable" id="mytable">
+                <table align="center" class="layui-table" id="tableGrid"  lay-filter="tableGrid"></table>
+            </div>           
+        </div>
+    </div>
+</div>
+
+<div class="content73 content79">
+    <div class="maskbox"></div>
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl" style="padding-left:5px"></label>
+            <span></span>
+        </div>
+        <div class="contbox" style="height:100%;">
+
+            <div class="datebox" id="myscorll">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>提升次数</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>用时</th>
+                            <!--<th>提升题型</th>-->
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="content82 content79">
+    <div class="maskbox"></div>
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl" style="padding-left:5px"></label>
+            <span></span>
+        </div>
+        <div class="contbox" style="height:100%;">
+
+            <div class="datebox" id="myscorlls">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>题型名称</th>
+                            <th>当前等级</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/html" id="barDemo">
+    {{# if (d.lessonStatusName=='已学完') {}}
+    <a href="javascript:;"  class="divideclass questionType weblog"   moduleId="2"  subModuleId="44" actionType="442" datatype="2"  onclick="questionDetail({{d.lessonId }},'{{d.title }}')">题型图谱</a>
+    {{# }else{ }}
+    <a href="javascript:;" style="color:#ccc" class="divideclass">题型图谱</a>
+    {{#  }}}
+    {{# if (d.advanceCount > 0 && d.lessonType != 3) {}}
+    <a href="javascript:;" class="divideclass out weblog"   moduleId="2"  subModuleId="44" actionType="443" datatype="2"  onclick="updateDetail({{d.lessonId }},'{{d.title }}')">提升记录</a>
+    {{# }else{ }}
+    <a href="javascript:;" style="color:#ccc" class="divideclass">提升记录</a>
+    {{#  }}}
+    {{# if (d.lessonStatusName!='未学习') {}}
+    <a class="layui-btn layui-btn-xs" lay-dropdown="{align:'right',menus:[{txt:'{{#if(d.lessonType == 3){}}考试报告{{#  } else {}}学习报告{{#  }}}',event:'{{#if(d.lessonType == 3){}}test{{# }else{}}study{{#  }}}'},'hr', {txt:'作业报告',event:'task'}]}">更多...</a>
+    {{# }else{ }}
+    <a href="javascript:;" style="color:#ccc" class="divideclass">更多...</a>
+    {{#  }}}
+</script>
+<script>
+    $(function () {
+        $("#mytable").delegate(".out", "click", function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        });
+        $('.content73 .maskbox').click(function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        })
+        $('.content73 .ftitle span').click(function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        });
+   
+        $("#mytable").delegate(".questionType", "click", function () {
+            $('.content82').toggleClass('content82_1');
+            $('.content82 .maskbox').toggle();
+        });
+        $('.content82 .maskbox').click(function () {
+            $('.content82').toggleClass('content82_1');
+            $('.content82 .maskbox').toggle();
+        })
+        $('.content82 .ftitle span').click(function () {
+            $('.content82').toggleClass('content82_1');
+            $('.content82 .maskbox').toggle();
+        });
+
+    })
+ 
+    var dropdown;
+    layui.config({
+        base: '/Scripts/layui/lay/modules/'
+    }).use(['dropdown'], function () {
+        dropdown = layui.dropdown;
+
+    });
+    layui.use(['table', 'laydate', 'form', 'dropdown'], function () {
+		var table = layui.table;
+		var laydate = layui.laydate;
+		var form = layui.form;
+		form.render('select');
+		table.render({
+		    elem: '#tableGrid',
+		    url: '/Task/GetStudentStudyProcess',
+			height: 'full-360',
+			cellMinWidth: 80,
+			limit:10,
+			page:{ //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+					layout: ['prev', 'page', 'next', 'count'], //自定义分页布局
+					curr: 1, //设定初始在第 5 页
+					groups: 5 ,//只显示 1 个连续页码
+					//first: true ,//不显示首页
+					//last: true, //不显示尾页
+					next:'下一页',
+					prev:'上一页'
+
+			},
+			method: 'post',
+			limit: 15,
+			where: {
+			    classId: curClassId,
+                studentId:curStudentId
+			},
+			done: function (res, curr, count) {
+			    if (res.count > 0 && res.data.length > 0) {
+			        $(".layui-table-box").removeClass('nodatatable');
+			    } else {
+			        $(".layui-table-box").addClass('nodatatable');
+			    }
+			    $.each($("[data-field='lockStatusName']").find(".course"), function (index, v) {
+			        if (index > 0)
+			            $(this).css("color", "#ccc").removeAttr('onclick');
+			    });
+			    //$.each($("[data-field='10']"), function (index, v) {
+			    //    console.log($(this).find('div.layu-menu-item').length)
+			    //    $.each($(this).find('.layu-menu-item'), function (m, e) {
+                //        console.log($(this).text())
+			    //    })
+			    //});
+			    $(".layui-table-box a.layui-btn").addClass('divideclass').removeClass('layui-btn-xs').removeClass('layui-btn').css({ 'cursor': 'pointer', 'border-right': '0px' })
+			    dropdown.suite();
+			    webLogReg(".weblog");
+			},
+			cols: [
+				[{
+				    field: 'lessonId',
+                    hide:true,
+					width: 100,
+					title: '编号',
+					align: 'center'
+
+				}, {
+				    field: 'subTitle',
+				    cellMinWidth: 120,
+					title: '课时',
+					align: 'left',
+					templet: function (d) {
+					    if (d.prepareStatus == 1) {
+					        return '<label class="haslessons">备</label>' + d.subTitle +"&nbsp;"+ d.title;
+					    } else {
+					        return '<label class="nolessons">备</label>' + d.subTitle + "&nbsp;" + d.title;
+					    }
+					},
+				}, {
+				    field: 'title',
+				    cellMinWidth: 120,
+				    hide: true,
+				    title: '名称',
+				    align: 'left'
+				}, {
+				    field: 'beginTime',
+					width: 160,
+					title: '开始学习时间',
+					templet: function (d) {
+					    if (d.beginTime == null || d.beginTime == '')
+                            return ''
+					    //return "<div class='feedlinediv'>" + insertStr(d.beginTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					    return insertStr(d.beginTime, 10, "");
+					},
+					align: 'center'
+				}, {
+				    field: 'endTime',
+				    title: '结束学习时间',
+					width: 160,
+					templet: function (d) {
+					    if (d.endTime == null || d.endTime == '')
+					        return ''
+					    //return "<div class='feedlinediv'>" + insertStr(d.endTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					    return insertStr(d.endTime, 10, "");
+					},
+					align: 'center'
+				}, {
+				    field: 'targetLevel',
+					width: 100,
+					title: '题型提升目标',
+					templet: function (d) {
+					    return getLevel(d.targetLevel);
+					},
+                    hide:true,
+					align: 'center'
+				},  {
+				    field: 'advanceCount',
+					width: 90,
+					title: '智能提升',
+					align: 'center',
+					templet: function (d) {
+					    if (d.advanceCount != '-')
+					        return d.advanceCount + '次';
+					    return d.advanceCount;
+					}
+				},{
+				    field: 'status',
+				    width: 90,
+				    title: '作业状态',
+				    align: 'center',
+				    templet: function (d) {
+
+				        return getStatusColor(d.status);
+				    }
+				}, {
+				    field: 'lessonStatusName',
+				    title: '课时状态',
+				    width: 100,
+				    templet: function (d) {
+				        //if (d.lockStatus == 0) {
+				        //    return '<label style="color:#ed2801" >' + d.lessonStatusName + '</label>';
+				        //} else {
+				        //    return '<label class="textcolorgreen">' + d.lessonStatusName + '</label>';
+				        //}
+				        if (d.lessonStatus ==1) {
+				            return '<label style="color:#ff9f00" >' + d.lessonStatusName + '</label>';
+				        }else if (d.lessonStatus ==0) {
+				            return '<label style="color:#ed2801" >' + d.lessonStatusName + '</label>';
+				        } else {
+				            return '<label class="textcolorgreen">' + d.lessonStatusName + '</label>';
+				        }
+				       
+				         
+				    },
+				    align: 'center'
+				}, {
+				    field: 'lockStatusName',
+				    title: '解锁状态',
+				    width: 110,
+				    templet: function (d) {
+				        if (d.lockStatus == 0) {
+				            if (d.prepareStatus==1)
+				                return '<a href="javascript:;" class="divideclass course weblog"  moduleId="2"  subModuleId="44" actionType="441" datatype="2"  onclick="unLockStudentProcess(' + d.lessonId + ')">解锁课时</a>';
+				            else
+				                return '<a  class="divideclass"  href="/Prepare/Index?classId=' + curClassId + '">去备课</a>';
+				        } else {
+				            return '<label class="textcolorgreen">已解锁</label>';
+				        }
+
+				    },
+				    align: 'center'
+				},
+				{
+				    toolbar: '#barDemo',
+					width: 220,
+					title: '操作',
+					align: 'left'
+				}]
+			]
+		});
+		table.on('tool(tableGrid)', function (obj) {
+		    var layEvent = obj.event;
+		    var data = obj.data;
+		    studentId = data.id;
+		    var moduleId=2, subModuleId=44, actionType=0, dataType=2, actionValue=""
+		    if (layEvent === 'test') { //考试报告    
+		       
+		        if (data.studyReportArg != null && data.studyReportArg != "") {
+		            window.open(mainUrl + data.studyReportArg);
+		            actionType = 444;
+		        } else {
+		            layer.msg('没有考试报告');
+		            return false;
+		        }		       
+		    } else if (layEvent == 'study') { //学习报告
+		        if (data.studyReportArg != null && data.studyReportArg != "") {
+		            window.open(mainUrl + data.studyReportArg);
+		            actionType = 444;
+		        } else {
+		            layer.msg('没有学习报告');
+		            return false;
+		        }		        
+
+		    } else if (layEvent == 'task') { //任务报告
+		        if (data.taskReportArg != null && data.taskReportArg != "" && data.lessonType != 3) {
+		            window.open(mainUrl + data.taskReportArg);
+		            actionType = 445;
+		        } else {
+		            layer.msg('没有作业报告');
+		            return false;
+		        }
+		    }
+		    if(actionType!=0)
+		      webLogSave(moduleId, subModuleId, actionType, dataType, actionValue);
+		});
+ 
+		laydate.render({
+		    elem: '#searchtime',
+		    range: true,
+		    done: function (value) {
+		        $('#searchtime').val(value);
+		    }
+		});
+	    // 搜索
+		$('#mySearch').on('click', function () {
+		    var beginTime = "";
+		    var endTime = "";
+		    if ($.trim($("#searchtime").val()) != "") {
+		        var time = $.trim($("#searchtime").val()).split(" - ");
+		        if (time.length > 1) {
+		            beginTime = time[0];
+		            endTime = time[1];
+		        }
+		    }
+		    var status = $("#status").val();
+		    table.reload('tableGrid', {
+		        method: 'post'
+                , where: {
+                    'beginTime': beginTime,
+                    'endTime': endTime,
+                    'status': status,
+                    'classId': curClassId,
+                    'studentId': curStudentId
+                }
+                , page: {
+                    curr: 1
+                }, done: function (res, curr, count) {
+                    if (res.count > 0 && res.data.length > 0) {
+                        $(".layui-table-box").removeClass('nodatatable');
+                    } else {
+                        $(".layui-table-box").addClass('nodatatable');
+                    }
+                    $.each($("[data-field='lockStatusName']").find(".course"), function (index, v) {
+                        if (index > 0)
+                            $(this).css("color", "#ccc").removeAttr('onclick');
+                    });
+                    $(".layui-table-box a.layui-btn").addClass('divideclass').removeClass('layui-btn-xs').removeClass('layui-btn').css({ 'cursor': 'pointer', 'border-right': '0px' })
+                    dropdown.suite();
+                    webLogReg(".weblog");
+                }
+		    });
+		});
+    });
+    function unLockStudentProcess(lessonId) {
+        var winIndex = layer.confirm('是否要解锁该课时？该操作不可逆', {
+            btn: ['否', '是'] //按钮
+        }, function () {
+            layer.close(winIndex);
+        }, function () {
+            $.ajax({
+                url: '/Task/UnLockStudentProcess',
+                type: "post",
+                dataType: "json",
+                data: { studentId: curStudentId, lessonId: lessonId, classId: curClassId },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $('#mySearch').click();
+                        layer.msg("解锁成功");
+                    } else {
+                        layer.msg(data.message);
+                    }
+                },
+                error: function (errorMsg) {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            });
+            layer.close(winIndex);
+        });
+    }
+   
+    function insertStr(soure, start, newStr) {
+        return soure.slice(0, start) + newStr + soure.slice(start);
+    }
+    //提升情况
+    function updateDetail(id, title) {
+        $(".content73 .box .ftitle label").text(title + " 提升情况");
+        $.ajax({
+            url: '/Task/UpdateDetail',
+            type: "post",
+            dataType: "json",
+            data: { lessonId: id, studentId: curStudentId },
+            success: function (data) {
+                if (data.code == 200) {
+
+                    $("#myscorll .layui-table tbody tr").empty();
+
+                    $(data.data).each(function (index, element) {
+
+                        var txt = $("<tr>"
+                        + "<td>" + element.subTitle + "</td>"
+                        + "<td>" + element.beginTime + "</td>"
+                        + "<td>" + element.endTime + "</td>"
+                        + "<td>" + element.totalTime + "</td>"
+                        //+ "<td>" + element.questionType + "</td>"
+                        + "<td>" + (element.updateReportArg != null && element.updateReportArg != "" ? "<a  href=\"" + mainUrl + element.updateReportArg + "\"  target=\"_blank\" style='color:#3CC9AE' >提升报告</a>" : "<a href=\"#\" style='color:#ccc'>提升报告</a>") + "</td>"
+                        + "</tr>");
+                        $("#myscorll .layui-table tbody").append(txt);
+                    })
+
+
+                } else {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+    //题型图谱
+    function questionDetail(lessonId, title) {
+        $(".content82 .box .ftitle label").text(title + " 题型图谱");
+        $.ajax({
+            url: '/Task/QuestionTypeMenu',
+            type: "post",
+            dataType: "json",
+            data: { lessonId: lessonId, studentId: curStudentId },
+            success: function (data) {
+                if (data.code == 200) {
+
+                    $("#myscorlls .layui-table tbody tr").empty();
+
+                    $(data.data).each(function (index, element) {
+
+                        var txt = $("<tr>"
+                        + "<td>" + element.typeName + "</td>"
+                        + "<td>" + getLevel(element.level) + "</td>"                        
+                        + "</tr>");
+                        $("#myscorlls .layui-table tbody").append(txt);
+                    })
+
+
+                } else {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+    function getStatusColor(statusName) {
+        var color = '';
+        if (statusName == '已完成')
+            color = '26a100';
+        if (statusName == '未完成')
+            color = 'ed2801';
+        if (statusName == '未布置')
+            color = 'ff9f00';
+        return "<font style='color:#" + color + "'>" + statusName + "</font>";
+    }
+</script>

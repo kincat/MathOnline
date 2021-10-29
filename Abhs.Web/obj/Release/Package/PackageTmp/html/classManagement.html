@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+		<title>班级管理</title>
+		
+		<link href="Scripts/layui/css/layui.css" rel="stylesheet" />
+		<link href="Content/css/animate.min.css" rel="stylesheet" />
+		<link href="Content/css/reset.css" rel="stylesheet" />
+		<link href="Content/css/style.css" rel="stylesheet" />
+		<script src="Scripts/jquery.js"></script>
+		
+		<script src="Scripts/layui/layui.js"></script>
+		<script src="Scripts/layer.js"></script>
+		<script src="Scripts/layui/lay/modules/xm-select.js"></script>
+		
+		<script src="Scripts/jquery.nicescroll.js"></script>
+		<script src="Scripts/wow.js"></script>
+		<script>
+			$(function() {
+				$('.content4 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('.content56 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 0,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('.content53 li').click(function() {
+					$(this).addClass('ljlactive').siblings().removeClass('ljlactive');
+				})
+				$('.content51 .ftitle span').click(function(){
+					$('.content51').toggleClass('content29_1');
+					$('.content51 .content32').toggle();
+				})
+				$('.content51 .content32').click(function(){
+					$('.content51').toggleClass('content29_1');
+					$('.content51 .content32').toggle();
+				})
+				$('.subbtn').click(function(){
+					$('.content51').toggleClass('content29_1');
+					$('.content51 .content32').toggle();
+				})
+				
+				$('.content54 .tabbox a').click(function(){
+					$(this).addClass('ljlactive').siblings().removeClass('ljlactive');
+					$('.tabcont').find('.tablist').eq(1-$(this).index()).show().siblings().hide();
+				})
+				layui.use(['jquery','laydate', 'xmSelect'], function() {
+					var laydate = layui.laydate;
+					var xmSelect = layui.xmSelect;
+					var demo1 = xmSelect.render({
+						el: '#demo1', 
+						// tips: false,
+						// toolbar:false,
+						data: [
+							{name: '张三', value: 1},
+							{name: '李四', value: 2},
+							{name: '王五', value: 3},
+						]
+					})
+					laydate.render({
+						elem: '#starttime',
+						//range: true,
+						done:function(value){
+							$('#starttime').val(value);
+						}
+					});
+					 $('.timeinput1').each(function(){
+					     laydate.render({
+					      elem: this
+					      ,type: 'time'
+					      ,min: '09:30:00'
+					      ,max: '17:30:00'
+						  ,range: true
+					      ,btns: ['clear', 'confirm']
+					      //,trigger: 'click'
+						  ,change:function(value, date, endDate){
+							 value='';
+						  }
+						  ,done:function(value){ 
+							  $(this.elem).val('1111111');
+							  $(this.elem).attr('id','input1');
+							
+							  //document.getElementById('input1').value='';
+							 // console.log($(this.elem[0]).attr('class'));
+						  }
+					     });
+					   });
+					laydate.render({
+						elem: '#endtime',
+						//range: true,
+						done:function(value){
+							$('#endtime').val(value);
+						}
+					});
+				})
+				
+				function myalert(str){
+					$('.content56 .msgalert span').html(str);
+					$('.content56 .msgalert').fadeIn();
+					setTimeout(function(){
+						$('.content56 .msgalert').fadeOut();
+					},2000)
+					
+				}
+				
+				$('.content56 .addlistt').click(function(){
+					var lock=true;
+					
+					$.each($(this).parent('.inpcont').find('input'),function(){
+						if($(this).val().length<1){
+							lock=false;
+							return false;
+						}
+					})
+					if(lock){
+						myalert('请输入用户名');
+						return false;
+					}
+					var str=$('.content64').html();
+					$(this).parents('.inpcont').find('.setimtlist:last').after(str);
+					$('.timeinput1').removeAttr('lay-key');
+					layui.use('laydate', function() {
+						var laydate = layui.laydate;
+						 lay('.timeinput1').each(function(){
+						     laydate.render({
+						      elem: this,
+							  range: true
+						      ,type: 'time'
+						      ,min: '09:30:00'
+						      ,max: '17:30:00'
+						      ,btns: ['clear', 'confirm']
+						       ,trigger: 'click'
+						     });
+						   });
+						
+					})
+					$('.content56 .niceScrollbox').getNiceScroll().resize();
+				})
+				$('.content57').click(function() {
+					$('#createclass').toggleClass('content29_1');
+					$('.content56 .content32').toggle();
+					editdata();
+				})
+				$('.content56 .ftitle span').click(function() {
+					$('#createclass').toggleClass('content29_1');
+					$('.content56 .content32').toggle();
+				})
+				$('.content56 .content32').click(function(){
+					$('.content56').toggleClass('content29_1');
+					$('.content56 .content32').toggle();
+				})
+				function editdata(){
+					var data=[{"weekIndex":1,"weekName":"周一","detail":[{"start":"09:30","end":"11:00"},{"start":"09:30","end":"11:00"}]},{"weekIndex":2,"weekName":"周二 ","detail":[{"start":"09:30","end":"11:00"},{"start":"09:30","end":"11:00"}]}];
+					var html="";
+					$('#editbox').find('.setimtlist').remove();
+					$.each(data,function(k,v){
+						$.each(v.detail,function(kk,vv){
+							html+='<div class="setimtlist">';
+								html+='	<div class="inpbox vselect classtime">';
+									html+='	<input class="isclick datetimes" value="'+v.weekName+'" type="text" placeholder="周一">';
+									html+='<ul>';
+										html+='<li class="isclick">周一</li>';
+										html+='<li class="isclick">周二</li>';
+										html+='<li class="isclick">周三</li>';
+										html+='<li class="isclick">周四</li>';
+										html+='<li class="isclick">周五</li>';
+										html+='<li class="isclick">周六</li>';
+										html+='<li class="isclick">周日</li>';
+									html+='</ul>';
+								html+='</div>';
+								html+='<div class="inpbox vselect classtime">';
+									html+='<input class="isclick timeinput1 rangetime" value="'+vv.start+' - '+vv.end+'" type="text" placeholder="H点m分" lay-key="2">';
+								html+='</div>';
+								html+='<div class="addbtn"><span></span></div>';
+							html+='</div>';
+						})
+					})
+					$('#editbox .addlistt').before(html);
+					$('.setimtlist .addbtn').click(function(){
+						alert($('#editbox .setimtlist').length);
+						if($('.setimtlist').length>4){
+							$(this).parents('.setimtlist').remove();
+						}
+					})
+				}
+				
+			})
+		</script>
+		<style>
+			body {
+				background: #1D2732;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content57">
+			<a href="#">创建班级</a>
+		</div>
+		
+		<div class="content2">
+			<div class="contbox">
+				<div class="loginimg fl"><img src="Content/images/adminlogo.png" /></div>
+				<div class="headernav fl">
+					<div class="ljlactive subbtn" href="#">课前备课</div>
+					<div class="lessonspage">
+						<div class="lessonscont">
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon1.png" /></div>
+								<div class="label">课前备课</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon2.png" /></div>
+								<div class="label">上课管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon3.png" /></div>
+								<div class="label">课后任务</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon4.png" /></div>
+								<div class="label">班级管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon5.png" /></div>
+								<div class="label">售后</div>
+							</a>
+							<div class="icon"></div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="configbox">
+					<div class="quit fr"><img src="Content/images/quit.png" /></div>
+					<div class="navbox fr">
+						<img src="Content/images/nav.png" />
+						<div class="listbox">
+							<div>
+								<a href="#">学生管理</a>
+								<a href="#">全部课程</a>
+							</div>
+						</div>
+					</div>
+					<div class="username fr">张三丰</div>
+					<div class="userimg fr"><img src="Content/images/userimg.png" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="content3">
+			<div class="contbox"></div>
+		</div>
+		<div class="content4">
+			<div class="ljltitle">
+				<div class="ltbox">
+					<label>班级</label>
+					<div class="allclass fr">
+						<span>全部班级</span>
+						<div class="allclasslist">
+							<a href="#">一年级</a>
+							<a href="#">一年级</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="niceScrollbox">
+				<div class="content53">
+					<div class="contbox">
+						<ul>
+							<li class="ljlactive">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>正常</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="endlist">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>结课</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="stoplist">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>结课</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="ljlactive">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>正常</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="endlist">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>结课</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="stoplist">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>结课</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="ljlactive">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>正常</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="endlist">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>结课</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="stoplist">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>结课</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="ljlactive">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>正常</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="endlist">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>结课</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+							<li class="stoplist">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png"></div>
+									<div class="studenttype">七年级同步班<em>结课</em></div>
+									<div class="studenttype1">2020-12-10到2021-1-10</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content6 content49">
+			<div class="content7">
+				<div class="contbox">
+					<div class="label fl">详情</div>
+				</div>
+			</div>
+			<div class="content54">
+				<div class="contbox">
+					<div class="clssinfo">
+						<em>ID:123458</em>
+						<span>七年级同步班（七年级同步课）</span>
+						<a href="#">编辑</a>
+						<div class="goldbox">
+							<div class="gold1 fl" id="getgold">
+								<div class="imgbox"><img src="Content/images/lsk.png"></div>
+								<div class="infotext">奖惩金币</div>
+							</div>
+							<div class="gold1 fl" id="getgold">
+								<div class="imgbox"><img src="Content/images/lsk.png"></div>
+								<div class="infotext">奖惩金币</div>
+							</div>
+							<div class="gold1 fl" id="getgold">
+								<div class="imgbox"><img src="Content/images/qbk.png"></div>
+								<div class="infotext">奖惩金币</div>
+							</div>
+						</div>
+					</div>
+					<div class="dateinfo"><i>日期：</i>2020-12-10到2021-1-10丨<i>年级：</i>七年级丨<i>老师：</i>张老师丨<i>状态：</i>正常
+						<div class="fr tabbox">
+							<a href="#">课 表</a>
+							<a href="#" class="ljlactive">学 生</a>
+						</div>
+					</div>
+					<div class="tabcont">
+						<div class="mytable tablist">
+							<table align="center" class="layui-table" id="test">
+
+							</table>
+						</div>
+						<div class="schooltimetable tablist" style="display: none;">
+							<table>
+								<thead>
+									<th style="width: 80px;"></th>
+									<th>周日</th>
+									<th>周一</th>
+									<th>周二</th>
+									<th>周三</th>
+									<th>周四</th>
+									<th>周五</th>
+									<th>周六</th>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="morning">上午</div>
+										</td>
+										<td class="hasdata">
+											<div class="listbox">
+												<span>10:00~12:00</span>
+												<span>10:00~12:00</span>
+												<span>10:00~12:00</span>
+											</div>
+										</td>
+										<td class="hasdata">
+											<div class="listbox">
+												<span>10:00~12:00</span>
+												<span>10:00~12:00</span>
+												<span>10:00~12:00</span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="morning">下午</div>
+										</td>
+										<td class="hasdata">
+											<div class="listbox">
+												<span>10:00~12:00</span>
+												<span>10:00~12:00</span>
+												<span>10:00~12:00</span>
+											</div>
+										</td>
+										<td class="hasdata">
+											<div class="listbox">
+												<span>10:00~12:00</span>
+												<span>10:00~12:00</span>
+												<span>10:00~12:00</span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+										<td class="">
+											<div class="listbox">
+												<span></span>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content51 content55">
+			<div class="box">
+				<div class="ftitle">
+					<!-- <label class="fl">详情</label> -->
+					<label class="fl">调整班级</label>
+					<span></span>
+				</div>
+				<div class="contbox">
+					<div class="userpic">
+						<img src="Content/images/userimg.png">
+					</div>
+					<div class="userinfo fl">
+						<div class="username">
+							张无忌
+							<em>(小学)</em>
+						</div>
+						<div class="userconfig">
+							<i>注册时间：</i>2020-03-23 丨 <i>到期时间：</i>2021-03-23
+						</div>
+						<div class="userconfig">
+							<i>课程名称：</i>七年级同步班（16课时）
+						</div>
+					</div>
+				</div>
+				<div class="niceScrollbox">
+					<div class="classbox">
+						<div class="classlist">
+							<div class="classname">
+								<label class="fl emactive">ID:123458</label>
+								<div class="line1">七年级秋季班七年级秋季班七年级秋季班七年级秋季班（2020-03-01~2020-06-07）</div>
+							</div>
+							<div class="classinfo">
+								<div class="infotext">
+									<span><i>校区老师：</i>李老师</span><span><i>课程名称：</i>七年级同步课（16课时）</span><span><i>教材版本：</i>人教版人教版人教</span>
+								</div>
+							</div>
+							<div class="studytime">
+								<label class="fl">上课时间：</label>
+								<div class="studytimelist">
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+								</div>
+							</div>
+							<div class="classinfo classinfo1">
+								<div class="infotext">
+									<span><i>班级人数：</i>10人</span>
+									<a href="#">加入班级</a>
+								</div>
+							</div>
+						</div>
+						<div class="classlist">
+							<div class="classname">
+								<label class="fl">ID:123458</label>
+								<div class="line1">七年级秋季班七年级秋季班七年级秋季班七年级秋季班（2020-03-01~2020-06-07）</div>
+							</div>
+							<div class="classinfo">
+								<div class="infotext">
+									<span><i>校区老师：</i>李老师</span><span><i>课程名称：</i>七年级同步课（16课时）</span><span><i>教材版本：</i>人教版人教版人教</span>
+								</div>
+							</div>
+							<div class="studytime">
+								<label class="fl">上课时间：</label>
+								<div class="studytimelist">
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+								</div>
+							</div>
+							<div class="classinfo classinfo1">
+								<div class="infotext">
+									<span><i>班级人数：</i>10人</span>
+									<a href="#">加入班级</a>
+								</div>
+							</div>
+						</div>
+						<div class="classlist">
+							<div class="classname">
+								<label class="fl">ID:123458</label>
+								<div class="line1">七年级秋季班七年级秋季班七年级秋季班七年级秋季班（2020-03-01~2020-06-07）</div>
+							</div>
+							<div class="classinfo">
+								<div class="infotext">
+									<span><i>校区老师：</i>李老师</span><span><i>课程名称：</i>七年级同步课（16课时）</span><span><i>教材版本：</i>人教版人教版人教</span>
+								</div>
+							</div>
+							<div class="studytime">
+								<label class="fl">上课时间：</label>
+								<div class="studytimelist">
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+								</div>
+							</div>
+							<div class="classinfo classinfo1">
+								<div class="infotext">
+									<span><i>班级人数：</i>10人</span>
+									<a href="#">加入班级</a>
+								</div>
+							</div>
+						</div>
+						<div class="classlist">
+							<div class="classname">
+								<label class="fl">ID:123458</label>
+								<div class="line1">七年级秋季班七年级秋季班七年级秋季班七年级秋季班（2020-03-01~2020-06-07）</div>
+							</div>
+							<div class="classinfo">
+								<div class="infotext">
+									<span><i>校区老师：</i>李老师</span><span><i>课程名称：</i>七年级同步课（16课时）</span><span><i>教材版本：</i>人教版人教版人教</span>
+								</div>
+							</div>
+							<div class="studytime">
+								<label class="fl">上课时间：</label>
+								<div class="studytimelist">
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+								</div>
+							</div>
+							<div class="classinfo classinfo1">
+								<div class="infotext">
+									<span><i>班级人数：</i>10人</span>
+									<a href="#">加入班级</a>
+								</div>
+							</div>
+						</div>
+						<div class="classlist">
+							<div class="classname">
+								<label class="fl">ID:123458</label>
+								<div class="line1">七年级秋季班七年级秋季班七年级秋季班七年级秋季班（2020-03-01~2020-06-07）</div>
+							</div>
+							<div class="classinfo">
+								<div class="infotext">
+									<span><i>校区老师：</i>李老师</span><span><i>课程名称：</i>七年级同步课（16课时）</span><span><i>教材版本：</i>人教版人教版人教</span>
+								</div>
+							</div>
+							<div class="studytime">
+								<label class="fl">上课时间：</label>
+								<div class="studytimelist">
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+								</div>
+							</div>
+							<div class="classinfo classinfo1">
+								<div class="infotext">
+									<span><i>班级人数：</i>10人</span>
+									<a href="#">加入班级</a>
+								</div>
+							</div>
+						</div>
+						<div class="classlist">
+							<div class="classname">
+								<label class="fl">ID:123458</label>
+								<div class="line1">七年级秋季班七年级秋季班七年级秋季班七年级秋季班（2020-03-01~2020-06-07）</div>
+							</div>
+							<div class="classinfo">
+								<div class="infotext">
+									<span><i>校区老师：</i>李老师</span><span><i>课程名称：</i>七年级同步课（16课时）</span><span><i>教材版本：</i>人教版人教版人教</span>
+								</div>
+							</div>
+							<div class="studytime">
+								<label class="fl">上课时间：</label>
+								<div class="studytimelist">
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周六10:00~12:00</span>
+									<span>周日14:00~16:00</span>
+									<span>周日14:00~16:00</span>
+								</div>
+							</div>
+							<div class="classinfo classinfo1">
+								<div class="infotext">
+									<span><i>班级人数：</i>10人</span>
+									<a href="#">加入班级</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="content32"></div>
+		</div>
+		<div class="content56" id="createclass">
+			
+			<div class="box">
+				<div class="msgalert"><span></span></div>
+				<div class="ftitle">
+					<label class="fl">创建班级</label>
+					<span></span>
+				</div>
+				<div class="niceScrollbox">
+					<div class="contbox">
+						<div class="ljlist">
+							<label class="fl">班级名称：</label>
+							<div class="inpcont">
+									<div class="inpbox vselect classtime">
+										<input class="isclick" type="text" placeholder="请输入班级名称" />
+										
+									</div>
+							</div>
+						</div>
+						<div class="ljlist datebox">
+							<label class="fl">开课日期：</label>
+							<div class="inpcont fl">
+								<div class="inpbox vselect classtime">
+									<input id="starttime" class="isclick" type="text" placeholder="选择注册日期" />
+									
+								</div>
+							</div>
+							<label class="fl lastlabel">结课日期：</label>
+							<div class="inpcont fl">
+								<div class="inpbox vselect classtime">
+									<input id="endtime" class="isclick" type="text" placeholder="选择到期日期" />
+									
+								</div>
+							</div>
+						</div>
+						<div class="ljlist datebox confclass">
+							<label class="fl">年级选择：</label>
+							<div class="inpcont fl">
+								<div class="inpbox vselect classtime">
+									
+									<div class="layui-form" id="teacherIds" >
+										<select name="teacherIds"  lay-filter="multi"  xm-select="teacherIds">
+											
+											<option value="">请选择老师</option>
+											<option class="isclick">周一</option>
+											<option class="isclick">周二</option>
+											<option class="isclick">周三</option>
+											<option class="isclick">周四</option>
+											<option class="isclick">周五</option>
+											<option class="isclick">周六</option>
+										</select>
+									</div>
+									<ul>
+										<li class="isclick">一班</li>
+										<li class="isclick">二班</li>
+										<li class="isclick">三班</li>
+									</ul>
+									
+								</div>
+							</div>
+							<label class="fl lastlabel">授课老师：</label>
+							<div class="inpcont fl">
+								<div class="inpbox vselect classtime">
+									<div id="demo1" style=""></div>
+								</div>
+							</div>
+						</div>
+						<div class="ljlist coursebox">
+							<label class="fl">课程选择：</label>
+							<div class="inpcont">
+									<div class="inpbox vselect classtime">
+										<input class="isclick" type="text" placeholder="请选择课程" />
+										<ul>
+											<li class="isclick">一班</li>
+											<li class="isclick">二班</li>
+											<li class="isclick">三班</li>
+										</ul>
+										
+									</div>
+							</div>
+						</div>
+						<div class="ljlist studytime">
+							<label class="fl">上课时间：</label>
+							<div class="inpcont" id="editbox">
+								<div class="setimtlist ">
+									<div class="inpbox vselect classtime">
+										<input class="isclick datetimes" type="text" placeholder="周一" />
+										<ul>
+											<li class="isclick">周一</li>
+											<li class="isclick">周二</li>
+											<li class="isclick">周三</li>
+											<li class="isclick">周四</li>
+											<li class="isclick">周五</li>
+											<li class="isclick">周六</li>
+											<li class="isclick">周日</li>
+										</ul>
+										
+									</div>
+									<div class="inpbox vselect classtime">
+										<input class="isclick timeinput1 rangetime" type="text" placeholder="H点m分" />
+									</div>
+									<div class="addbtn">
+										<span></span>
+									</div>
+								</div>
+								<div class="setimtlist">
+									<div class="inpbox vselect classtime">
+										<input class="isclick datetimes" type="text" placeholder="周一" />
+										<ul>
+											<li class="isclick">周一</li>
+											<li class="isclick">周二</li>
+											<li class="isclick">周三</li>
+											<li class="isclick">周四</li>
+											<li class="isclick">周五</li>
+											<li class="isclick">周六</li>
+											<li class="isclick">周日</li>
+										</ul>
+										
+									</div>
+									<div class="inpbox vselect classtime">
+										<input class="isclick timeinput1" type="text" placeholder="H点m分" />
+										
+									</div>
+									<div class="addbtn">
+										<span></span>
+									</div>
+								</div>
+								<div class="setimtlist ">
+									<div class="inpbox vselect classtime">
+										<input class="isclick datetimes" type="text" placeholder="周一" />
+										<ul>
+											<li class="isclick">周一</li>
+											<li class="isclick">周二</li>
+											<li class="isclick">周三</li>
+											<li class="isclick">周四</li>
+											<li class="isclick">周五</li>
+											<li class="isclick">周六</li>
+											<li class="isclick">周日</li>
+										</ul>
+										
+									</div>
+									<div class="inpbox vselect classtime">
+										<input class="isclick timeinput1 rangetime" type="text" placeholder="H点m分" />
+									</div>
+									<div class="addbtn">
+										<span></span>
+									</div>
+								</div>
+								<span class="addlistt" title="添加上课时间"></span>
+							</div>
+						</div>
+						
+					</div>
+					<div class="clearfloat"></div>
+					<div class="ljlbtnpage">
+						<a href="#">取 消</a>
+						<a href="#">创 建</a>
+					</div>
+				</div>
+			</div>
+			<div class="content32"></div>
+		</div>
+		<div class="content64">
+			<div class="setimtlist ">
+				<div class="inpbox vselect classtime">
+					
+					<input class="isclick datetimes" type="text" placeholder="周一" />
+					
+				</div>
+				<div class="inpbox vselect classtime">
+					<input class="isclick timeinput1 rangetime" type="text" placeholder="请选择上课时间" />
+				</div>
+				<div class="addbtn">
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<script>
+			layui.use(['table'], function() {
+				var table = layui.table;
+				table.render({
+					elem: '#test',
+					url: 'Scripts/layui/data/table.json',
+					height: 'full-340',
+					cellMinWidth: 80,
+					limit: 10,
+					page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+						layout: ['prev', 'page', 'next', 'count'], //自定义分页布局
+						curr: 1, //设定初始在第 5 页
+						groups: 5, //只显示 1 个连续页码
+						first: true, //不显示首页
+						last: true, //不显示尾页
+						next: '下一页',
+						prev: '上一页'
+
+					},
+					done: function() {
+						$('.layui-table-body').niceScroll({
+							cursorcolor: "#000000", //#CC0071 光标颜色
+							cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+							touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+							cursorwidth: "3px", //像素光标的宽度
+							cursorborder: "3px solid #000000", // 游标边框css定义
+							cursorborderradius: "3px", //以像素为光标边界半径
+							autohidemode: true, //是否隐藏滚动条
+							railpadding: {
+								top: 0,
+								right: 0,
+								left: 0,
+								bottom: 0
+							}, //滚动条的位置
+						});
+					},
+					cols: [
+						[{
+								field: 'id',
+								width: 80,
+								title: 'ID',
+								sort: true,
+
+							}, {
+								field: 'username',
+								width: 80,
+								title: '用户名'
+							}, {
+								field: 'sex',
+								width: 80,
+								title: '性别',
+								sort: true
+							}, {
+								field: 'city',
+								width: 80,
+								title: '城市'
+							}, {
+								field: 'sign',
+								title: '签名',
+								minWidth: 150
+							}, {
+								field: 'experience',
+								width: 80,
+								title: '积分',
+								sort: true
+							}, {
+								field: 'score',
+								width: 80,
+								title: '评分',
+								sort: true
+							}, {
+								field: 'classify',
+								width: 80,
+								title: '职业'
+							}, {
+								field: 'wealth',
+								width: 135,
+								title: '状态',
+								templet: function(d) {
+									//return '<a class="statusdiv"><i></i>正常</a>';
+									return '<a class="statusdiv stop"><i></i>停用</a>';
+									//return '<a class="statusdiv outtime"><i></i>停用</a>';
+								}
+							},
+							{
+								field: 'wealth',
+								width: 180,
+								title: '操作',
+								templet: function(d) {
+									return '<a class="divideclass">停用</a><a class="divideclass">移用</a><a class="divideclass">调班</a>';
+								}
+							}
+						]
+					],
+				});
+			});
+		</script>
+	</body>
+</html>

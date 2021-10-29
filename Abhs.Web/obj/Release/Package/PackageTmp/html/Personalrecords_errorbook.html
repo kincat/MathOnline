@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+		<title>个人记录_学习错题</title>
+		<link href="Scripts/layui/css/layui.css" rel="stylesheet" media="all" />
+		<link href="Content/css/animate.min.css" rel="stylesheet" />
+		<link href="Content/css/reset.css" rel="stylesheet" />
+		<link href="Content/css/style.css" rel="stylesheet" />
+		<script src="Scripts/jquery.js"></script>
+		<script src="Scripts/layer.js"></script>
+		<script src="Scripts/layui/layui.js"></script>
+		<script src="Scripts/jquery.nicescroll.js"></script>
+		<script src="Scripts/wow.js"></script>
+		<script>
+			$(function() {
+				// 左侧栏滚动条
+				$('.content4 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('#myscorll').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('.content8 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 0,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+					
+				});
+				//班级列表点击
+				$('.content67 li').click(function() {
+					$(this).removeClass('lihover');
+					$(this).siblings().addClass('lihover');
+					$(this).siblings().removeClass('ljlactive');
+					$(this).addClass('ljlactive');
+				})
+				//学生列表点击
+				$('.content70 li').click(function() {
+					$('.content70 .tit').removeClass('ljlactive');
+					$('.content70 li').removeClass('ljlactive');
+					$(this).addClass('ljlactive');
+				})
+				$('.content70 .tit').click(function() {
+					$(this).addClass('ljlactive');
+					$('.content70 li').removeClass('ljlactive');
+				})
+				//中间栏滚动条
+				$('.content5 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right:32,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				//班级选择下拉
+				$('.content68').hover(function() {
+					$('.content68').show();
+				}, function() {
+					$('.content68').hide();
+				})
+				$('.content68 a').click(function() {
+					$('.content68').hide();
+				})
+				$('.content4 .selectclass').hover(function(){
+					$('.content68').show();
+				},function(){
+					$('.content68').hide();
+				})
+				//学生选择下拉
+				$('.content5 .studentsselectfun').hover(function(){
+					$('.content69').show();
+				},function(){
+					$('.content69').hide();
+				})
+				$('.content69').hover(function(){
+					$('.content69').show();
+				},function(){
+					$('.content69').hide();
+				})
+				$('.content69 a').click(function(){
+					$('.content69').hide();
+				})
+				// layer.open({
+				//   type: 1,
+				//   skin:'content85_1',
+				//   title:'错题反馈',
+				//   area:['480px','auto'],
+				//   btn: ['取消', '确定'],
+				//   btnAlign:'c',
+				//   content: $('.content85') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+				// });
+				$('.printbtn').click(function(){
+					layer.open({
+					  type: 2,
+					  skin:'content88_1',
+					  title:'王二小的错题本',
+					  area:['1200px','80%'],
+					  btn:['返回顶部','打印错题'],
+					  btnAlign:'c',
+					  content: 'http://127.0.0.1:8848/mathadmin/windwo.html',
+					  yes:function(){
+						  $(this).children('iframe').scrollTop(300);
+						  console.log(window.frames[0].document.body.scrollTop)
+						   //$('#layui-layer-iframe1').animate({scrollTop: 0},200);
+					  },
+					  btn2:function(index,layero){
+						   var iframeWin = window[layero.find('iframe')[0]['name']]; 
+							  iframeWin.doprint();
+							  return false;
+					  }
+					});
+				})
+				
+				$('.content75 .objtitle span').click(function(){
+					$(this).parents('li').find('.objcont').toggle();
+				})
+				$('.content78 .tabbox a').click(function(){
+					$(this).addClass('ljlactive').siblings().removeClass('ljlactive')
+				})
+				
+				$('.content8 .niceScrollbox').scroll(function(e) {
+					var scroH = $('.content8 .niceScrollbox').scrollTop(); //滚动高度
+					if (scroH > 90) {
+						$('.content84').show();
+					} else {
+						$('.content84').hide();
+					}
+				});
+				$('#allselect').click(function(){
+					if($(this).find('.allsel').hasClass('allselactive')){
+						$(this).find('.allsel').removeClass('allselactive');
+						$(this).parents('.errorbookbox').find('.selbtn').removeClass('ljlactive');
+					}else{
+						$(this).find('.allsel').addClass('allselactive');
+						$(this).parents('.errorbookbox').find('.selbtn').addClass('ljlactive');
+					}
+				})
+				$('.content78 .errorbookbox i.selbtn').click(function(){
+					$(this).toggleClass('ljlactive');
+					if($('.content78 .errorbookbox .erroritem').length>$('.content78 .errorbookbox .selbtn.ljlactive').length){
+						$('#allselect').find('.allsel').removeClass('allselactive')
+					}else{
+						$('#allselect').find('.allsel').addClass('allselactive')
+					}
+					
+					
+				})
+				$('.content78 .errorbookbox .showorhide').click(function(){
+					$(this).parents('.erroritem').find('.subjectanalysis').toggle();
+				})
+			})
+			
+		</script>
+		<style>
+			body {
+				background: #1D2732;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 班级选择列表 -->
+		<div class="content68">
+			<div class="studentstatus">
+				<a href="#">一年级</a>
+				<a href="#">二年级</a>
+				<a href="#">三年级</a>
+			</div>
+		</div>
+		<!-- 学生字母选择 -->
+		<div class="content69">
+			<div class="studentstatus">
+				<a href="#">A</a>
+				<a href="#">B</a>
+				<a href="#">C</a>
+				<a href="#">D</a>
+				<a href="#">E</a>
+				<a href="#">F</a>
+			</div>
+		</div>
+		<div class="content2">
+			<div class="contbox">
+				<div class="loginimg fl"><img src="Content/images/adminlogo.png" /></div>
+				<div class="headernav fl">
+					<div class="ljlactive" href="#">课前备课</div>
+					<div class="lessonspage">
+						<div class="lessonscont">
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon1.png" /></div>
+								<div class="label">课前备课</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon2.png" /></div>
+								<div class="label">上课管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon">
+									<div class="shaw">敬请期待</div><img src="Content/images/navicon3.png" />
+								</div>
+								<div class="label">课后任务</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon">
+									<div class="shaw">敬请期待</div><img src="Content/images/navicon4.png" />
+								</div>
+								<div class="label">班级管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon5.png" /></div>
+								<div class="label">售后</div>
+							</a>
+							<div class="icon"></div>
+						</div>
+					</div>
+				</div>
+				<div class="configbox">
+					<div class="quit fr"><img src="Content/images/quit.png" /></div>
+					<div class="navbox fr">
+						<img src="Content/images/nav.png" />
+						<div class="listbox">
+							<div>
+								<a href="#">学生管理</a>
+								<a href="#">全部课程</a>
+							</div>
+						</div>
+					</div>
+					<div class="username fr">张三丰</div>
+					<div class="userimg fr"><img src="Content/images/userimg.png" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="content3">
+			<div class="contbox"></div>
+		</div>
+		<div class="content4">
+			<div class="ljltitle">
+				班级
+				<div class="selectclass">
+					<span>正常班级</span>
+				</div>
+			</div>
+			<div class="niceScrollbox">
+				<div class="content67">
+					<div class="contbox">
+						<ul>
+							<li class="ljlactive">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">初一年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">九年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content5">
+			<div class="ljltitle">
+				<span class="fl">学生</span>
+				<div class="onlinebox fr studentsselectfun">
+					<label class="textbox">全部学生</label>
+				</div>
+			</div>
+			<div class="niceScrollbox">
+				<div class="content70">
+					<div class="contbox">
+						<div class="tit ljlactive">
+							全部学生
+							<div class="righticon"><img src="Content/images/rightico.png" /></div>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">重点关注</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">A</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">B</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content6">
+			<div class="content7">
+				<div class="contbox">
+					<div class="label fl">详情</div>
+				</div>
+			</div>
+			<div class="content84">
+				<div class="contbox">
+					<div class="tabbox fl">
+						<a href="#">上课记录</a>
+						<a href="#" class="ljlactive">任务记录</a>
+						<a href="#">学习错题</a>
+						<a href="#">学习进度</a>
+					</div>
+					<div class="searchbox fr">
+						<a href="#" class="delselect">删除选中</a>
+						<a href="#" class="delselect printbtn">打印预览</a>
+					</div>
+				</div>
+			</div>
+			<div class="content8">
+				<div class="niceScrollbox" id="rtl-test">
+					<div class="content9 content77">
+						<div class="contbox">
+							<div class="userimg fl"><img src="Content/images/userimg.png" /></div>
+							<div class="studentsinfo">
+								<div class="contitle">
+									七年级同步班（七年级同步课）
+
+								</div>
+								<div class="infotext infotext1">
+									<div class="fl label">
+										<i>开课日期：</i>2020-12-10到2021-1-10丨<i>年级：</i>七年级丨<i>老师：</i>张老师丨<i>状态</i>：正常
+									</div>
+								</div>
+								<div class="goldbox">
+									<div class="gold1 fr" id="getgold">
+										<div class="imgbox"><img src="Content/images/gold.png"></div>
+										<div class="infotext">奖惩金币</div>
+									</div>
+									<div class="gold1 fr" id="focusone">
+										<div class="imgbox">
+											<img src="Content/images/rw.png">
+											<img src="Content/images/rw.png">
+										</div>
+										<div class="infotext">课后任务</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="content78">
+						<div class="contbox">
+							<div class="tabbox fl">
+								<a href="#">上课记录</a>
+								<a href="#">任务记录</a>
+								<a href="#">学习错题</a>
+								<a href="#">学习进度</a>
+							</div>
+							<div class="searchbox fr">
+								<a href="#" class="delselect">删除选中</a>
+								<a href="#" class="delselect printbtn">打印预览</a>
+							</div>
+						</div>
+						<div class="errorbookbox">
+							<div class="errortitle">
+								<div class="label fl">学习错题</div>
+								<div class="configbox fr" id="allselect">
+									全选<span class="allsel allselactive"></span>
+								</div>
+							</div>
+							<div class="errorbooklist">
+								<div class="errorsearch searchbox">
+									<div class="layui-form fl ljltimediv" style="width: 230px;">
+										<input type="text" class="layui-input" />
+									</div>
+									<div class="layui-form fl" style="width: 170px;">
+										<select lay-verify="required">
+											<option value="">全部老师</option>
+											<option value="0">李老师</option>
+											<option value="1">李老师</option>
+										</select>
+									</div>
+									<div class="layui-form fl" style="width: 170px;">
+										<select lay-verify="required">
+											<option value="">全部状态</option>
+											<option value="0">李老师</option>
+											<option value="1">李老师</option>
+										</select>
+									</div>
+									<div class="layui-form fl" style="width: 170px;">
+										<select lay-verify="required">
+											<option value="">全部状态</option>
+											<option value="0">李老师</option>
+											<option value="1">李老师</option>
+										</select>
+									</div>
+									<div class="layui-form fl" style="width: 170px;">
+										<select lay-verify="required">
+											<option value="">全部状态</option>
+											<option value="0">李老师</option>
+											<option value="1">李老师</option>
+										</select>
+									</div>
+									<a href="#" class="dosearch fl">搜 索</a>
+									<div class="clearfloat"></div>
+								</div>
+								<div class="errorbookitems">
+									<div class="erroritem">
+										<div class="itemtitle">
+											<div class="fl objdifficulty">
+												<span class="difficultytext">题目难度：</span>
+												<img src="Content/images/actstar.png" />
+												<label>|</label>
+												<span>共答题15次，</span>
+												<span class="righttimes">答对5次</span>
+												<span class="wrongtimes">答错10次</span>
+												<em class="grasp">未掌握</em>
+											</div>
+											<div id="editconfig" class="editconfig fr">
+												<i>&nbsp;</i>
+												<label>|</label>
+												<i class="selbtn ljlactive">&nbsp;</i>
+											</div>
+										</div>
+										<div class="itemcontent">
+											<div class="subjecttitle">
+												1.如果温度上升3∘C，记作+3∘C，那么温度下降2∘C记作（ ）
+											</div>
+											<div class="subjectcont">
+												<div class="optionitem">
+													<label>A：</label><strong>-2</strong>
+												</div>
+												<div class="optionitem">
+													<label>B：</label><strong>-2</strong>
+												</div>
+												<div class="optionitem">
+													<label>C：</label><strong>-2</strong>
+												</div>
+												<div class="optionitem">
+													<label>D：</label><strong>-2</strong>
+												</div>
+											</div>
+											<div class="showorhide"><span>查看解析：</span></div>
+											<div class="subjectanalysis">
+												<label class="fl">解析：</label>
+												<div class="subjectanalysistext">
+													在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+													解：“正”和“负”相对，如果温度上升3
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="erroritem">
+										<div class="itemtitle">
+											<div class="fl objdifficulty">
+												<span class="difficultytext">题目难度：</span>
+												<img src="Content/images/actstar.png" />
+												<label>|</label>
+												<span>共答题15次，</span>
+												<span class="righttimes">答对5次</span>
+												<span class="wrongtimes">答错10次</span>
+												<em class="grasp">未掌握</em>
+											</div>
+											<div id="editconfig" class="editconfig fr">
+												<i>&nbsp;</i>
+												<label>|</label>
+												<i class="selbtn ljlactive">&nbsp;</i>
+											</div>
+										</div>
+										<div class="itemcontent">
+											<div class="subjecttitle">
+												1.如果温度上升3∘C，记作+3∘C，那么<span class="blank"></span>温度下降2∘C记作（ ）
+											</div>
+											<!-- <div class="subjectcont">
+												<div class="optionitem">
+													<label>A：</label><strong>-2</strong>
+												</div>
+												<div class="optionitem">
+													<label>B：</label><strong>-2</strong>
+												</div>
+												<div class="optionitem">
+													<label>C：</label><strong>-2</strong>
+												</div>
+												<div class="optionitem">
+													<label>D：</label><strong>-2</strong>
+												</div>
+											</div> -->
+											<div class="showorhide"><span>查看解析：</span></div>
+											<div class="subjectanalysis">
+												<label class="fl">解析：</label>
+												<div class="subjectanalysistext">
+													在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+													解：“正”和“负”相对，如果温度上升3
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<script>
+								layui.use(['table'], function() {
+									var table = layui.table;
+
+								});
+							</script>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 错题反馈弹窗 -->
+		<div class="content85">
+			<div class="contbox">
+
+				<div class="label">请输入错题反馈</div>
+				<div class="">
+					<textarea class="layui-textarea"></textarea>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+
+</html>

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+    <title>@ViewBag.Title</title>
+    @*<link href="https://crm.abhseducation.com/Content/Evaluate/css/style.css?version=@(Abhs.Model.Common.PublicData.GetFileVersion())" rel="stylesheet" />*@
+    <link href="/Scripts/layui/css/layui.css" rel="stylesheet" media="all" />
+    <link href="~/Content/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/css/reset.css?version=@(Abhs.Model.Common.PublicData.GetFileVersion())" rel="stylesheet" />
+    <link href="~/Content/css/style.css?version=@(Abhs.Model.Common.PublicData.GetFileVersion())" rel="stylesheet" /> 
+    <link rel="shortcut icon" href="/abhs.ico" />
+    <link rel="bookmark" href="/abhs.ico" />
+    <script src="~/Scripts/plug-in/plug-in.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/base/base.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())"></script> 
+    <script type="text/javascript" src="~/Scripts/common/md5.js"></script> 
+    <script src="~/Scripts/jquery.js"></script>
+    @*<script src="https://crm.abhseducation.com/Content/Evaluate/js/feedback.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())"></script>*@
+    <script src="~/Scripts/layer.js"></script>
+    <script type="text/javascript" src="~/Scripts/common/shared.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())"></script> 
+    @RenderSection("head", required: false)
+ 
+</head>
+ 
+<body>
+
+    <div class="content2">
+        <div class="contbox">
+            <div class="loginimg fl"><img src="~/Content/images/adminlogo.png" style="cursor:pointer"  onclick="window.location='@Url.Action("Index", "Home")'"/></div>
+            <div class="headernav fl">
+                <div class="ljlactive" href="#">@ViewBag.Title</div>
+                <div class="lessonspage">
+                    <div class="lessonscont">
+                        @{ 
+                            var url = Request.Url.ToString();
+                        }
+
+                        <a href="@Url.Action("Index", "Prepare")" class="fl" @(url.Contains("Prepare") ? "style=display:none" : "")>
+                            <div class="navicon"><img src="~/Content/images/navicon1.png" /></div>
+                            <div class="label">课前备课</div>
+                             
+                        </a>
+                             
+                        <a href="@Url.Action("Index", "Monitor")" class="fl" @(url.Contains("Monitor") ? "style=display:none" : "")>
+                            <div class="navicon"><img src="~/Content/images/navicon2.png" /></div>
+                            <div class="label">课中管理</div>
+                             
+                        </a>
+                        <a href="@Url.Action("Index", "Task")" class="fl" @(url.Contains("Task") ? "style=display:none" : "")>
+                            <div class="navicon"><img src="~/Content/images/navicon3.png" /></div>
+                            <div class="label">课后任务</div>
+                        </a>
+                        <a href="#" class="fl">
+                            <div class="navicon"><div class="shaw">敬请期待</div><img src="~/Content/images/navicon4.png" /></div>
+                            <div class="label">本地题库</div>
+                             
+                        </a>
+                        <a href="@Url.Action("Index", "Home")" class="fl">
+                            <div class="navicon"><img src="~/Content/images/navicon5.png" /></div>
+                            <div class="label">首页</div>
+                        </a>
+                        <div class="icon"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="fl div-feedback" style="height:100%;margin-left:10px">
+
+            </div>
+            <div class="configbox">
+                <div class="quit fr">
+                <img src="~/Content/images/quit.png" style="cursor:pointer" title="退出登录" />
+                <img src="/Content/images/quithover.png" id="quitLogin" style="cursor: pointer" title="退出登录" />
+                </div>
+                <div class="navbox fr">
+                    <img src="/Content/images/nav.png" />
+                    <div class="listbox">
+                        <div>
+                            <a href="@Url.Action("Index", "Student")">学生管理</a>
+                            <a href="@Url.Action("Index", "Class")">班级管理</a>
+                            <a href="@Url.Action("Index", "Course")">课程展示</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="username fr">@Abhs.Cookie.TeacherInfo.Name</div>
+                <div class="userimg fr"><img src="@Abhs.Cookie.TeacherInfo.HeadImage" /></div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+   
+</body>
+</html>
+<script>
+    @{
+          var ticks = Abhs.Common.FeedBackHelper.ticks;
+          //功能模块定义
+          var dic = new Dictionary<string, string>();
+          dic.Add("H01", "课前备课");
+          dic.Add("H02", "上课管理");
+          dic.Add("H03", "课后任务");
+          var functionCode = string.Empty;
+          var functionName = string.Empty;
+          url = url.ToLower();
+          if (url.Contains("monitor")) {
+              functionCode = "H02";
+          }
+          if (url.Contains("prepare"))
+          {
+              functionCode = "H01";
+          }
+          if (url.Contains("task"))
+          {
+              functionCode = "H03";
+          }
+          if (functionCode != string.Empty)
+          {
+              functionName = dic[functionCode];
+          }
+
+    }
+    var functionCode='@functionCode';
+    @*function feedBackInits(){
+        $(".div-feedback").lx_feedback({
+            evaluateSceneId: 0,//场景Id
+            evaluateSceneType: 3,//场景类型
+            evaluateSystemId: @Abhs.Common.FeedBackHelper.evaluateSystemId,//系统平台
+            ticks: '@ticks',//日期和时间的刻度数
+            sign: "@Abhs.Common.FeedBackHelper.GetFeedBackSignV2(ticks,3)",//提交数据签名
+            schoolId: @Abhs.Cookie.TeacherInfo.SchoolID,//学校ID
+            userName: "@Abhs.Cookie.TeacherInfo.Name",//姓名
+            role:@(Abhs.Cookie.TeacherInfo.Role == 1 ? "2" : "3"),//角色,学生1，教师2，校长3
+            account: "@Abhs.Cookie.TeacherInfo.LoginID",//账号
+            systemUserId: @Abhs.Cookie.TeacherInfo.TeacherID,
+            functionCode: '@functionCode',//功能ID
+            functionName: "@functionName",
+            gradeId: '',//年级ID
+            gradeName: "",//年级名称
+            classId: '',//班级ID
+            className: '',//班级名称
+            drawCallback: function() {
+                //alert(1111)
+            }
+        }).initBtn();
+    }*@
+    function feedBackInits(){
+    }
+ 
+</script>

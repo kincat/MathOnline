@@ -1,0 +1,351 @@
+﻿<div class="content7">
+    <div class="contbox">
+        <div class="label fl">详情</div>
+    </div>
+</div>
+<div class="content8">
+    <div class="niceScrollbox" id="rtl-test">
+        <div class="content9 content77">
+            <div class="contbox">
+                <div class="contitle">
+                    <span>ID:</span>
+
+                </div>
+                <div class="infotext infotext1">
+                    <div class="fl label">
+                        <i>开课日期：</i>丨<i>年级：</i><i>老师：</i><i>状态</i>
+                    </div>
+                </div>
+                <div class="goldbox">
+                    <!--<div class="gold1 fr" id="getgold">
+                        <div class="imgbox"><img src="/Content/images/gold.png"></div>
+                        <div class="infotext">奖惩金币</div>
+                    </div>-->
+                    <div class="gold1 fr" id="focusone">
+                        <div class="imgbox">
+                            <img src="/Content/images/rw.png">
+
+                        </div>
+                        <div class="infotext">创建任务</div>
+                    </div>
+                    <div class="gold1 fr" id="qbk" onclick="window.location = '/Prepare/Index?classId=' + curClassId">
+                        <div class="imgbox">
+                            <img src="/Content/images/qbk.png">
+                            <img src="/Content/images/qbk.png">
+                        </div>
+                        <div class="infotext">去备课</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content78 content81">
+            <div class="contbox">
+                <div class="tabbox fl">
+                    <a href="#"  onclick="LoadHtml(0)">上课记录</a>
+                    <a href="#" class="ljlactive" onclick="LoadHtml(1)">任务记录</a>
+                    <a href="#" onclick="LoadHtml(2)">课时进度</a>
+                </div>
+                <div class="searchbox fr">
+                    <div class="layui-form fl ljltimediv" style="width:220px">
+                        <input class="layui-input" type="text"  id="taskDate"  placeholder="请选择任务发布日期范围"/>
+                    </div>
+                    <div class="layui-form fl" style="width:120px;margin-left:10px;display:none">
+                            <select id="teacher">
+                                <option value="">全部老师</option>
+                            </select>
+                        </div>
+                    <a href="#" id="mySearch">搜 索</a>
+                </div>
+            </div>
+            <div class="mytable" id="mytable">
+                <table align="center" class="layui-table" id="tableGrid"></table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="content73 content79">
+    <div class="maskbox"></div>
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl"></label>
+            <span></span>
+        </div>
+        <div class="contbox" style="height:100%;">
+
+            <div class="datebox" id="myscorll">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>学号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年级</th>
+                            <th>完成时间</th>
+                            <th>用时</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    $(function () {
+        $('.content78 .tabbox a').click(function () {
+            $(this).addClass('ljlactive').siblings().removeClass('ljlactive')
+        })
+        $("#mytable").delegate(".out", "click", function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        });
+        $('.content73 .maskbox').click(function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        })
+        $('.content73 .ftitle span').click(function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        });
+        getTeacher();
+        
+    })
+    //重新渲染表单
+    function renderForm() {
+        layui.use('form', function () {
+            var form = layui.form;
+            form.render('select');
+            form.render();
+        });
+    }
+    function getTeacher() {
+ 
+        $.ajax({
+            url: '/Task/GetTeacher',
+            type: "post",
+            dataType: "json",
+            //data: data,
+            success: function (data) {
+                if (data.code == 200) {
+                    if (data.data.isManage == true) {
+                        $("#teacher").parent().show();
+                    }
+                    $.each(data.data.list, function (index, value) {
+                        $("#teacher").append("<option vlaue=\"" + value.id + "\" >" + value.name + "</option>")
+                    })                   
+                    renderForm();
+
+                } else {
+                    isCheck = false;
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+    layui.use(['table', 'form', 'laydate'], function () {
+        var laydate = layui.laydate;
+		var table = layui.table;
+		var form = layui.form;
+		form.render('select');
+		table.render({
+		    elem: '#tableGrid',
+		    url: '/Task/TaskLog',
+			height: 'full-360',
+			cellMinWidth: 80,
+			method: 'post',
+			limit: 15,
+			page:{ //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+					layout: ['prev', 'page', 'next', 'count'], //自定义分页布局
+					curr: 1, //设定初始在第 5 页
+					groups: 5 ,//只显示 1 个连续页码
+					//first: true ,//不显示首页
+					//last: true, //不显示尾页
+					next:'下一页',
+					prev:'上一页'
+
+			}, where: {
+			    classId: curClassId
+			},
+			done: function (res, curr, count) {
+		
+			    if (res.count > 0 && res.data.length > 0) {
+			        $(".layui-table-box").removeClass('nodatatable');
+			    } else {
+			        $(".layui-table-box").addClass('nodatatable');
+			    }
+			    webLogReg(".weblog");
+			},
+			cols: [
+				[{
+					field: 'id',
+					width: 100,
+					title: '编号',
+					align: 'center'
+
+				}, {
+				    field: 'createTime',
+					width: 110,
+					title: '发布时间',
+					align:'center',
+				    templet: function (d) {
+				        return "<div>" + insertStr(d.createTime, 10, "</div><div>") + "</div>";
+				    }
+				}, {
+				    field: 'name',
+				    cellMinWidth: 120,
+				    title: '名称',
+				    align: 'left'
+				}, {
+				    field: 'beginTime',
+					width: 110,
+					title: '任务开始',
+					align:'center',
+					templet: function (d) {
+					    return "<div class='feedlinediv'>" + insertStr(d.beginTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					}
+				}, {
+				    field: 'endTime',
+					title: '任务结束',
+					width: 110,
+					templet: function (d) {
+					    return "<div class='feedlinediv'>" + insertStr(d.endTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					},
+					align: 'center'
+				}, {
+				    field: 'allStudent',
+					width: 90,
+					title: '任务人数',
+					align: 'center'
+				}, {
+				    field: 'overStudent',
+					width: 90,
+					title: '完成人数',
+					align: 'center'
+				}, {
+				    field: 'otherStudent',
+					width: 110,
+					title: '未完成人数',
+					align: 'center'
+				}, {
+				    field: 'overRate',
+					width: 80,
+					title: '完成率',
+					align: 'center'
+				}, {
+				    field: 'teacherName',
+					width: 120,
+					title: '发布人',
+					align: 'center'
+				},{
+                    field: 'wealth',
+                    width: 150,
+                    title: '操作',
+                        templet: function (d) {
+                            if (d.overStudent > 0)
+                                return ' <a class="divideclass out weblog" href="javascript:void(0)"  moduleId="2"  subModuleId="32" actionType="320" datatype="1"  actionvalue="' + d.id + '"   onclick="studyDetail(' + d.id + ',\'' + d.name + '\')">完成情况</a>';
+                            else
+                                return ' <a class="divideclass" href="javascript:void(0)"  style="color:#ccc">完成情况</a>';
+                        },
+                    align: 'center'
+				  }
+				]
+			],
+		});
+		laydate.render({
+		    elem: '#taskDate',
+		    range: true,
+		    done: function (value) {
+		        $('#taskDate').val(value);
+		    }
+		});
+	
+	    // 搜索
+		$('#mySearch').on('click', function () {
+
+
+		    var beginTime = "";
+		    var endTime = "";
+		    if ($.trim($("#taskDate").val()) != "") {
+		        var time = $.trim($("#taskDate").val()).split(" - ");
+		        if (time.length > 1) {
+		            beginTime = time[0];
+		            endTime = time[1];
+		        }
+		    }
+		    var teacherName = $("#teacher").val();
+		    table.reload('tableGrid', {
+		        method: 'post'
+                , where: {
+                    'teacherName': teacherName,
+                    'beginTime': beginTime,
+                    'endTime': endTime
+                }
+                , page: {
+                    curr: 1
+                }, done: function (res, curr, count) {
+                    if (res.count > 0 && res.data.length > 0) {
+                        $(".layui-table-box").removeClass('nodatatable');
+                    } else {
+                        $(".layui-table-box").addClass('nodatatable');
+                    }
+                    webLogReg(".weblog");
+                }
+		    });
+		});
+	});
+	function insertStr(soure, start, newStr) {
+	    return soure.slice(0, start) + newStr + soure.slice(start);
+	}
+	//完成情况
+	function studyDetail(id, title) {
+	    $(".content73 .box .ftitle label").text(title + " 完成情况");
+	    $.ajax({
+	        url: '/Task/StudyDetail',
+	        type: "post",
+	        dataType: "json",
+	        data: { taskId: id },
+	        success: function (data) {
+	            if (data.code == 200) {
+
+	                $("#myscorll .layui-table tbody tr").empty();
+
+	                $(data.data).each(function (index, element) {
+
+	                    var txt = $("<tr>"
+                        + "<td width='60'>" + element.studentId + "</td>"
+                        + "<td width='90'>" + element.studentName + "</td>"
+                        + "<td width='60'>" + element.sex + "</td>"
+                        + "<td width='60'>" + element.grade + "</td>"
+                        + "<td>" + element.finishTime + "</td>"
+                        + "<td width='90'>" + element.totalTime + "</td>"
+                        + "<td width='80'>" + getStatusColor(element.status) + "</td>"
+                        + "<td width='90'>" + (element.taskReportArg != null && element.taskReportArg != "" ? '<a href="' + mainUrl + element.taskReportArg + '" target="_blank" style="color:#3CC9AE" class="weblog"  moduleId="2"  subModuleId="32" actionType="321" datatype="1"  actionvalue=""  >任务报告</a>' : "<a href=\"#\" style='color:#ccc'>任务报告</a>") + "</td>"
+                        + "</tr>");
+	                    $("#myscorll .layui-table tbody").append(txt);
+	                })
+	                webLogReg("#myscorll .weblog");
+	            } else {
+	                layer.msg("出错了，请刷新再尝试");
+	            }
+	        },
+	        error: function (errorMsg) {
+	            layer.msg("出错了，请刷新再尝试");
+	        }
+	    });
+	}
+	function getStatusColor(statusName) {
+	    var color = '';
+	    if (statusName == '完成')
+	        color = '26a100';
+	    if (statusName == '未完成')
+	        color = 'ed2801';
+	    return "<font style='color:#" + color + "'>" + statusName + "</font>";
+	}
+</script>

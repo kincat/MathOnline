@@ -1,0 +1,502 @@
+﻿
+@{
+    ViewBag.Title = "课前备课";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@using Abhs.Model.ViewModel;
+@section Head{
+<script src="~/Scripts/jquery.nicescroll.js"></script>
+<script src="~/Scripts/wow.js"></script>
+<script src="~/Scripts/plug-in/plug-in.js"></script>
+<script src="~/Scripts/base/base.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())"></script>
+<script src="~/Scripts/common/UseTime.js"></script>
+<script type="text/javascript" src="/Scripts/ckplayer/ckplayer.js?t=20181227"></script>
+
+<!--公式识别-->
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [["$", "$"]],   //行内公式选择$
+        displayMath: [["$$", "$$"]]    //段内公式选择$$
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],   //避开某些标签
+        ignoreHtmlClass: "comment-content" | "head-class",   //避开含该Class的标签，用|隔开
+        processHtmlClass: 'tex2jax_process'
+    }
+};
+</script>
+<script src='/Mathjax-full-3.1/es5/tex-chtml.js'></script>
+<style>
+    body {
+        background: #1D2732;
+    }
+ 
+     body .layui-layer-btn .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #ffffff;
+            color: black;
+        }
+       body .layui-layer-btn1 {
+            border-color: #cccccc;
+            background-color: #3cc9ae;
+            color: #fff;
+        }
+ 
+</style>
+}
+<div class="content3">
+    <div class="contbox"></div>
+</div>
+<div class="content68">
+    <div class="studentstatus">
+        <a href="#" onclick="selectGrade(0,this)">全部年级</a>
+        @foreach (var grade in (List<CourseGradeYearView>)ViewBag.gradeList)
+        {
+            <a href="#" onclick="selectGrade(@grade.gradeYearValue,this)">@grade.gradeYearName</a>
+        }
+       
+        
+        
+    </div>
+</div>
+<div class="content4">
+    <div class="ljltitle">班级
+        <div class="selectclass">
+            <span>全部年级</span>
+        </div>
+    </div>
+
+    <div class="niceScrollbox">
+        <div class="content16">
+            <div class="contbox" id="classList">
+
+            </div>
+        </div>
+    </div>
+    <!--模板-->
+    <div id="classListTemp" style="display:none">
+        <li class="{0}">
+            <a href="#" onclick='GetLesson({6},"{8}")'>
+                <div class="righticon"><img src="~/Content/images/rightico.png" /></div>
+                <div class="ltitle">{1}{2}</div>{7}
+                <div class="ljlconfig">
+
+                    <span class="preparedLessons fl"><i>待备</i><em>{4}</em></span>
+                    <span class="Lessons fl"><i>已备</i><em>{5}</em></span>
+                </div>
+            </a>
+        </li>
+    </div>
+</div>
+
+<div class="content5">
+    <div class="ljltitle" id="lastTime"><span class="fl">课时</span>最近上课：</div>
+    <div class="niceScrollbox">
+        <div class="content17">
+            <div class="contbox" id="lessonList">
+
+            </div>
+            
+        </div>
+        <div id="lessonListTemp" style="display:none">
+            <li >
+                <a href="#">
+                    <div class="righticon"><img src="~/Content/images/rightico.png" /></div>
+                    <div class="ltitle"><label></label><strong></strong></div>
+                    <div class="hidebox"></div>
+                    <span ></span>
+                </a>
+            </li>
+        </div>
+    </div>
+</div>
+<div class="content6">
+    <div class="content7">
+        <div class="contbox">
+            <div class="label fl">备课</div>
+            <a href="#">全屏备课</a>
+        </div>
+    </div>
+    <div class="content11">
+        <div class="fl label"  id="prepareInfo1"></div>
+        <div class="stepbox">
+            <div class="stepcnt">
+                <a href="#" class="def">错题巩固</a>
+                <a href="#">智能学习</a>
+                <a href="#" class="laststep">查漏补缺</a> 
+            </div>
+        </div>
+    </div>
+    <div class="content8" id="mathArea">
+        <div class="niceScrollbox">
+            <div class='content65' style='margin-top:150px;display:none'></div>
+            <div class="content9" style="display:none">
+                <div class="contbox">
+                    <div class="contitle" style="line-height:30px;height:53px;">
+                    </div>
+                   
+                    <div id="contitleTemp" style="display:none">
+                        第{0}课时：{1}
+                        {2}
+                        {3}
+                        <div class="gold1 fr" id="qbk" style="cursor:pointer" onclick="testPage()">
+                            <div class="imgbox">
+                                <img src="/Content/images/qbk.png">
+                            </div>
+                            <div class="infotext" style="padding-top:3px">模拟答题</div>
+                        </div>
+                    </div>
+                    <div class="infotext infotext1">
+                        <div class="fl label" id="prepareInfo">
+                           
+                        </div>
+                        <div class="stepbox">
+                            <div class="stepcnt">
+                                 <a href="#" class="def" >错题巩固</a> 
+                                 <a href="#">智能学习</a> 
+                                 <a href="#" class="laststep">查漏补缺</a> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infotext">
+                        <div class="fl label stepTitle">第1步：错题巩固，可根据实际教学情况在1〜10题之间设置。</div>
+                        </div>
+                    </div>
+
+              
+            </div>
+
+            <!-- 错题巩固 -->
+            <div class="content10" style="display:none">
+                <div class="label fl">错题巩固数量：</div>
+                <div class="contbox">
+                    <div class="inputbox">
+                        <input type="number" value="5" id="mistakeCount" placeholder="1~10" oninput="if(value > 10 || value < 1 ){layer.msg('请输入正确题数1~10');value = mistake;}"/>&nbsp;&nbsp;<em>题</em>
+                    </div>
+                    <div class="ljlbtn">
+                        @*<a href="#" id="saveBtn">保存</a>*@
+ 
+                        <a href="#" class="step" id="stepNext1">下一步</a>
+                    </div>
+                </div>
+            </div> 
+
+            <!-- 智能学习 -->
+            <div class="content12">
+                              
+            </div>
+                      
+            <div id="queTemp" style="display:none" class="contbox" vid="_{5}_" vurl="_{6}_" index="_{8}_">
+                <div class="conttitle">
+                    <div class="lable fl">第_{7}_部分：_{0}_</div>
+                    <label>展开</label>
+                </div>
+                <div class="listbox">
+                    <div class="cntbox">
+                        <div class="ctitle">学习内容</div>
+                        <div class="ccont">
+                                
+                        </div>
+                    </div>
+                    <div class="cntbox">
+                        <div class="ctitle">学习视频</div>
+                        <div class="ccont1">
+                            <div class="videobox" id="video_{2}_">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="questionContent">
+
+                    </div>
+                      
+
+                    <div class="ljlbtnpage">
+                        <a href="#" onclick="" class="ljlactive">保 存</a>
+                            
+                    </div>
+                </div>
+            </div>                
+          
+            <!-- 智能学习模板 -->          
+            <div id="questionTemp" style="display:none"  class="cntbox ">
+                <div class="ctitle">题型（）</div>
+                <div class="ccont1 _{5}_">
+                    <div class="ltitle">题型名称：</div>
+                    <div class="objconfig">
+                        <div class="objcnt">
+                            <label>是否学习：</label>
+                            <span class="fl"><em>学习</em><em>不学习</em></span>
+                            @*<strong>（请勾选是否进行学习）</strong>*@
+                        </div>
+                    </div>
+                    <div class="ljltopic">
+                        <div class="ljltopiccnt">
+                            <div class="ljltab" xcode="_{6}_" xitem="_{7}_">
+                                <a href="#" >五星难度例题<i></i></a>
+                                <a href="#">四星难度例题<i></i></a>
+                                <a href="#">三星难度例题<i></i></a>
+                                <a href="#" class="ljlactive hideicon">二星难度例题</a>
+                            </div>
+                            <div class="boxcont">
+                                     
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                
+            <div id="levelQuestionTemp" style="display:none"  class="ljllist"  >
+                <div class="toppictitle">
+                    <div class="textinfo">
+                        <div class="titletxt tt"></div>
+                        <div class="conttext tcontent">
+                                
+                            @*<div class="ljlitem">A：−2∘C</div>
+                            <div class="ljlitem">B：−2∘C</div>
+                            <div class="ljlitem">C：−2∘C</div>
+                            <div class="ljlitem">D：−2∘C</div>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="toppictitle">
+                    <div class="label fl">解析:</div>
+                    <div class="textinfo">
+                        <div class="titletxt texec"></div>
+                    </div>
+                </div>
+            </div>
+                     
+            <!-- 查漏补缺 -->
+            <div class="content13">
+                <div class="contbox">
+                    <div class="cnttitle">
+                        <div class="lable fl">掌握优秀学生</div>
+                        <label>展开</label>
+                    </div>
+                    <div class="listbox">
+                        <div class="cont">
+                            <div class="ctitle">掌握更好</div>
+                            <div class="ccont">
+                                1，学生等级为四星或五星，且典例训练正确率75％以上；<br /> 2，学生等级为二星或三星，且所有所有题型都达到学生等级。（如：学生等级为三星，本节课典例训练所有题型都达到三星。）
+                            </div>
+                        </div>
+                        <div class="cont">
+                            <div class="ctitle">题目</div>
+                            <div class="ccont ccont1" id="filling">
+                                 
+                                 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                    <div class="objlist" id="fillingTemp" style="display:none">
+                        <div class="objlisttitle">
+                            <div class="objlisttitlelabel fl t1"><em> </em>题目：</div>
+                            <div class="objlisttitleinfo t2"></div>
+                        </div>
+                        <div class="objlisttitle">
+                            <div class="objlisttitlelabel fl"><em></em>解析：</div>
+                            <div class="objlisttitleinfo t3"></div>
+                        </div>
+                    </div>
+              
+                <div class="contbox">
+                    <div class="cnttitle">
+                        <div class="lable fl">其他学生</div>
+                        <label>展开</label>
+                    </div>
+                    <div class="listbox">
+                        <div class="cont">
+                            <div class="ctitle">推荐内容</div>
+                            <div class="ccont">
+                                系统推荐查漏补缺内容。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ljlbtnpage">
+                    <a href="#" id="saveLearnBtn"  class="ljlactive">完 成</a>
+                    @*<a href="#" class="ljlactive">下一步</a>*@
+                </div>
+            </div>
+
+            <!-- 智能学习二次确认 -->          
+            <div id="content38temp" style="display: none;">
+                <div class="contbox">
+                    <div class="listbox">
+                        <div class="studytitle">{0}</div>{1}
+                        @*<div class="ljllist">题型名称：用正负数表示具有相反意义的量<span class="notstudy">(不学习)</span></div>
+                    <div class="ljllist">题型名称：用正负数表示具有相反意义的量<span>(学习)</span></div>
+                    <div class="ljllist">题型名称：用正负数表示具有相反意义的量<span class="notstudy">(不学习)</span></div>
+                    <div class="ljllist">题型名称：用正负数表示具有相反意义的量<span class="notstudy">(不学习)</span></div>*@
+                    </div>
+                    @*<div class="ljlbtnpage">
+                    <a href="#" class="ljlactive">确定</a>
+                    <a href="#">取消</a>
+                </div>*@
+                </div>
+            </div>
+
+
+
+            <div class="content92"  style="display:none">
+                <div class="examinationtitle">试卷名称试卷名称</div>
+                <div class="warn">
+                    <p>注意事项:</p>
+                    <p class="warn1">1、本试卷满分100分，考试时间120分钟。</p>
+                    <p class="warn2">2、本次考试不可空题，30分钟内不可交卷。</p>
+                </div>
+                <div class="objtitle" id="selectQuestion">一、选择题（共15题，15分）</div>
+                <div id="selectContent"></div>
+                <div class="objtitle" id="spaceQuestion">二、填空题（共15题，15分）</div>
+                <div id="spaceContent"></div>
+                <div class="objtitle" id="answerQuestion">三、解答题（共15题，15分）</div>
+                <div id="answerContent"></div>
+                <div class="btns"><a href="#" onclick="saveTestCourse()">保 存</a></div>
+            </div>
+            <div class="itemlist" id="testquestiontemp" style="display:none">
+                <div class="choicequestion">
+                    <div class="itemtitle">
+                        <div class="config">
+                            <label>难度：</label>
+                            <img src="/Content/images/actstar.png" /><img src="/Content/images/actstar.png" /><img src="/Content/images/actstar.png" /><img src="/Content/images/actstar.png" /><img src="/Content/images/actstar.png" />
+                            <em>|</em>
+                            <span>题型：题型题型题型题型题型题型</span>
+                        </div>
+                        <a href="#" class="changeobj">换题</a>
+                    </div>
+                    <div class="optiontitle">
+                        <label class="indexnum">【1】</label>
+                       
+                    </div>
+                    <div class="optionlist">
+                        <div class="optionitem">
+                            <label class="itemlabel">A：</label>
+                            <div class="optioncont">2，4，5</div>
+                        </div>
+                        <div class="optionitem">
+                            <label class="itemlabel">B：</label>
+                            <div class="optioncont">2，4，5</div>
+                        </div>
+                        <div class="optionitem">
+                            <label class="itemlabel">C：</label>
+                            <div class="optioncont">2，4，5</div>
+                        </div>
+                        <div class="optionitem">
+                            <label class="itemlabel">D：</label>
+                            <div class="optioncont">2，4，5</div>
+                        </div>
+                    </div>
+                    <div class="showorhide"><span>查看解析：</span></div>
+                    <div class="errorsubjectanalysis">
+                        <div class="subjectanalysis">
+                            <label class="fl">题目解析：</label>
+                            <div class="subjectanalysistext">
+                                在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+                                解：“正”和“负”相对，如果温度上升3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content38" style="display: none;">
+    <div class="contbox">
+        <div class="listbox">
+
+        </div>
+        <div class="ljlbtnpage">
+                <a href="#">取 消</a>
+                <a href="#" class="ljlactive" >确 定</a>
+                
+            </div>
+    </div>
+</div>
+
+<script>
+    var isLoad=false;
+    var stepObj = {};
+    //当前班级
+    var curClassId = @ViewBag.classId;
+    //当前课时
+    var curPackId = 0;
+    //当前课时
+    var curLessonId = @ViewBag.lessonId;
+    //当前备课ID
+    var curPrepareId = 0;
+    //默认全部年级
+    var curGrade=0;
+    //是否完成
+    var isEnd=false;
+    var mistake=0;
+    var schoolId=@ViewBag.schoolId;
+    var teacherId=@ViewBag.teacherId;
+    var teacherName="@ViewBag.teacherName";
+    //进入页面时间
+    var pageBeginTime="@ViewBag.beginTime";
+    //子模块开始时间
+    var subModelBeginTime="@ViewBag.beginTime";
+    //唯一识别码
+    var flagId="@ViewBag.flagId";
+    //当前所属大模块
+    var model=@ViewBag.model;
+    //所属子模块1：错题巩固
+    var subModel=1;
+    var actionContent="";
+    var actionTitle="";
+    var actionType=2;
+    var validTime=0;
+    var stepNum = 0;
+    var mainUrl = "";
+    $(function () {
+        //一进来就先发心跳
+        //teacherKeepLive();
+        Init();
+        //记录浏览
+        //setInterval(function(){
+        //    //6秒一次心跳
+        //    if(isLoad)
+        //        TeacherKeepLive();
+        //},5000)
+        //刷新班级
+        setInterval(function(){
+            LoadMyClass(1)
+        },30000);
+        if (window.location.hostname.toLowerCase() != "school.ailianmath.com"&&window.location.hostname.toLowerCase() != "mathschool.abhseducation.com") {
+            mainUrl = "http://teststudy.ailianmath.com/";
+        } else {
+            mainUrl = "http://math.abhseducation.com/";
+        }
+    })
+    function testPage(){
+        var url=mainUrl+"Test/VirtualTest?lessId="+curLessonId;
+        console.log(url)
+        layer.open({
+            type: 2,
+            skin: 'content88_1',
+            title: "模拟答题",
+            area: ['95%', '95%'],
+            //btn: ['关闭'],
+            btnAlign: 'c',
+            content: url
+            //yes: function (index, layero) {
+            //    layer.closeAll();
+            //} 
+        });
+    }
+ 
+
+
+
+
+
+
+
+
+</script>
+<script src="~/Scripts/model/prepare/prepare.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())"></script>

@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+		<title>个人记录</title>
+		<link href="Scripts/layui/css/layui.css" rel="stylesheet" media="all" />
+		<link href="Content/css/animate.min.css" rel="stylesheet" />
+		<link href="Content/css/reset.css" rel="stylesheet" />
+		<link href="Content/css/style.css" rel="stylesheet" />
+		<script src="Scripts/jquery.js"></script>
+		<script src="Scripts/layer.js"></script>
+		<script src="Scripts/layui/layui.js"></script>
+		<script src="Scripts/layui/lay/modules/xm-select.js"></script>
+		<script src="Scripts/jquery.nicescroll.js"></script>
+		<script src="Scripts/wow.js"></script>
+		<script>
+			$(function() {
+				// 左侧栏滚动条
+				$('.content4 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: false, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('#myscorll').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('.content8 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 0,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+					
+				});
+				//班级列表点击
+				$('.content67 li').click(function() {
+					$(this).removeClass('lihover');
+					$(this).siblings().addClass('lihover');
+					$(this).siblings().removeClass('ljlactive');
+					$(this).addClass('ljlactive');
+				})
+				//学生列表点击
+				$('.content70 li').click(function() {
+					$('.content70 .tit').removeClass('ljlactive');
+					$('.content70 li').removeClass('ljlactive');
+					$(this).addClass('ljlactive');
+				})
+				$('.content70 .tit').click(function() {
+					$(this).addClass('ljlactive');
+					$('.content70 li').removeClass('ljlactive');
+				})
+				//中间栏滚动条
+				$('.content5 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right:32,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				//班级选择下拉
+				$('.content68').hover(function() {
+					$('.content68').show();
+				}, function() {
+					$('.content68').hide();
+				})
+				$('.content68 a').click(function() {
+					$('.content68').hide();
+				})
+				$('.content4 .selectclass').hover(function(){
+					$('.content68').show();
+				},function(){
+					$('.content68').hide();
+				})
+				//学生选择下拉
+				$('.content5 .studentsselectfun').hover(function(){
+					$('.content69').show();
+				},function(){
+					$('.content69').hide();
+				})
+				$('.content69').hover(function(){
+					$('.content69').show();
+				},function(){
+					$('.content69').hide();
+				})
+				$('.content69 a').click(function(){
+					$('.content69').hide();
+				})
+				// layer.confirm('你选择添加的学生中，张无忌与其他学生等级差别较大，建议单独布置课后任务。确定添加张无忌吗？', {
+				//   btn: ['不添加','添加'],
+				//   title:'添加学生提醒',
+				//   skin:'content74',
+				//   area:['480px', 'auto'],
+				//    btnAlign: 'c'//按钮
+				// }, function(){
+				
+				// }, function(){
+				  
+				// });
+				$('.content75 .objtitle span').click(function(){
+					$(this).parents('li').find('.objcont').toggle();
+				})
+				$('.content78 .tabbox a').click(function(){
+					$(this).addClass('ljlactive').siblings().removeClass('ljlactive')
+				})
+				
+				$('.content83 .maskbox').click(function(){
+					$('.content83').toggleClass('content83_1');
+					$('.content83 .maskbox').toggle();
+				})
+				$('.content83 .ftitle span').click(function(){
+					$('.content83').toggleClass('content83_1');
+					$('.content83 .maskbox').toggle();
+				});
+				$('#mytest').click(function(){
+					$('.content83').toggleClass('content83_1');
+					$('.content83 .maskbox').toggle();
+				})
+				$('.content83 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right:0,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('#asktab a').click(function(){
+					$(this).addClass('ljlactive').siblings().removeClass('ljlactive');
+					$(this).parents('.box').find('.contbox').find('.listitem').eq($(this).index()).show().siblings('.listitem').hide();
+					$('.content83 .niceScrollbox').getNiceScroll().resize();
+				})
+				$('.showhide').click(function(){
+					$(this).parents('.ljlshowbox').find('.ljlcnt').toggle();
+					$(this).parents('.list').find('.linebottom').toggleClass('nobackground');
+					$('.content83 .niceScrollbox').getNiceScroll().resize();
+				})
+				$('.content87 .list1').click(function(){
+					if($(this).hasClass('ljlendlist')){
+						$(this).toggleClass('ljlnoborder');
+					}
+					$(this).parent('.ljlshowbox').find('.ljlcnt').toggle();
+				})
+			})
+		</script>
+		<style>
+			body {
+				background: #1D2732;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 班级选择列表 -->
+		<div class="content68">
+			<div class="studentstatus">
+				<a href="#">一年级</a>
+				<a href="#">二年级</a>
+				<a href="#">三年级</a>
+			</div>
+		</div>
+		<!-- 学生字母选择 -->
+		<div class="content69">
+			<div class="studentstatus">
+				<a href="#">A</a>
+				<a href="#">B</a>
+				<a href="#">C</a>
+				<a href="#">D</a>
+				<a href="#">E</a>
+				<a href="#">F</a>
+			</div>
+		</div>
+		<div class="content2">
+			<div class="contbox">
+				<div class="loginimg fl"><img src="Content/images/adminlogo.png" /></div>
+				<div class="headernav fl">
+					<div class="ljlactive" href="#">课前备课</div>
+					<div class="lessonspage">
+						<div class="lessonscont">
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon1.png" /></div>
+								<div class="label">课前备课</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon2.png" /></div>
+								<div class="label">上课管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon">
+									<div class="shaw">敬请期待</div><img src="Content/images/navicon3.png" />
+								</div>
+								<div class="label">课后任务</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon">
+									<div class="shaw">敬请期待</div><img src="Content/images/navicon4.png" />
+								</div>
+								<div class="label">班级管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon5.png" /></div>
+								<div class="label">售后</div>
+							</a>
+							<div class="icon"></div>
+						</div>
+					</div>
+				</div>
+				<div class="configbox">
+					<div class="quit fr"><img src="Content/images/quit.png" /></div>
+					<div class="navbox fr">
+						<img src="Content/images/nav.png" />
+						<div class="listbox">
+							<div>
+								<a href="#">学生管理</a>
+								<a href="#">全部课程</a>
+							</div>
+						</div>
+					</div>
+					<div class="username fr">张三丰</div>
+					<div class="userimg fr"><img src="Content/images/userimg.png" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="content3">
+			<div class="contbox"></div>
+		</div>
+		<div class="content4">
+			<div class="ljltitle">
+				班级
+				<div class="selectclass">
+					<span>正常班级</span>
+				</div>
+			</div>
+			<div class="niceScrollbox">
+				<div class="content67">
+					<div class="contbox">
+						<ul>
+							<li class="ljlactive">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+							
+								</a>
+							</li>
+							
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">初一年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">九年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content5">
+			<div class="ljltitle">
+				<span class="fl">学生</span>
+				<div class="onlinebox fr studentsselectfun">
+					<label class="textbox">全部学生</label>
+				</div>
+			</div>
+			<div class="niceScrollbox">
+				<div class="content70">
+					<div class="contbox">
+						<div class="tit ljlactive">
+							全部学生
+							<div class="righticon"><img src="Content/images/rightico.png" /></div>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">重点关注</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">A</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">B</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content6">
+			<div class="content7">
+				<div class="contbox">
+					<div class="label fl">详情</div>
+				</div>
+			</div>
+			<div class="content8">
+				<div class="niceScrollbox" id="rtl-test">
+					<div class="content9 content77">
+						<div class="contbox">
+							<div class="userimg fl"><img src="Content/images/userimg.png" /></div>
+							<div class="studentsinfo">
+							<div class="contitle">
+								张无忌，共有10次上课记录
+
+							</div>
+							<div class="infotext infotext1">
+								<div class="fl label">
+									<i>开课日期：</i>2020-12-10到2021-1-10丨<i>年级：</i>七年级丨<i>老师：</i>张老师丨<i>状态</i>：正常
+								</div>
+							</div>
+							<div class="goldbox">
+								<div class="gold1 fr" id="getgold">
+									<div class="imgbox"><img src="Content/images/gold.png"></div>
+									<div class="infotext">奖惩金币</div>
+								</div>
+								<div class="gold1 fr" id="focusone">
+									<div class="imgbox">
+										<img src="Content/images/rw.png">
+										<img src="Content/images/rw.png">
+									</div>
+									<div class="infotext">课后任务</div>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="content78">
+						<div class="contbox">
+							<div class="tabbox fl">
+								<a href="#">上课记录</a>
+								<a href="#">任务记录</a>
+								<a href="#">学习错题</a>
+								<a href="#">学习进度</a>
+							</div>
+							<script>
+								$(function(){
+									$('.ljl_selectbox .ljl_selinput').click(function(){
+										$(this).parents('.ljl_selectbox').find('dl').slideToggle();
+										$(this).parents('.ljl_selectbox').toggleClass('ljl_selectboxactive')
+									})
+									$('.ljl_selectbox dd').click(function(){
+										console.log($(this).attr('id'));
+										$(this).parents('.ljl_selectbox').removeClass('ljl_selectboxactive');
+										$(this).parent('dl').find('.ljlactive').removeClass('ljlactive');
+										$(this).addClass('ljlactive');
+										$(this).parents('.ljl_selectbox').find('.ljl_selinput').html($(this).html());
+										$(this).parent('dl').hide();
+									})
+									$(document).click(function (e) {
+									    e = window.event || e; // 兼容IE7
+									    obj = $(e.srcElement || e.target);
+									    if (!$(obj).parents().hasClass('ljl_selectbox')) {
+											$('.ljl_selectbox').removeClass('ljl_selectboxactive');
+									      $('.ljl_selectbox dl').hide();
+									    }
+										
+									});
+								})
+							</script>
+							<div class="searchbox fr">
+								<div class="ljl_selectbox fl" style="width: 150px;">
+									<div class="ljl_selinput">
+										
+									</div>
+									<i></i>
+									<dl>
+									   <dd>用来计算的仪器</dd>
+									   <dd id="0" class="ljlactive">显示器</dd>
+									   <dd id="1">以视觉方式显示信息的装置</dd>
+									</dl>
+								</div>
+								<div class="layui-form fl ljltimediv" style="width: 230px;">
+									<input type="text" id="searchtime" class="layui-input" />
+								</div>
+								<!-- <div class="layui-form fl">
+									<select lay-verify="required">
+										<option value="">第1课时 正数与负数（一）智能提升完成明细</option>
+										<option value="0">男</option>
+										<option value="1">女</option>
+									</select>
+								</div> -->
+								<a href="#" id="mytest">搜 索</a>
+							</div>
+						</div>
+						<div class="mytable" id="mytable">
+							<table align="center" class="layui-table" id="test">
+							 
+							</table>
+						</div>
+						<script>
+							layui.use('laydate', function() {
+								var laydate = layui.laydate;
+								laydate.render({
+									elem: '#searchtime',
+									range: false,
+									done:function(value){
+										$('#searchtime').val(value);
+									}
+								});
+							})
+							layui.use(['table'], function() {
+								var table = layui.table;
+								
+								table.render({
+									elem: '#test',
+									url:'Scripts/layui/data/table.json',
+									height: 'full-360',
+									cellMinWidth: 80,
+									limit:10,
+									page:{ //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+										  layout: ['prev', 'page', 'next', 'count'], //自定义分页布局
+										  curr: 1, //设定初始在第 5 页
+										  groups: 5 ,//只显示 1 个连续页码
+										  first: true ,//不显示首页
+										  last: true, //不显示尾页
+										  next:'下一页',
+										  prev:'上一页'
+										  
+										},
+									done:function(){
+										// $('.layui-table-body').niceScroll({
+										// 	cursorcolor: "#000000", //#CC0071 光标颜色
+										// 	cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+										// 	touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+										// 	cursorwidth: "3px", //像素光标的宽度
+										// 	cursorborder: "3px solid #000000", // 游标边框css定义
+										// 	cursorborderradius: "3px", //以像素为光标边界半径
+										// 	autohidemode: true, //是否隐藏滚动条
+										// 	railpadding: {
+										// 		top: 0,
+										// 		right: 0,
+										// 		left: 0,
+										// 		bottom: 0
+										// 	}, //滚动条的位置
+										// });
+									},
+									cols: [
+										[{
+											field: 'id',
+											width: 80,
+											title: 'ID',
+											sort: true,
+											
+										}, {
+											field: 'username',
+											width: 80,
+											title: '用户名'
+										}, {
+											field: 'sex',
+											width: 80,
+											title: '性别',
+											align:'center',
+											sort: true
+										}, {
+											field: 'city',
+											width: 80,
+											title: '城市'
+										}, {
+											field: 'sign',
+											title: '签名',
+											align:'left',
+											minWidth: 150
+										}, {
+											field: 'experience',
+											width: 80,
+											title: '积分',
+											sort: true
+										}, {
+											field: 'score',
+											width: 80,
+											title: '评分',
+											sort: true
+										}, {
+											field: 'classify',
+											width: 100,
+											title: '状态',
+											unresize:true,
+											templet:function(d){
+												
+												return '<a class="divideclass">提升记录</a>';
+											}
+										}, {
+											field: 'wealth',
+											width: 120,
+											title: '财富',
+											unresize:true,
+											templet:function(d){
+												var d=2;
+												var html="";
+												for(var i=0;i<5;i++){
+													if(i<2){
+														html+='<img src="Content/images/actstar.png">'
+													}else{
+														html+='<img src="Content/images/actstar1.png">'
+													}
+													
+												}
+												return html;
+											}
+										},
+										{
+											field: 'wealth',
+											width: 135,
+											
+											title: '财富',
+											templet:function(d){
+												
+												return '<a class="divideclass">提升记录</a>';
+											}
+										}]
+									],
+								});
+							});
+						</script>
+					</div>
+					<!-- 任务信息 -->
+					
+					<!-- 任务确认 -->
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="content83">
+			<div class="maskbox"></div>
+			<div class="box">
+				<div class="ftitle">
+					<label class="fl">2021-1-15 10:00~12:00 个人学情</label>
+					<span></span>
+				</div>
+				<div class="tab" id="asktab">
+					<a href="#" class="fr">个人学情</a>
+					<a href="#" class="fr">个人预警</a>
+					<a href="#" class="fr ljlactive">个人提问</a>
+					
+					
+				</div>
+				<div class="niceScrollbox">
+					<div class="contbox">
+						<!-- 个人学情 -->
+						<div class="listitem" style="display: none;">
+							
+							<div class="studyinfobox">
+								<div class="content27 content87">
+									<div class="contbox">
+										<div class="ljlshowbox">
+											<div class="list list1">
+												<div class="timeline">
+													<div class="linecnt">
+														<div class="linecnt1">
+															<div class="linetop"></div>
+															<div class="lineinfo dotcolor_green">
+																<em>学</em>
+															</div>
+															<div class="linebottom"></div>
+														</div>
+													</div>
+												</div>
+												<div class="listbox">
+													<div class="cnt">
+														<div class="cnttext"><span>第1课时整体与负数</span></div>
+													</div>
+												</div>
+											</div>
+											<div class="ljlcnt">
+												<div class="list list3">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>进入学习系统。</span></div>
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list list3">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统。</span></div>
+								
+																</div>
+																
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_grey">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>进入学习系统</span></div>
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_grey">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>1进入学习系统</span></div>
+								
+																</div>
+																<div class="tet">
+																	<div class="info"><span>2进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统进入学习系统</span></div>
+								
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_blue">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>开始提升题型“商是整十、整百、整千数的口算之平均分问题”</span></div>
+								
+								
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_blue">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>开始提升题型“商是整十、整百、整千数的口算之平均分问题”。</div>
+								
+																</div>
+																<div class="tet">
+																	<div class="info line1">开始提升题型“商是整十、整百、整千数的口算之平均分问题”。</div>
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												
+												
+								
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>完成“错题巩固”，用时1分12秒。</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info"><span><label class="">共6题、答5题、对4题、错2题、正确率80%，提问1次、<i style="color: #ff0000;">学习不认真1题</i></label></span></div>
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>完成“错题巩固”，用时1分12秒。</span></div>
+								
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list list5">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="hasimg">“商是整十、整百、整千数的口算”视频提问</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1">
+																		<label>提问时间：</label>2分15秒
+																	</div>
+																</div>
+								
+																<div class="tet">
+								
+																	<div class="info line1"><label>问题描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list list5 listdef">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="hasimg">“商是整十、整百、整千数的口算”视频提问</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1"><label>提问时间：</label>2分15秒</div>
+																</div>
+								
+																<div class="tet">
+																	<div class="info line1"><label>问题描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list list5">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="defspan">“商是整十、整百、整千数的口算”题目提问</span></div>
+																</div>
+																<div class="tet">
+								
+																	<div class="info line1"><label>题型名称：</label>商是整十、整百、整千数的口算之平均分</div>
+																</div>
+								
+																<div class="tet">
+								
+																	<div class="info line1"><label>题型描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolorbig_grey">
+																	<span>11:05</span>
+																	<em>错</em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>开始<strong>“错题巩固”</strong></span></div>
+								
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolorbig_grey">
+																	<span>11:05</span>
+																	<em>错</em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>完成“第1课时：正数与负数”学习，用时20分15秒。</span></div>
+																	<div class="info line1"><span>完成“第1课时：正数与负数”学习，用时20分15秒。</span></div>
+								
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="ljlshowbox">
+											<div class="list list1 ljlendlist">
+												<div class="timeline">
+													<div class="linecnt">
+														<div class="linecnt1">
+															<div class="linetop"></div>
+															<div class="lineinfo dotcolor_green">
+																<em>学</em>
+															</div>
+															<div class="linebottom"></div>
+														</div>
+													</div>
+												</div>
+												<div class="listbox">
+													<div class="cnt">
+														<div class="cnttext"><span>第1课时整体与负数</span></div>
+													</div>
+												</div>
+											</div>
+											<div class="ljlcnt">
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_grey">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>进入学习系统。</span></div>
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_grey">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>进入学习系统。</span></div>
+								
+																</div>
+																<div class="tet">
+																	<div class="info"><span>进入学习系统。</span></div>
+								
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_blue">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>开始提升题型“商是整十、整百、整千数的口算之平均分问题”</span></div>
+								
+								
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_blue">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>开始提升题型“商是整十、整百、整千数的口算之平均分问题”。</span></div>
+								
+																</div>
+																<div class="tet">
+																	<div class="info"><span>开始提升题型“商是整十、整百、整千数的口算之平均分问题”。</span></div>
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_black">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>完成“错题巩固”，用时1分12秒。</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1"><span>共6题、答5题、对4题、错2题、正确率80%，提问1次、<i style="color: #00C00E;">掌握1题</i></span></div>
+								
+																</div>
+																
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_black">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>完成“错题巩固”，用时1分12秒。<span></div>
+																</div>
+																
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+								
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>完成“错题巩固”，用时1分12秒。</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info"><span><label class="">共6题、答5题、对4题、错2题、正确率80%，提问1次、<i style="color: #ff0000;">学习不认真1题</i></label></span></div>
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>完成“错题巩固”，用时1分12秒。</span></div>
+								
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list list5">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="hasimg">“商是整十、整百、整千数的口算”视频提问</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1">
+																		<label>提问时间：</label>2分15秒
+																	</div>
+																</div>
+								
+																<div class="tet">
+								
+																	<div class="info line1"><label>问题描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list list5 listdef">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="hasimg">“商是整十、整百、整千数的口算”视频提问</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1"><label>提问时间：</label>2分15秒</div>
+																</div>
+								
+																<div class="tet">
+																	<div class="info line1"><label>问题描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list list5">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="defspan">“商是整十、整百、整千数的口算”题目提问</span></div>
+																</div>
+																<div class="tet">
+								
+																	<div class="info line1"><label>题型名称：</label>商是整十、整百、整千数的口算之平均分</div>
+																</div>
+								
+																<div class="tet">
+								
+																	<div class="info line1"><label>题型描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolorbig_grey dotcolorbig_blur">
+																	<span>11:05</span>
+																	<em>错</em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>开始<strong>“错题巩固”</strong></span></div>
+								
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolorbig_grey">
+																	<span>11:05</span>
+																	<em>错</em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info"><span>完成“第1课时：正数与负数”学习，用时20分15秒。</span></div>
+																	<div class="info"><span>完成“第1课时：正数与负数”学习，用时20分15秒。</span></div>
+								
+																</div>
+								
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+		
+							</div>
+						</div>
+						<!-- 个人预警 -->
+						<div class="listitem">
+							<div class="earlywarningbox">
+								<div class="content27 content86">
+									<div class="contbox">
+										<div class="ljlshowbox">
+											<div class="list list1">
+												<div class="timeline">
+													<div class="linecnt">
+														<div class="linecnt1">
+															<div class="linetop"></div>
+															<div class="lineinfo dotcolor_green">
+																<em>学</em>
+															</div>
+															<div class="linebottom"></div>
+														</div>
+													</div>
+												</div>
+												<div class="listbox">
+													<div class="cnt">
+														<div class="cnttext"><span class="showhide">第1课时整体与负数</span></div>
+													</div>
+												</div>
+											</div>
+											<div class="ljlcnt">
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info line1">
+																		<span>完成“错题巩固”，用时1分12秒。</span>
+																		<!-- <i>已忽略</i> -->
+																	</div>
+								
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list listdef">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info">
+																		<span>完成“错题巩固错题巩固错题巩固错题巩固错题巩固错题巩固错题巩固”，用时1分12秒。</span>
+																		<i>已忽略</i>
+																	</div>
+																				
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												
+												
+												
+												
+											</div>
+										</div>
+										
+									</div>
+									<div class="contbox">
+										<div class="ljlshowbox">
+											<div class="list list1">
+												<div class="timeline">
+													<div class="linecnt">
+														<div class="linecnt1">
+															<div class="linetop"></div>
+															<div class="lineinfo dotcolor_green">
+																<em>学</em>
+															</div>
+															<div class="linebottom"></div>
+														</div>
+													</div>
+												</div>
+												<div class="listbox">
+													<div class="cnt">
+														<div class="cnttext"><span class="showhide">第1课时整体与负数</span></div>
+													</div>
+												</div>
+											</div>
+											<div class="ljlcnt">
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info line1">
+																		<span>完成“错题巩固”，用时1分12秒。</span>
+																		<!-- <i>已忽略</i> -->
+																	</div>
+																	
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list listdef">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_red">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox singlelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info line1">
+																		<span>完成“错题巩固”，用时1分12秒。</span>
+																		<i>已忽略</i>
+																	</div>
+																				
+																</div>
+															</div>
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												
+												
+												
+												
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 个人提问 -->
+						<div class="listitem" style="display: none;">
+							
+							<div class="askbox">
+								<div class="content27">
+									<div class="contbox">
+										<div class="ljlshowbox">
+											<div class="list list1">
+												<div class="timeline">
+													<div class="linecnt">
+														<div class="linecnt1">
+															<div class="linetop"></div>
+															<div class="lineinfo dotcolor_green">
+																<em>学</em>
+															</div>
+															<div class="linebottom"></div>
+														</div>
+													</div>
+												</div>
+												<div class="listbox">
+													<div class="cnt">
+														<div class="cnttext"><span class="showhide">第1课时整体与负数</span></div>
+													</div>
+												</div>
+											</div>
+											<div class="ljlcnt">
+												
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="hasimg">“商是整十、整百、整千数的口算”视频提问</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1">
+																		<label>提问时间：</label>2分15秒
+																	</div>
+																</div>
+								
+																<div class="tet">
+								
+																	<div class="info line1"><label>问题描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list listdef">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_grey">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="hasimg">“商是整十、整百、整千数的口算”视频提问</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1"><label>提问时间：</label>2分15秒</div>
+																</div>
+								
+																<div class="tet">
+																	<div class="info line1"><label>问题描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																<div class="tet hasignore">
+																	<i>已忽略</i>
+																</div>
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="defspan">“商是整十、整百、整千数的口算”题目提问</span></div>
+																</div>
+																<div class="tet">
+								
+																	<div class="info line1"><label>题型名称：</label>商是整十、整百、整千数的口算之平均分</div>
+																</div>
+								
+																<div class="tet">
+								
+																	<div class="info line1"><label>题型描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												
+												
+											</div>
+										</div>
+										
+									</div>
+									<div class="contbox">
+										<div class="ljlshowbox">
+											<div class="list list1">
+												<div class="timeline">
+													<div class="linecnt">
+														<div class="linecnt1">
+															<div class="linetop"></div>
+															<div class="lineinfo dotcolor_green">
+																<em>学</em>
+															</div>
+															<div class="linebottom"></div>
+														</div>
+													</div>
+												</div>
+												<div class="listbox">
+													<div class="cnt">
+														<div class="cnttext"><span class="showhide">第1课时整体与负数</span></div>
+													</div>
+												</div>
+											</div>
+											<div class="ljlcnt">
+												
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="hasimg">“商是整十、整百、整千数的口算”视频提问</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1">
+																		<label>提问时间：</label>2分15秒
+																	</div>
+																</div>
+																	
+																<div class="tet">
+																	
+																	<div class="info line1"><label>问题描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list listdef">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="hasimg">“商是整十、整百、整千数的口算”视频提问</span></div>
+																</div>
+																<div class="tet">
+																	<div class="info line1"><label>提问时间：</label>2分15秒</div>
+																</div>
+																	
+																<div class="tet">
+																	<div class="info line1"><label>问题描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												<div class="list">
+													<div class="timeline">
+														<div class="linecnt">
+															<div class="linecnt1">
+																<div class="linetop"></div>
+																<div class="lineinfo dotcolor_yellow">
+																	<span>11:05</span>
+																	<em></em>
+																</div>
+																<div class="linebottom"></div>
+															</div>
+														</div>
+													</div>
+													<div class="listbox doublelinebox">
+														<div class="cnt">
+															<div class="cnttext">
+																<div class="tet">
+																	<div class="info info1"><span class="defspan">“商是整十、整百、整千数的口算”题目提问</span></div>
+																</div>
+																<div class="tet">
+																	
+																	<div class="info line1"><label>题型名称：</label>商是整十、整百、整千数的口算之平均分</div>
+																</div>
+																	
+																<div class="tet">
+																	
+																	<div class="info line1"><label>题型描述：</label>视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂视频看不懂。</div>
+																</div>
+																
+															</div>
+															
+														</div>
+														<div class="ico"></div>
+													</div>
+												</div>
+												
+												
+											</div>
+										</div>
+										
+									</div>
+								</div>
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\Abhs.Cache.dll
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\Abhs.Cache.pdb
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\CSRedisCore.dll
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\log4net.dll
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\Newtonsoft.Json.dll
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\System.ValueTuple.dll
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\CSRedisCore.xml
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\log4net.xml
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\Newtonsoft.Json.xml
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\bin\Release\System.ValueTuple.xml
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\obj\Release\Abhs.Cache.dll
+D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\obj\Release\Abhs.Cache.pdb

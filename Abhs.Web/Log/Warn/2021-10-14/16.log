@@ -1,0 +1,2 @@
+2021-10-14 16:02:58,249 WARN  : GetAllList------hashkey:studentmsg:1001002:2021-10-14,times:691,data:0
+2021-10-14 16:02:58,274 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 2/2, Get wait: 0, GetAsync wait: 0

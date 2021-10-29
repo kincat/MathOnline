@@ -1,0 +1,104 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abhs.Common", "Abhs.Common\Abhs.Common.csproj", "{B8702507-F127-4CDF-BD82-B921ED79BDC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abhs.Application", "Abhs.Application\Abhs.Application.csproj", "{6FD9F359-452E-41A6-AB6A-7CC950946094}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abhs.Model", "Abhs.Model\Abhs.Model.csproj", "{2FBD9FBE-A5FB-4C9E-8CA6-AEF4208096AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abhs.ES", "Abhs.ES\Abhs.ES.csproj", "{571CD16A-1500-4FA3-91CB-69B6024D40FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abhs.Cache", "Abhs.Cache\Abhs.Cache.csproj", "{986F4E9E-B50F-4DCA-842B-7F3353DFED25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abhs.Data", "Abhs.Data\Abhs.Data.csproj", "{8156AC5E-55BF-4CED-BFFA-BF090105919A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abhs.WebSite", "Abhs.Web\Abhs.WebSite.csproj", "{E810CF6B-2E94-4768-B39E-6D6563449568}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1CF12EE2-8FFD-42E5-9B6D-7659FDBC1BFB}"
+	ProjectSection(SolutionItems) = preProject
+		..\SmartMath4.0\.nuget\NuGet.Config = ..\SmartMath4.0\.nuget\NuGet.Config
+		..\SmartMath4.0\.nuget\NuGet.exe = ..\SmartMath4.0\.nuget\NuGet.exe
+		..\SmartMath4.0\.nuget\NuGet.targets = ..\SmartMath4.0\.nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abhs.WinService", "Abhs.WinService\Abhs.WinService.csproj", "{459564E0-66B5-45C4-A8EF-DE8DB3BEC38A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8702507-F127-4CDF-BD82-B921ED79BDC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8702507-F127-4CDF-BD82-B921ED79BDC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8702507-F127-4CDF-BD82-B921ED79BDC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8702507-F127-4CDF-BD82-B921ED79BDC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD9F359-452E-41A6-AB6A-7CC950946094}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD9F359-452E-41A6-AB6A-7CC950946094}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD9F359-452E-41A6-AB6A-7CC950946094}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD9F359-452E-41A6-AB6A-7CC950946094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBD9FBE-A5FB-4C9E-8CA6-AEF4208096AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBD9FBE-A5FB-4C9E-8CA6-AEF4208096AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBD9FBE-A5FB-4C9E-8CA6-AEF4208096AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBD9FBE-A5FB-4C9E-8CA6-AEF4208096AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{571CD16A-1500-4FA3-91CB-69B6024D40FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{571CD16A-1500-4FA3-91CB-69B6024D40FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{571CD16A-1500-4FA3-91CB-69B6024D40FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{571CD16A-1500-4FA3-91CB-69B6024D40FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986F4E9E-B50F-4DCA-842B-7F3353DFED25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986F4E9E-B50F-4DCA-842B-7F3353DFED25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986F4E9E-B50F-4DCA-842B-7F3353DFED25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986F4E9E-B50F-4DCA-842B-7F3353DFED25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8156AC5E-55BF-4CED-BFFA-BF090105919A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8156AC5E-55BF-4CED-BFFA-BF090105919A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8156AC5E-55BF-4CED-BFFA-BF090105919A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8156AC5E-55BF-4CED-BFFA-BF090105919A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E810CF6B-2E94-4768-B39E-6D6563449568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E810CF6B-2E94-4768-B39E-6D6563449568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E810CF6B-2E94-4768-B39E-6D6563449568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E810CF6B-2E94-4768-B39E-6D6563449568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459564E0-66B5-45C4-A8EF-DE8DB3BEC38A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459564E0-66B5-45C4-A8EF-DE8DB3BEC38A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459564E0-66B5-45C4-A8EF-DE8DB3BEC38A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459564E0-66B5-45C4-A8EF-DE8DB3BEC38A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EC5440E-E306-4490-8790-16A5AA1D8B6B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 9
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://39.97.239.228:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Abhs.Web\\Abhs.WebSite.csproj
+		SccProjectName1 = Abhs.Web
+		SccLocalPath1 = Abhs.Web
+		SccProjectUniqueName2 = Abhs.Application\\Abhs.Application.csproj
+		SccProjectName2 = Abhs.Application
+		SccLocalPath2 = Abhs.Application
+		SccProjectUniqueName3 = Abhs.Cache\\Abhs.Cache.csproj
+		SccProjectName3 = Abhs.Cache
+		SccLocalPath3 = Abhs.Cache
+		SccProjectUniqueName4 = Abhs.Common\\Abhs.Common.csproj
+		SccProjectName4 = Abhs.Common
+		SccLocalPath4 = Abhs.Common
+		SccProjectUniqueName5 = Abhs.Data\\Abhs.Data.csproj
+		SccProjectName5 = Abhs.Data
+		SccLocalPath5 = Abhs.Data
+		SccProjectUniqueName6 = Abhs.ES\\Abhs.ES.csproj
+		SccProjectName6 = Abhs.ES
+		SccLocalPath6 = Abhs.ES
+		SccProjectUniqueName7 = Abhs.Model\\Abhs.Model.csproj
+		SccProjectName7 = Abhs.Model
+		SccLocalPath7 = Abhs.Model
+		SccProjectUniqueName8 = Abhs.WinService\\Abhs.WinService.csproj
+		SccProjectName8 = Abhs.WinService
+		SccLocalPath8 = Abhs.WinService
+	EndGlobalSection
+EndGlobal

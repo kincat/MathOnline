@@ -1,0 +1,262 @@
+﻿<div class="content7">
+    <div class="contbox">
+        <div class="label fl">详情</div>
+    </div>
+</div>
+<div class="content8">
+    <div class="niceScrollbox" id="rtl-test">
+        <div class="content9 content77">
+            <div class="contbox">
+                <div class="userimg fl"><img src="/Content/images/userimg.png" /></div>
+                <div class="studentsinfo">
+                    <div class="contitle">
+                        
+
+                    </div>
+                    <div class="infotext infotext1">
+                        <div class="fl label">
+                            
+                        </div>
+                    </div>
+                    <div class="goldbox">
+                        <div class="gold1 fr" id="getgold">
+                            <div class="imgbox"><img src="/Content/images/gold.png"></div>
+                            <div class="infotext">奖惩金币</div>
+                        </div>
+                      
+                        <div class="gold1 fr" id="focusone">
+                            <div class="imgbox">
+                                <img src="/Content/images/rw.png">
+                            </div>
+                            <div class="infotext">创建任务</div>
+                        </div>
+                        <div class="gold1 fl" id="gzStudent">
+                            <div class="imgbox">
+                                <img src="/Content/images/xx.png" />
+                                <img src="/Content/images/xx1.png" />
+                            </div>
+                            <div class="infotext">重点关注</div>
+                        </div>
+                        <div class="gold1 fr" id="printLog">
+                            <div class="imgbox"><img src="/Content/images/printLog.png"><img src="/Content/images/printLog.png"></div>
+                            <div class="infotext">打印记录</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content78">
+            <div class="contbox">
+                <div class="tabbox fl">
+                    <a href="#" onclick="LoadHtml(4)">上课记录</a>
+                    <a href="#"  class="ljlactive" onclick="LoadHtml(5)">任务记录</a>
+                    <a href="#" onclick="LoadHtml(6)">错题记录</a>
+                    <a href="#" onclick="LoadHtml(7)">学习进度</a>
+                </div>
+                <div class="searchbox fr">
+                    <div class="layui-form fl ljltimediv" style="width: 230px;">
+                        <input type="text" id="searchtime" class="layui-input"  placeholder="请选择任务发布日期范围" />
+                    </div>
+                     <div class="layui-form fl" style="width: 120px;">
+                    <select lay-verify="required" id="status">
+                        <option value="">全部状态</option>
+                        <option value="1">完成</option>
+                        <option value="0">未完成</option>
+                    </select>
+                   </div> 
+
+                    <a href="#" id="mySearch">搜 索</a>
+                </div>
+            </div>
+            <div class="mytable" id="mytable">
+                <table align="center" class="layui-table" id="tableGrid"></table>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<script>
+    $(function () {
+
+      
+ 
+    })
+  
+
+    layui.use(['table', 'laydate','form'], function () {
+		var table = layui.table;
+		var laydate = layui.laydate;
+		var form = layui.form;
+		form.render('select');
+		table.render({
+		    elem: '#tableGrid',
+		    url: '/Task/StudentTaskLog',
+			height: 'full-360',
+			cellMinWidth: 80,
+			limit:10,
+			page:{ //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+					layout: ['prev', 'page', 'next', 'count'], //自定义分页布局
+					curr: 1, //设定初始在第 5 页
+					groups: 5 ,//只显示 1 个连续页码
+					//first: true ,//不显示首页
+					//last: true, //不显示尾页
+					next:'下一页',
+					prev:'上一页'
+
+			},
+			method: 'post',
+			limit: 15,
+			where: {
+			    classId: curClassId,
+                studentId:curStudentId
+			},
+			done: function (res, curr, count) {
+			    if (res.count > 0 && res.data.length > 0) {
+			        $(".layui-table-box").removeClass('nodatatable');
+			    } else {
+			        $(".layui-table-box").addClass('nodatatable');
+			    }
+			    webLogReg(".weblog");
+			},
+			cols: [
+				[{
+					field: 'id',
+					width: 100,
+					title: '编号',
+					align: 'center'
+
+				}, {
+				    field: 'publishTime',
+					width: 110,
+					title: '发布时间',
+					templet: function (d) {
+					    return "<div class='feedlinediv'>" + insertStr(d.publishTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					},
+					align: 'center'
+				}, {
+				    field: 'taskName',
+				    cellMinWidth: 140,
+				    title: '名称',
+				    align: 'left'
+				}, {
+				    field: 'beginTime',
+					width: 110,
+					title: '任务开始',
+					templet: function (d) {
+					    return "<div class='feedlinediv'>" + insertStr(d.beginTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					},
+					align: 'center'
+				}, {
+				    field: 'endTime',
+					title: '任务结束',
+					width: 110,
+					templet: function (d) {
+					    return "<div class='feedlinediv'>" + insertStr(d.endTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					},
+					align: 'center'
+				}, {
+				    field: 'teacherName',
+					width: 110,
+					title: '发布人',
+					align: 'center'
+				},  {
+				    field: 'finishTime',
+					width: 100,
+					title: '完成时间',
+					templet: function (d) {
+					    if (d.finishTime == null || d.finishTime == '' || d.finishTime == '无')
+					        return '无';
+					    return "<div class='feedlinediv'>" + insertStr(d.finishTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					},
+					align: 'center'
+				}, {
+				    field: 'useTime',
+					width: 100,
+					title: '用时',
+					align: 'center'
+				}, {
+				    field: 'status',
+				    width: 100,
+				    title: '状态',
+				    align: 'center',
+				    templet: function (d) {
+				       
+				        return getStatusColor(d.status);
+				    }
+				},
+				{
+					field: 'wealth',
+					width: 120,
+
+					title: '操作',
+					templet:function(d){
+					    var report = '<a class="divideclass" style="color:#ccc">查看报告</a>';
+					    if (d.taskReportArg != null && d.taskReportArg != "") {
+					        report = '<a class="divideclass weblog"  moduleId="2"  subModuleId="42" actionType="421" datatype="2"      href="' + mainUrl + d.taskReportArg + '" target="_blank">查看报告</a>';
+					    }
+					    return report;
+					},
+					align: 'center'
+				}]
+			],
+		});
+		laydate.render({
+		    elem: '#searchtime',
+		    range: true,
+		    done: function (value) {
+		        $('#searchtime').val(value);
+		    }
+		});
+	    // 搜索
+		$('#mySearch').on('click', function () {
+		    var beginTime = "";
+		    var endTime = "";
+		    if ($.trim($("#searchtime").val()) != "") {
+		        var time = $.trim($("#searchtime").val()).split(" - ");
+		        if (time.length > 1) {
+		            beginTime = time[0];
+		            endTime = time[1];
+		        }
+		    }
+		    var status = -1; 
+		    if ($("#status").val() != '')
+		        status = $("#status").val();
+		    table.reload('tableGrid', {
+		        method: 'post'
+                , where: {
+                    'beginTime': beginTime,
+                    'endTime': endTime,
+                    'status': status,
+                    'classId': curClassId,
+                    'studentId': curStudentId
+                }
+                , page: {
+                    curr: 1
+                }, done: function (res, curr, count) {
+                    if (res.count > 0 && res.data.length > 0) {
+                        $(".layui-table-box").removeClass('nodatatable');
+                    } else {
+                        $(".layui-table-box").addClass('nodatatable');
+                    }
+                    webLogReg(".weblog");
+                }
+		    });
+		});
+    });
+    function insertStr(soure, start, newStr) {
+        return soure.slice(0, start) + newStr + soure.slice(start);
+    }
+    function getStatusColor(statusName) {
+        var color = '';
+        if (statusName == '完成')
+            color = '26a100';
+        if (statusName == '未完成')
+            color = 'ed2801';
+        return "<font style='color:#" + color + "'>" + statusName + "</font>";
+    }
+</script>

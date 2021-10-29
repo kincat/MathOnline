@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+		<title>备课</title>
+		<link href="Content/css/animate.min.css" rel="stylesheet" />
+		<link href="Content/css/reset.css" rel="stylesheet" />
+		<link href="Content/css/style.css" rel="stylesheet" />
+		<script src="Scripts/jquery.js"></script>
+		<script src="Scripts/layer.js"></script>
+		<script src="Scripts/jquery.nicescroll.js"></script>
+		<script src="Scripts/wow.js"></script>
+		<script>
+			function setPos() {
+				var div = document.getElementById('rtl-test');
+
+				//div.scrollTop = 0;
+			}
+			$(function() {
+				$('#test').click(function() {
+					$('.content8 .niceScrollbox').animate({
+						scrollTop: 0
+					}, 300);
+				})
+				$('.content4 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('.content8 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 0,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+
+				});
+				$('.content16 li').click(function() {
+					$(this).removeClass('lihover');
+					$(this).siblings().addClass('lihover');
+					$(this).siblings().removeClass('ljlactive');
+					$(this).addClass('ljlactive');
+				})
+				$('.content17 li').click(function() {
+					$(this).removeClass('lihover');
+					$(this).siblings().addClass('lihover');
+					$(this).siblings().removeClass('ljlactive');
+					$(this).addClass('ljlactive');
+				})
+				$('.content5 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: false, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 32,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('.content7 a').click(function() {
+					//$('.content8 .niceScrollbox').getNiceScroll().hide();
+					if ($('.content6').hasClass('fx')) {
+						$('.content6').removeClass('fx');
+						$(this).html('全屏备课');
+						setTimeout(function() {
+							$('.content8 .niceScrollbox').getNiceScroll().resize();
+						}, 310);
+					} else {
+						setTimeout(function() {
+							$('.content8 .niceScrollbox').getNiceScroll().resize();
+						}, 310);
+						$('.content6').addClass('fx');
+						$(this).html('退出全屏')
+					}
+				});
+				// $('.content8 .niceScrollbox').scroll(function(e) {
+				//     var scroH = $('.content8 .niceScrollbox').scrollTop();  //滚动高度
+				// 	if(scroH>90){
+				// 		$('.content11').show();
+				// 	}else{
+				// 		$('.content11').hide();
+				// 	}
+				// });
+				var stepnum = 0;
+				$('.content12 .contbox').each(function() {
+					if ($(this).index() < stepnum) {
+						$(this).find('.conttitle label').show();
+					} else {
+						if ($(this).index() == stepnum) {
+							$(this).find('.listbox').show();
+						}
+						$(this).find('.conttitle label').hide();
+					}
+				})
+				$('.content12 .conttitle label').click(function() {
+					$(this).parents('.contbox').find('.listbox').slideToggle();
+					setTimeout(function() {
+						$('.content8 .niceScrollbox').getNiceScroll().resize();
+					}, 400);
+				})
+				$('.content13 .cnttitle label').click(function() {
+					$(this).parents('.contbox').find('.listbox').slideToggle();
+					setTimeout(function() {
+						$('.content8 .niceScrollbox').getNiceScroll().resize();
+					}, 400);
+				})
+				$('.content12 .ljltab a').click(function() {
+					$(this).addClass('ljlactive').siblings().removeClass('ljlactive');
+					$(this).parents('.ljltopiccnt').find('.boxcont').find('.ljllist').eq(3 - $(this).index())
+						.show().siblings().hide();
+				})
+				// layer.open({
+				// 	type: 1,
+				// 	title: false,
+				// 	closeBtn: 0,
+				// 	title:'备课学习内容',
+				// 	area: ['600px'],
+				// 	content: $('.content38') //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+				// });
+				$.each($('.content17 li'), function() {
+					var hgt = $(this).find('.hidebox').height();
+					console.log(hgt);
+					if (hgt > 30) {
+						$(this).addClass('listtwo')
+					}
+				})
+				$('.content12 .cntbox .objconfig span').click(function() {
+					$(this).parents('.cntbox').toggleClass('cntbox_1');
+					$(this).toggleClass('ljlactive');
+					console.log($(this).hasClass('ljlactive'));
+					//if($(this).hasClass('ljlactive'))
+				})
+			})
+		</script>
+		<style>
+			body {
+				background: #1D2732;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content2">
+			<div class="contbox">
+				<div class="loginimg fl"><img src="Content/images/adminlogo.png" /></div>
+				<div class="headernav fl">
+					<div class="ljlactive" href="#">课前备课</div>
+					<div class="lessonspage">
+						<div class="lessonscont">
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon1.png" /></div>
+								<div class="label">课前备课</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon2.png" /></div>
+								<div class="label">上课管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon">
+									<div class="shaw">敬请期待</div><img src="Content/images/navicon3.png" />
+								</div>
+								<div class="label">课后任务</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon">
+									<div class="shaw">敬请期待</div><img src="Content/images/navicon4.png" />
+								</div>
+								<div class="label">班级管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon5.png" /></div>
+								<div class="label">售后</div>
+							</a>
+							<div class="icon"></div>
+						</div>
+					</div>
+				</div>
+				<div class="configbox">
+					<div class="quit fr"><img src="Content/images/quit.png" /></div>
+					<div class="navbox fr">
+						<img src="Content/images/nav.png" />
+						<div class="listbox">
+							<div>
+								<a href="#">学生管理</a>
+								<a href="#">全部课程</a>
+							</div>
+						</div>
+					</div>
+					<div class="username fr">张三丰</div>
+					<div class="userimg fr"><img src="Content/images/userimg.png" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="content3">
+			<div class="contbox"></div>
+		</div>
+		<div class="content4">
+			<div class="ljltitle">班级</div>
+			<div class="niceScrollbox">
+				<div class="content16">
+					<div class="contbox">
+						<ul>
+							<li class="ljlactive">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><span class="line1 normalspan">七年级同步班七年级同步班七年级同步班</span></div>
+									<div class="classstatus">备课中</div>
+									<div class="ljlconfig">
+
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><span class="line1 normalspan">七年级同步班七年级同步班七年级同步班</span></div>
+									<div class="classstatus">备课中</div>
+									<div class="ljlconfig">
+
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><span class="warn"><label class="line1">七年级同</label><i
+												class="redwarn">警</i></span></div>
+									<div class="ljlconfig">
+
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+
+										<span class="preparedLessons fl"><i>待备</i><em>99</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>99</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="requireLessons fl"><label>需备课</label></span>
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="requireLessons fl"><label>需备课</label></span>
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="requireLessons fl"><label>需备课</label></span>
+										<span class="preparedLessons fl"><i>待备</i><em>99</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle">七年级同步班<i class="defi">&nbsp;</i></div>
+									<div class="ljlconfig">
+										<span class="preparedLessons fl"><i>待备</i><em>5</em></span>
+										<span class="Lessons fl"><i>已备</i><em>4</em></span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content5">
+			<div class="ljltitle"><span class="fl">课时</span>最近上课：周四10：00〜12：25</div>
+			<div class="niceScrollbox">
+				<div class="content17">
+					<div class="contbox">
+						<script>
+							$(function() {
+								var x = 10;
+								var y = 20;
+								$(".ljl_tooltip").mouseover(function(e) {
+									this.myTitle = this.title;
+									this.title = "";
+									var tooltip = "<div id='ljl_tooltip'>" + this.myTitle + "<\/div>"; //创建 div 元素 文字提示
+									$("body").append(tooltip); //把它追加到文档中
+									$("#ljl_tooltip").css({
+										"top": (e.pageY + y) + "px",
+										"left": (e.pageX + x) + "px"
+									}).show("fast"); //设置x坐标和y坐标，并且显示
+								}).mouseout(function() {
+									this.title = this.myTitle;
+									$("#ljl_tooltip").remove(); //移除 
+								}).mousemove(function(e) {
+									$("#ljl_tooltip").css({
+										"top": (e.pageY + y) + "px",
+										"left": (e.pageX + x) + "px"
+									});
+								});
+							})
+						</script>
+						<ul>
+							<li class="ljlactive">
+								<a href="#" class="ljl_tooltip" title="制作中">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时22: </label><strong>七年级同步班七年级同</strong><i
+											class="ljlfabrication">(制作中)</i></div>
+									<div class="hidebox">七年级步班七年<i class="ljlfabrication">(制作中)</i></div>
+									<span class="preparedLessons">备课中</span>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1: </label><strong>七年级步班七年</strong></div>
+									<div class="hidebox">七年级步班七年</div>
+									<span class="preparedLessons">备课中</span>
+								</a>
+							</li>
+							<li class="defbox lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+							<li class="defbox defcolor">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="ltitle"><label>课时1:
+										</label><strong>七年级同步班七年级同步班七年七年级同步班七年级同步班七年</strong></div>
+									<div class="hidebox">七年级同步班七年级同步班七年七年级同步班七年级同步班七年</div>
+									<span class="Lessons">已备课</span>
+								</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content6">
+			<div class="content7">
+				<div class="contbox">
+					<div class="label fl">备课</div>
+					<a href="#">全屏备课</a>
+				</div>
+			</div>
+
+			<div class="content8">
+				<div class="niceScrollbox" id="rtl-test">
+					<div class="content9">
+						<div class="contbox">
+							<div class="contitle">
+								第三课时：质数
+								<em>备课中</em>
+								<!-- <em class="haslessons">已备课</em>
+								<span>(已有10名学生学习)</span> -->
+								<a href="#">再次备课</a>
+							</div>
+							<div class="infotext infotext1">
+								<div class="fl label">
+									<i>备课时间：</i>2020-11-2 11:09丨<i>备课老师：</i>张三丰丨<i>备课进度：</i>100％
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="content92">
+						<div class="examinationtitle">试卷名称试卷名称</div>
+						<div class="warn">
+							<p>注意事项:</p>
+							<p>1、本试卷满分100分，考试时间120分钟。</p>
+							<p>2、本次考试不可空题，30分钟内不可交卷。</p>
+						</div>
+						<div class="objtitle">一、选择题（共15题，15分）</div>
+						<div class="itemlist">
+							<div class="choicequestion">
+								<div class="itemtitle">
+									<div class="config">
+										<label>难度：</label>
+										<img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" />
+										<em>|</em>
+										<span>题型：题型题型题型题型题型题型</span>
+									</div>
+									<a href="#" class="changeobj">换题</a>
+								</div>
+								<div class="optiontitle"><label
+										class="indexnum">【1】</label>关于20×15，45×10，12×56这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这<span
+										class="spacespan"></span>三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果，下列选项正确的是（ ）
+								</div>
+								<div class="optionlist">
+									<div class="optionitem">
+										<label class="itemlabel">A：</label>
+										<div class="optioncont">2，4，5</div>
+									</div>
+									<div class="optionitem">
+										<label class="itemlabel">B：</label>
+										<div class="optioncont">2，4，5</div>
+									</div>
+									<div class="optionitem">
+										<label class="itemlabel">C：</label>
+										<div class="optioncont">2，4，5</div>
+									</div>
+									<div class="optionitem">
+										<label class="itemlabel">D：</label>
+										<div class="optioncont">2，4，5</div>
+									</div>
+								</div>
+								<div class="showorhide"><span>查看解析：</span></div>
+								<div class="errorsubjectanalysis">
+									<div class="subjectanalysis">
+										<label class="fl">题目解析：</label>
+										<div class="subjectanalysistext">
+											在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+											解：“正”和“负”相对，如果温度上升3
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="itemlist">
+							<div class=" choicequestion">
+								<div class="itemtitle">
+									<div class="config">
+										<label>难度：</label>
+										<img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" />
+										<em>|</em>
+										<span>题型：题型题型题型题型题型题型</span>
+									</div>
+									<a href="#" class="changeobj">换题</a>
+								</div>
+								<div class="optiontitle"><label
+										class="indexnum">【1】</label>关于20×15，45×10，12×56这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这<span
+										class="spacespan"></span>三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果，下列选项正确的是（ ）
+								</div>
+								<div class="optionlist">
+									<div class="optionitem">
+										<label class="itemlabel">A：</label>
+										<div class="optioncont">2，4，5</div>
+									</div>
+									<div class="optionitem">
+										<label class="itemlabel">B：</label>
+										<div class="optioncont">2，4，5</div>
+									</div>
+									<div class="optionitem">
+										<label class="itemlabel">C：</label>
+										<div class="optioncont">2，4，5</div>
+									</div>
+									<div class="optionitem">
+										<label class="itemlabel">D：</label>
+										<div class="optioncont">2，4，5</div>
+									</div>
+								</div>
+								<div class="showorhide"><span>查看解析：</span></div>
+								<div class="errorsubjectanalysis">
+									<div class="subjectanalysis">
+										<label class="fl">题目解析：</label>
+										<div class="subjectanalysistext">
+											在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+								
+											解：“正”和“负”相对，如果温度上升3
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="objtitle">二、填空题（共15题，15分）</div>
+						<div class="itemlist">
+							<div class=" choicequestion">
+								<div class="itemtitle">
+									<div class="config">
+										<label>难度：</label>
+										<img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" />
+										<em>|</em>
+										<span>题型：题型题型题型题型题型题型</span>
+									</div>
+									<a href="#" class="changeobj">换题</a>
+								</div>
+								<div class="optiontitle"><label
+										class="indexnum">【1】</label>关于20×15，45×10，12×56这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这<span
+										class="spacespan"></span>三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果，下列选项正确的是（ ）
+								</div>
+<div class="showorhide"><span>查看解析：</span></div>
+								<div class="errorsubjectanalysis">
+									<div class="subjectanalysis">
+										<label class="fl">题目解析：</label>
+										<div class="subjectanalysistext">
+											在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+											解：“正”和“负”相对，如果温度上升3
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="itemlist">
+							<div class=" choicequestion">
+								<div class="itemtitle">
+									<div class="config">
+										<label>难度：</label>
+										<img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" /><img src="Content/images/actstar.png" />
+										<em>|</em>
+										<span>题型：题型题型题型题型题型题型</span>
+									</div>
+									<a href="#" class="changeobj">换题</a>
+								</div>
+								<div class="optiontitle"><label
+										class="indexnum">【1】</label>关于20×15，45×10，12×56这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这<span
+										class="spacespan"></span>三个式子的计算结果这三个式子的计算结果这三个式子的计算结果这三个式子的计算结果，下列选项正确的是（ ）
+								</div>
+<div class="showorhide"><span>查看解析：</span></div>
+								<div class="errorsubjectanalysis">
+									<div class="subjectanalysis">
+										<label class="fl">题目解析：</label>
+										<div class="subjectanalysistext">
+											在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+											解：“正”和“负”相对，如果温度上升3
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="btns"><a href="#">保 存</a></div>
+					</div>
+					<!-- 错题巩固 -->
+
+					<!-- 智能学习 -->
+
+					<!-- 查漏补缺 -->
+
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function() {
+				$('.content92 .showorhide').click(function() {
+					$(this).find('span').toggleClass('degspan');
+					$(this).parents('.itemlist').find('.errorsubjectanalysis').slideToggle(function(){
+						$('.content8 .niceScrollbox').getNiceScroll().resize();
+					});
+				})
+			})
+		</script>
+	</body>
+</html>

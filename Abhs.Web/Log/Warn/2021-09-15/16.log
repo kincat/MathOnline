@@ -1,0 +1,4 @@
+2021-09-15 16:09:41,958 WARN  : HGet------hashkey:HASHKEY_MONITOR_CLASS:11717,key:KEY_MONITOR_CLASS:11040,times:80,Exception:【8.131.120.31:6379/4】状态不可用，等待后台检查程序恢复方可使用。Connect to server timeout
+2021-09-15 16:09:50,760 WARN  : HGet------hashkey:HASHKEY_MONITOR_CLASS:11717,key:KEY_MONITOR_CLASS:11040,times:65,Exception:【8.131.120.31:6379/4】状态不可用，等待后台检查程序恢复方可使用。Connect to server timeout
+2021-09-15 16:12:36,447 WARN  : HGet------hashkey:HASHKEY_MONITOR_CLASS:11717,key:KEY_MONITOR_CLASS:11040,times:0,Exception:【8.131.120.31:6379/4】状态不可用，等待后台检查程序恢复方可使用。Connect to server timeout
+2021-09-15 16:21:48,918 WARN  : HGet------hashkey:HASHKEY_MONITOR_CLASS:11717,key:KEY_MONITOR_CLASS:11040,times:4,Exception:【8.131.120.31:6379/4】状态不可用，等待后台检查程序恢复方可使用。Connect to server timeout

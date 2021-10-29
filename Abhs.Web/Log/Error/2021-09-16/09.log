@@ -1,0 +1,138 @@
+2021-09-16 09:09:52,589 ERROR : System.Exception: 【127.0.0.1:6379/4】状态不可用，等待后台检查程序恢复方可使用。ERR Client sent AUTH, but no password is set
+Command: AUTH Srlm1ucdQ5W2@ui5zb1 ---> CSRedis.RedisException: ERR Client sent AUTH, but no password is set
+Command: AUTH Srlm1ucdQ5W2@ui5zb1 ---> CSRedis.RedisException: ERR Client sent AUTH, but no password is set
+   在 CSRedis.Internal.IO.RedisReader.ReadType()
+   在 CSRedis.Internal.IO.RedisReader.ExpectType(RedisMessage expectedType)
+   在 CSRedis.Internal.IO.RedisReader.ReadStatus(Boolean checkType)
+   在 CSRedis.Internal.Commands.RedisStatus.Parse(RedisReader reader)
+   在 CSRedis.Internal.RedisConnector.Call[T](RedisCommand`1 command)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 CSRedis.RedisClientPool.<>c__DisplayClass0_0.<.ctor>b__0(Object s, EventArgs o)
+   在 CSRedis.RedisClientPoolPolicy.<>c__DisplayClass60_0.<OnCreate>b__0(Object s, EventArgs o)
+   在 CSRedis.RedisClient.OnConnectionConnected(Object sender, EventArgs args)
+   在 CSRedis.Internal.RedisConnector.OnConnected()
+   在 CSRedis.Internal.RedisConnector.Connect(Int32 timeout)
+   在 CSRedis.RedisClient.Connect(Int32 timeout)
+   在 CSRedis.RedisClientPoolPolicy.OnCheckAvailable(Object`1 obj)
+   在 CSRedis.RedisClientPoolPolicy.PrevReheatConnectionPool(ObjectPool`1 pool, Int32 minPoolSize)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 CSRedis.Internal.ObjectPool.ObjectPool`1.getFree(Boolean checkAvailable)
+   在 CSRedis.Internal.ObjectPool.ObjectPool`1.Get(Nullable`1 timeout)
+   在 CSRedis.CSRedisClient.GetAndExecute[T](RedisClientPool pool, Func`2 handler, Int32 jump, Int32 errtimes)
+   在 CSRedis.CSRedisClient.ExecuteScalar[T](String key, Func`3 hander)
+   在 CSRedis.CSRedisClient.Get[T](String key)
+   在 RedisHelper`1.Get[T](String key)
+   在 Abhs.Cache.Redis.RedisUtil.GetValue[T](String key) 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\Redis\RedisUtil.cs:行号 73
+   在 Abhs.Cookie.TeacherInfo.get_ManageClassPackage() 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Web\Cookie\TeacherInfo.cs:行号 141
+   在 Abhs.Controllers.HomeController.Index(String token) 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Web\Controllers\HomeController.cs:行号 75
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2021-09-16 09:09:56,240 ERROR : System.Exception: 【127.0.0.1:6379/4】状态不可用，等待后台检查程序恢复方可使用。ERR Client sent AUTH, but no password is set
+Command: AUTH Srlm1ucdQ5W2@ui5zb1 ---> CSRedis.RedisException: ERR Client sent AUTH, but no password is set
+Command: AUTH Srlm1ucdQ5W2@ui5zb1 ---> CSRedis.RedisException: ERR Client sent AUTH, but no password is set
+   在 CSRedis.Internal.IO.RedisReader.ReadType()
+   在 CSRedis.Internal.IO.RedisReader.ExpectType(RedisMessage expectedType)
+   在 CSRedis.Internal.IO.RedisReader.ReadStatus(Boolean checkType)
+   在 CSRedis.Internal.Commands.RedisStatus.Parse(RedisReader reader)
+   在 CSRedis.Internal.RedisConnector.Call[T](RedisCommand`1 command)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 CSRedis.RedisClientPool.<>c__DisplayClass0_0.<.ctor>b__0(Object s, EventArgs o)
+   在 CSRedis.RedisClientPoolPolicy.<>c__DisplayClass60_0.<OnCreate>b__0(Object s, EventArgs o)
+   在 CSRedis.RedisClient.OnConnectionConnected(Object sender, EventArgs args)
+   在 CSRedis.Internal.RedisConnector.OnConnected()
+   在 CSRedis.Internal.RedisConnector.Connect(Int32 timeout)
+   在 CSRedis.RedisClient.Connect(Int32 timeout)
+   在 CSRedis.RedisClientPoolPolicy.OnCheckAvailable(Object`1 obj)
+   在 CSRedis.RedisClientPoolPolicy.PrevReheatConnectionPool(ObjectPool`1 pool, Int32 minPoolSize)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 CSRedis.Internal.ObjectPool.ObjectPool`1.getFree(Boolean checkAvailable)
+   在 CSRedis.Internal.ObjectPool.ObjectPool`1.Get(Nullable`1 timeout)
+   在 CSRedis.CSRedisClient.GetAndExecute[T](RedisClientPool pool, Func`2 handler, Int32 jump, Int32 errtimes)
+   在 CSRedis.CSRedisClient.ExecuteScalar[T](String key, Func`3 hander)
+   在 CSRedis.CSRedisClient.Get[T](String key)
+   在 RedisHelper`1.Get[T](String key)
+   在 Abhs.Cache.Redis.RedisUtil.GetValue[T](String key) 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\Redis\RedisUtil.cs:行号 73
+   在 Abhs.Cookie.TeacherInfo.get_ManageClassPackage() 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Web\Cookie\TeacherInfo.cs:行号 141
+   在 Abhs.Controllers.HomeController.Index(String token) 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Web\Controllers\HomeController.cs:行号 75
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2021-09-16 09:09:58,837 ERROR : System.Exception: 【127.0.0.1:6379/4】状态不可用，等待后台检查程序恢复方可使用。ERR Client sent AUTH, but no password is set
+Command: AUTH Srlm1ucdQ5W2@ui5zb1 ---> CSRedis.RedisException: ERR Client sent AUTH, but no password is set
+Command: AUTH Srlm1ucdQ5W2@ui5zb1 ---> CSRedis.RedisException: ERR Client sent AUTH, but no password is set
+   在 CSRedis.Internal.IO.RedisReader.ReadType()
+   在 CSRedis.Internal.IO.RedisReader.ExpectType(RedisMessage expectedType)
+   在 CSRedis.Internal.IO.RedisReader.ReadStatus(Boolean checkType)
+   在 CSRedis.Internal.Commands.RedisStatus.Parse(RedisReader reader)
+   在 CSRedis.Internal.RedisConnector.Call[T](RedisCommand`1 command)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 CSRedis.RedisClientPool.<>c__DisplayClass0_0.<.ctor>b__0(Object s, EventArgs o)
+   在 CSRedis.RedisClientPoolPolicy.<>c__DisplayClass60_0.<OnCreate>b__0(Object s, EventArgs o)
+   在 CSRedis.RedisClient.OnConnectionConnected(Object sender, EventArgs args)
+   在 CSRedis.Internal.RedisConnector.OnConnected()
+   在 CSRedis.Internal.RedisConnector.Connect(Int32 timeout)
+   在 CSRedis.RedisClient.Connect(Int32 timeout)
+   在 CSRedis.RedisClientPoolPolicy.OnCheckAvailable(Object`1 obj)
+   在 CSRedis.RedisClientPoolPolicy.PrevReheatConnectionPool(ObjectPool`1 pool, Int32 minPoolSize)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 CSRedis.Internal.ObjectPool.ObjectPool`1.getFree(Boolean checkAvailable)
+   在 CSRedis.Internal.ObjectPool.ObjectPool`1.Get(Nullable`1 timeout)
+   在 CSRedis.CSRedisClient.GetAndExecute[T](RedisClientPool pool, Func`2 handler, Int32 jump, Int32 errtimes)
+   在 CSRedis.CSRedisClient.ExecuteScalar[T](String key, Func`3 hander)
+   在 CSRedis.CSRedisClient.Get[T](String key)
+   在 RedisHelper`1.Get[T](String key)
+   在 Abhs.Cache.Redis.RedisUtil.GetValue[T](String key) 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Cache\Redis\RedisUtil.cs:行号 73
+   在 Abhs.Cookie.TeacherInfo.get_ManageClassPackage() 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Web\Cookie\TeacherInfo.cs:行号 141
+   在 Abhs.Controllers.HomeController.Index(String token) 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Web\Controllers\HomeController.cs:行号 75
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+2021-09-16 09:14:28,421 ERROR : System.TypeInitializationException: “Abhs.Cache.Redis.RedisUtil”的类型初始值设定项引发异常。 ---> System.Threading.ThreadAbortException: 引发类型为“System.Threading.ThreadAbortException”的异常。
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 Abhs.Cache.Redis.RedisUtil.get_Instance()
+   在 Abhs.Cookie.TeacherInfo.get_ManageClassPackage() 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Web\Cookie\TeacherInfo.cs:行号 141
+   在 Abhs.Controllers.HomeController.Index(String token) 位置 D:\我的程序\SmartMath4.0\SmartMathSchool4.0\Abhs.Web\Controllers\HomeController.cs:行号 75
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)

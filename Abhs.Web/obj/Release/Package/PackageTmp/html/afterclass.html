@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+		<title>课后任务</title>
+		<link href="Scripts/layui/css/layui.css" rel="stylesheet" media="all" />
+		<link href="Content/css/animate.min.css" rel="stylesheet" />
+		<link href="Content/css/reset.css" rel="stylesheet" />
+		<link href="Content/css/style.css" rel="stylesheet" />
+		<script src="Scripts/jquery.js"></script>
+		<script src="Scripts/layer.js"></script>
+		<script src="Scripts/layui/layui.js"></script>
+		<script src="Scripts/layui/lay/modules/xm-select.js"></script>
+		<script src="Scripts/jquery.nicescroll.js"></script>
+		<script src="Scripts/wow.js"></script>
+		<script>
+			$(function() {
+				$('#test').click(function() {
+					$('.content8 .niceScrollbox').animate({
+						scrollTop: 0
+					}, 300);
+				})
+				// 左侧栏滚动条
+				$('.content4 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('#myscorll').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('.content8 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 0,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+
+				});
+				//班级列表点击
+				$('.content67 li').click(function() {
+					$(this).removeClass('lihover');
+					$(this).siblings().addClass('lihover');
+					$(this).siblings().removeClass('ljlactive');
+					$(this).addClass('ljlactive');
+				})
+				//学生列表点击
+				$('.content70 li').click(function() {
+					$('.content70 .tit').removeClass('ljlactive');
+					$('.content70 li').removeClass('ljlactive');
+					$(this).addClass('ljlactive');
+				})
+				$('.content70 .tit').click(function() {
+					$(this).addClass('ljlactive');
+					$('.content70 li').removeClass('ljlactive');
+				})
+				//中间栏滚动条
+				$('.content5 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 32,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+
+				$('.content8 .niceScrollbox').scroll(function(e) {
+					var scroH = $('.content8 .niceScrollbox').scrollTop(); //滚动高度
+					if (scroH > 90) {
+						$('.content11').show();
+					} else {
+						$('.content11').hide();
+					}
+				});
+				//班级选择下拉
+				$('.content68').hover(function() {
+					$('.content68').show();
+				}, function() {
+					$('.content68').hide();
+				})
+				$('.content68 a').click(function() {
+					$('.content68').hide();
+				})
+				$('.content4 .selectclass').hover(function() {
+					$('.content68').show();
+				}, function() {
+					$('.content68').hide();
+				})
+				//学生选择下拉
+				$('.content5 .studentsselectfun').hover(function() {
+					$('.content69').show();
+				}, function() {
+					$('.content69').hide();
+				})
+				$('.content69').hover(function() {
+					$('.content69').show();
+				}, function() {
+					$('.content69').hide();
+				})
+				$('.content69 a').click(function() {
+					$('.content69').hide();
+				})
+				layui.use('laydate', function() {
+					var laydate = layui.laydate;
+					laydate.render({
+						elem: '#starttime',
+						range: true,
+						done: function(value) {
+							$('#starttime').val(value);
+						}
+					});
+					laydate.render({
+						elem: '#endtime',
+						range: true,
+						done: function(value) {
+							$('#endtime').val(value);
+						}
+					});
+				})
+				$('.content72 .studentsbox i').click(function() {
+					$(this).parents('.studentsbox').remove();
+				})
+				$('.content72 .adds span').click(function() {
+					$('.content73').toggleClass('content73_1');
+					$('.content73 .maskbox').toggle();
+				})
+				$('.content73 .maskbox').click(function() {
+					$('.content73').toggleClass('content73_1');
+					$('.content73 .maskbox').toggle();
+				})
+				$('.content73 .ftitle span').click(function() {
+					$('.content73').toggleClass('content73_1');
+					$('.content73 .maskbox').toggle();
+				});
+				$('.content73 thead span.selspan').click(function() {
+					if ($(this).hasClass('activepsan')) {
+						$('.content73 span.selspan').removeClass('activepsan');
+					} else {
+						$('.content73 span.selspan').addClass('activepsan');
+					}
+				});
+				$('.content73 td .selspan').click(function() {
+					$(this).toggleClass('activepsan');
+					if ($('.content73 tbody span.activepsan').length < $('.content73 tbody span.selspan')
+						.length) {
+						$('.content73 thead span.selspan').removeClass('activepsan');
+					} else {
+						$('.content73 thead span.selspan').addClass('activepsan');
+					}
+				})
+				//$('.content75 .contright').height($('.content75 .contleft').height());
+				// layer.confirm('你选择添加的学生中，张无忌与其他学生等级差别较大，建议单独布置课后任务。确定添加张无忌吗？', {
+				//   btn: ['不添加','添加'],
+				//   title:'添加学生提醒',
+				//   skin:'content74',
+				//   area:['480px', 'auto'],
+				//    btnAlign: 'c'//按钮
+				// }, function(){
+
+				// }, function(){
+
+				// });
+				$('.content75 .objtitle span').click(function() {
+					$(this).parents('li').find('.objcont').toggle();
+				})
+				$('.content72 .addwork span').click(function() {
+					$('.content80').toggleClass('content80_1');
+					$('.content80 .maskbox').toggle();
+				})
+				$('.content80 .maskbox').click(function() {
+					$('.content80').toggleClass('content80_1');
+					$('.content80 .maskbox').toggle();
+				})
+				$('.content80 .ftitle span').click(function() {
+					$('.content80').toggleClass('content80_1');
+					$('.content80 .maskbox').toggle();
+				});
+				$('.content80 thead span.selspan').click(function() {
+					if ($(this).hasClass('activepsan')) {
+						$('.content80 span.selspan').removeClass('activepsan');
+					} else {
+						$('.content80 span.selspan').addClass('activepsan');
+					}
+				});
+				$('.content80 td .selspan').click(function() {
+					$(this).toggleClass('activepsan');
+					if ($('.content80 tbody span.activepsan').length < $('.content80 tbody span.selspan')
+						.length) {
+						$('.content80 thead span.selspan').removeClass('activepsan');
+					} else {
+						$('.content80 thead span.selspan').addClass('activepsan');
+					}
+				})
+				$('.showanalysis').click(function() {
+					$(this).parents('.analysisbox').find('.analysiscnt').slideToggle();
+					$('.content80 .maskbox').toggle();
+				})
+				$('.content76 .delobj').click(function(){
+					var obj=$(this).parents('.stucnt');
+					obj.animate({height:'0',paddingBottom:'0',marginTop:'0'},function(){
+						obj.remove();
+					})
+				})
+			})
+		</script>
+		<style>
+			body {
+				background: #1D2732;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content68">
+			<div class="studentstatus">
+				<a href="#">一年级</a>
+				<a href="#">二年级</a>
+				<a href="#">三年级</a>
+			</div>
+		</div>
+		<div class="content69">
+			<div class="studentstatus">
+				<a href="#">A</a>
+				<a href="#">B</a>
+				<a href="#">C</a>
+				<a href="#">D</a>
+				<a href="#">E</a>
+				<a href="#">F</a>
+			</div>
+		</div>
+		<div class="content2">
+			<div class="contbox">
+				<div class="loginimg fl"><img src="Content/images/adminlogo.png" /></div>
+				<div class="headernav fl">
+					<div class="ljlactive" href="#">课前备课</div>
+					<div class="lessonspage">
+						<div class="lessonscont">
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon1.png" /></div>
+								<div class="label">课前备课</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon2.png" /></div>
+								<div class="label">上课管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon">
+									<div class="shaw">敬请期待</div><img src="Content/images/navicon3.png" />
+								</div>
+								<div class="label">课后任务</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon">
+									<div class="shaw">敬请期待</div><img src="Content/images/navicon4.png" />
+								</div>
+								<div class="label">班级管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon5.png" /></div>
+								<div class="label">售后</div>
+							</a>
+							<div class="icon"></div>
+						</div>
+					</div>
+				</div>
+				<div class="configbox">
+					<div class="quit fr"><img src="Content/images/quit.png" /></div>
+					<div class="navbox fr">
+						<img src="Content/images/nav.png" />
+						<div class="listbox">
+							<div>
+								<a href="#">学生管理</a>
+								<a href="#">全部课程</a>
+							</div>
+						</div>
+					</div>
+					<div class="username fr">张三丰</div>
+					<div class="userimg fr"><img src="Content/images/userimg.png" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="content3">
+			<div class="contbox"></div>
+		</div>
+		<div class="content4">
+			<div class="ljltitle">
+				班级
+				<div class="selectclass">
+					<span>正常班级</span>
+				</div>
+			</div>
+			<div class="niceScrollbox">
+				<div class="content67">
+					<div class="contbox">
+						<ul>
+							<li class="ljldatatext">
+								<div class="">暂无数据</div>
+							</li>
+
+							<!-- <li class="ljlactive">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">八年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">初一年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classname line1">九年级同步班</div>
+									<div class="classdate">最近上课：2020-12-10 10:00</div>
+
+								</a>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content5">
+			<div class="ljltitle">
+				<span class="fl">学生</span>
+				<div class="onlinebox fr studentsselectfun">
+					<label class="textbox">全部学生</label>
+				</div>
+			</div>
+			<div class="niceScrollbox">
+				<div class="content70">
+					<div class="contbox">
+						<div class="tit ljlactive">
+							全部学生
+							<div class="righticon"><img src="Content/images/rightico.png" /></div>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">重点关注</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+
+							</ul>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">A</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="listbox">
+							<div class="listitlte">B</div>
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label fl">王大胆</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content6">
+			<div class="content7">
+				<div class="contbox">
+					<div class="label fl">详情</div>
+				</div>
+			</div>
+			<div class="content11">
+				<div class="fl label"><i>班级：</i>七年级同步班丨<i>老师：</i>张三丰</div>
+				<div class="stepbox">
+					<div class="stepcnt">
+						<!-- <a href="#" class="def">任务信息</a> -->
+						<a href="#" class="defk">任务信息</a>
+						<!-- <a href="#">任务内容</a> -->
+						<a href="#" class="def">任务内容</a>
+						<!-- <a href="#" class="laststep">预览创建</a> -->
+						<a href="#" class="laststep defk">预览创建</a>
+					</div>
+				</div>
+			</div>
+			<div class="content8">
+				<div class="niceScrollbox" id="rtl-test">
+					<div class="content9 content71">
+						<div class="contbox">
+							<div class="contitle">
+								创建 七年级同步课 课后任务
+
+							</div>
+							<div class="infotext infotext1">
+								<div class="fl label">
+									<i>备课时间：</i>2020-11-2 11:09丨<i>老师：</i>张三丰
+								</div>
+								<div class="stepbox">
+									<div class="stepcnt">
+										<!-- <a href="#" class="def">任务信息</a> -->
+										<a href="#" class="defk">任务信息</a>
+										<!-- <a href="#">任务内容</a> -->
+										<a href="#" class="def">任务内容</a>
+										<!-- <a href="#" class="laststep">预览创建</a> -->
+										<a href="#" class="laststep defk">预览创建</a>
+									</div>
+								</div>
+							</div>
+							<div class="infotext">
+								<div class="fl label">第1步：任务信息</div>
+
+							</div>
+						</div>
+					</div>
+					<!-- 任务信息 -->
+					<div class="content10 content72">
+						<div class="listbox">
+							<div class="inp">
+								<div class="label fl"><i class="requre_i">*&nbsp;</i>任务名称：</div>
+								<div class="inputbox">
+									<input type="text" placeholder="请输入任务名称" />
+								</div>
+							</div>
+						</div>
+						<div class="listbox">
+							<div class="inp dateinp fl">
+								<div class="label fl"><i class="requre_i">*&nbsp;</i>开始时间：</div>
+								<div class="inputbox fl">
+									<input id="starttime" type="text" placeholder="请选择时间" />
+								</div>
+							</div>
+							<div class="inp dateinp fl">
+								<div class="label fl"><i class="requre_i">&nbsp;&nbsp;&nbsp;*&nbsp;</i>开始时间：</div>
+								<div class="inputbox fl">
+									<input id="endtime" type="text" placeholder="请选择时间" />
+								</div>
+							</div>
+						</div>
+						<div class="listbox">
+							<div class="inp studentlist">
+								<div class="label fl"><i class="requre_i">*&nbsp;</i>选择学生：</div>
+								<div class="inputbox">
+									<div class="inpdiv">
+										<div class="studentsbox">
+											<span>张三丰</span>
+											(
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar1.png" />
+											)
+											<i>&nbsp;</i>
+										</div>
+										<div class="studentsbox">
+											<span>张三丰</span>
+											(
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar1.png" />
+											)
+											<i>&nbsp;</i>
+										</div>
+										<div class="studentsbox">
+											<span>张三丰</span>
+											(
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar1.png" />
+											)
+											<i>&nbsp;</i>
+										</div>
+										<div class="studentsbox">
+											<span>张三丰</span>
+											(
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar1.png" />
+											)
+											<i>&nbsp;</i>
+										</div>
+										<div class="addstudents adds"><span>添加学生</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="listbox">
+							<div class="inp studentlist worklist">
+								<div class="label fl"><i class="requre_i">*&nbsp;</i>任务范围：</div>
+								<div class="inputbox">
+									<div class="inpdiv">
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="studentsbox">
+											<em><span>张三丰</span><i>&nbsp;</i></em>
+										</div>
+										<div class="addstudents addwork"><span>添加任务</span></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ljlbtnpage">
+							<a href="#">保存</a>
+							<a href="#" class="ljlactive">下一步</a>
+						</div>
+					</div>
+					<!-- 任务内容 -->
+					<div class="content75">
+						<div class="contbox">
+							<table>
+								<tr>
+									<td style="width: 420px;">
+										<div class="contleft">
+											<div class="tit">
+												<span>选择任务内容</span>
+												<div><em>智能选择</em></div>
+											</div>
+											<ul>
+												<li>
+													<div class="objtitle">
+														<div>
+															<span class="line1">第1课时
+																数整数与负数整数与负数数整数与负数整数与负数数整数与负数整数与负数</span>
+														</div>
+
+													</div>
+													<div class="objcont">
+														<div class="cnitem ljlactive">
+															<div class="itemname"><em class="ljlactive">&nbsp;</em><span
+																	class="line1"><img src="Content/images/videoico.png"
+																		style="width: 20px;height: 18px; margin-top: -2px;margin-left: 7px;" />【视频】正数与负数</span>
+															</div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前：</span>
+																					<em>为学习</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【视频】正数与负数</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="cnitem">
+															<div class="itemname"><em>&nbsp;</em><span
+																	class="line1">【题型】题型名称1</span></div>
+															<div class="iteminfo">
+																<div class="labelnum">
+																	<label>（2人未达到对应等级）</label>
+																	<div class="hovershow">
+																		<div class="studentsname">
+																			<div class="icon"></div>
+																			<div class="studentinfo">
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																				<div class="studentitem">
+																					<span>张三丰：应到</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																					<span>，当前</span>
+																					<em>
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																						<img
+																							src="Content/images/actstar1.png" />
+																					</em>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
+															</div>
+														</div>
+													</div>
+										</div>
+										</li>
+										<li>
+											<div class="objtitle">
+												<div>
+													<span class="line1">第2课时 乘法的学习</span>
+												</div>
+											</div>
+											<div class="objcont">
+												<div class="cnitem">
+													<div class="itemname"><em>&nbsp;</em><span
+															class="line1">【题型】题型名称题型名称题型名称题型名称题型名称题型名称题型名称1</span></div>
+													<div class="iteminfo">
+														<div class="labelnum">
+															<label>（1人掌握较差）</label>
+															<div class="hovershow">
+																<div class="studentsname">
+																	<div class="icon"></div>
+																	<div class="studentinfo">
+																		<div class="studentitem">
+																			<span>张三丰：应到</span>
+																			<em>
+																				<img src="Content/images/actstar.png" />
+																				<img src="Content/images/actstar.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																			</em>
+																			<span>，当前</span>
+																			<em>
+																				<img src="Content/images/actstar.png" />
+																				<img src="Content/images/actstar.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																			</em>
+																		</div>
+																		<div class="studentitem">
+																			<span>张三丰：应到</span>
+																			<em>
+																				<img src="Content/images/actstar.png" />
+																				<img src="Content/images/actstar.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																			</em>
+																			<span>，当前</span>
+																			<em>
+																				<img src="Content/images/actstar.png" />
+																				<img src="Content/images/actstar.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																				<img
+																					src="Content/images/actstar1.png" />
+																			</em>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
+										</ul>
+						</div>
+						</td>
+						<td style="width: 10px;background: none;"></td>
+						<td style="width: calc(100% - 430px);">
+							<div class="contright">
+								<div class="hasselect">
+									<div class="tit">
+										<span>已选任务内容</span>
+									</div>
+									<ul>
+										<li class="videobox">
+											<div class="studycontenttitle">
+												<div class="studytitle fl">基础学习（<img src="Content/images/videoico.png"
+														style="width: 20px;height: 18px; margin-top: -2px;margin: -3px 3px 0" />视频）
+												</div>
+												<div class="config"><em>清空</em></div>
+											</div>
+											<div class="listbox">
+												<div class="listitem">
+													<span
+														class="line1">【视频】基础学习基础学习基础学习基础学习基础学习基础学习基础学习基础学习基础学习基础学习基础学习基础学习基础学习基础学习
+													</span>
+													<div class="inpbox">
+														<div class="delebtn fl"><i></i></div>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="objtype">
+											<div class="studycontenttitle">
+												<div class="studytitle fl">设置题型及数量</div>
+												<div class="config"><em>清空</em></div>
+											</div>
+											<div class="listbox">
+												<div class="listitem">
+													<span class="line1">【视频】正数与负数 </span>
+													<div class="inpbox">
+														<div class="layui-form fl">
+															<select lay-verify="required">
+																<option value="">选择题目难度</option>
+																<option value="0">男</option>
+																<option value="1">女</option>
+															</select>
+														</div>
+														<div class="layui-form fl numinput">
+															<input class="layui-input" type="number"
+																placeholder="题目数量" />
+														</div>
+														<div class="delebtn fl"><i></i></div>
+													</div>
+												</div>
+											</div>
+											<div class="listbox">
+												<div class="listitem">
+													<span class="line1">【视频】正数与负数 </span>
+													<div class="inpbox">
+														<div class="layui-form fl">
+															<select lay-verify="required">
+																<option value="">选择题目难度</option>
+																<option value="0">男</option>
+																<option value="1">女</option>
+															</select>
+														</div>
+														<div class="layui-form fl numinput">
+															<input class="layui-input" type="number"
+																placeholder="题目数量" />
+														</div>
+														<div class="delebtn fl"><i></i></div>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+
+							</div>
+						</td>
+						</tr>
+						</table>
+						<div class="ljlbtnpage">
+							<a href="#">保存</a>
+							<a href="#" class="ljlactive">下一步</a>
+						</div>
+					</div>
+				</div>
+				<!-- 任务确认 -->
+				<div class="content76">
+					<div class="contbox">
+						<div class="listitem">
+							<label class="fl label">任务名称：</label>
+							<div class="listcnt">
+								张三丰课后任务
+							</div>
+						</div>
+						<div class="listitem timebox">
+							<label class="fl label">开始时间：</label>
+							<div class="listcnt fl">
+								2021-1-26 08:00
+							</div>
+							<label class="fl label" style="margin-left: 50px;">结束时间：</label>
+							<div class="listcnt fl">
+								2021-1-26 08:00
+							</div>
+						</div>
+						<div class="listitem">
+							<label class="fl label">任务学生：</label>
+							<div class="listcnt">
+								<em>
+									<span>张三丰</span>
+									(
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar1.png" />
+									)
+								</em>
+								<em>
+									<span>张三丰</span>
+									(
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar1.png" />
+									)
+								</em>
+								<em>
+									<span>张三丰</span>
+									(
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar1.png" />
+									)
+								</em>
+								<em>
+									<span>张三丰</span>
+									(
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar.png" />
+									<img src="Content/images/actstar1.png" />
+									)
+								</em>
+
+							</div>
+						</div>
+						<div class="listitem">
+							<label class="label">基础学习：</label>
+							<div class="stucnt">
+								<div class="stucnttitle">
+									<div class="line1">
+										<span>更新：2021-05-25</span>
+										<em>|</em>
+										<span>使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用：52次</span>
+									</div>
+
+									<div class="stuconfig">
+										<a href="#">删除</a>
+									</div>
+								</div>
+								<div class="subtitle"> </div>
+								<div class="subvideo"></div>
+							</div>
+							<div class="stucnt">
+								<div class="stucnttitle">
+									<span>【视频】正数与负数</span>
+									<div class="stuconfig">
+										<a href="#">删除</a>
+									</div>
+								</div>
+								<div class="subtitle"> </div>
+								<div class="subvideo"></div>
+							</div>
+						</div>
+						<div class="listitem">
+							<label class="label">题型及数量：</label>
+							<div class="stucnt">
+								<div class="stucnttitle">
+									<div class="line1">
+										<span>
+											难度
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar1.png" />
+											<img src="Content/images/actstar1.png" />
+										</span>
+										<em>|</em>
+
+										<span>题型：</span>
+										<span>使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用：52次</span>
+									</div>
+									<div class="stuconfig">
+										<a href="#">换题</a>
+										<em>|</em>
+										<a href="#" class="delobj">删除</a>
+									</div>
+								</div>
+								<div class="subtitle">1、关于20×15，45×10，12×56这三个式子的计算结果，下列选项正确的是（ ） </div>
+								<div class="choicequestion">
+									<div class="inlintbox">
+										<div class="optionitem">
+											<label class="itemlabel">A：</label>
+											<div class="optioncont">2，4，5</div>
+										</div>
+										<div class="optionitem">
+											<label class="itemlabel">B：</label>
+											<div class="optioncont">2，4，5</div>
+										</div>
+										<div class="optionitem">
+											<label class="itemlabel">C：</label>
+											<div class="optioncont">2，4，5</div>
+										</div>
+										<div class="optionitem">
+											<label class="itemlabel">D：</label>
+											<div class="optioncont">具有相反意义的量中在一对具有相反意义的量中在一</div>
+										</div>
+									</div>
+									<div class="analysisbox">
+										<div class="analysistitle"><span class="showanalysis">查看解析</span></div>
+										<div class="analysiscnt">
+											<div class="analysislabel fl">解析：</div>
+											<div class="analysistext">
+												分析：在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+												解：“正”和“负”相对，如果温度上升3</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="stucnt">
+								<div class="stucnttitle">
+									<div class="line1">
+										<span>
+											难度
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar.png" />
+											<img src="Content/images/actstar1.png" />
+											<img src="Content/images/actstar1.png" />
+										</span>
+										<em>|</em>
+								
+										<span>题型：</span>
+										<span>使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用使用：52次</span>
+									</div>
+									<div class="stuconfig">
+										<a href="#">换题</a>
+										<em>|</em>
+										<a href="#" class="delobj">删除</a>
+									</div>
+								</div>
+								<div class="subtitle blankobj">1、数乘整数，用分数<span
+										class="blankspace"></span>的分子和整数相乘的积作分子，分母不变，结果能约分的要约分.
+									由题可知，原题中前9个乘法算式都可以进行约分，约分结果为11，故有 个 相加，则
+									99×19+88×18+…+22×12+11×1
+									=9×
+
+									=</div>
+								<div class="choicequestion">
+									<div class="inlintbox">
+
+									</div>
+									<div class="analysisbox">
+										<div class="analysistitle"><span class="showanalysis">查看解析</span></div>
+										<div class="analysiscnt">
+											<div class="analysislabel fl">解析：</div>
+											<div class="analysistext">
+												分析：在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+												解：“正”和“负”相对，如果温度上升3</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="ljlbtnpage">
+						<a href="#">上一步</a>
+						<a href="#">预览</a>
+						<a href="#" class="ljlactive">完成</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- 学生列表 -->
+		<div class="content73">
+			<div class="maskbox"></div>
+			<div class="box">
+				<div class="ftitle">
+					<label class="fl">创建班级</label>
+					<span></span>
+				</div>
+				<div class="contbox">
+					<div class="searchbox">
+						<div class="layui-form fl">
+							<input class="layui-input" type="text" placeholder="按学号/姓名搜索" />
+
+						</div>
+						<div class="layui-form fl">
+							<select>
+								<option value="">全部性别</option>
+								<option value="0">男</option>
+								<option value="1">女</option>
+							</select>
+						</div>
+						<div class="layui-form fl">
+							<select>
+								<option value="">全部年级</option>
+								<option value="1">一年级</option>
+								<option value="2">二年级</option>
+								<option value="3">三年级</option>
+								<option value="4">四年级</option>
+								<option value="5">五年级</option>
+							</select>
+						</div>
+						<div class="layui-form fl">
+							<select>
+								<option value="">全部等级</option>
+								<option value="1">一星</option>
+								<option value="2">二星</option>
+								<option value="3">三星</option>
+								<option value="4">四星</option>
+								<option value="5">五星</option>
+							</select>
+						</div>
+					</div>
+					<div class="datebox" id="myscorll">
+						<table class="layui-table">
+							<thead>
+								<tr>
+									<th><span class="selspan"></span></th>
+									<th>学号</th>
+									<th>姓名</th>
+									<th>性别</th>
+									<th>年级</th>
+									<th>等级</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="ljlbtn">
+						<a href="#">取消</a>
+						<a href="#" class="ljlactive">确定</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="content80">
+			<div class="maskbox"></div>
+			<div class="box">
+				<div class="ftitle">
+					<label class="fl">创建班级</label>
+					<span></span>
+				</div>
+				<div class="contbox">
+					<div class="searchbox">
+						<div class="layui-form fl">
+							<input class="layui-input" type="text" placeholder="按学号/姓名搜索" />
+
+						</div>
+						<div class="layui-form fl">
+							<select>
+								<option value="">全部性别</option>
+								<option value="0">男</option>
+								<option value="1">女</option>
+							</select>
+						</div>
+						<div class="layui-form fl">
+							<select>
+								<option value="">全部年级</option>
+								<option value="1">一年级</option>
+								<option value="2">二年级</option>
+								<option value="3">三年级</option>
+								<option value="4">四年级</option>
+								<option value="5">五年级</option>
+							</select>
+						</div>
+						<div class="layui-form fl">
+							<select>
+								<option value="">全部等级</option>
+								<option value="1">一星</option>
+								<option value="2">二星</option>
+								<option value="3">三星</option>
+								<option value="4">四星</option>
+								<option value="5">五星</option>
+							</select>
+						</div>
+					</div>
+					<div class="datebox" id="myscorll">
+						<table class="layui-table">
+							<thead>
+								<tr>
+									<th><span class="selspan"></span></th>
+									<th>学号</th>
+									<th>姓名</th>
+									<th>性别</th>
+									<th>年级</th>
+									<th>等级</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+								<tr>
+									<td><span class="selspan"></span></td>
+									<td>99999999</td>
+									<td>刘金龙</td>
+									<td>男</td>
+									<td>三年级</td>
+									<td>
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar.png" />
+										<img src="Content/images/actstar1.png" />
+										<img src="Content/images/actstar1.png" />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="ljlbtn">
+						<a href="#">取消</a>
+						<a href="#" class="ljlactive">确定1</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<script>
+			layui.use(['form', 'layedit', 'laydate', 'table'], function() {
+				var form = layui.form,
+					layer = layui.layer,
+					layedit = layui.layedit,
+					laydate = layui.laydate;
+				laydate.render({
+					elem: '#date'
+				});
+				laydate.render({
+					elem: '#date1'
+				});
+			});
+		</script>
+	</body>
+</html>

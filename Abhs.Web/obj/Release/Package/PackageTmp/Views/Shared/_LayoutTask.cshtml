@@ -1,0 +1,558 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<script src="/Scripts/layui/layui.js"></script>
+<script src="/Scripts/layui/lay/modules/xm-select.js"></script>
+<script src="/Scripts/jquery.nicescroll.js"></script>
+<script src="/Scripts/wow.js"></script>
+<script>
+			$(function() {
+				$('#test').click(function(){
+					$('.content8 .niceScrollbox').animate({ scrollTop: 0 }, 300);
+				})
+				// 左侧栏滚动条
+				$('.content4 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: false, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('#myscorll').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+				$('.content8 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 0,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+
+				});
+				
+			
+				//中间栏滚动条
+				$('.content5 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: false, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right:32,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+
+				$('.content8 .niceScrollbox').scroll(function(e) {
+				    var scroH = $('.content8 .niceScrollbox').scrollTop();  //滚动高度
+					if(scroH>90){
+						$('.content11').show();
+					}else{
+						$('.content11').hide();
+					}
+				});
+				//班级选择下拉
+				$('.content68').hover(function() {
+					$('.content68').show();
+				}, function() {
+					$('.content68').hide();
+				})
+				$('.content68 a').click(function() {
+					$('.content68').hide();
+				})
+				$('.content4 .selectclass').hover(function(){
+					$('.content68').show();
+				},function(){
+					$('.content68').hide();
+				})
+				//学生选择下拉
+				$('.content5 .studentsselectfun').hover(function(){
+					$('.content69').show();
+				},function(){
+					$('.content69').hide();
+				})
+				$('.content69').hover(function(){
+					$('.content69').show();
+				},function(){
+					$('.content69').hide();
+				})
+				$('.content69 a').click(function(){
+					$('.content69').hide();
+				})
+				
+				
+				 
+				$('.content75 .objtitle span').click(function(){
+					$(this).parents('li').find('.objcont').toggle();
+				})
+               
+				
+			})
+
+</script>
+<style>
+    body {
+        background: #1D2732;
+    }
+        body .layui-layer-btn .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #ffffff;
+            color: black;
+        }
+        body .layui-layer-btn1 {
+            border-color: #cccccc;
+            background-color: #3cc9ae;
+            color: #fff;
+        }
+    .layui-table th {
+        font-weight: bold;
+    }
+    .content88_1 .layui-layer-btn a {
+        width: 96px;
+        height: 32px;
+        background: #3CC9AE;
+        border: 1px solid #3CC9AE;
+        border-radius: 3px;
+        color: #FFf;
+        line-height: 30px;
+    }
+</style>
+
+
+   
+<div class="content68">
+    <div class="studentstatus">
+        <a href="#" onclick="SelectClass(1, this)">正常</a>
+        <a href="#" onclick="SelectClass(0, this)">停用</a>
+        <a href="#" onclick="SelectClass(2, this)">结课</a>
+    </div>
+</div>
+<div class="content69">
+    <div class="studentstatus">
+    </div>
+</div>
+<div class="content3">
+    <div class="contbox"></div>
+</div>
+<div class="content4">
+    <div class="ljltitle">
+        班级
+        <div class="selectclass">
+            <span>正常班级</span>
+        </div>
+    </div>
+    <div class="niceScrollbox">
+        <div class="content67">
+            <div class="contbox">
+                <ul id="classList">
+                    
+                    
+                </ul>
+                <div id="classTemp" style="display:none">
+                    <li class="lihover">
+                        <a href="#">
+                            <div class="righticon"><img src="/Content/images/rightico.png" /></div>
+                            <div class="classname line1">九年级同步班</div>
+                            <div class="classdate">最近上课：<span>2020-12-10 10:00</span></div>
+
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content5">
+    <div class="ljltitle">
+        <span class="fl">学生</span>
+        <div class="onlinebox fr studentsselectfun">
+            <label class="textbox">全部学生</label>
+        </div>
+    </div>
+    <div class="niceScrollbox">
+        <div class="content70">
+            <div class="contbox" id="students">
+                <div class="tit ljlactive">
+                    全部学生
+                    <div class="righticon"><img src="/Content/images/rightico.png" /></div>
+                </div>
+            </div>
+            <div id="liTemp" style="display:none">
+                <li class="lihover">
+                    <a href="#">
+                        <div class="righticon"><img src="/Content/images/rightico.png" /></div>
+                        <div class="studentinfo">
+                            <div class="label fl"></div>
+                        </div>
+                    </a>
+                </li>
+            </div>
+            <div id="studentsTemp" style="display:none">
+                <div class="listbox">
+                    <div class="listitlte">B</div>
+                    <ul>
+                         
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@RenderBody()
+<script type="text/javascript">
+    var curClassId = @ViewBag.classId;
+    var curStudentId = @ViewBag.studentId;
+    var mainUrl = "";
+    var curStatus = 1;
+    var isTask = 0;
+    var curFlag=@ViewBag.flag;
+    var isAttention=false;
+    $(function () {
+        //默认获取正常班级
+        GetClass(1)
+        if (window.location.hostname.toLowerCase() != "school.ailianmath.com"&&window.location.hostname.toLowerCase() != "mathschool.abhseducation.com") {
+            mainUrl = "http://teststudy.ailianmath.com/";
+        } else {
+            mainUrl = "http://math.abhseducation.com/";
+        }
+    })
+    function SelectClass(status, obj) {
+        if (isTask == 1) {
+            var winIndex = layer.confirm('正在创建课后任务，是否放弃创建？', {
+                btn: ['否', '是'] //按钮
+            }, function () {
+                layer.close(winIndex);
+            }, function () {
+                isTask = 0;
+                curStatus = status
+                //$(".allclass .allclasslist").hide();
+                curClassId = 0;
+                $(".content4 .selectclass span").text($(obj).text() + "班级")
+                GetClass(status);
+                layer.close(winIndex);
+            });
+        } else {
+            curStatus = status
+            //$(".allclass .allclasslist").hide();
+            curClassId = 0;
+            $(".content4 .selectclass span").text($(obj).text() + "班级")
+            GetClass(status);
+        }
+
+    }
+    //获取班级
+    function GetClass(status) {
+        $.ajax({
+            url: '/Task/GetTaskClassList',
+            type: "post",
+            dataType: "json",
+            data:{status:status},
+            success: function (data) {
+                if (data.code == 200) {
+                    $("#classList").empty();
+
+                    var classTemp = $("#classTemp").find("li")[0];
+                    $(data.data).each(function (index, element) {
+                        var temp = classTemp.cloneNode(true);
+                        if(curClassId==0){
+                            if (index == 0) {
+                                curClassId = element.classId;
+                                $(temp).removeClass('lihover');
+                                $(temp).addClass('ljlactive');
+                            } else {
+                                $(temp).removeClass('ljlactive');
+                                $(temp).addClass('lihover');
+                            }
+                        }else{
+                            if(curClassId == element.classId) {
+                                $(temp).removeClass('lihover');
+                                $(temp).addClass('ljlactive');
+                            } else {
+                                $(temp).removeClass('ljlactive');
+                                $(temp).addClass('lihover');
+                            }
+                        }
+                        $(temp).find('a').attr('classId', element.classId);
+                        $(temp).find("div").eq(1).text(element.className);
+                        $(temp).find("div").eq(2).find('span').text(element.nearCourse);
+                        $("#classList").append($(temp)[0]);
+                    })
+                    if (data.data.length == 0) {
+                        curClassId = 0;
+                        $("#classList").html('<ul><li class="ljldatatext"><div class=\"labelkc\">没有班级</div></li></ul>');
+                        $("#students").empty();
+                        $("#students").html('<ul><li class="ljldatatext"><div class=\"labelkc\">没有学生</div></li></ul>');
+                        $('.content6').html('<div class="content65" style="margin-top: 210px;"></div>');
+                    }
+                    //重置滚动条
+                    $('.content4 .niceScrollbox').getNiceScroll().resize();
+                    $('.content67 #classList li').off('click').on('click',function () {
+                        $(this).removeClass('lihover');
+                        $(this).siblings().addClass('lihover');
+                        $(this).siblings().removeClass('ljlactive');
+                        $(this).addClass('ljlactive');
+                    });
+                    //班级列表点击
+                    $('.content67 #classList li a').off('click').on('click', function () {
+                        GetClassStudent($(this).attr("classid"),'');
+                    })
+                    if (curClassId > 0) {
+                        GetClassStudent(curClassId,'');
+                    }
+
+                } else {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+    function SelectFirstChar(classId, first) {
+        var text = first;
+        if (first == '')
+            text = "全部学生";
+        $(".content5 .onlinebox .textbox").text(text);
+        curStudentId=0;
+        GetClassStudent(classId, first)
+
+    }
+    function GetClassStudent(classId, first) {
+
+        if (isTask == 1) {
+            var winIndex = layer.confirm('正在创建课后任务，是否放弃创建？', {
+                btn: ['否', '是'] //按钮
+            }, function () {
+                //重置选定状态
+                var li = $('.content67 #classList li');
+                li.each(function () {
+                    var classId = ($(this).find("a").attr("classid"))
+                    if (classId == curClassId) {
+                        $(this).addClass('ljlactive');
+
+                    } else {
+                        $(this).removeClass('ljlactive');
+                    }
+                });
+
+                layer.close(winIndex);
+            }, function () {
+                isTask = 0;
+                classStudentInfo(classId, first);
+                layer.close(winIndex);
+            });
+        } else {
+            classStudentInfo(classId, first);
+        }
+    }
+    function classStudentInfo(classId, first) {
+        var isChange = true;
+        if (curClassId == classId) {
+            isChange = false;
+        } else {
+            curClassId = classId
+        }
+        if ($(".content69 .studentstatus").children().length == 0) {
+            isChange = true;
+        }
+
+        //加载班级首页模板
+        //if(curFlag==0){
+        //    LoadHtml(0);
+        //}
+        $.ajax({
+            url: '/Task/GetTaskStudentGroupList',
+            type: "post",
+            dataType: "json",
+            data: { classId: classId, first: first },
+            success: function (data) {
+                if (data.code == 200) {
+                    $("#students").empty();
+                    $("#students").append('<div class="tit ljlactive">全部学生 <div class="righticon"><img src="/Content/images/rightico.png" /></div></div>')
+                    //$("#students").find('.listbox').remove();
+                    var studentTemp = $("#studentsTemp").find(".listbox")[0];
+                    if (isChange) {
+                        $(".content5 .onlinebox .textbox").text("全部学生");
+                        $(".content69 .studentstatus").empty();
+                        $(".content69 .studentstatus").append("<a href='#' onclick=\"SelectFirstChar(" + classId + ",'')\">全部学生</a>");
+                    }
+                    $(data.data).each(function (index, element) {
+                        var temp = studentTemp.cloneNode(true);
+                        var groupName = element.groupName == "_" ? "重点关注" : element.groupName;
+                        $(temp).find('.listitlte').text(groupName)
+                        if (isChange) {
+                            if (element.groupName != "_")
+                                $(".content69 .studentstatus").append("<a href='#' onclick=\"SelectFirstChar(" + classId + ",'" + groupName + "')\">" + groupName + "</a>");
+                        }
+
+                        var liTemp = $("#liTemp").find("li")[0];
+                        $(element.students).each(function (i, el) {
+                            var li = liTemp.cloneNode(true);
+                            $(li).find('.fl').attr("studentId", el.studentId);
+                            $(li).find('.fl').text(el.studentName);
+                            $(temp).find("ul").append($(li)[0]);
+                        })
+                        $("#students").append($(temp)[0]);
+                    });
+                    //是否点击
+                    var isClick=false;
+                    //$('.content6').html('<div class="content65" style="margin-top: 150px;"></div>');
+                    if (data.data.length > 0) {
+                        //重置滚动条
+                        //$('.content4 .niceScrollbox').getNiceScroll().resize();
+                        $('.content5 .niceScrollbox').getNiceScroll().resize();
+                        //学生列表点击
+                        $('.content70 li').off('click').on('click',function () {
+                            var thisLi = $(this);
+                            if (isTask == 1) {
+                                var winIndex = layer.confirm('正在创建课后任务，是否放弃创建？', {
+                                    btn: ['否', '是'] //按钮
+                                }, function () {
+                                    //重置选定状态
+                                    var li = $('.content70 li');
+                                    li.each(function () {
+                                        var stuId = $(this).find(".studentinfo").find(".label").attr("studentid");
+                                        if (curStudentId == stuId) {
+                                            $(this).addClass('ljlactive');
+
+                                        } else {
+                                            $(this).removeClass('ljlactive');
+                                        }
+                                    });
+                                    layer.close(winIndex);
+                                }, function () {
+                                    isTask = 0;
+                                    $('.content70 .tit').removeClass('ljlactive');
+                                    $('.content70 li').removeClass('ljlactive');
+                                    thisLi.addClass('ljlactive');
+                                    curStudentId = thisLi.find(".studentinfo").find(".label").attr("studentid");
+                                    LoadHtml(4);
+                                    layer.close(winIndex);
+                                });
+                            } else {
+                                $('.content70 .tit').removeClass('ljlactive');
+                                $('.content70 li').removeClass('ljlactive');
+                                $(this).addClass('ljlactive');
+                                curStudentId = $(this).find(".studentinfo").find(".label").attr("studentid"); 
+                                if(curFlag==0){
+                                    LoadHtml(4);
+                                }else{
+                                    LoadHtml(curFlag);
+                                } 
+                            }
+                        })
+                        $('.content70 .tit').off('click').on('click',function () {
+                            if (isTask == 1) {
+                                var winIndex = layer.confirm('正在创建课后任务，是否放弃创建？', {
+                                    btn: ['否', '是'] //按钮
+                                }, function () {
+                                    if (curStudentId != 0) {
+                                        $(this).removeClass('ljlactive');
+                                    } else {
+                                        //重置选定状态
+                                        var li = $('.content70 li');
+                                        li.each(function () {
+                                            var stuId = $(this).find(".studentinfo").find(".label").attr("studentid");
+                                            if (curStudentId == stuId) {
+                                                $(this).addClass('ljlactive');
+
+                                            } else {
+                                                $(this).removeClass('ljlactive');
+                                            }
+                                        });
+                                    }
+                                    layer.close(winIndex);
+                                }, function () {
+                                    isTask = 0;
+                                    curStudentId = 0;
+                                    $('.content70 .tit').addClass('ljlactive');
+                                    $('.content70 li').removeClass('ljlactive');
+                                    LoadHtml(0);
+                                    layer.close(winIndex);
+                                });
+                            } else {
+                                curStudentId = 0;
+                                $(this).addClass('ljlactive');
+                                $('.content70 li').removeClass('ljlactive');
+                                LoadHtml(0);
+                            }
+
+                        })
+     
+                        $('.content70 .tit').removeClass('ljlactive');
+                        if(curStudentId==0){
+                            $('.content70 .tit').addClass('ljlactive');
+                        }else{
+                            //重置选定状态
+                            var li = $('.content70 li');
+                            li.removeClass('ljlactive');
+                            li.each(function(){
+                                var stuId = $(this).find(".studentinfo").find(".label").attr("studentid");
+                                if (curStudentId == stuId) {
+                                    $(this).addClass('ljlactive');
+                                    //关注操作的时候不刷新
+                                    if(isAttention==false){
+                                        $(this).click();
+                                        isClick=true;
+                                    }
+                                    //执行完毕再重置
+                                    isAttention=false;
+                                    curFlag=0;
+                                } else {
+                                   
+                                }
+                            });
+                        }
+                    }
+                    if(isClick==false){
+                        //加载班级首页模板
+                        if(curFlag==0&&isChange){
+                            LoadHtml(0);
+                        }
+                    }
+                } else {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+
+</script>

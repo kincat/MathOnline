@@ -1,0 +1,187 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout =null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+    <title>艾练教学平台</title>
+    <link href="~/Content/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/layer.js"></script>
+    <script src="~/Scripts/wow.js"></script>
+    <script src="~/Scripts/common/md5.js"></script>
+    <link rel="shortcut icon" href="/abhs.ico" />
+    <link rel="bookmark" href="/abhs.ico" />
+    <script>
+        //是否成功登录
+        var isLogin = false;
+        $(function () {
+
+            $(document).keyup(function (e) {//捕获文档对象的按键弹起事件
+                if (e.keyCode == 13) {//按键信息对象以参数的形式传递进来了
+                    $('.subtn a').click();
+                }
+            });
+
+            $('.subtn a').click(function () {
+                    if (isLogin)
+                        return;
+                   
+				    var data = {};
+				    data.userAccount = $('#userAccount').val().trim();
+				    data.userPassword = $('#userPassword').val().trim();
+				    data.code = $('#code').val();
+					if(data.username==""){
+						layer.msg('请输入用户名');
+						lock=false;
+						return false;
+					}
+					if(data.password==""){
+						layer.msg('请输入密码');
+						lock=false;
+						return false;
+					}
+                    //登录失败2次开始校验验证码
+					var loginFailCount = getLoginFailCount();
+					if (loginFailCount > 1) {
+					    if (data.code.length < 1) {
+					        layer.msg('请输入验证码');
+					        lock = false;
+					        return false;
+					    }
+					}
+					data.userPassword = hex_md5(data.userPassword);
+					isLogin = true;
+					//var winIndex = 0;
+					$.ajax({
+					    url: '@Url.Action("TeacherLogin", "Home")',
+					    type: "post",
+					    dataType: "json",
+					    data: data,
+					    //beforeSend: function () {
+					    //    winIndex = layer.load(1, {
+					    //        shade: [0.5, '#fff'] //0.1透明度的白色背景
+					    //    });
+					    //},
+					    success: function (data) {
+					        if (data.code == 200) {
+					           
+					            layer.msg("登录成功", { icon: 1, time: 1500 }, function () {
+					                //设置cookie过期
+					                addCookie("loginFailCount", 0, -1);
+					                $('.content1 .light').addClass('ljlactive');
+					                go();
+					            });
+                                
+					        } else {
+					            isLogin = false;
+					            var thisCount = loginFailCount + 1;
+					            addCookie("loginFailCount", thisCount, 5);
+					            if (thisCount > 1) {
+					                $("#validateCode").show();
+					                change();
+					            }
+					            layer.msg(data.message);
+					        }
+					    },
+					    error: function (errorMsg) {
+					        isLogin = false;
+					        layer.msg("Err:" + JSON.stringify(errorMsg));
+					    },
+					    complete: function (XMLHttpRequest, status) {
+					        //layer.close(winIndex);
+					    }
+					});
+				})
+        })
+        function go() {
+            window.location = '@Url.Action("Index", "Home")'
+        }
+    </script>
+    <style>
+        body {
+            background: url(/Content/images/loginbg.png) no-repeat center top;
+        }
+    </style>
+</head>
+<body>
+    <div class="content1">
+        <div class="logoimg"><img src="/Content/images/logo.png" /></div>
+        <div class="pagetitle"><img src="/Content/images/pagetitle.png" /></div>
+        <div class="contbox">
+            <div class="cont">
+                <div class="ct"> 
+                    <div class="tit">登录</div>
+                    <div class="formbox">
+                        <div class="inputbox">
+                            <div class="inp">
+                                <input id="userAccount" placeholder="用户名" type="text" value="" />
+                            </div>
+                        </div>
+                        <div class="inputbox">
+                            <div class="inp">
+                                <input id="userPassword" placeholder="密码" type="password" value="" />
+                            </div>
+                        </div>
+                        <div class="inputbox" id="validateCode" style="display:none"> 
+                            <div class="inp">
+                                <input id="code" placeholder="验证码" type="text" />
+                            </div>
+                            <img src="/Home/ValidateCode" id="ValCode" style="cursor:pointer" onclick="this.src =this.src+'?'" />
+                        </div>
+                        <div class="subtn"><a href="javascript:void(0)">登录</a></div>
+                    </div>
+                </div>
+                <div class="light"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    Init();
+    function Init() {
+        var count = getLoginFailCount();
+        if (count > 1) {
+            $("#validateCode").show();
+        } else {
+            $("#validateCode").hide();
+        }
+    }
+    function getLoginFailCount() {
+        return getCookie("loginFailCount")==null||getCookie("loginFailCount")==""?0:getCookie("loginFailCount");
+    }
+    //写Cookie
+    function addCookie(objName, objValue, objMinite) {
+        var str = objName + "=" + escape(objValue); //编码
+        if (objMinite > 0) {//为0时不设定过期时间，浏览器关闭时cookie自动消失
+            var date = new Date();
+            var ms = objMinite * 60 * 1000;
+            date.setTime(date.getTime() + ms);
+            str += "; expires=" + date.toGMTString();
+        }
+        document.cookie = str;
+    }
+
+    //读Cookie
+    function getCookie(objName) {//获取指定名称的cookie的值
+        var arrStr = document.cookie.split("; ");
+        for (var i = 0; i < arrStr.length; i++) {
+            var temp = arrStr[i].split("=");
+            if (temp[0] == objName) return unescape(temp[1]);  //解码
+        }
+        return "";
+    }
+    function change() {
+        $("#ValCode").attr('src', $("#ValCode")[0].src + "?")
+    }
+</script>
+
+

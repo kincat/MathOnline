@@ -1,0 +1,677 @@
+﻿<div class="content7">
+    <div class="contbox">
+        <div class="label fl">详情</div>
+    </div>
+</div>
+<div class="content8">
+    <div class="niceScrollbox" id="rtl-test">
+        <div class="content9 content77">
+            <div class="contbox">
+                <div class="contitle">
+                    <span>ID:</span>
+
+                </div>
+                <div class="infotext infotext1">
+                    <div class="fl label">
+                        <i>开课日期：</i>丨<i>年级：</i>丨<i>老师：</i><i>状态</i>：
+                    </div>
+                </div>
+                <div class="goldbox">
+                    <!--<div class="gold1 fr" id="getgold">
+                        <div class="imgbox"><img src="/Content/images/gold.png"></div>
+                        <div class="infotext">奖惩金币</div>
+                    </div>-->
+                   
+                    <div class="gold1 fr" id="focusone">
+                        <div class="imgbox">
+                            <img src="/Content/images/rw.png">
+                 
+                        </div>
+                        <div class="infotext">创建任务</div>
+                    </div>
+                    <div class="gold1 fr" id="qbk" onclick="window.location = '/Prepare/Index?classId=' + curClassId">
+                        <div class="imgbox">
+                            <img src="/Content/images/qbk.png">
+                            <img src="/Content/images/qbk.png">
+                        </div>
+                        <div class="infotext">去备课</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content78 content81">
+            <div class="contbox">
+                <div class="tabbox fl">
+                    <a href="#" class="ljlactive" onclick="LoadHtml(0)">上课记录</a>
+                    <a href="#" onclick="LoadHtml(1)">任务记录</a>
+                    <a href="#" onclick="LoadHtml(2)">课时进度</a>
+                </div>
+                <div class="searchbox fr">
+                    <div class="layui-form fl ljltimediv" style="width:270px">
+                        <input class="layui-input" type="text"  id="classDate" placeholder="请选择上课日期范围(默认最近30天)"/>
+                    </div>
+                    <a href="#" id="mySearch">搜 索</a>
+                </div>
+            </div>
+            <div class="mytable" id="mytable">
+                <table align="center" class="layui-table" id="tableGrid" lay-filter="tableGrid"></table>
+            </div>
+            
+            
+        </div>
+
+    </div>
+</div>
+<div class="content82">
+    <div class="maskbox"></div>
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl loltitle"></label>
+            <span></span>
+        </div>
+        <div class="tab" id="asktab">
+            <a href="#" class="fr asklog"  moduleId="2"  subModuleId="31" actionType="313" datatype="1"   >班级出勤</a>
+            <a href="#" class="fr asklog"  moduleId="2"  subModuleId="31" actionType="312" datatype="1"   >班级预警</a>
+            <a href="#" class="fr ljlactive asklog"  moduleId="2"  subModuleId="31" actionType="311" datatype="1">班级提问</a>
+        </div>
+        <div class="niceScrollbox">
+            <div class="contbox">                                              
+                <!-- 出勤 -->
+                <div class="datebox listitem" id="myscorll">
+                    <table class="layui-table">
+                        <thead>
+                            <tr>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>性别</th>
+                                <th>年级</th>
+                                <th>出勤时间</th>
+                                <th>上课时长</th>
+                                <th>状态</th>
+                                <th style="display:none">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <!-- 预警 -->
+                <div class="listitem" style="display: none;">
+                    <div class="studybox">
+                        <div class="contbox allwarning_container">
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- 提问 -->
+                <div class="listitem">
+                    <div class="askbox">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="hide_template" style="display:none;">
+
+    <!--学生:消息类别-->
+    <div class="contbox template_student_message_item">
+        <div class="ljlshowbox">
+            <div class="list list1">
+                <div class="timeline">
+                    <div class="linecnt">
+                        <div class="linecnt1">
+                            <div class="linetop"></div>
+                            <div class="lineinfo dotcolor_green">
+                                <em class="singleword">学</em>
+                            </div>
+                            <div class="linebottom"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="listbox">
+                    <div class="cnt">
+                        <div class="cnttext"><span class="showhide categoryname"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ljlcnt">
+
+            </div>
+        </div>
+    </div>
+    <!--学生:消息体-->
+    <div class="list template_msgitem">
+        <div class="timeline">
+            <div class="linecnt">
+                <div class="linecnt1">
+                    <div class="linetop"></div>
+                    <div class="lineinfo">
+                        <span class="time_ms">11:05</span>
+                        <em></em>
+                    </div>
+                    <div class="linebottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="listbox">
+            <div class="cnt">
+                <div class="cnttext">
+                </div>
+            </div>
+            <div class="ico"></div>
+        </div>
+    </div>
+
+
+    <!-- 个人学情:类别 -->
+    <div class="ljlshowbox template_situation_category">
+        <div class="list list1">
+            <div class="timeline">
+                <div class="linecnt">
+                    <div class="linecnt1">
+                        <div class="linetop"></div>
+                        <div class="lineinfo dotcolor_green">
+                            <em class="singleword">学</em>
+                        </div>
+                        <div class="linebottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="listbox">
+                <div class="cnt">
+                    <div class="cnttext"><span class="categoryname"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="ljlcnt">
+
+        </div>
+    </div>
+    <!-- 个人学情:消息体(学情类的) -->
+    <div class="list template_situation_msgitem">
+        <div class="timeline">
+            <div class="linecnt">
+                <div class="linecnt1">
+                    <div class="linetop"></div>
+                    <div class="lineinfo">
+                        <span class="time_ms">11:05</span>
+                        <em class="singleword"></em>
+                    </div>
+                    <div class="linebottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="listbox">
+            <div class="cnt">
+                <div class="cnttext">
+
+                </div>
+            </div>
+            <div class="ico"></div>
+        </div>
+    </div>
+
+
+    <div class="tet msgitem_xueqing">
+        <div class="info"><span></span></div>
+    </div>
+    <div class="tet msgitem_xueqing_tiwen">
+        <div class="info"><span></span></div>
+    </div>
+
+    <div class="textinfo all_msgitem_detail">
+        <div class="label fl"><span class="msgitem_detail_title"></span>：</div>
+        <div class="text msgitem_detail_content"></div>
+    </div>
+
+    <div class="tet msgitem_detail">
+        <label><span class="msgitem_detail_title"></span></label>
+        <div class="info msgitem_detail_content"></div>
+    </div>
+
+
+    <!-- 全班的提问分类 -->
+    <div class="ljllist template_class_message_question">
+        <div class="cnt">
+            <div class="ftitlte">
+                <label class="fl">第1课时“商是整十、整百、整千数的口算之平均分问题”视频提问 </label>
+            </div>
+            <div class="userinfobox">
+                <div class="usercnt">
+                    <div class="textinfo">
+                        <div class="label fl">学生姓名:</div>
+                        <div class="text">
+                            <span class="data_studentname"></span>
+                            <span class="data_level">
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar1.png" />
+                            </span>
+                            <span class="videotimepoint" style="display:none;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;提问时间：<em class="minute">0</em>分<em class="second">0</em>秒
+                            </span>
+                            <span class="questiontype_difficulty" style="display:none;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;题目难度：
+                                <span class="questiontype_difficulty_stars">
+                                    <img src="/Content/images/actstar.png" />
+                                    <img src="/Content/images/actstar.png" />
+                                    <img src="/Content/images/actstar.png" />
+                                    <img src="/Content/images/actstar.png" />
+                                    <img src="/Content/images/actstar1.png" />
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="allcontent">
+
+                    </div>
+                    <div class="timedate">10:30</div>
+                </div>
+                <div class="studentslist">
+                    <div class="conf">
+                        <div class="label fl">共<span class="peoplenum">1</span>人提问<span class="questionnum">1</span>次</div>
+                        <a href="#" class="more">查看全部</a>
+                    </div>
+                    <div class="askinfobox" style="display: none;">
+                        <div class="contbox">
+                            <div class="ljlshowbox">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 分类下的提问详情 -->
+    <div class="list template_window_question_item">
+        <div class="timeline">
+            <div class="linecnt">
+                <div class="linecnt1">
+                    <div class="linetop"></div>
+                    <div class="lineinfo">
+                        <span class="time_ms">11:05</span>
+                        <em></em>
+                    </div>
+                    <div class="linebottom"></div>
+                    <div class="userimg"><img src="/Content/images/userimg.png" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="listbox">
+            <div class="cnt">
+                <div class="cnttext">
+                    <div class="tet">
+                        <label class="fl">学生姓名：</label>
+                        <div class="info">
+                            <span class="studentname"></span>
+                            <span class="studentlevel">
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar1.png" />
+                                <img src="/Content/images/actstar1.png" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="ico"></div>
+        </div>
+    </div>
+
+    <div class="tet qqiuido">
+        <label class="fl"></label>
+        <div class="info line2"></div>
+    </div>
+
+    <!-- 全班预警 分类(按人分组) -->
+    <div class="ljllist template_class_warning">
+        <div class="cnt">
+            <div class="userinfobox">
+                <div class="userimg fl"><img src="/Content/images/userimg.png" /></div>
+                <div class="userinfotext">
+                    <div class="username">
+                        <span class="data_stuname"></span>
+                        <label class="data_stucount_wrapper">(<em class="data_stucount"></em>次警告未处理)</label>
+                        <span class="newinfo data_new"></span>
+                    </div>
+                    <div class="username">
+                        <span>等级:</span>
+                        <span class="data_level"></span>
+                    </div>
+                    <div class="username lastestmsg">张三丰已超过10分钟无学习记录，请重点关注！</div>
+                </div>
+                <span class="newyj">最新预警：<i class="data_createtime">10:30</i></span>
+                <a class="more warningmore ljlactive" href="#">查看更多</a>
+            </div>
+            <div class="toggleshow">
+                <div class="studyinfobox">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--公式识别-->
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [["$", "$"]],   //行内公式选择$
+        displayMath: [["$$", "$$"]]    //段内公式选择$$
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],   //避开某些标签
+        ignoreHtmlClass: "comment-content" | "head-class",   //避开含该Class的标签，用|隔开
+        processHtmlClass: 'tex2jax_process'
+    }
+};
+</script>
+<script src='/Scripts/Mathjax-full-3.1/es5/tex-chtml.js'></script>
+
+<script>
+
+$(function () {
+    $('.content78 .tabbox a').click(function () {
+        $(this).addClass('ljlactive').siblings().removeClass('ljlactive')
+    })
+   
+    $("#mytable").delegate(".out", "click", function () {
+        $('.content73').toggleClass('content73_1');
+        $('.content73 .maskbox').toggle();
+    });
+    $('.content73 .maskbox').click(function () {
+        $('.content73').toggleClass('content73_1');
+        $('.content73 .maskbox').toggle();
+    })
+    $('.content73 .ftitle span').click(function () {
+        $('.content73').toggleClass('content73_1');
+        $('.content73 .maskbox').toggle();
+    });
+
+    $('.content82 .maskbox').click(function () {
+        $('.content82').toggleClass('content82_1');
+        $('.content82 .maskbox').toggle();
+    })
+    $('.content82 .ftitle span').click(function () {
+        $('.content82').toggleClass('content82_1');
+        $('.content82 .maskbox').toggle();
+    });
+    //$("#mytable").delegate(".out1", "click", function () {
+    //    $('.content82').toggleClass('content82_1');
+    //    $('.content82 .maskbox').toggle();
+    //});
+    $('#asktab a').click(function () {
+        var objarr = $(this).parents('.box').find('.contbox').find('.listitem');
+        $(this).addClass('ljlactive').siblings().removeClass('ljlactive');
+        var index = $(this).index();
+       
+        objarr.eq(index).show().siblings('.listitem').hide();
+    })
+    $('.content82 .niceScrollbox').niceScroll({
+        cursorcolor: "#000000", //#CC0071 光标颜色
+        cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+        touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+        cursorwidth: "3px", //像素光标的宽度
+        cursorborder: "3px solid #000000", // 游标边框css定义
+        cursorborderradius: "3px", //以像素为光标边界半径
+        autohidemode: true, //是否隐藏滚动条
+        railpadding: {
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 0
+        }, //滚动条的位置
+    });
+    $('.studentslist .more').click(function () {
+        $(this).toggleClass('ljlactive');
+        $(this).parents('.studentslist').find('.askinfobox').slideToggle(function () {
+            $('.content82 .niceScrollbox').getNiceScroll().resize();
+        });
+        
+    });
+
+    $('.warningmore').click(function () {
+        $(this).toggleClass('ljlactive');
+        $(this).parents('.cnt').find('.toggleshow').slideToggle(function () {
+            $('.content82 .niceScrollbox').getNiceScroll().resize();
+        });
+       
+    })
+    webLogReg(".asklog")
+})
+
+layui.use(['table', 'laydate'], function () {
+    var table = layui.table;
+    var laydate = layui.laydate;
+	table.render({
+	    elem: '#tableGrid',
+		url: '/Task/ClassLog',
+		height: 'full-360',
+		cellMinWidth: 80,
+		method: 'post',
+		autoSort: false, 
+		limit: 15,
+		page:{ //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+			layout: ['prev', 'page', 'next', 'count'], //自定义分页布局
+			curr: 1, //设定初始在第 5 页
+			groups: 5, //只显示 1 个连续页码
+			//first: true, //不显示首页
+			//last: true, //不显示尾页
+			next: '下一页',
+			prev: '上一页'
+
+		}, where: {
+			classId: curClassId
+		},
+		done: function (res, curr, count) {
+		    if (res.count > 0 && res.data.length > 0) {	       
+		        $(".layui-table-box").removeClass('nodatatable');
+		    } else {
+		        $(".layui-table-box").addClass('nodatatable');
+		    }
+		    webLogReg(".weblog");
+		},
+		cols: [
+			[{
+			    type: 'numbers',
+				width: 90,
+				title: '编号',
+				align: 'center',
+                hide:true
+
+			}, {
+				field: 'classDate',
+				cellMinWidth: 180,
+				title: '上课日期',
+                align:'center'
+			}, {
+				field: 'classTime',
+				cellMinWidth: 140,
+				title: '上课时间',
+				align: 'center'
+			}, {
+				field: 'allStudent',
+				width: 90,
+				title: '应出勤',
+				align: 'center',
+				sort: true
+			}, {
+				field: 'studyStudent',
+				width: 90,
+				title: '实出勤',
+				align: 'center',
+				sort: true
+			}, {
+				field: 'otherStudent',
+				width: 90,
+				title: '缺勤',
+				align: 'center',
+				sort: true
+			}, {
+				field: 'studyRate',
+				width: 90,
+				title: '出勤率',
+				align: 'center',
+                sort:true
+			}, {
+				field: 'askCount',
+				width: 90,
+				title: '提问',
+				align: 'center',
+				sort: true
+			}, {
+				field: 'errorCount',
+				width: 90,
+				title: '预警',
+				align: 'center',
+				sort: true
+			},
+			{
+				field: 'wealth',
+				cellMinWidth: 135,
+				title: '操作',
+				align:'center',
+				templet:function(d){
+				    var ask = '<a class="divideclass" href="javascript:;"  style="color:#ccc">提问</a>';
+				    if (d.askCount > 0) {
+				        ask = '<a class="divideclass weblog" href="javascript:;" moduleId="2"  subModuleId="31" actionType="311" datatype="1"  actionvalue="' + d.courseId + '"  onclick="classLogGo.showClassContent(\'' + d.classDate + " " + d.classTime + '\',2, \'' + d.courseId + '\', ' + curClassId + ')">提问</a>';
+				    }
+				    var err = '<a class="divideclass" href="javascript:;"  style="color:#ccc">预警</a>';
+				    if (d.errorCount > 0) {
+				        err = '<a class="divideclass weblog" href="javascript:;"  moduleId="2"  subModuleId="31" actionType="312" datatype="1"  actionvalue="' + d.courseId + '"   onclick="classLogGo.showClassContent(\'' + d.classDate + " " + d.classTime + '\',1, \'' + d.courseId + '\', ' + curClassId + ')">预警</a>';
+				    }
+				    //出勤
+				    //var out = '<a class="divideclass out" href="#" onclick="attendanceDetail(\'' + d.courseId + '\',\'' + d.classDate + " " + d.classTime + '\')">出勤</a>';
+				    var out = '<a class="divideclass weblog" href="javascript:;"  moduleId="2"  subModuleId="31" actionType="313" datatype="1"  actionvalue="' + d.courseId + '"    onclick="classLogGo.showClassContent(\'' + d.classDate + " " + d.classTime + '\',0, \'' + d.courseId + '\', ' + curClassId + ')">出勤</a>';
+				    return ask+ err+ out;
+				}
+			}]
+		],
+	});
+	table.on('sort(tableGrid)', function(obj){ //注：sort 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+	    console.log(obj.field); //当前排序的字段名
+	    console.log(obj.type); //当前排序类型：desc（降序）、asc（升序）、null（空对象，默认排序）
+	    console.log(this); //当前排序的 th 对象
+ 
+        var beginTime = "";
+        var endTime = "";
+        if ($.trim($("#classDate").val()) != "") {
+            var time = $.trim($("#classDate").val()).split(" - ");
+            if (time.length > 1) {
+                beginTime = time[0];
+                endTime = time[1];
+            }
+        }
+	    //尽管我们的 table 自带排序功能，但并没有请求服务端。
+	    //有些时候，你可能需要根据当前排序的字段，重新向服务端发送请求，从而实现服务端排序，如：
+        table.reload('tableGrid', {
+            method: 'post',
+	        initSort: obj //记录初始排序，如果不设的话，将无法标记表头的排序状态。
+          ,where: { //请求参数（注意：这里面的参数可任意定义，并非下面固定的格式）
+              field: obj.field //排序字段
+             ,order: obj.type //排序方式
+             ,beginTime: beginTime
+             ,endTime: endTime
+          }
+	    });
+  
+	    
+	});
+	laydate.render({
+		elem: '#classDate',
+		range: true,
+		done: function (value) {
+			$('#classDate').val(value);
+		}
+	});
+        // 搜索
+	$('#mySearch').on('click', function () {
+		var beginTime = "";
+		var endTime = "";
+		if ($.trim($("#classDate").val()) != "") {
+			var time = $.trim($("#classDate").val()).split(" - ");
+			if (time.length > 1) {
+				beginTime = time[0];
+				endTime = time[1];
+			}
+		}
+
+		table.reload('tableGrid', {
+			method: 'post'
+            , where: {
+                'beginTime': beginTime,
+                'endTime': endTime
+            }, page: {
+                curr: 1
+            }, done: function (res, curr, count) {
+                if (res.count > 0 && res.data.length > 0) {
+                    $(".layui-table-box").removeClass('nodatatable');
+                } else {
+                    $(".layui-table-box").addClass('nodatatable');
+                }
+                webLogReg(".weblog");
+            }
+		});
+	});
+});
+//出勤
+function attendanceDetail(id, title) {
+    $(".content73 .box .ftitle label").text(title + " 出勤");
+    $.ajax({
+        url: '/Task/AttendanceDetail',
+        type: "post",
+        dataType: "json",
+        data: { courseId: id },
+        success: function (data) {
+            if (data.code == 200) {
+                 
+                $("#myscorll .layui-table tbody tr").empty();
+              
+                $(data.data).each(function (index, element) {
+                     
+                    var txt = $("<tr>"
+                    + "<td>" + element.studentId + "</td>"
+                    + "<td>" + element.studentName + "</td>"
+                    + "<td>" + element.sex + "</td>"
+                    + "<td>" + element.grade + "</td>"
+                    + "<td>" + element.time + "</td>"                
+                    + "<td>" + element.studyLength + "</td>"
+                    + "<td>" + getStatusColor(element.status) + "</td>"
+                    //+ "<td><a href=\"#\">课堂表现报告</a></td>"
+                    + "</tr>");
+                    $("#myscorll .layui-table tbody").append(txt);
+                })
+           
+
+            } else {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        },
+        error: function (errorMsg) {
+            layer.msg("出错了，请刷新再尝试");
+        }
+    });
+}
+function getStatusColor(statusName) {
+    var color = '';
+    if (statusName == '出勤')
+        color = '26a100';
+    if (statusName == '迟到')
+        color = 'ff9f00';
+    if (statusName == '未出勤')
+        color = 'ed2801';
+    return "<font style='color:#"+color+"'>" + statusName + "</font>";
+}
+//document.write("<script type='text/javascript' src='Constants.js?v="+Math.random()+"'><\/script>"); 
+</script>
+ 
+<script type="text/javascript" src="/Scripts/model/task/classlog.js?id=125"></script>

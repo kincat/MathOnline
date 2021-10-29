@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2FBD9FBE-A5FB-4C9E-8CA6-AEF4208096AE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Abhs.Model</RootNamespace>
+    <AssemblyName>Abhs.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Access\BasStudent.cs" />
+    <Compile Include="Access\SysPackageLesson.cs" />
+    <Compile Include="Access\SysPackageLessonItems.cs" />
+    <Compile Include="Access\SysPackages.cs" />
+    <Compile Include="Access\BasWeChatBind.cs" />
+    <Compile Include="Access\SysQuestionMark.cs" />
+    <Compile Include="Model\AfterTaskModel.cs" />
+    <Compile Include="Model\PackageModel.cs" />
+    <Compile Include="Model\StudyModel.cs" />
+    <Compile Include="Model\UpdateDetailModel.cs" />
+    <Compile Include="MonitorMiddle\AskQuestionModels.cs" />
+    <Compile Include="MonitorMiddle\CourseIdModel.cs" />
+    <Compile Include="MonitorMiddle\EnumLessonModuleType.cs" />
+    <Compile Include="MonitorMiddle\EnumMessageType.cs" />
+    <Compile Include="MonitorMiddle\EnumModuleType.cs" />
+    <Compile Include="MonitorMiddle\HandleForm.cs" />
+    <Compile Include="MonitorMiddle\HandleType.cs" />
+    <Compile Include="MonitorMiddle\math_message_request.cs" />
+    <Compile Include="Common\PublicKey.cs" />
+    <Compile Include="Common\Result.cs" />
+    <Compile Include="Common\ResultException.cs" />
+    <Compile Include="MonitorMiddle\MessageEvaluate.cs" />
+    <Compile Include="MonitorMiddle\message_for_student.cs" />
+    <Compile Include="MonitorMiddle\MonitorStudent.cs" />
+    <Compile Include="Data\BaseErrQuestion.cs" />
+    <Compile Include="Model\DataModel.cs" />
+    <Compile Include="MonitorMiddle\SpecContent.cs" />
+    <Compile Include="MonitorMiddle\StudentNotice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedisModel\TempCacheModel.cs" />
+    <Compile Include="ViewModel\AfterClassTaskView.cs" />
+    <Compile Include="ViewModel\ClassModelCondition.cs" />
+    <Compile Include="ViewModel\ClassModelView.cs" />
+    <Compile Include="ViewModel\ClassTaskCondition.cs" />
+    <Compile Include="ViewModel\CommonKeyValueView.cs" />
+    <Compile Include="ViewModel\CourseModelCondition.cs" />
+    <Compile Include="ViewModel\CourseModelView.cs" />
+    <Compile Include="ViewModel\PageViewLogCondition.cs" />
+    <Compile Include="ViewModel\StudentHeartCondition.cs" />
+    <Compile Include="ViewModel\MonitorClassView.cs" />
+    <Compile Include="ViewModel\PrepareModelCondition.cs" />
+    <Compile Include="ViewModel\PrepareModelView.cs" />
+    <Compile Include="ViewModel\StudentModelCondition.cs" />
+    <Compile Include="ViewModel\StudentModelView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Abhs.Common\Abhs.Common.csproj">
+      <Project>{B8702507-F127-4CDF-BD82-B921ED79BDC0}</Project>
+      <Name>Abhs.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

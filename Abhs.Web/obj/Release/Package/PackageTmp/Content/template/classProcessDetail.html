@@ -1,0 +1,325 @@
+﻿<div class="content7">
+    <div class="contbox">
+        <div class="label fl">详情</div>
+    </div>
+</div>
+<div class="content8">
+    <div class="niceScrollbox" id="rtl-test">
+        <div class="content9 content77">
+            <div class="contbox">
+                <!--<div class="userimg fl"><img src="/Content/images/userimg.png" /></div>-->
+                <!--<div class="studentsinfo">-->
+                    <div class="contitle">
+
+
+                    </div>
+                    <div class="infotext infotext1">
+                        <div class="fl label">
+
+                        </div>
+                    </div>
+                    <div class="goldbox">
+                        <!--<div class="gold1 fr" id="getgold">
+                            <div class="imgbox"><img src="/Content/images/gold.png"></div>
+                            <div class="infotext">奖惩金币</div>
+                        </div>-->
+                        <div class="gold1 fr" id="focusone">
+                            <div class="imgbox">
+                                <img src="/Content/images/rw.png">
+
+                            </div>
+                            <div class="infotext">创建任务</div>
+                        </div>
+                        <div class="gold1 fr" id="qbk" onclick="window.location = '/Prepare/Index?classId=' + curClassId">
+                            <div class="imgbox">
+                                <img src="/Content/images/qbk.png">
+                                <img src="/Content/images/qbk.png">
+                            </div>
+                            <div class="infotext">去备课</div>
+                        </div>
+                    </div>
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="content78">
+            <div class="contbox">
+                <div class="tabbox fl">
+                    <a href="#" onclick="LoadHtml(0)">上课记录</a>
+                    <a href="#" onclick="LoadHtml(1)">任务记录</a>
+                    <a href="#" class="ljlactive" onclick="LoadHtml(2)">课时进度</a>
+                </div>
+                <div class="searchbox fr">
+                    <div class="ljl_selectbox fl" style="width: 300px;">
+                        <div class="ljl_selinput">
+
+                        </div>
+                        <i></i>
+                        <dl id="lessondl">
+                        </dl>
+                    </div>
+
+                    <a href="#"  onclick="LoadHtml(2)">返 回</a>
+                </div>
+            </div>
+            <div class="mytable" id="mytable">
+                <table align="center" class="layui-table" id="tableGrid"></table>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div class="content73 content79">
+    <div class="maskbox"></div>
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl" style="padding-left:5px"></label>
+            <span></span>
+        </div>
+        <div class="contbox" style="height:100%;">
+
+            <div class="datebox" id="myscorll">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>提升次数</th>
+                            <th>开始时间</th>
+                            <th>结束时间</th>
+                            <th>用时</th>
+                            <!--<th>提升题型</th>-->
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#mytable").delegate(".out", "click", function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        });
+        $('.content73 .maskbox').click(function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        })
+        $('.content73 .ftitle span').click(function () {
+            $('.content73').toggleClass('content73_1');
+            $('.content73 .maskbox').toggle();
+        });
+        //selectBind();
+        getLessonList(curClassId)
+    })
+    function selectBind() {
+        $('.ljl_selectbox .ljl_selinput').click(function () {
+            $(this).parents('.ljl_selectbox').find('dl').slideToggle();
+            $(this).parents('.ljl_selectbox').toggleClass('ljl_selectboxactive')
+        })
+        $('.ljl_selectbox dd').click(function () {
+            console.log($(this).attr('id'));
+            $(this).parents('.ljl_selectbox').removeClass('ljl_selectboxactive');
+            $(this).parent('dl').find('.ljlactive').removeClass('ljlactive');
+            $(this).addClass('ljlactive');
+            $(this).parents('.ljl_selectbox').find('.ljl_selinput').html($(this).html());
+            $(this).parent('dl').hide();
+            search($(this).attr('id'));
+        })
+        $(document).click(function (e) {
+            e = window.event || e; // 兼容IE7
+            obj = $(e.srcElement || e.target);
+            if (!$(obj).parents().hasClass('ljl_selectbox')) {
+                $('.ljl_selectbox').removeClass('ljl_selectboxactive');
+                $('.ljl_selectbox dl').hide();
+            }
+
+        });
+    }
+    var table;
+    layui.use(['table', 'laydate','form'], function () {
+		table = layui.table;
+		var laydate = layui.laydate;
+		var form = layui.form;
+		form.render('select');
+		table.render({
+		    elem: '#tableGrid',
+		    url: '/Task/GetClassStudyProcess',
+			height: 'full-360',
+			cellMinWidth: 80,
+			limit:10,
+			page:{ //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+					layout: ['prev', 'page', 'next', 'count'], //自定义分页布局
+					curr: 1, //设定初始在第 5 页
+					groups: 5 ,//只显示 1 个连续页码
+					//first: true ,//不显示首页
+					//last: true, //不显示尾页
+					next:'下一页',
+					prev:'上一页'
+
+			},
+			method: 'post',
+			limit: 15,
+			where: {
+			    classId: curClassId,
+			    lessonId: htmlParm
+			},
+			done: function (res, curr, count) {
+			    if (res.count > 0 && res.data.length > 0) {
+			        $(".layui-table-box").removeClass('nodatatable');
+			    } else {
+			        $(".layui-table-box").addClass('nodatatable');
+			    }
+			    webLogReg(".weblog");
+			},
+			cols: [
+				[{
+				    field: 'studentNo',
+					width: 90,
+					title: '学籍号',
+					align: 'center'
+
+				}, {
+				    field: 'studentName',
+				    minWidth: 100,
+				    title: '姓名',
+				    align: 'center'
+				}, {
+				    field: 'sex',
+				    width: 100,
+				    title: '性别',
+				    align: 'center'
+				}, {
+				    field: 'grade',
+				    width: 100,
+				    title: '学段',
+				    align: 'center'
+				}, {
+				    field: 'beginTime',
+					width: 180,
+					title: '开始学习时间',
+					//templet: function (d) {
+					//    if (d.beginTime == null || d.beginTime == '')
+                    //        return ''
+					//    return "<div class='feedlinediv'>" + insertStr(d.beginTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					//},
+					align: 'center'
+				}, {
+				    field: 'endTime',
+				    title: '完成学习时间',
+					width: 180,
+					//templet: function (d) {
+					//    if (d.endTime == null || d.endTime == '')
+					//        return ''
+					//    return "<div class='feedlinediv'>" + insertStr(d.endTime, 10, "</div><div class='feedlinediv'>") + "</div>";
+					//},
+					align: 'center'
+				}, {
+				    field: 'times',
+					width: 120,
+					title: '用时',
+					align: 'center'
+				},  {
+				    field: 'status',
+					width: 120,
+					title: '状态',
+					align: 'center',
+					templet: function (d) {
+
+					    return getStatusColor(d.status);
+					}
+				}, 
+				{
+					field: 'wealth',
+					minWidth: 130,
+
+					title: '操作',
+					templet: function (d) {
+					    var report = '<a href="javascript:;"   style="color:#ccc" class="divideclass"  >查看报告</a>'
+					    if (d.status == '完成') {
+					        report = ' <a   href="' + mainUrl + d.report + '"  target=\"_blank\"  class="divideclass weblog"    moduleId="2"  subModuleId="33" actionType="332" datatype="1"  actionvalue="" >查看报告</a> ';
+					    }
+					    
+					    return report;
+					},
+					align: 'center'
+				}]
+			],
+		});
+		laydate.render({
+		    elem: '#searchtime',
+		    range: true,
+		    done: function (value) {
+		        $('#searchtime').val(value);
+		    }
+		});
+	     
+    });
+    function getStatusColor(statusName) {
+        var color = '';
+        if (statusName == '完成')
+            color = '26a100';
+        if (statusName == '学习中')
+            color = '007cff';
+        if (statusName == '未学习')
+            color = 'ed2801';
+        return "<font style='color:#" + color + "'>" + statusName + "</font>";
+    }
+    function search(id) {
+        table.reload('tableGrid', {
+            method: 'post'
+               , where: {
+                   'classId': curClassId,
+                   'lessonId': id
+               }
+               , page: {
+                   curr: 1
+               }, done: function (res, curr, count) {
+                   if (res.count > 0 && res.data.length > 0) {
+                       $(".layui-table-box").removeClass('nodatatable');
+                   } else {
+                       $(".layui-table-box").addClass('nodatatable');
+                   }
+                   webLogReg(".weblog");
+               }
+        });
+    }
+
+    function insertStr(soure, start, newStr) {
+        return soure.slice(0, start) + newStr + soure.slice(start);
+    }
+    //获取课时
+    function getLessonList(classId) {
+ 
+        $.ajax({
+            url: '/Task/GetLessonList',
+            type: "post",
+            dataType: "json",
+            data: { classId: classId },
+            success: function (data) {
+                if (data.code == 200) {
+                    $("#lessondl").empty();
+                    $(data.data).each(function (index, element) {
+                        //ljl_selinput文字显示
+                        if (htmlParm == element.id) {
+                            $(".ljl_selinput").text(element.name);
+                            $("#lessondl").append('<dd id="' + element.id + '" class="ljlactive" title="' + element.name + '">' + element.name + '</dd>');
+                        } else
+                            $("#lessondl").append('<dd id="' + element.id + '" title="' + element.name + '">' + element.name + '</dd>');
+                    })
+                    selectBind();
+                } else {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+</script>

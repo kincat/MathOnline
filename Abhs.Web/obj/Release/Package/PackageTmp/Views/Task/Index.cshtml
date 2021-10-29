@@ -1,0 +1,448 @@
+﻿
+@{
+    ViewBag.Title = "课后任务";
+    Layout = "~/Views/Shared/_LayoutTask.cshtml";
+}
+  
+ 
+<div class="content6">
+    
+</div>
+<div class="content89">
+    <div class="maskbox"></div>
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl"></label>
+            <span></span>
+        </div>
+        <div class="contbox" style="height:100%;">
+
+            <div class="datebox" id="printLogGrid">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>学生</th>
+                            <th>题目数量</th>
+                            <th>打印人</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div class="content65" style="height:500px;margin-top:100px"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--公式识别-->
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [["$", "$"]],   //行内公式选择$
+        displayMath: [["$$", "$$"]]    //段内公式选择$$
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],   //避开某些标签
+        ignoreHtmlClass: "comment-content" | "head-class",   //避开含该Class的标签，用|隔开
+        processHtmlClass: 'tex2jax_process'
+    }
+};
+</script>
+<script src='/Scripts/Mathjax-full-3.1/es5/tex-chtml.js'></script>
+<script type="text/javascript">
+    //版本号
+    var fileVersion = '@(Abhs.Model.Common.PublicData.GetFileVersion())';
+    //保存选定状态
+    var urlClassData = {};
+    urlClassData.classId = 0;
+    urlClassData.index = 0;
+    var urlStudentData = {};
+    urlStudentData.studentId = 0;
+    urlStudentData.index = 0;
+    //跳转参数,课时ID
+    var htmlParm = 0;
+    var lastLoadIndex = 0;
+    function LoadHtml(index) {
+ 
+        if (index != 8)
+            htmlParm = 0;
+        $.ajaxSetup({ cache: false });
+        if (index == 0 || index == 1 || index == 2 || index == 8) {  //班级变化
+            var isChange = true;
+            if (urlClassData.classId != curClassId) {
+                urlClassData.classId = curClassId;
+                isChange = false;
+            }
+            if (index == 0) {
+                if (urlClassData.index == 8) {
+                    urlClassData.index = 2;
+                }
+            }
+            if (urlClassData.index != index && isChange) {
+                urlClassData.index = index;
+            } else {
+                index = urlClassData.index;
+            }
+        } else {
+            if (index != 3) {
+                var isChange = true;
+                if (urlStudentData.studentId != curStudentId) { //学生变化
+                    if (urlStudentData.studentId > 0)
+                        isChange = false;
+                    urlStudentData.studentId = curStudentId;
+                }
+                if ((urlStudentData.index != index && isChange)) {
+                    urlStudentData.index = index;
+                } else {
+                    index = urlStudentData.index;
+                }
+            }
+
+        }
+        if (index != 3 && index != 8)
+            lastLoadIndex = index;  //创建课后任务后跳转
+
+        //默认0，班级首页
+        var url = '/Content/template/classLog.html';
+        switch (index) {
+            case 1:
+                url = "/Content/template/taskLog.html";
+                break;
+            case 2:
+                url = "/Content/template/classProcess.html";
+                break;
+            case 3:
+                url = "/Content/template/taskIndex.html";
+                break;
+            case 4:
+                url = "/Content/template/studentClassLog.html";
+                break;
+            case 5:
+                url = "/Content/template/studentTaskLog.html";
+                break;
+            case 6:
+                url = "/Content/template/studentStudyWrong.html";
+                break;
+            case 7:
+                url = "/Content/template/studentProcess.html";
+                break;
+            case 8:
+                url = "/Content/template/classProcessDetail.html";
+                break;
+            default:
+                break;
+        }
+        if (index == 0||index == 1||index == 2||index==8) {
+            showHead(curClassId, url, "/Task/ClassHead?version=" + fileVersion, classHead);
+        }
+        if (index == 3) {
+            deleteTask(url);
+        }
+        if (index == 4) {
+            showHead(curClassId, url, "/Task/StudentClassLogHead?version=" + fileVersion, studentClassLogHead);
+        }
+        if (index == 5) {
+            showHead(curClassId, url, "/Task/StudentTaskLogHead?version=" + fileVersion, studentTaskLogHead);
+        }
+        if (index == 6) {
+            showHead(curClassId, url, "/Task/StudentStudyWrongHead?version=" + fileVersion, studentStudyWrongHead);
+        }
+        if (index == 7) {
+            showHead(curClassId, url, "/Task/StudentStudyProcessHead?version=" + fileVersion, studentStudyProcessHead);
+        }
+    }
+    //学生学习错题的头部
+    function studentStudyWrongHead(data) {
+        $(".content9 .userimg img").attr("src", data.data.userPhoto)
+        $(".content9 .contitle").html(data.data.studentName + "，还有" + data.data.unMastor + "题未掌握");
+
+        $(".content9 .infotext1 .label").html(' <i>年级：</i>' + data.data.grade + '丨<i>等级：</i>' + getLevel(data.data.studentLevel) + '丨<i>错题数：</i>' + data.data.wrongCount + '丨<i>已掌握</i>：' + data.data.mastorCount + '丨<i>掌握率</i>：' + data.data.mastorRate);
+    }
+    //学生学习进度的头部
+    function studentStudyProcessHead(data) {
+        $(".content9 .userimg img").attr("src", data.data.userPhoto)
+        if (data.data.studyLesson>0)
+            $(".content9 .contitle").html(data.data.studentName + "，学习到第" + data.data.studyLesson + "课时");
+        else
+            $(".content9 .contitle").html(data.data.studentName + "，还未开始学习本课程");
+        $(".content9 .infotext .label").html(' <i>年级：</i>' + data.data.grade + '丨<i>等级：</i>' + getLevel(data.data.studentLevel) + '丨<i>课时数：</i>' + data.data.lessonCount + '丨<i>已学习</i>：' + data.data.overCount + '丨<i>课程进度</i>：' + data.data.finishRate);
+    }
+    //学生任务记录的头部
+    function studentTaskLogHead(data) {
+        $(".content9 .userimg img").attr("src", data.data.userPhoto)
+        $(".content9 .contitle").html(data.data.studentName + "，共有" + data.data.taskCount + "次上课记录");
+        $(".content9 .infotext .label").html(' <i>年级：</i>' + data.data.grade + '丨<i>等级：</i>' + getLevel(data.data.studentLevel) + '丨<i>任务数：</i>' + data.data.taskCount + '丨<i>已完成</i>：' + data.data.finishCount + '丨<i>完成率</i>：' + data.data.finishRate);
+    }
+    //学生上课记录的头部
+    function studentClassLogHead(data) {
+        $(".content9 .userimg img").attr("src", data.data.userPhoto)
+        $(".content9 .contitle").html(data.data.studentName + "，共有" + data.data.classCount + "次上课记录");
+        $(".content9 .infotext .label").html(' <i>年级：</i>' + data.data.grade + '丨<i>等级：</i>' + getLevel(data.data.level) + '丨<i>应出勤：</i>' + data.data.mustAttendance + '丨<i>实出勤：</i>' + data.data.attendance + '丨<i>出勤率</i>：' + data.data.attendanceRate);
+    }
+    //班级的头部
+    function classHead(data) {
+        $(".content9 .contitle").html("<span>ID:" + data.data.classId + "</span>" + data.data.className + " <strong class='bgk'>|</strong> " + data.data.packName);
+        $(".content9 .infotext .label").html(' <i>开课日期：</i>' + data.data.beginDate + '到' + data.data.endDate + '丨<i>年级：</i>' + data.data.grade + '丨<i>老师：</i>' + data.data.teacherName + '丨<i>状态</i>：' + data.data.status);
+    }
+    function showHead(classId,fileUrl,headUrl, callback) {
+        $.ajax({
+            url: headUrl+"?version=@(Abhs.Model.Common.PublicData.GetFileVersion())",
+            type: "post",
+            dataType: "json",
+            data: { classId: classId,studentId: curStudentId},
+            success: function (data) {
+
+                if (data.code == 200) {
+                    $('.content6').load(fileUrl + "?version=@(Abhs.Model.Common.PublicData.GetFileVersion())", function () {
+                        $("#getgold").hide();
+                        //goldWin();
+                        callback(data);
+ 
+                        $(".content9 #gzStudent .imgbox").html('<img src="/Content/images/xx.png" flag="1" />');
+                        $(".content9 #gzStudent .infotext").html('重点关注');
+      
+                        $("#gzStudent").attr("moduleId",2);
+                        $("#gzStudent").attr("subModuleId",26);
+                        $("#gzStudent").attr("datatype",2);
+                        $("#gzStudent").attr("actionType", 261);
+                        if (data.data.studentStatus != undefined) {
+                            if (data.data.studentStatus == 1) {
+                                $(".content9 #gzStudent .imgbox").html(' <img src="/Content/images/xx1.png" flag="0"/>');
+                                $(".content9 #gzStudent .infotext").html('取消关注');
+                                $("#gzStudent").attr("actionType", 262);
+                            }                           
+                        }                                               
+                        $('.content8 .niceScrollbox').getNiceScroll().resize();
+                        attentionStudent();
+                        webLogReg('#gzStudent');
+                        focusOne();
+                        printLog();
+                        //任务重置
+                        isTask = 0;
+                    });
+
+                } else {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                //console.log(JSON.stringify(errorMsg))
+                //layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+    function attentionStudent() {
+        $('#gzStudent').off('click').on('click', function () {
+            var flag = $(".content9 #gzStudent .imgbox").find("img").attr("flag");
+            var url = "/Student/doAttentionStudent";
+            if (flag == 0) //取消关注
+                url = "/Student/cancelAttentionStudent";
+            $.ajax({
+                url: url,
+                type: "post",
+                dataType: "json",
+                data: { classId: curClassId,studentId:curStudentId },
+                success: function (data) {
+                    if (data.code == 200) {
+                        if (flag == 0) {
+                            $(".content9 #gzStudent .imgbox").html('<img src="/Content/images/xx.png" flag="1" />')
+                        } else {
+                            $(".content9 #gzStudent .imgbox").html('<img src="/Content/images/xx1.png" flag="0" />')
+                        }
+                        curFlag = urlStudentData.index
+                        isAttention = true;
+                        $('#classList li.ljlactive').find('a').click();
+                        //isAttention = false;
+  
+                    }  
+
+                },
+                error: function (errorMsg) {
+                    //console.log(JSON.stringify(errorMsg))
+                    //layer.msg("出错了，请刷新再尝试");
+                }
+            });
+        })
+    }
+    function focusOne() {
+        $("#focusone").off('click').on('click', function () {
+            if (curStatus != 1) {
+                layer.msg('该班级不可以创建课后任务')
+                return
+            }
+            LoadHtml(3)
+            sessionStorage.clear();
+            //
+        })
+    }
+    //打印记录
+    function printLog() {
+
+        $("#printLog").off('click').on('click', function () {
+            $('.content89').toggleClass('content89_1');
+            $('.content89 .maskbox').toggle();
+            $.ajax({
+                url: "/Task/GetPrintLog",
+                type: "post",
+                dataType: "json",
+                data: { studentId: curStudentId },
+                success: function (data) {
+                    $(".content89 .box .ftitle label").html("打印记录<em style=\"font-size:14px;color:#ccc\">（只保留最近50条）</em>");
+                    $("#printLogGrid .layui-table tbody tr").empty();
+                    $("#printLogGrid .content65").show();
+                    $(data.data).each(function (index, element) {
+                        var txt = $("<tr>"
+                        + "<td>" + element.createTime + "</td>"
+                        + "<td>" + element.name + "</td>"
+                        + "<td>" + element.questionCount + "</td>"
+                        + "<td>" + element.teacher + "</td>"
+                        + "<td><a href=\"javascript:;\" style=\"color:#3CC9AE\" onclick='showLog(" + element.logId + ",\"" + element.name + "\",\"" + element.createTime + "\")'>查看</a></td>"
+                        + "</tr>");
+                        $("#printLogGrid .layui-table tbody").append(txt);
+                    });
+                    if (data.data.length > 0) {
+                        $("#printLogGrid .content65").hide();
+                    }
+                },
+                error: function (errorMsg) {
+                    //console.log(JSON.stringify(errorMsg))
+                    //layer.msg("出错了，请刷新再尝试");
+                }
+            });
+        });
+        $('.content89 .maskbox').off('click').on('click', function () {
+            $('.content89').toggleClass('content89_1');
+            $('.content89 .maskbox').toggle();
+        })
+        $('.content89 .ftitle span').off('click').on('click', function () {
+            $('.content89').toggleClass('content89_1');
+            $('.content89 .maskbox').toggle();
+        });
+
+    }
+    //显示错题
+    function showLog(id,title,time) {
+        layer.open({
+            type: 2,
+            skin: 'content88_1',
+            title: title + '的错题本(' + time + ')',
+            area: ['1200px', '80%'],
+            btn: ['显示答案', '打印错题'],
+            btnAlign: 'c',
+            content: '/Content/template/printLog.html?id=' + id + '&version=' + parseInt(Math.random() * 100),
+            yes: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+                iframeWin.viewAnswer();
+                if (iframeWin.isShow) {
+                    $('.layui-layer-btn0').text('隐藏答案');
+                } else {
+                    $('.layui-layer-btn0').text('显示答案');
+                }
+                //$('#layui-layer-iframe1').animate({scrollTop: 0},200);
+            },
+            btn2: function (index, layero) {
+                var iframeWin = window[layero.find('iframe')[0]['name']];
+                iframeWin.doprint();
+                return false;
+            }
+        });
+    }
+    //设置打印title
+    function newTitles() {
+        var title = $.trim($("#students ul .ljlactive .studentinfo").text()) + "的错题本";
+        $(document).attr("title", title);
+    }
+    //设置旧的title
+    function oldTitles() {
+        $(document).attr("title", "课后任务");
+    }
+    //删除未完成的课后任务
+    function deleteTask(url) {
+        $.ajax({
+            url: "/Task/DeleteTask",
+            type: "post",
+            dataType: "json",
+            data: { classId: curClassId },
+            success: function (data) {
+                $('.content6').load(url, function () {
+                    //标识打开任务
+                    $("#followTitle").find("span").eq(0).text(data.data.className);
+                    $("#followTitle").find("span").eq(1).text(data.data.teacherName);
+                    $("#thisTitle").find("span").eq(0).text(data.data.className);
+                    $("#thisTitle").find("span").eq(1).text(data.data.teacherName);
+                    $("#contentTitle").text('创建 ' + data.data.packName + ' 课后任务');
+                    isTask = 1;
+                    $("#getgold").hide();
+                    $('.content8 .niceScrollbox').getNiceScroll().resize();
+                });
+
+            },
+            error: function (errorMsg) {
+                //console.log(JSON.stringify(errorMsg))
+                //layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+    //显示等级
+    function getLevel(level) {
+        var html = "";
+        for (var i = 0; i < 5; i++) {
+            if (i < level) {
+                html = html + '<img src="/Content/images/actstar.png" />';
+            } else {
+                html = html + '<img src="/Content/images/actstar1.png" />';
+            }
+        }
+        return html;
+    }
+    function webLogReg(className) {
+        $(className).click(function () {
+            var moduleId = $(this).attr('moduleid');
+            var subModuleId = $(this).attr('submoduleid');
+            var actionType = $(this).attr('actiontype');
+            var dataType = $(this).attr('datatype');
+            var actionValue = $(this).attr('actionvalue');
+            $.ajax({
+                url: '/api/message/weblog',
+                type: "post",
+                dataType: "json",
+                data: { moduleId: moduleId, subModuleId: subModuleId, actionType: actionType, dataType: dataType, classId: curClassId, studentId: curStudentId, actionValue: actionValue },
+                success: function (data) {
+                    if (data.code == 200) {
+                        console.log('操作成功')
+
+                    } else {
+
+                        //layer.msg("出错了，请刷新再尝试");
+                    }
+                },
+                error: function (errorMsg) {
+                    //layer.msg("出错了，请刷新再尝试");
+                }
+            });
+        })
+    }
+    function webLogSave(moduleId, subModuleId, actionType, dataType, actionValue) {
+        $.ajax({
+            url: '/api/message/weblog',
+            type: "post",
+            dataType: "json",
+            data: { moduleId: moduleId, subModuleId: subModuleId, actionType: actionType, dataType: dataType, classId: curClassId, studentId: curStudentId, actionValue: actionValue },
+            success: function (data) {
+                if (data.code == 200) {
+                    console.log('操作成功')
+
+                } else {
+
+                    //layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                //layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+</script>
+

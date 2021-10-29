@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+		<title>首页</title>
+		<link href="Content/css/animate.min.css" rel="stylesheet" />
+		<link href="Scripts/layui/css/layui.css" rel="stylesheet" />
+		<link href="Content/css/reset.css" rel="stylesheet" />
+		<link href="Content/css/style.css" rel="stylesheet" />
+		<script src="Scripts/jquery.js"></script>
+		<script src="Scripts/jquery.nicescroll.js"></script>
+		<script src="Scripts/layer.js"></script>
+		<script src="Scripts/layui/layui.js"></script>
+		<script src="Scripts/wow.js"></script>
+		<script>
+			$(function() {
+				$('.subtn a').click(function() {
+					$('.content1 .light').addClass('ljlactive');
+					layer.msg('用户名错误');
+				})
+				layui.use('laydate', function() {
+					var laydate = layui.laydate;
+					laydate.render({
+						elem: '.datebox',
+						position: 'static',
+						showBottom: false,
+						ready: function(date) {
+							$('.content52 .layui-this').html('<span class="selspan">' + $('.content52 .layui-this').html() +
+								'</span>');
+								$('.content52 .niceScrollbox').niceScroll({
+									cursorcolor: "#000000", //#CC0071 光标颜色
+									cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+									touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+									cursorwidth: "3px", //像素光标的宽度
+									cursorborder: "3px solid #000000", // 游标边框css定义
+									cursorborderradius: "3px", //以像素为光标边界半径
+									autohidemode: true, //是否隐藏滚动条
+									railpadding: {
+										top: 0,
+										right: 0,
+										left: 0,
+										bottom: 0
+									}, //滚动条的位置
+								});
+						},
+						change: function() {
+							$('.content52 .layui-this').html('<span class="selspan">' + $('.content52 .layui-this').html() +
+								'</span>')
+						},
+						mark: {
+							'2020-12-15': '15' //具体日期
+								,
+							'2020-12-20': '20' //如果为空字符，则默认显示数字+徽章
+								,
+							'2017-8-21': '发布'
+						}
+					});
+				})
+				$('.content52 .ftitle span').click(function() {
+					$('.content52').toggleClass('content29_1');
+					$('.content32').toggle();
+				})
+				$('#myclass').click(function(){
+					$('.content32').toggle();
+					$('.content52').toggleClass('content29_1');
+				})
+				$('.content32').click(function() {
+					$('.content32').toggle();
+					$('.content52').toggleClass('content29_1');
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		<div class="content66"></div>
+		<div class="content2 content14">
+			<div class="contbox">
+				<div class="loginimg fl"><img src="Content/images/elogo.png" /></div>
+				<div class="configbox">
+					<div class="quit fr"><img src="Content/images/quit.png" /></div>
+					<div class="navbox fr">
+						<img src="Content/images/nav.png" />
+						<div class="listbox">
+							<div>
+								<a href="#">学生管理</a>
+								<a href="#">全部课程</a>
+							</div>
+						</div>
+					</div>
+					<div class="username fr">张三丰</div>
+					<div class="userimg fr"><img src="Content/images/userimg.png" /></div>
+				</div>
+			</div>
+		</div>
+		<div class="content15">
+			<div class="userpic"><img src="Content/images/userimg.png" /></div>
+			<div class="textinfo">下午好,张三丰老师<img id="myclass" src="Content/images/kec.png" /></div>
+			<div class="textinfo1">现在<em>3</em>个班级正在上课，<label>1</label>个班级需要备课</div>
+			<div class="contbox">
+				<div class="listbox">
+					<div class="ljllist">
+						<a class="toptext" href="#">
+							<div class="icon"><img src="Content/images/cont15icon1.png" /></div>
+							<span class="numb">1</span>
+							<div class="notopen">
+								<div class="notopentitle">敬请期待</div>
+								<div class="nottext">我们正在努力建设中</div>
+							</div>
+						</a>
+						<div class="botshowde"></div>
+					</div>
+				</div>
+				<div class="listbox">
+					<div class="ljllist">
+						<a class="toptext" href="#">
+							<div class="icon"><img src="Content/images/cont15icon2.png" /></div>
+							<span class="numb">1</span>
+						</a>
+						<div class="botshowde"></div>
+					</div>
+				</div>
+				<div class="listbox">
+					<div class="ljllist">
+						<a class="toptext" href="#">
+							<div class="icon"><img src="Content/images/cont15icon3.png" /></div>
+							<span class="numb">1</span>
+						</a>
+						<div class="botshowde"></div>
+					</div>
+				</div>
+				<div class="listbox">
+					<div class="ljllist">
+						<a class="toptext" href="#">
+							<div class="icon"><img src="Content/images/cont15icon4.png" /></div>
+							<span class="numb">1</span>
+						</a>
+						<div class="botshowde"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content52">
+			<div class="contbox">
+				<div class="ftitle"><label class="fl">课程表</label><span></span></div>
+				<div class="niceScrollbox">
+					<div class="datebox"></div>
+					<div class="tlt">今日课程安排：</div>
+					<div class="box">
+						<div class="ljllist ljlactive">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+						<div class="ljllist">
+							<div class="listbox">
+								<div class="linebox">
+									<div class="topline"></div>
+									<div class="bottomline"></div>
+								</div>
+								<div class="textbox">
+									<div class="q"></div>
+									<em>10:00~12:00</em>
+									<span>七年级同步班（七年级同步课程</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

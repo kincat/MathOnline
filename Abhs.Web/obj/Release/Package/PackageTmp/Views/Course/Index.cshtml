@@ -1,0 +1,423 @@
+﻿
+@{
+    ViewBag.Title = "课程展示";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+@section Head{
+    <link href="/Scripts/layui/css/layui.css" rel="stylesheet" />
+    <script src="/Scripts/layui/layui.js"></script>
+    <script src="/Scripts/layui/lay/modules/xm-select.js"></script>
+    <script src="/Scripts/jquery.nicescroll.js"></script>
+    <script src="/Scripts/wow.js"></script>
+
+    <style>
+        body {
+            background: #1D2732;
+        }
+
+            body .layui-layer-btn .layui-layer-btn0 {
+                border-color: #E6E3E6;
+                background-color: #ffffff;
+                color: black;
+            }
+
+            body .layui-layer-btn1 {
+                border-color: #cccccc;
+                background-color: #3cc9ae;
+                color: #fff;
+            }
+            .divideclass {
+	font-size: 14px;
+	color: #3CC9AE;
+	text-align: center;
+	display: inline-block;
+	height: 14px;
+	cursor: pointer;
+	vertical-align: middle;
+	border-right: 1px solid #e5e5e5;
+}
+             .mod_select{font-familY:Arial, Helvetica, sans-serif;}
+ 
+ 
+ 
+    .select_label{	line-height: 30px;float:left;font-size: 14px;padding-right: 5px;position: relative;color: #828282;}
+    .select_box{float:left;border:solid 1px #D9D9D9;color:#444;position:relative;height:30px;cursor:pointer;width:427px;background:url(../select_bg.jpg) repeat-x;font-size:12px;border-radius:4px;}
+    .selet_open{display:inline-block;border-left:solid 0px #D9D9D9;position:absolute;right:0;top:0;width:30px;height:30px;background:url(/Content/images/hxl.png) no-repeat center center;}
+    .select_txt{display:inline-block;padding-left:10px;width:350px;line-height:30px;height:30px;cursor:text;overflow:hidden;color:#D9D9D9;cursor:pointer;}
+    .option{width:427px;max-height:400px;border:solid 1px #D9D9D9;position:absolute;top:26px;left:-1px;z-index:2;overflow-y:auto;display:none;background:#fff;}
+    .option a{display:block;min-height:30px;line-height:30px;text-align:left;padding:0 10px;width:100%;background:#fff;}
+    .option a:hover{background:#f1f1f1;}
+    </style>
+}
+@{
+    var list = (List<Abhs.Model.ViewModel.CommonKeyValueView>)ViewBag.book;
+    var gradeList = (List<Abhs.Model.ViewModel.CourseGradeYearView>)ViewBag.GradeList;
+    var courseList = (List<Abhs.Model.ViewModel.CourseModelView>)ViewBag.CourseList;
+    var bookList = (List<Abhs.Model.ViewModel.CommonKeyValueView>)ViewBag.Book;
+}
+<script>
+    var courseStr = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(courseList))';
+    var gradeStr = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(gradeList))';
+    var bookStr = '@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(bookList))';
+    var courseData = JSON.parse(courseStr);
+    var gradeData = JSON.parse(gradeStr);
+    var bookData = JSON.parse(bookStr);
+    var now = '@DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")'
+    var grade = new Array();
+    $.each(gradeData, function (index,item) {
+        var obj={};
+        obj.gradeYearValue = item.gradeYearValue;
+        obj.gradeYearName=item.gradeYearName
+        grade.push(obj);
+    })
+    var teacherData = '@Html.Raw(ViewBag.Teacher)';
+</script>
+
+<div class="content59 bookListPan">
+    <div class="studentstatus">
+        <a href="#"  onclick="GetCourse(0,this)">全部版本</a>
+        @foreach (var item in list)
+        {
+            <a href="#" onclick="GetCourse(@item.id,this)">@item.name</a>
+        }
+    </div>
+</div>
+<!-- 背景色 -->
+<div class="content3">
+    <div class="contbox"></div>
+</div>
+<!-- 左一栏列表 -->
+<div class="content4">
+    <div class="ljltitle">
+        年级 
+    </div>
+    <div class="niceScrollbox">
+        <div class="content58">
+            <div class="contbox" id="gradeList">
+                <ul >
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="gradeTemp" style="display:none">
+    <li class="{0} ">
+        <a href="#" onclick="{2}">
+            <div class="righticon"><img src="/Content/images/rightico.png" /></div>
+            <div class="classtime">{1}</div>
+            <div class="classtime1">课程数量：<em>{3}</em></div>
+        </a>
+    </li>
+</div>
+<!-- 左二栏列表 -->
+<div class="content5">
+    <div class="ljltitle">
+        <span class="fl">课程</span>
+        <div class="onlinebox fr">
+            <label class="textbox">全部版本</label>
+        </div>
+    </div>
+    <div class="niceScrollbox">
+        <div class="content60">
+            <div class="contbox">
+                <div class="listbox">
+                    <ul>
+                       
+                    </ul>
+                </div>
+
+                <div id="courseTemp" style="display:none">
+                    <li class="{0}">
+                        <a href="#" onclick="{3}">
+                            <div class="righticon"><img src="/Content/images/rightico.png" /></div>
+                            <div class="studentinfo">
+                                <div class="label">{1}</div>
+                                <div class="conf">课程版本：{2}</div>
+                            </div>
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 左三栏内容 -->
+<div class="content6">    
+    <div class="content7">
+        <div class="contbox">
+            <div class="label fl">详情</div>
+        </div>
+    </div>
+    <div class="content63">
+        <div class="niceScrollbox">
+            <div class="content61" style="display:none">
+                <div class="contbox">
+                    <div class="contl fl">
+                        <img src="/Content/images/fm.png" id="fm"/>
+                    </div>
+                    <div class="contr">
+                        <div class="titl">
+                            <div class="label fl" style="display:none">同步课</div>
+                            <div class="textbox"></div>
+                        </div>
+                        <div class="list info" style="padding-top:9px">
+                            <div class="lb fl">教材版本：<span>人教版</span></div>
+                            <div class="lb fl">教研老师：<span>李老师</span></div>
+                            <div class="lb fl">适用年级：<span>三年级春季班</span></div>
+                        </div>
+                        <div class="list" style="padding-top:5px">
+                            <div class="lb fl">课程资料：<span id="downInfo"></span></div>
+                        </div>
+                        <div class="list" style="padding-top:5px">
+                            <div class="label fl">课程描述：</div>
+                            <div class="textbox textbox1 line2" style="overflow-y:scroll;white-space: pre-line;height:90px">
+                                
+                            </div>
+                        </div>
+                        <div class="list info1" style="padding-top:5px">
+                            <div class="lb fl">学生数量：<span></span></div>
+                            <div class="lb fl">已建班级：<span></span></div>
+                        </div>
+                       @if (ViewBag.CheckRole == "1")
+                       {
+                        <a href="#" class="btn">创建班级</a>
+                       }
+                    </div>
+                </div>
+            </div>
+            <div class="content62" style="display:none">
+                <div class="contbox">
+                    <div class="list userlist active">
+                        <div class="objname">
+                            <div class="nametext line1"></div>
+                            <a href="#">试学</a>
+                        </div>
+                    </div>
+                    <div class="list">
+                        <div class="objname">
+                            <div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content56">
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl">创建班级</label>
+            <span></span>
+        </div>
+        <div class="niceScrollbox">
+            <div class="contbox">
+                <div class="ljlist">
+                    <label class="fl">班级名称：</label>
+                    <div class="inpcont">
+                        <div class="inpbox vselect classtime">
+                            <input class="isclick" id="className" type="text" placeholder="请输入班级名称" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ljlist datebox">
+                    <label class="fl">开课日期：</label>
+                    <div class="inpcont fl">
+                        <div class="inpbox vselect classtime">
+                            <input id="starttime" class="isclick" type="text" placeholder="选择开课日期" autocomplete="off" />
+
+                        </div>
+                    </div>
+                    <label class="fl lastlabel">结课日期：</label>
+                    <div class="inpcont fl">
+                        <div class="inpbox vselect classtime">
+                            <input id="endtime" class="isclick" type="text" placeholder="选择结课日期" autocomplete="off" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ljlist datebox confclass">
+                    <label class="fl">年级选择：</label>
+                    <div class="inpcont fl">
+                        <div class="inpbox vselect classtime">
+                            <div class="layui-form">
+                                <select name="gradeId" lay-verify="" lay-filter="grade" id="gradeId" disabled="disabled">
+                                    <option value="">请选择年级</option>
+                                    @foreach (var item in gradeList)
+                                    {
+                                        <option value="@item.gradeYearValue">@(item.gradeYearName)</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="fl lastlabel">教材版本：</label>
+                    <div class="inpcont fl">
+                        <div class="inpbox vselect classtime">
+                            <div class="layui-form">
+                                <select name="bookId" lay-verify="" lay-filter="book" id="bookId" disabled="disabled">
+                                    <option value="">全部教材</option>
+                                    @foreach (var item in bookList)
+                                    {
+                                        <option value="@item.id">@(item.name)</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ljlist coursebox">
+                    <label class="fl">授课老师：</label>
+                    <div class="inpcont">
+                        <div class="inpbox vselect classtime">
+                            <div id="teacherIds" style="width:427px"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="ljlist coursebox">
+                    <label class="fl">课程选择：</label>
+                    <div class="inpcont">
+                        <div class="inpbox vselect classtime">
+
+                            <div class="layui-form">
+                                <select name="courseId" lay-verify="" lay-filter="course" id="courseId" disabled="disabled">
+                                    <option value="">请选择课程</option>
+                                    @foreach (var item in courseList)
+                                    {
+                                        <option value="@item.id">@item.courseName</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ljlist coursebox mod_select" id="mod_select">
+                    <div class="classTemp">
+
+                        <span class="select_label">课表模板：</span>
+                        <div class="select_box">
+                            <span class="select_txt">请选择课表模板（创建班级的时候可用）</span><a class="selet_open"><b></b></a>
+                            <div class="option">
+                                <a></a>
+                            </div>
+                        </div>
+                        <br clear="all" />
+
+                    </div>
+                    <input type="hidden" id="select_value" />
+                </div>
+                <div class="ljlist studytime">
+                    <label class="fl">上课时间：</label>
+                    <div class="inpcont" id="editbox">
+                        <div class="setimtlist ">
+                            <div class="inpbox vselect classtime">
+                                <div class="layui-form">
+                                    <select name="weekIndex" lay-verify="" lay-filter="week">
+                                        <option value="0">请选择</option>
+                                        <option value="1">周一</option>
+                                        <option value="2">周二</option>
+                                        <option value="3">周三</option>
+                                        <option value="4">周四</option>
+                                        <option value="5">周五</option>
+                                        <option value="6">周六</option>
+                                        <option value="7">周日</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="inpbox vselect classtime">
+                                <input class="isclick timeinput1 rangetime" type="text" name="times" placeholder="H点m分" autocomplete="off" />
+                            </div>
+                            <div class="addbtn">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="setimtlist">
+                            <div class="inpbox vselect classtime">
+                                <div class="layui-form">
+                                    <select name="weekIndex" lay-verify="" lay-filter="week">
+                                        <option value="0">请选择</option>
+                                        <option value="1">周一</option>
+                                        <option value="2">周二</option>
+                                        <option value="3">周三</option>
+                                        <option value="4">周四</option>
+                                        <option value="5">周五</option>
+                                        <option value="6">周六</option>
+                                        <option value="7">周日</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="inpbox vselect classtime">
+                                <input class="isclick timeinput1" type="text" name="times" placeholder="H点m分" autocomplete="off" />
+
+                            </div>
+                            <div class="addbtn">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="setimtlist ">
+                            <div class="inpbox vselect classtime">
+                                <div class="layui-form">
+                                    <select name="weekIndex" lay-verify="" lay-filter="week">
+                                        <option value="0">请选择</option>
+                                        <option value="1">周一</option>
+                                        <option value="2">周二</option>
+                                        <option value="3">周三</option>
+                                        <option value="4">周四</option>
+                                        <option value="5">周五</option>
+                                        <option value="6">周六</option>
+                                        <option value="7">周日</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="inpbox vselect classtime">
+                                <input class="isclick timeinput1 rangetime" type="text" name="times" placeholder="H点m分" autocomplete="off" />
+                            </div>
+                            <div class="addbtn">
+                                <span></span>
+                            </div>
+                        </div>
+                        <span class="addlistt" title="添加上课时间"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfloat"></div>
+            <div class="ljlbtnpage">
+                <a href="#">取 消</a>
+                <a href="#">创 建</a>
+            </div>
+        </div>
+    </div>
+    <div class="content32"></div>
+</div>
+ <div class="content64">
+    <div class="setimtlist ">
+        <div class="inpbox vselect classtime">
+            <div class="layui-form" >
+                <select name="weekIndex" lay-verify="" lay-filter="week">
+                    <option value="0">请选择</option>
+                    <option value="1">周一</option>
+                    <option value="2">周二</option>
+                    <option value="3">周三</option>
+                    <option value="4">周四</option>
+                    <option value="5">周五</option>
+                    <option value="6">周六</option>
+                    <option value="7">周日</option>
+                </select>
+            </div>
+
+
+        </div>
+        <div class="inpbox vselect classtime">
+            <input class="isclick timeinput1 rangetime" type="text" name="times" placeholder="H点m分"   autocomplete="off" />
+        </div>
+        <div class="addbtn">
+            <span></span>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/model/course/course.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())"></script>

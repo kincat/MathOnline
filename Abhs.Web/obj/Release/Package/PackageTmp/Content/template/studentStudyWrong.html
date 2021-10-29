@@ -1,0 +1,699 @@
+﻿<link href="/Scripts/pagination/css/pagination.css" rel="stylesheet" />
+<style>
+    .xm-icon-expand{
+        transform: rotate(0deg) !important;
+    }
+    .subjecttitle span{
+        line-height:40px
+    }
+</style>
+<div class="content7">
+    <div class="contbox">
+        <div class="label fl">详情</div>
+    </div>
+</div>
+<div class="content84">
+    <div class="contbox">
+        <div class="tabbox fl">
+            <a href="#"  onclick="LoadHtml(4)">上课记录</a>
+            <a href="#" onclick="LoadHtml(5)">任务记录</a>
+            <a href="#" class="ljlactive" onclick="LoadHtml(6)">学习错题</a>
+            <a href="#" onclick="LoadHtml(7)">学习进度</a>
+        </div>
+        <div class="searchbox fr">
+            <a href="#" class="delselect deleteBtn" >删除选中</a>
+            <a href="#" class="delselect">打印预览</a>
+        </div>
+    </div>
+</div>
+<div class="content8">
+    <div class="niceScrollbox" id="rtl-test">
+        <div class="content9 content77">
+            <div class="contbox">
+                <div class="userimg fl"><img src="Content/images/userimg.png" /></div>
+                <div class="studentsinfo">
+                    <div class="contitle">
+                        七年级同步班（七年级同步课）
+
+                    </div>
+                    <div class="infotext infotext1">
+                        <div class="fl label">
+                           
+                        </div>
+                    </div>
+                    <div class="goldbox">
+                        <div class="gold1 fr" id="getgold">
+                            <div class="imgbox"><img src="/Content/images/gold.png"></div>
+                            <div class="infotext">奖惩金币</div>
+                        </div>
+                        
+                        <div class="gold1 fr" id="focusone">
+                            <div class="imgbox">
+                                <img src="/Content/images/rw.png">
+                            </div>
+                            <div class="infotext">创建任务</div>
+                        </div>
+                        <div class="gold1 fl" id="gzStudent">
+                            <div class="imgbox">
+                                <img src="/Content/images/xx.png" />
+                                <img src="/Content/images/xx1.png" />
+                            </div>
+                            <div class="infotext">重点关注</div>
+                        </div>
+                        <div class="gold1 fr" id="printLog">
+                            <div class="imgbox"><img src="/Content/images/printLog.png"><img src="/Content/images/printLog.png"></div>
+                            <div class="infotext">打印记录</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content78">
+            <div class="contbox">
+                <div class="tabbox fl">
+                    <a href="#" onclick="LoadHtml(4)">上课记录</a>
+                    <a href="#" onclick="LoadHtml(5)">任务记录</a>
+                    <a href="#" class="ljlactive" onclick="LoadHtml(6)">错题记录</a>
+                    <a href="#" onclick="LoadHtml(7)">学习进度</a>
+                </div>
+                <div class="searchbox fr">
+                    <a href="#" class="delselect deleteBtn weblog"  moduleId="2"  subModuleId="43" actionType="431" datatype="2" >删除选中</a>
+                    <a href="#" class="delselect printBtn weblog"   moduleId="2"  subModuleId="43" actionType="430" datatype="2" >打印预览</a>
+                </div>
+            </div>
+            <div class="errorbookbox">
+                <div class="errortitle">
+                    <div class="label fl">学习错题</div>
+                    <div class="configbox fr" id="allselect">
+                        全选<span class="allsel"></span>
+                    </div>
+                </div>
+                <div class="errorbooklist">
+                    <div class="errorsearch searchbox">
+                        <div class="layui-form fl ljltimediv" style="width: 230px;">
+                            <input type="text" class="layui-input"  id="createDate" placeholder="请选择时间"/>
+                        </div>
+                        <div class="layui-form fl" style="width: 100px;">
+                            <select lay-verify="required" id="questionType">
+                                <option value="">全部题型</option>
+                                <option value="1">选择题</option>
+                                <option value="2">填空题</option>
+                                <option value="3">解答题</option>
+                            </select>
+                        </div>
+                        <div class="layui-form fl" style="width: 100px;">
+                            <select lay-verify="required" id="status">
+                                <option value="">全部状态</option>
+                                <option value="1">掌握</option>
+                                <option value="0">未掌握</option>
+                            </select>
+                        </div>
+                        <div class="layui-form fl" style="width: 100px;">
+                            <select lay-verify="required" id="wrongCount">
+                                <option value="">全部错题</option>
+                                <option value="1">1-5次</option>
+                                <option value="2">6-10次</option>
+                                <option value="3">11-15次</option>
+                                <option value="4">16-20次</option>
+                            </select>
+                        </div>
+                        <div id="level" class="layui-form fl" style="width:200px"></div>
+                        <a href="#" class="dosearch fl">搜 索</a>
+                        <div class="clearfloat"></div>
+                    </div>
+                    <div class="errorbookitems" id="wrongList">
+                        
+                        <div class="erroritem">
+                            <div class="itemtitle">
+                                <div class="fl objdifficulty">
+                                    <span class="difficultytext">题目难度：</span>
+                                    <img src="/Content/images/actstar.png" />
+                                    <label>|</label>
+                                    <span>共答题15次，</span>
+                                    <span class="righttimes">答对5次</span>
+                                    <span class="wrongtimes">答错10次</span>
+                                    <em class="grasp">未掌握</em>
+                                </div>
+                                <div id="editconfig" class="editconfig fr">
+                                    <i>&nbsp;</i>
+                                    <label>|</label>
+                                    <i class="selbtn ljlactive">&nbsp;</i>
+                                </div>
+                            </div>
+                            <div class="itemcontent">
+                                <div class="subjecttitle">
+                                    1.如果温度上升3∘C，记作+3∘C，那么<span class="blank"></span>温度下降2∘C记作（ ）
+                                </div>
+                                <!-- <div class="subjectcont">
+                                    <div class="optionitem">
+                                        <label>A：</label><strong>-2</strong>
+                                    </div>
+                                    <div class="optionitem">
+                                        <label>B：</label><strong>-2</strong>
+                                    </div>
+                                    <div class="optionitem">
+                                        <label>C：</label><strong>-2</strong>
+                                    </div>
+                                    <div class="optionitem">
+                                        <label>D：</label><strong>-2</strong>
+                                    </div>
+                                </div> -->
+                                <div class="toggleshow">
+                                    <div class="subjectanalysis">
+                                        <label class="fl">题目解析：</label>
+                                        <div class="subjectanalysistext">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Pagination" class="pagination"></div>
+
+                    <div class="erroritem" id="wrongTemp" style="display:none">
+                        <div class="itemtitle">
+                            <div class="fl objdifficulty">
+                                <span class="difficultytext">题目难度：</span>                               
+                                <label>|</label>
+                                <span class="alltimes">共答题15次，</span>
+                                <span class="righttimes">答对5次</span>
+                                <span class="wrongtimes">答错10次</span>
+                                <em class="grasp">未掌握</em>
+                            </div>
+                            <div id="editconfig" class="editconfig fr">
+                                <i style="display:none">&nbsp;</i>
+                                <label style="display:none">|</label>
+                                <i class="selbtn">&nbsp;</i>
+                            </div>
+                        </div>
+                        <div class="itemcontent">
+                            <div class="subjecttitle">
+                                1.如果温度上升3∘C，记作+3∘C，那么温度下降2∘C记作（ ）
+                            </div>
+                            <div class="subjectcont">
+                                <div class="optionitem">
+                                    <label>A：</label><strong>-2</strong>
+                                </div>
+                                <div class="optionitem">
+                                    <label>B：</label><strong>-2</strong>
+                                </div>
+                                <div class="optionitem">
+                                    <label>C：</label><strong>-2</strong>
+                                </div>
+                                <div class="optionitem">
+                                    <label>D：</label><strong>-2</strong>
+                                </div>
+                            </div>
+                            <div class="showorhide"><span>查看解析&nbsp;</span></div>
+                            <div class="toggleshow" style="display:none">
+                                <div class="subjectanalysis">
+                                    <label class="fl">题目解析：</label>
+                                    <div class="subjectanalysistext">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="/Scripts/pagination/js/jquery.pagination.js"></script>
+<!--公式识别-->
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [["$", "$"]],   //行内公式选择$
+        displayMath: [["$$", "$$"]]    //段内公式选择$$
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],   //避开某些标签
+        ignoreHtmlClass: "comment-content" | "head-class",   //避开含该Class的标签，用|隔开
+        processHtmlClass: 'tex2jax_process'
+    }
+};
+</script>
+<script src='/Scripts/Mathjax-full-3.1/es5/tex-chtml.js'></script>
+<script>
+    webLogReg(".weblog");
+    $('.content8 .niceScrollbox').niceScroll({
+        cursorcolor: "#000000", //#CC0071 光标颜色
+        cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+        touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+        cursorwidth: "3px", //像素光标的宽度
+        cursorborder: "3px solid #000000", // 游标边框css定义
+        cursorborderradius: "3px", //以像素为光标边界半径
+        autohidemode: true, //是否隐藏滚动条
+        railpadding: {
+            top: 0,
+            right: 0,
+            left: 0,
+            bottom: 0
+        }, //滚动条的位置
+
+    });
+    $('.content8 .niceScrollbox').scroll(function (e) {
+        var scroH = $('.content8 .niceScrollbox').scrollTop();  //滚动高度
+        if (scroH > 90) {
+            $('.content11').show();
+        } else {
+            $('.content11').hide();
+        }
+    });
+    var xmSelect;
+    var xmSelectObj;
+    layui.use(['form', 'laydate','xmSelect'], function () {
+        var form = layui.form;
+        var laydate = layui.laydate;
+        form.render('select');
+        laydate.render({
+            elem: '#createDate',
+            range: true,
+            done: function (value) {
+                $('#createDate').val(value);
+            }
+        });
+        var
+        xmSelect = layui.xmSelect;
+        xmSelectObj = xmSelect.render({
+            el: '#level',
+            max: 5,
+            tips: '请选择难度',
+            maxMethod(seles, item) {
+                //console.log(item.name+"------------")
+                alert(`${item.name}不能选了,最多选择5老师`)
+                ///if (item.name!=undefined)
+                //layer.msg(`${item.name}不能选了,最多选择5个老师`)
+            },
+            model: {
+                label: {
+                    type: 'block',
+                    block: {
+                        //最大显示数量, 0:不限制
+                        showCount: 3,
+                        //是否显示删除图标
+                        showIcon: true,
+                    }
+                }
+            },
+            // tips: false,
+            // toolbar:false,
+            data: [
+			{ name: '1星', value: 1 },
+			{ name: '2星', value: 2 },
+			{ name: '3星', value: 3 },
+            { name: '4星', value: 4 },
+            { name: '5星', value: 5 }
+            ]
+        })
+        form.render();
+	});
+	var recordCount = 0;
+	var pageSize = 5;
+	var page = 1;
+	var isFirst = true;
+	var list = new Array();
+	$(function () {
+	    getWrongQuestion();
+	    checkAll();
+	    deleteQuestion();
+	    printQuestion();
+	    $(".dosearch").click(function () {
+	        page = 1;
+	        isFirst = true;
+	        getWrongQuestion();
+	    })
+	})
+	function deleteQuestion() {
+ 
+	    $(".deleteBtn").click(function () {
+   
+	        var ids = list;
+	        //var selBtn = $("#wrongList .selbtn")
+	        ////$(selBtn).each(function () {
+	        ////    if ($(this).hasClass('ljlactive') > 0) {
+	        ////        ids.push($(this).attr("qid"));
+	        ////    }
+	        ////})
+	        if (ids.length == 0) {
+	            layer.msg('请选择要删除的错题');
+	            return;
+	        }
+	        var winIndex = layer.confirm('是否要删除该错题？', {
+	            btn: ['否', '是'] //按钮
+	        }, function () {	            
+	            layer.close(winIndex);
+	        }, function () {
+	            $.ajax({
+	                url: '/Task/DeleteWrongQuestion',
+	                type: "post",
+	                dataType: "json",
+	                data: { studentId: curStudentId, ids: ids.join(',') },
+	                success: function (data) {
+	                    if (data.code == 200) {
+	                        list = new Array();
+	                        isFirst = true;
+	                        changeHead();
+	                        getWrongQuestion();
+	                        layer.msg("删除成功");
+	                    } else {
+	                        layer.msg("出错了，请刷新再尝试");
+	                    }
+	                },
+	                error: function (errorMsg) {
+	                    layer.msg("出错了，请刷新再尝试");
+	                }
+	            });
+	            layer.close(winIndex);
+	        });
+	       
+	    })
+	}
+	function printQuestion() {
+	    $(".printBtn").click(function () {
+
+	        var ids = list;
+	        if (ids.length == 0) {
+	            layer.msg('请选择要打印的题目');
+	            return;
+	        }
+	        var title = $.trim($("#students ul .ljlactive .studentinfo").text()) + "的错题本";
+  
+
+            layer.open({
+                type: 2,
+                skin: 'content88_1',
+                title: title,
+                area: ['1200px', '80%'],
+                btn: ['显示答案', '打印错题', '保存记录'],
+                btnAlign: 'c',
+                content: '/Content/template/window.html?id=' + parseInt(Math.random() * 100),
+                yes: function (index, layero) {
+                    var iframeWin = window[layero.find('iframe')[0]['name']];
+                    iframeWin.viewAnswer();
+                    if (iframeWin.isShow) {
+                        $('.layui-layer-btn0').text('隐藏答案');
+                    } else {
+                        $('.layui-layer-btn0').text('显示答案');
+                    }
+                    //$('#layui-layer-iframe1').animate({scrollTop: 0},200);
+                },
+                btn2: function (index, layero) {
+                    var iframeWin = window[layero.find('iframe')[0]['name']];
+                    iframeWin.doprint();
+                    //打印错题
+                    return false;
+                },
+                btn3: function (index, layero) {
+                    var iframeWin = window[layero.find('iframe')[0]['name']];
+                    iframeWin.savePrintLog();
+                    //保存记录
+                    return false;
+                },
+                btn4: function (index, layero) {
+                    var iframeWin = window[layero.find('iframe')[0]['name']];
+                    iframeWin.savePrintLog();
+                    //保存记录
+                    return false;
+                }
+            });
+            $(".layui-layer .layui-layer-btn2").attr("moduleId", "2");
+            $(".layui-layer .layui-layer-btn2").attr("subModuleId", "43");
+            $(".layui-layer .layui-layer-btn2").attr("actionType", "432");
+            $(".layui-layer .layui-layer-btn2").attr("datatype", "2");
+            webLogReg(".layui-layer .layui-layer-btn2");
+	    })
+	}
+	 
+	function changeHead() {
+	    $.ajax({
+	        url: '/Task/StudentStudyWrongHead',
+	        type: "post",
+	        dataType: "json",
+	        data: { classId: curClassId, studentId: curStudentId },
+	        success: function (data) {
+
+	            if (data.code == 200) {
+	                studentStudyWrongHead(data)
+
+	            } else {
+	                layer.msg("出错了，请刷新再尝试");
+	            }
+	        },
+	        error: function (errorMsg) {
+	            //console.log(JSON.stringify(errorMsg))
+	            //layer.msg("出错了，请刷新再尝试");
+	        }
+	    });
+	}
+	function checkAll() {
+	    $('#allselect .allsel').click(function () {
+	        if ($(this).hasClass('allselactive') > 0) {
+	            $(this).removeClass("allselactive")
+	            $('#wrongList .selbtn').removeClass("ljlactive");
+	            var btn = $('#wrongList .selbtn');
+	            btn.each(function () {
+	                for (let i in list) {
+	                    if (list[i] == $(this).attr("qid")) {
+	                        list.splice(i, 1);	                        
+	                        break;
+	                    }
+	                }	             
+	            });
+	        } else {
+	            $(this).addClass("allselactive");
+	            $('#wrongList .selbtn').addClass("ljlactive");
+
+	            var btn = $('#wrongList .selbtn');
+	            btn.each(function () {
+	                list.push($(this).attr("qid"));
+	            });
+	        }
+	    })
+	}
+
+	function getWrongQuestion() {
+	    var beginTime = "";
+	    var endTime = "";
+	    if ($.trim($("#createDate").val()) != "") {
+	        var time = $.trim($("#createDate").val()).split(" - ");
+	        if (time.length > 1) {
+	            beginTime = time[0];
+	            endTime = time[1];
+	        }
+	    }
+	    var questionType = 0;
+	    if ($('#questionType').val() != '')
+	        questionType = $('#questionType').val();
+	    var status = -1;
+	    if ($('#status').val() != '')
+	        status = $('#status').val();
+	    var wrongCount = 0;
+	    if ($('#wrongCount').val() != '')
+	        wrongCount = $('#wrongCount').val();
+	    var level = xmSelectObj.getValue('valueStr').split(',');
+	    $.ajax({
+	        url: '/Task/StudentStudyWrong',
+	        type: "post",
+	        dataType: "json",
+	        data: { studentId: curStudentId, classId: curClassId, page: page, pageSize: pageSize, beginTime: beginTime, endTime: endTime, questionType: questionType, status: status, wrongCount: wrongCount, level: level },
+	        success: function (data) {
+	            if (data.code == 200) {	                
+	                
+	                $("#wrongList").html(' <div class="content65" style="height:500px"></div>');
+	                recordCount = data.data.pageCount;
+	                // 创建分页
+	                $("#Pagination").pagination(recordCount, {
+	                    num_edge_entries: 1, //边缘页数
+	                    num_display_entries: 4, //主体页数
+	                    callback: pageselectCallback,
+	                    current_page:page-1,
+	                    items_per_page: pageSize, //每页显示1项
+	                    prev_text: "上一页",
+	                    next_text: "下一页"
+	                });
+	                $("#Pagination").hide();
+	                if (recordCount > 0) {
+	                    $("#wrongList").empty();
+	                    $("#Pagination").show();
+	                }
+	                $(data.data.data).each(function (index, element) {	                   
+	                    var node = getWrongNode(index,element)
+	                    $("#wrongList").append(node);	                    
+	                })
+	                if (data.data.data.length > 0) {
+	                    MathJax.typeset();
+	                    ShowInput3();
+	                    if ($('#wrongList .ljlactive').length < $('#wrongList .selbtn').length) {
+	                        $('#allselect .allsel').removeClass('allselactive');
+	                    } else {
+	                        $('#allselect .allsel').addClass('allselactive');
+	                    }
+	                    $('#wrongList .selbtn').click(function () {
+	                        if ($(this).hasClass('ljlactive') > 0) {
+	                            $(this).removeClass("ljlactive");
+	                            for (let i in list) {
+	                                if (list[i] == $(this).attr("qid")) {
+	                                    list.splice(i, 1);
+	                                    break;
+	                                }
+	                            }
+	                        } else {
+	                            $(this).addClass("ljlactive");
+	                            list.push($(this).attr("qid"));
+	                        }
+
+	                        if ($('#wrongList .ljlactive').length < $('#wrongList .selbtn').length) {
+	                            $('#allselect .allsel').removeClass('allselactive');
+	                        } else {
+	                            $('#allselect .allsel').addClass('allselactive');
+	                        }
+	                    })
+	                    $('.content78 .errorbookbox .showorhide').click(function () {
+	                        $(this).find('span').toggleClass('degspan');
+	                        $(this).parents('.erroritem').find('.toggleshow').slideToggle(function () {
+	                            $('.content8 .niceScrollbox').getNiceScroll().resize();
+	                        });
+
+	                    })
+	                    $("div.quizPutTag").text('');
+	                    $($("div.quizPutTag")).each(function () {
+	                        var answer = $(this).parents('.erroritem').find('.subjectanalysistext').attr("answer");
+	                        if (answer == null || answer == undefined)
+	                            answer = "";
+	                        var tempList = answer.split("㊣");
+	                        var ins = 0;
+	                        // 初始化
+	                        $(this).parents('.erroritem').find(".quizPutTag").each(function () {
+	                            // 当前输入
+	                            var control = $a(this);
+	                            control.setValue(tempList[ins]);
+	                            // 填空对错
+	                            control.showRight();
+	                            ins++;
+	                            
+	                        });
+	                    })
+	                   
+	                    $($("#wrongList .spanflagAnswers")).each(function () {
+	                        console.log($(this).text())
+	                        //正确答案
+	                        var alist = $(this).text().split(",");
+	                        var index = 1;
+	                        alist.forEach(function (item) {
+	                            findInput($("#wrongList"), item, index);
+	                            index++;
+	                        });
+	                        //用户答案
+	                        var answer = $(this).parents('.erroritem').find('.subjectanalysistext').attr("answer");
+	                        if (answer == null || answer == undefined)
+	                            answer = "";
+	                        var tempList = answer.split("㊣");
+	                        var ins = 0;
+	                        // 初始化
+	                        $(this).parents('.erroritem').find(".quizPutTag").each(function () {
+	                            // 当前输入
+	                            var control = $a(this);
+	                            control.setValue(tempList[ins]);
+	                            // 填空对错
+	                            control.showRight();
+	                            ins++;
+	                             
+	                        });
+
+	                    })
+	                    MathJax.typeset();
+	                    clickShowAnswer3($("#wrongList"));
+	                    $('.content8 .niceScrollbox').getNiceScroll().resize();
+	                }
+	                isFirst = false;
+
+	            } else {
+	                layer.msg("出错了，请刷新再尝试");
+	            }
+	        },
+	        error: function (errorMsg) {
+	            layer.msg("出错了，请刷新再尝试");
+	        }
+	    });
+	}
+	function pageselectCallback(page_index, jq) {
+	    if (isFirst)
+	        return false;
+	    isFirst = true;
+	    page = page_index + 1;
+	    getWrongQuestion();
+	    return false;
+	}
+	function getWrongNode(index, element) {
+	    var wrongTemp = $("#wrongTemp")[0];
+	    var temp = wrongTemp.cloneNode(true);
+	    $(temp).show();
+	 
+	    $(temp).find(".objdifficulty").find('img').remove();
+	    $(temp).find(".difficultytext").after(getLevel(element.level));
+	    $(temp).find(".alltimes").text("共答" + element.answerCount + "次，");
+	    $(temp).find(".righttimes").text("对" + element.rightCount + "次，");
+	    $(temp).find(".wrongtimes").text("错" + element.wrongCount + "次");
+	    $(temp).find(".grasp").text(element.isLearn);
+	    if (element.isLearn == '未掌握') {
+	        $(temp).find(".grasp").removeClass('grasp');
+	    }
+	    $(temp).find(".selbtn").attr("qid", element.qid);
+	    $(temp).find(".selbtn").removeClass('ljlactive')
+	   
+	    for (let i in list) {
+	        if (list[i] == element.qid) {
+	            $(temp).find(".selbtn").addClass('ljlactive')
+	            break;
+	        }
+	    }
+	    $(temp).find(".subjecttitle").attr("index", index + 1);
+	    $(temp).find(".subjecttitle").attr("qt", element.qTitle);
+	    $(temp).find(".subjecttitle").html("【" + ((page - 1) * pageSize + (index + 1)) + "】 " + element.qTitle);
+	    $(temp).find(".subjectcont").empty();
+	 
+	    if (element.qType == 1) {
+	        if (element.optionA != null && element.optionA != "")
+	            $(temp).find(".subjectcont").append('<div class="optionitem"><label>A：</label><strong>' + element.optionA + '</strong></div>');
+	        if (element.optionB != null && element.optionB != "")
+	            $(temp).find(".subjectcont").append('<div class="optionitem"><label>B：</label><strong>' + element.optionB + '</strong></div>');
+	        if (element.optionC != null && element.optionC != "")
+	            $(temp).find(".subjectcont").append('<div class="optionitem"><label>C：</label><strong>' + element.optionC + '</strong></div>');
+	        if (element.optionD != null && element.optionD != "")
+	            $(temp).find(".subjectcont").append('<div class="optionitem"><label>D：</label><strong>' + element.optionD + '</strong></div>');
+	        if (element.optionE != null && element.optionE != "")
+	            $(temp).find(".subjectcont").append('<div class="optionitem"><label>E：</label><strong>' + element.optionE + '</strong></div>');
+	        $(temp).find(".subjectcont").append('<div class="optionitem studentsanswer">学生答案：' + (element.studentAnswer == null || element.studentAnswer == "" ? "未作答" : element.studentAnswer) + '</div>');
+	    } else {
+	        //$(temp).find(".subjectcont").remove();
+	        if (element.qType == 3) {
+	            $(temp).find(".subjectcont").append('<div class="optionitem studentsanswer">' +  element.answer  + '</div>');
+	        }
+	    }
+	    $(temp).find(".subjectanalysistext").html(element.answerExplain);
+	    $(temp).find(".subjectanalysistext").attr("answer", element.studentAnswer);
+	    return $(temp)[0];
+	}
+    //打印数据
+	function getPrintData() {
+	    var printData = {};	   
+	    printData.name = $("#students ul .ljlactive .studentinfo").text();
+	    printData.data = list;
+	    printData.studentId = curStudentId;
+	    return printData;
+	}
+	function newTitle() {
+	    var title = $.trim($("#students ul .ljlactive .studentinfo").text()) + "的错题本";
+	    $(document).attr("title", title);
+	}
+	function oldTitle() {
+	    $(document).attr("title", "课后任务");
+	}
+</script>

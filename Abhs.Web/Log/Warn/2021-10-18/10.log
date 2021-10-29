@@ -1,0 +1,22 @@
+2021-10-18 10:02:34,711 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 2/2, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:33:33,016 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 2/2, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:22,481 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 2/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:22,481 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 2/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:34,230 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 3/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:41,737 WARN  : GetAllList------hashkey:studentmsg:1000000:2021-10-18,times:1448,data:0
+2021-10-18 10:39:41,738 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 0/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:41,739 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 1/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:42,459 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 3/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:43,323 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 3/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:46,989 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 2/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:47,129 WARN  : GetAllList------hashkey:studentmsg:1000000:2021-10-18,times:113,data:0
+2021-10-18 10:39:47,129 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 3/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:39:55,915 WARN  : GetAllList------hashkey:studentmsg:1000000:2021-10-18,times:8785,data:0
+2021-10-18 10:39:55,915 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 3/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:40:03,344 WARN  : GetAllList------hashkey:studentmsg:1000000:2021-10-18,times:7431,data:0
+2021-10-18 10:40:03,344 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 3/3, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:41:15,403 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 5/5, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:41:15,404 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 5/5, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:41:15,404 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 5/5, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:41:15,404 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 5/5, Get wait: 0, GetAsync wait: 0
+2021-10-18 10:41:15,404 WARN  : 对象池信息: 127.0.0.1:6379/4|Pool: 5/5, Get wait: 0, GetAsync wait: 0

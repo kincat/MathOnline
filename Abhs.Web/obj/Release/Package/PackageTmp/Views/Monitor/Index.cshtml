@@ -1,0 +1,1348 @@
+﻿@{
+    ViewBag.Title = "课中管理";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    
+//课中监控页
+}
+@using Abhs.Model.Access;
+@section Head{
+    <link href="/Content/css/animate.min.css" rel="stylesheet" />
+    <script src="/Scripts/jquery.nicescroll.js"></script>
+    <script src="/Scripts/wow.js"></script>
+    <script src="/Scripts/layui/layui.js"></script>
+    <script src="~/Scripts/plug-in/plug-in.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/ckplayer/packageCkPlayer.js?t=20201227"></script>
+    <script type="text/javascript" src="~/Scripts/base/base.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())"></script>
+<!--公式识别-->
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [["$", "$"]],   //行内公式选择$
+        displayMath: [["$$", "$$"]]    //段内公式选择$$
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],   //避开某些标签
+        ignoreHtmlClass: "comment-content" | "head-class",   //避开含该Class的标签，用|隔开
+        processHtmlClass: 'tex2jax_process'
+    }
+};
+</script>
+<script src='/Scripts/Mathjax-full-3.1/es5/tex-chtml.js'></script>
+    <script>
+
+        $(function () {
+
+            //左一栏滚动条
+            $('.content4 .niceScrollbox').niceScroll({
+                cursorcolor: "#000000", //#CC0071 光标颜色
+                cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+                touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+                cursorwidth: "3px", //像素光标的宽度
+                cursorborder: "3px solid #000000", // 游标边框css定义
+                cursorborderradius: "3px", //以像素为光标边界半径
+                autohidemode: true, //是否隐藏滚动条
+                railpadding: {
+                    top: 0,
+                    right: 18,
+                    left: 0,
+                    bottom: 0
+                }, //滚动条的位置
+            });
+            //左三栏滚动条
+            $('.content8 .niceScrollbox').niceScroll({
+                cursorcolor: "#000000", //#CC0071 光标颜色
+                cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+                touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+                cursorwidth: "3px", //像素光标的宽度
+                cursorborder: "3px solid #000000", // 游标边框css定义
+                cursorborderradius: "3px", //以像素为光标边界半径
+                autohidemode: true, //是否隐藏滚动条
+                railpadding: {
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                    bottom: 0
+                }, //滚动条的位置
+
+            });
+
+            //左二栏滚动条
+            $('.content5 .niceScrollbox').niceScroll({
+                cursorcolor: "#000000", //#CC0071 光标颜色
+                cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+                touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+                cursorwidth: "3px", //像素光标的宽度
+                cursorborder: "3px solid #000000", // 游标边框css定义
+                cursorborderradius: "3px", //以像素为光标边界半径
+                autohidemode: true, //是否隐藏滚动条
+                railpadding: {
+                    top: 0,
+                    right: 18,
+                    left: 0,
+                    bottom: 0
+                }, //滚动条的位置
+            });
+            //全屏点击事件
+            $('.content7 a').click(function () {
+                if ($('.content6').hasClass('fx')) {
+                    $('.content6').removeClass('fx');
+                    $(this).html('全屏');
+                    setTimeout(function () {
+                        $('.content8 .niceScrollbox').getNiceScroll().resize();
+                    }, 310);
+                } else {
+                    setTimeout(function () {
+                        $('.content8 .niceScrollbox').getNiceScroll().resize();
+                    }, 310);
+                    $('.content6').addClass('fx');
+                    $(this).html('退出全屏')
+                }
+            });
+            //个人预警折叠
+            $('.content24 .list1').click(function () {
+                if ($(this).parents('.content24').find('.ljlshowbox').is(":hidden")) {
+                    $(this).parents('.content24').find('.list1 .linebottom').show();
+                } else {
+                    $(this).parents('.content24').find('.list1 .linebottom').hide();
+                }
+                setTimeout(function () {
+                    $('.content8 .niceScrollbox').getNiceScroll().resize();
+                }, 400);
+                $(this).parents('.content24').find('.ljlshowbox').slideToggle();
+            });
+            //个人提问折叠
+            $('.content26 .list1').click(function () {
+                if ($(this).parents('.content26').find('.ljlshowbox').is(":hidden")) {
+                    $(this).parents('.content26').find('.list1 .linebottom').show();
+                } else {
+                    $(this).parents('.content26').find('.list1 .linebottom').hide();
+                }
+                setTimeout(function () {
+                    $('.content8 .niceScrollbox').getNiceScroll().resize();
+                }, 400);
+                $(this).parents('.content26').find('.ljlshowbox').slideToggle();
+            });
+
+            $('.content27 .list1').click(function () {
+                if ($(this).parents('.content27').find('.ljlshowbox').is(":hidden")) {
+                    $(this).parents('.content27').find('.list1 .linebottom').show();
+                } else {
+                    $(this).parents('.content27').find('.list1 .linebottom').hide();
+                }
+                setTimeout(function () {
+                    $('.content8 .niceScrollbox').getNiceScroll().resize();
+                }, 400);
+                $(this).parents('.content27').find('.ljlshowbox').slideToggle();
+            });
+
+
+            //左三栏滚动收起效果
+            $('.content8 .niceScrollbox').scroll(function (e) {
+                var scroH = $('.content8 .niceScrollbox').scrollTop(); //滚动高度
+                if (scroH > 90) {
+                    if ($('.content40').find('.pagelist').eq(0).is(':hidden')) {
+                        $('.content44').show();
+                        $('.content43').hide();
+                    } else {
+                        $('.content44').hide();
+                        $('.content43').show();
+                    }
+                } else {
+                    $('.content43').hide();
+                    $('.content44').hide();
+                }
+            });
+
+            //全部学生管理切换标签
+            $('.content41 .objtab a').click(function () {
+                var ind = $(this).index();
+                $("#current_moduletype").val(ind + 1);
+                $.each($('.content6').find('.content41'), function () {
+                    $(this).find('.objtab a').eq(ind).addClass('ljlactive').siblings().removeClass('ljlactive')
+                })
+                $('.content45 .contlist').eq($(this).index()).show().siblings().hide();
+                $('.content8 .niceScrollbox').getNiceScroll().resize();
+                if ($(this).parents('.content23').hasClass('content43')) {
+                    $('.content8 .niceScrollbox').animate({
+                        scrollTop: 92
+                    }, 300);
+                }
+            });
+
+
+            //单个学生管理切换标签
+            $('.content42 .objtab a').click(function () {
+                var ind = $(this).index();
+                $("#current_moduletype").val(ind + 1);
+                $.each($('.content6').find('.content42'), function () {
+                    $(this).find('.objtab a').eq(ind).addClass('ljlactive').siblings().removeClass('ljlactive')
+                })
+                //$(this).addClass('ljlactive').siblings().removeClass('ljlactive');
+                $('.content46 .contlist').eq($(this).index()).show().siblings().hide();
+                $('.content8 .niceScrollbox').getNiceScroll().resize();
+                if ($(this).parents('.content23').hasClass('content44')) {
+                    $('.content8 .niceScrollbox').animate({
+                        scrollTop: 92
+                    }, 300);
+                }
+            });
+            //单个学生,待处理和全部的切换
+            //$('.content42 .conttab1 a').click(function () {
+            //    var ind = $(this).index();
+            //    $.each($('.content6').find('.content42'), function () {
+            //        $(this).find('.conttab1 a').eq(ind).addClass('ljlactive').siblings().removeClass('ljlactive')
+            //    })
+            //});
+
+            $('.content29 .niceScrollbox').niceScroll({
+                cursorcolor: "#000000", //#CC0071 光标颜色
+                cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+                touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+                cursorwidth: "3px", //像素光标的宽度
+                cursorborder: "3px solid #000000", // 游标边框css定义
+                cursorborderradius: "3px", //以像素为光标边界半径
+                autohidemode: true, //是否隐藏滚动条
+                railpadding: {
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                    bottom: 0
+                }, //滚动条的位置
+            });
+
+            $('.content129 .niceScrollbox').niceScroll({
+                cursorcolor: "#000000", //#CC0071 光标颜色
+                cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+                touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+                cursorwidth: "3px", //像素光标的宽度
+                cursorborder: "3px solid #000000", // 游标边框css定义
+                cursorborderradius: "3px", //以像素为光标边界半径
+                autohidemode: true, //是否隐藏滚动条
+                railpadding: {
+                    top: 0,
+                    right: 0,
+                    left: 0,
+                    bottom: 0
+                }, //滚动条的位置
+            });
+
+            $('.content20 .onlinebox').hover(function () {
+                $('.content47').show();
+            }, function () {
+                $('.content47').hide();
+            })
+
+            $('.content47').hover(function () {
+                $('.content47').show();
+            }, function () {
+                $('.content47').hide();
+            });
+
+            $('.content27 .ljlshowbox .list1 .cnttext').click(function () {
+                $(this).parents('.ljlshowbox').find('.ljlcnt').slideToggle();
+            });
+
+        })
+
+    </script>
+    <style>
+        body {
+            background: #1D2732;
+        }
+        .content123 {
+            position: fixed;
+            left: 0;
+            display: none;
+            top: 0;
+            z-index: 7;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hasimg {
+            background: url(../images/videoico.png) no-repeat right center;
+            padding-right: 36px;
+        }
+
+        .nodate {
+            height: 500px;
+            background: url(../../Content/images/nq.png) no-repeat center center;
+             background-size:200px auto;
+        }
+
+        .nodate1 {
+            height: 500px;
+            background: url(../../Content/images/noyujing.png) no-repeat center center;
+            background-size:200px auto;
+        }
+
+        body .layui-layer-btn .layui-layer-btn0 {
+            border-color: #fff;
+            background-color: #3CC9AE;
+            color: #fff;
+        }
+
+        .content132 {
+            position: fixed;
+            left: 0;
+            display: none;
+            top: 0;
+            z-index: 7;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        .content129 {
+            position: fixed;
+            top: 70px;
+            right: 0;
+            width: 0;
+            z-index: 8;
+            height: calc(100% - 70px);
+            background: #FFFFFF;
+            transition: all .3s linear;
+            box-shadow: 0px 2px 43px 0px rgba(136, 136, 136, 0.5);
+        }
+
+            .content129 .tabbox {
+                text-align: right;
+                padding-bottom: 15px;
+                padding-right: 20px;
+            }
+
+            .content129.content29_1 {
+                width: 700px;
+            }
+
+            .content129 .tabbox a {
+                display: inline-block;
+                width: 90px;
+                line-height: 28px;
+                cursor: pointer;
+                margin: 0 5px;
+                text-align: center;
+                font-size: 14px;
+                height: 30px;
+                border: 1px solid #C5C5C5;
+                border-radius: 3px;
+            }
+
+                .content129 .tabbox a:hover {
+                    border: 1px solid #3CC9AE;
+                    color: #3CC9AE;
+                }
+
+                .content129 .tabbox a:last-child {
+                    margin-right: 0;
+                }
+
+                .content129 .tabbox a.ljlactive {
+                    background: #3CC9AE;
+                    border: 1px solid #3CC9AE;
+                    color: #fff;
+                }
+
+            .content129 .box {
+                width: 700px;
+                height: 100%;
+                position: relative;
+            }
+
+            .content129 .niceScrollbox {
+                height: calc(100% - 100px);
+            }
+
+
+            .content129 .closewindow {
+                text-align: right;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                z-index: 7;
+            }
+
+                .content129 .closewindow span {
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    cursor: pointer;
+                    background: url(../../Content/images/close.png);
+                }
+
+            .content129 .ftitle {
+                padding: 50px 0 20px 65px;
+            }
+
+                .content129 .ftitle span {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #222222;
+                }
+
+                    .content129 .ftitle span.hasimg {
+                        background: url(../../Content/images/videoico.png) no-repeat right center;
+                        padding-right: 36px;
+                    }
+
+                .content129 .ftitle em {
+                    font-size: 14px;
+                    color: #222222;
+                }
+            .classcontainer li .labelkc{
+                text-align:center;
+                color:#ccc;
+                padding-top:30px;
+            }
+
+             .content19  .labelkc{
+                text-align:center;
+                color:#ccc;
+                padding-top:30px;
+                border-top: 1px solid #f5f6f6;
+            }
+             .content40 .nodate2{
+	            height: 320px;
+	            background: url(../../Content/images/pagenodate.png) no-repeat center 40px;
+                position: absolute;
+	            top: 0;
+	            bottom: 0;
+	            left: 0;
+	            right: 0;
+	            margin: auto;
+            }
+             .userinfo_classid{
+                width: 84px;
+	            height: 23px;
+	            background: #1890FF;
+	            border-radius: 3px;
+	            display: inline-block;
+	            line-height: 23px;
+	            text-align: center;
+	            font-size: 14px;
+	            font-weight: bold;
+	            color: #FFFFFF;
+             }
+             body .layui-layer-btn .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #ffffff;
+            color: black;
+        }
+       body .layui-layer-btn1 {
+            border-color: #cccccc;
+            background-color: #3cc9ae;
+            color: #fff;
+        }
+    </style>
+}
+
+<div class="content47">
+    <div class="studentstatus">
+        <a href="#" data-status="all"><img src="/Content/images/dp1.png" />在线学生</a>
+        <a href="#" data-status="purple"><img src="/Content/images/dp2.png" />紫灯学生<span><span>（正确率&nbsp;&gt;&nbsp;80%）</span></span></a>
+        <a href="#" data-status="yellow"><img src="/Content/images/dp3.png" />黄灯学生<span>（45%&nbsp;&lt;&nbsp;正确率&nbsp;&lt;&nbsp;80%）</span></a>
+        <a href="#" data-status="red"><img src="/Content/images/dp4.png" />红灯学生<span>（0%&nbsp;&lt;&nbsp;正确率&nbsp;&lt;&nbsp;45%）</span></a>
+        <a href="#" data-status="gray"><img src="/Content/images/dp5.png" />灰灯学生<span>（无正确率）</span></a>
+        <a href="#" data-status="go"><img src="/Content/images/dp7.png" />离线学生</a>
+        <a href="#" data-status="off"><img src="/Content/images/dp6.png" />缺勤学生</a>
+    </div>
+</div>
+<div class="content3">
+    <div class="contbox"></div>
+</div>
+<!-- 左一栏列表 班级列表 -->
+<div class="content4">
+    <div class="ljltitle">
+        班级
+    </div>
+    <div class="niceScrollbox">
+        <div class="content18">
+            <div class="contbox">
+                <ul class="classcontainer"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 左二栏列表 学生列表 -->
+<div class="content5 content20">
+    <input type="hidden" id="student_current_filter_status" value="all" />
+    <input type="hidden" id="student_current_selected" value="" />
+    <div class="ljltitle">
+        <span class="fl">学生<i id="student_online_status" class="onlinenumb">(0/0)</i></span>
+        <div class="onlinebox fr">
+            <label class="textbox">在线学生</label>
+        </div>
+    </div>
+    <div class="niceScrollbox">
+        <div class="content19">
+            <div id="studentlist_container" class="contbox">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 左三栏内容 -->
+<div class="content6 content21">
+    <!-- 全屏功能 -->
+    <div class="content7">
+        <div class="contbox">
+            <div class="label fl">详情</div>
+            <a href="#">全屏</a>
+        </div>
+    </div>
+    <!-- 全部学生管理切换标签 悬浮 -->
+    <div class="content23 content25 content41 content43">
+        <div class="contbox">
+            <div class="conttab objtab fl">
+                <a class="fl ljlactive" >提问(<em class="question_all_untreatcount"></em>)</a>
+                <a class="fl">预警(<em class="warning_all_untreatcount"></em>)</a>
+            </div>
+            @*<div class="conttab conttab1 fr">
+                    <a class="fl ljlactive">待处理</a>
+                    <a class="fl">全 部</a>
+                </div>*@
+        </div>
+    </div>
+    <!-- 单个学生管理切换标签, 滚动后悬浮的部分 -->
+    <div class="content23 content25 content42 content44">
+        <div class="contbox">
+            <div class="conttab objtab fl">
+                <a href="#" class="fl ljlactive">提问(<em class="student_question_untreatcount"></em>)</a>
+                <a href="#" class="fl">预警(<em class="student_warning_untreatcount"></em>)</a>
+                <a href="#" class="fl">学情</a>
+                <a href="#" class="fl" onclick="MonitorClass.getStudentTodayWrongQuestion()">今日错题</a>
+            </div>
+            @*<div class="conttab conttab1 fr">
+                    <a href="#" class="fl ljlactive">待处理</a>
+                    <a href="#" class="fl">全 部</a>
+                </div>*@
+        </div>
+    </div>
+    <!-- 学生管理内部分 -->
+    <div class="content8">
+        <div class="niceScrollbox">
+            <div class="content40">
+                <!-- 全部学生管理内容 -->
+                <div class="pagelist quanbuxuesheng">
+                    <!-- 全部学生表头 -->
+                    <div class="content22 content33">
+                        <div class="contbox">
+                            <div class="userinfo fl">
+                                <div class="username">
+                                    <i class="userinfo_classid"></i>
+                                    <span class="classname"></span>
+                                    <a class="xiake weblogtab" href="#" moduleId="1"  subModuleId="@((int)EnumActivityModule.班级下课)" actionType="@((int)EnumActivityAction.班级立即下课)" datatype="1">下 课</a>
+                                    <a class="yanchixiake weblogtab" style="display:none;" href="#"  moduleId="1"  subModuleId="@((int)EnumActivityModule.班级下课)" actionType="@((int)EnumActivityAction.班级延时下课)" datatype="1">延迟下课</a>
+                                </div>
+                                <div class="userconfig">
+                                    <span class="cospan">上课时间：</span> <span class="class_schedule"></span>丨
+                                    <span class="cospan">在线人数：</span><span class="class_onlinenum"></span>人丨
+                                    <span class="cospan">出勤率：</span><span class="class_chuqinlv"></span>％
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 全部学生管理切换标签 非悬浮 -->
+                    <div class="content23 content41">
+                        <div class="contbox">
+                            <div class="conttab objtab fl">
+                                <a href="#" class="fl ljlactive weblogtab" moduleId="1"  subModuleId="@((int)EnumActivityModule.班级提问)" actionType="@((int)EnumActivityAction.班级提问浏览)" datatype="1" >提问(<em class="question_all_untreatcount"></em>)</a>
+                                <a href="#" class="fl weblogtab" moduleId="1"  subModuleId="@((int)EnumActivityModule.班级预警)" actionType="@((int)EnumActivityAction.班级预警浏览)" datatype="1"  >预警(<em class="warning_all_untreatcount"></em>)</a>
+                            </div>
+                            @*<div class="conttab conttab1 fr">
+                                       <a href="#" class="fl ljlactive">待处理</a>
+                                       <a href="#" class="fl">全 部</a>
+                                </div>*@
+                        </div>
+                    </div>
+                    <div class="content31 content45 a123">
+                        <!-- 全部学生提问列表 -->
+                        <div class="contlist">
+                            <div class="content35 quanbutiwenlieibao">
+                                <div class="contbox allquestion_container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 全部学生预警列表 -->
+                        <div class="contlist" style="display: none;">
+                            <div class="content34 quanbuyujingliebiao">
+                                <div class="contbox allwarning_container">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 单个学生管理内容 -->
+                <div class="pagelist dangexuesheng" style="display: none;">
+                    <div class="content22">
+                        <!-- 单个学生表头 -->
+                        <div class="contbox">
+                            <div class="userpic">
+                                <img class="head_student_head" src="/Content/images/userimg.png" />
+                            </div>
+                            <div class="userinfo fl">
+                                <div class="username"><span class="head_student_name"></span>，&nbsp;<span class="head_student_desc"></span></div>
+                                <div class="userconfig">
+                                    <span style="color:#999;">等级:</span>
+                                    <span class="head_student_level">
+                                        <img src="/Content/images/actstar.png" />
+                                        <img src="/Content/images/actstar.png" />
+                                        <img src="/Content/images/actstar1.png" />
+                                        <img src="/Content/images/actstar1.png" />
+                                        <img src="/Content/images/actstar1.png" />
+                                    </span>
+                                    丨<span style="color:#999;">已上课：</span><em class="head_student_duration"></em>分<em class="head_student_duration_second"></em>秒
+                                    丨<span style="color:#999;">已作答：</span><em class="head_student_answercount"></em>题丨
+                                    <img class="dp3 head_student_light" src="/Content/images/dp3.png" />
+                                    <span style="color:#999;">正确率：</span> <em class="head_student_accuracy"></em>
+
+                                </div>
+
+                            </div>
+                            <div class="goldbox">
+                                <div class="gold1 fl" id="getgold">
+                                        <div class="imgbox"><img src="/Content/images/gold.png" /></div>
+                                        <div class="infotext">奖励金币</div>
+                                    </div>
+                                <div class="gold1 fl head_student_attention weblog"  moduleId="1"  subModuleId="@((int)EnumActivityModule.学生关注)" datatype="0" onclick="MonitorClass.doAttentionStudent(this)" id="focusone">
+                                    <div class="imgbox">
+                                        <img src="/Content/images/xx.png" />
+                                        <img src="/Content/images/xx1.png" />
+                                    </div>
+                                    <div class="infotext">重点关注</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content23 content42">
+                        <!-- 单个学生管理切换标签 非悬浮 -->
+                        <div class="contbox">
+                            <div class="conttab objtab fl">
+                                <a href="#" class="fl ljlactive weblogtab" moduleId="1"  subModuleId="@((int)EnumActivityModule.学生提问)" actionType="@((int)EnumActivityAction.学生提问浏览)" datatype="0" >提问(<em class="student_question_untreatcount"></em>)</a>
+                                <a href="#" class="fl weblogtab" moduleId="1"  subModuleId="@((int)EnumActivityModule.学生预警)" actionType="@((int)EnumActivityAction.学生预警浏览)" datatype="0">预警(<em class="student_warning_untreatcount"></em>)</a>
+                                <a href="#" class="fl weblogtab" moduleId="1"  subModuleId="@((int)EnumActivityModule.学生学情)" actionType="@((int)EnumActivityAction.学生学情浏览)" datatype="0">学情</a>
+                                <a href="#" class="fl weblogtab" moduleId="1"  subModuleId="@((int)EnumActivityModule.今日错题)" actionType="@((int)EnumActivityAction.学生今日错题浏览)" datatype="0" onclick="MonitorClass.getStudentTodayWrongQuestion()">今日错题</a>
+                            </div>
+                            @*<div class="conttab conttab1 fr">
+                                       <a href="#" class="fl ljlactive">待处理</a>
+                                       <a href="#" class="fl">全 部</a>
+                                </div>*@
+                        </div>
+                    </div>
+                    <div class="content31 content46">
+                        <!-- 个人提问 -->
+                        <div class="contlist student_question_container">
+
+                        </div>
+                        <!-- 个人预警 -->
+                        <div class="contlist student_warning_container" style="display: none;">
+
+                        </div>
+                        <!-- 学情 -->
+                        <div class="contlist" style="display: none;">
+                            <div class="content27">
+                                <div class="contbox student_all_container">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 今日错题 -->
+                        <div class="contlist today_wrong_question" style="display: none;">
+                          
+                            <div class="content65" style="height:500px"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="contlist" id="wrongTemp" style="display:none">
+    <div class="content90">
+        <div class="errorbookbox">
+            <div class="errorbooklist">
+
+                <div class="errorbookitems">
+                   
+                </div>
+            </div>          
+        </div>
+    </div>
+</div>
+ <div class="erroritem" id="wrongQuestionTemp" style="display:none">
+                        <div class="itemtitle">
+                            <div class="objdifficulty line1">
+                                <span class="difficultytext">难度：</span>
+                                <label>|</label>
+                                <span class="all">共答15次,</span>
+                                <span class="righttimes">对5次,</span>
+                                <span class="wrongtimes">错10次</span>
+                                <label>|</label>
+                                <span class="wrongSource"></span>
+
+                            </div>
+                            <div id="editconfig" class="editconfig fr">
+                                
+                            </div>
+                        </div>
+                        <div class="itemcontent">
+                            <div class="subjecttitle">
+                                1.如果温度上升3∘C，记作+3∘C，那么温度下降2∘C记作（ ）
+                            </div>
+                            <div class="subjectcont">
+                                <div class="optionitem">
+                                    <label>A：</label><strong>-2</strong>
+                                </div>
+                                <div class="optionitem">
+                                    <label>B：</label><strong>-2</strong>
+                                </div>
+                                <div class="optionitem">
+                                    <label>C：</label><strong>-2</strong>
+                                </div>
+                                <div class="optionitem">
+                                    <label>D：</label><strong>-2</strong>
+                                </div>
+
+                            </div>
+                            <div class="showorhide"><span>查看解析&nbsp;</span></div>
+                            <div class="toggleshow">
+                                <div class="subjectanalysis">
+                                    <div class="studentsanswer" style="display:none">
+                                    </div>
+                                    <label class="fl">题目解析：</label>
+                                    <div class="subjectanalysistext">
+                                        在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中在一对具有相反意义的量中，先规定其中一个为正，则另一个就用负表示．
+
+                                        解：“正”和“负”相对，如果温度上升3
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!-- 视频提问弹窗 -->
+<div class="content39" style="display: none;">
+    <div class="contbox">
+        <div class="videobox fl" id="videoTemp"></div>
+        <div class="questionbox">
+            <div class="questiontitle">问题描述：</div>
+            <div class="questioninfo"></div>
+        </div>
+        <div class="btns videobtns">
+            <a href="#" class="video_hujiao">呼叫</a>
+            <a href="#" class="ljlactive video_hulue">忽略</a>
+            <a href="#" class="ljlactive video_close" style="display:none">关闭</a>
+        </div>
+    </div>
+</div>
+
+<!-- 提问弹窗 -->
+<div class="content29 question_window">
+    <div class="box">
+        <div class="closewindow"><span></span></div>
+        <div class="ftitle"><span></span></div>
+        <div class="tabbox">
+            <a class="btn_neglect_all weblogtab" moduleId="1"  subModuleId="@((int)EnumActivityModule.班级提问)" actionType="@((int)EnumActivityAction.班级全部提问忽略)" datatype="1">全部忽略</a>
+            <a class="ljlactive btn_call_all weblogtab" moduleId="1"  subModuleId="@((int)EnumActivityModule.班级提问)" actionType="@((int)EnumActivityAction.班级全部提问呼叫)" datatype="1">全部呼叫</a>
+        </div>
+        <div class="niceScrollbox">
+            <div class="content30">
+                <div class="contbox">
+                    <div class="ljlshowbox">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--预警弹窗-->
+<div class="content129 warning_window">
+    <div class="box">
+        <div class="closewindow"><span></span></div>
+        <div class="content36">
+            <div class="contbox">
+                <div class="userpic">
+                    <img src="/Content/images/userimg.png" />
+                </div>
+                <div class="userinfo fl">
+                    <div class="username">
+                        <span class="studentname">张无忌</span>
+                        <em class="studentwarningcount_wrapper">(<em class="studentwarningcount">0</em>次预警未处理)</em>
+                        @*<a href="#">奖惩金币</a>*@
+                    </div>
+                    <div class="userconfig">
+                        <span>等级:</span>
+                        <span class="studentlevel">
+                        </span>
+                        <span>丨已上课：<em class="head_student_duration"></em>分<em class="head_student_duration_second"></em>秒丨已作答：<em class="head_student_answercount"></em>题丨<img class="dp3 head_student_light" src="/Content/images/dp3.png" /> 正确率: <em class="head_student_accuracy"></em></span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="niceScrollbox">
+            <div class="content37" style="">
+                <div class="contbox warning_window_content">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content32"></div>
+<div class="content123"></div>
+
+<!-- 模板区域 -->
+<div id="hide_template" style="display:none;">
+    <ul>
+        <!--班级列表-->
+        <li class="lihover template_classitem">
+            <a href="#" class="dataitem" data-classid="" data-courseid="" data-schoolid="" data-week="">
+                <div class="righticon"><img src="/Content/images/rightico.png" /></div>
+                <div class="ltitle">
+                    <div class="label fl line1">七年级同步班</div>
+                    <div class="ljlconfig">
+                        <span class="preparedLessons fr"><i class="fl">警</i><em class="fl waningcount">5</em></span>
+                        <span class="Lessons fr"><i class="fl">问</i><em class="fl questioncount">4</em></span>
+                    </div>
+                </div>
+                <div class="classtime">上课时间：10：00-12：00</div>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tit student_title" data-classid="" data-schoolid="" data-start="" data-end="">
+        在线全部学生
+        <div class="righticon"><img src="/Content/images/rightico.png" /></div>
+    </div>
+    <div class="listbox template_student_list">
+        <div class="listitlte moduletypename"></div>
+        <ul></ul>
+    </div>
+    <ul>
+        <!-- 学生列表 -->
+        <li class="lihover template_student_item">
+            <a href="#" class="dataitem weblog" data-classid="" data-studentid=""   moduleId="1"  subModuleId="@((int)EnumActivityModule.学生提问)" actionType="@((int)EnumActivityAction.学生提问浏览)" datatype="0">
+                <div class="righticon"><img src="/Content/images/rightico.png" /></div>
+                <div class="studentinfo">
+                    <div class="label fl">
+                    </div>
+                    <div class="conf fr spec_info">
+                        <span class="preparedLessons fr wwc">0</span>
+                        <span class="Lessons fr qwc">0</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+    <!--学生:消息类别-->
+    <div class="content24 content26 template_student_message_item">
+        <div class="contbox">
+            <div class="list list1">
+                <div class="timeline">
+                    <div class="linecnt">
+                        <div class="linecnt1">
+                            <div class="linetop"></div>
+                            <div class="lineinfo">
+                                <em class="singleword">学</em>
+                            </div>
+                            <div class="linebottom"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="listbox">
+                    <div class="cnt">
+                        <div class="cnttext"><span class="categoryname"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ljlshowbox">
+
+            </div>
+        </div>
+    </div>
+    <!--学生:消息体-->
+    <div class="list template_msgitem">
+        <div class="timeline">
+            <div class="linecnt">
+                <div class="linecnt1">
+                    <div class="linetop"></div>
+                    <div class="lineinfo">
+                        <span class="time_ms">11:05</span>
+                        <em></em>
+                    </div>
+                    <div class="linebottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="listbox">
+            <div class="cnt">
+                <div class="cnttext">
+                </div>
+                <div class="btns">
+                    <span class="fl">还有3位同学有相同问题</span>
+                    <a class="fl checkquestion" href="#">查看</a>
+                    <a href="#">详 情</a>
+                    <a href="#">忽 略</a>
+                    <a href="#" class="ljlactive">呼 叫</a>
+                    <a href="#" class="ljlactive">再次呼叫</a>
+                </div>
+            </div>
+            <div class="ico"></div>
+        </div>
+    </div>
+
+    <!--全班:消息类别-->
+    <div class="ljllist template_class_message_question">
+        <div class="cnt">
+            <div class="ftitlte">
+                <label class="fl">第一课时 视频提问</label>
+                <a href="#" class="overview">还有<span class="peoplenum"></span>位同学的<span class="questionnum"></span>次提问未处理</a>
+            </div>
+            <div class="userinfobox">
+                <div class="usercnt">
+                    <div class="textinfo">
+                        <div class="label fl">学生姓名:</div>
+                        <div class="text">
+                            <span class="data_studentname"></span>
+                            <span class="data_level">
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar1.png" />
+                            </span>
+                            <span class="videotimepoint" style="display:none;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;提问时间：<em class="minute">0</em>分<em class="second">0</em>秒
+                            </span>
+                            <span class="questiontype_difficulty" style="display:none;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;题目难度：
+                                <span class="questiontype_difficulty_stars">
+                                    <img src="/Content/images/actstar.png" />
+                                    <img src="/Content/images/actstar.png" />
+                                    <img src="/Content/images/actstar.png" />
+                                    <img src="/Content/images/actstar.png" />
+                                    <img src="/Content/images/actstar1.png" />
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="allcontent">
+
+                    </div>
+                    <div class="timedate">10:30</div>
+                </div>
+                <!--最多8个, 最少1个-->
+                <div class="studentslist">
+                    <a href="#" class="more questionmore weblog" onclick="MonitorClass.slideAboutQuestion(this)"  moduleId="1"  subModuleId="@((int)EnumActivityModule.班级提问)" actionType="@((int)EnumActivityAction.班级查看全部提问)" datatype="1" >查看全部</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="studlist fl template_class_message_stuitem">
+        <div class="imgbox fl"><img src="/Content/images/userimg.png" /></div>
+        <div class="userinfo fl">
+            <div class="username">王小二</div>
+            <div class="userxx">
+                <img src="/Content/images/actstar.png" />
+                <img src="/Content/images/actstar.png" />
+                <img src="/Content/images/actstar.png" />
+                <img src="/Content/images/actstar.png" />
+                <img src="/Content/images/actstar1.png" />
+            </div>
+        </div>
+    </div>
+
+    <!--全班:预警类别(按人分组)-->
+    <div class="ljllist template_class_warning">
+        <div class="cnt">
+            <div class="userinfobox">
+                <div class="userimg fl"><img src="/Content/images/userimg.png" /></div>
+                <div class="userinfotext">
+                    <div class="username">
+                        <span class="data_stuname"></span>
+                        <label class="data_stucount_wrapper">(<em class="data_stucount"></em>次预警未处理)</label>
+                        <span class="data_new">new</span>
+                    </div>
+                    <div class="username ">
+                        <span>等级:</span>
+                        <span class="data_level"></span>
+                    </div>
+                </div>
+                <a href="#" class="more warningmore" moduleId="1"  subModuleId="@((int)EnumActivityModule.班级预警)" actionType="@((int)EnumActivityAction.班级查看学生预警)" datatype="1" >查看详情</a>
+            </div>
+            <div class="cnt1">
+                <div class="cnt1title">
+                    <span class="fl">最新预警：</span>
+                    <label class="data_createtime"></label>
+                </div>
+                <div class="textinfo">完成“错题巩固”。用时：64分钟，已作答：5题，正确率：20％ </div>
+                @*<div class="textinfo1">学习效率较高，正确率太低。</div>*@
+            </div>
+        </div>
+    </div>
+    <!-- 弹窗:问题消息体-->
+    <div class="list template_window_question_item">
+        <div class="timeline">
+            <div class="linecnt">
+                <div class="linecnt1">
+                    <div class="linetop"></div>
+                    <div class="lineinfo">
+                        <span class="time_ms">11:05</span>
+                        <em></em>
+                    </div>
+                    <div class="linebottom"></div>
+                    <div class="userimg"><img src="/Content/images/userimg.png" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="listbox">
+            <div class="cnt">
+                <div class="cnttext">
+                    <div class="tet">
+                        <label class="fl">学生姓名：</label>
+                        <div class="info">
+                            <span class="studentname"></span>
+                            <span class="studentlevel">
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar.png" />
+                                <img src="/Content/images/actstar1.png" />
+                                <img src="/Content/images/actstar1.png" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="btns">
+                    <a href="#">忽 略</a>
+                    <a href="#" class="ljlactive">提 醒</a>
+                </div>
+            </div>
+            <div class="ico"></div>
+        </div>
+    </div>
+
+
+    <!-- 个人学情:类别 -->
+    <div class="ljlshowbox template_situation_category">
+        <div class="list list1">
+            <div class="timeline">
+                <div class="linecnt">
+                    <div class="linecnt1">
+                        <div class="linetop"></div>
+                        <div class="lineinfo dotcolor_green">
+                            <em class="singleword">学</em>
+                        </div>
+                        <div class="linebottom"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="listbox">
+                <div class="cnt">
+                    <div class="cnttext"><span class="categoryname"></span></div>
+                </div>
+            </div>
+        </div>
+        <div class="ljlcnt">
+
+        </div>
+    </div>
+    <!-- 个人学情:消息体(学情类的) -->
+    <div class="list template_situation_msgitem">
+        <div class="timeline">
+            <div class="linecnt">
+                <div class="linecnt1">
+                    <div class="linetop"></div>
+                    <div class="lineinfo">
+                        <span class="time_ms">11:05</span>
+                        <em class="singleword"></em>
+                    </div>
+                    <div class="linebottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="listbox">
+            <div class="cnt">
+                <div class="cnttext">
+
+                </div>
+            </div>
+            <div class="ico"></div>
+        </div>
+    </div>
+
+    <div class="tet msgitem_xueqing">
+        <div class="info line1"></div>
+    </div>
+    <div class="tet msgitem_xueqing_tiwen">
+        <div class="info"></div>
+    </div>
+
+    <div class="textinfo all_msgitem_detail">
+        <div class="label fl"><span class="msgitem_detail_title"></span>：</div>
+        <div class="text msgitem_detail_content"></div>
+    </div>
+
+    <div class="tet msgitem_detail">
+        <label class="fl"><span class="msgitem_detail_title"></span></label>
+        <div class="info msgitem_detail_content"></div>
+    </div>
+
+    <!-- 解析题以及题目标题 -->
+    <div class="objtitle template_question_title">
+        <div class="objtextinfo">
+
+        </div>
+    </div>
+
+    <!-- 选择题题目详情 -->
+    <div class="objcontent selectoption template_question_select">
+        <div class="objoption">
+            <div class="ljlitem ljlerror " option="A">
+                <label class="ljllabel">A&nbsp;:</label>
+                <span class="ljlspan">2，4，5</span>
+            </div>
+            <div class="ljlitem" option="B">
+                <label class="ljllabel">B&nbsp;:</label>
+                <span class="ljlspan">2，4，5</span>
+            </div>
+            <div class="ljlitem" option="C">
+                <label class="ljllabel">C&nbsp;:</label>
+                <span class="ljlspan"></span>
+            </div>
+            <div class="ljlitem" option="D">
+                <label class="ljllabel">D&nbsp;:</label>
+                <span class="ljlspan"></span>
+            </div>
+        </div>
+    </div>
+    <!-- 填空题题目详情 -->
+    <div class="objcontent objfillbox template_question_filling">
+        <div class="fillbox">
+        </div>
+    </div>
+
+    <!-- 题目解析 -->
+    <div class="objanalysis template_question_analysis">
+        <div class="analysisname">题目解析：</div>
+        <div class="objanalysistext">
+        </div>
+    </div>
+
+    <ul>
+        <li class="lihover noneclass"><div class="labelkc">暂无班级</div></li>
+    </ul>
+    <div class="labelkc nonestudent">暂无学生</div>
+</div>
+
+<div class="content64">
+    <div class="contbox">
+
+    </div>
+</div>
+ <!-- 金币弹窗 -->
+<div class="content28" style="display: none;">
+    <div class="contbox">
+        <div class="ftitlte">奖励金币</div>
+        <div class="cnt">
+            <div class="checkbox goldcheckbox">
+                <div class="fl">
+                    <span class="yes"><input type="radio" name="punish" id="award" /></span>
+                    <label for="award">奖励金币</label>
+                </div>
+                @*<div class="fl">
+                    <span><input type="radio" name="punish" id="punish" /></span>
+                    <label for="punish">惩罚金币</label>
+                </div>*@
+            </div>
+            @*<div class="goldbox">
+                    <span>选择金币数量：</span>
+                    <input type="number" value="" id="goldCount"/>
+                    <span>个</span>
+                </div>*@
+            <div class="goldbox">
+                <label class="layui-form-label" style="padding:5px 0 0 0">金币数量：</label>
+                <div class="layui-form layui-input-inline">
+                    
+                    <select name="goldCount" lay-verify="" id="goldCount" style="width:120px">
+                        <option value="">请选择</option>
+                        <option value="10">10金币</option>
+                        <option value="20">20金币</option>
+                        <option value="30">30金币</option>
+                        <option value="50">50金币</option>
+                        <option value="100">100金币</option>
+                    </select>
+                </div>
+            </div>
+            <div class="goldtext">
+                <textarea id="goldtext" style="user-select:all" maxlength="50" placeholder="请输入老师寄语（5-20字）"></textarea>
+            </div>
+            <div class="checkbox msgcheckbox">
+                <div class="fl">
+                    <span class=""><input type="radio" name="sendMsg"  /></span>
+                    <label for="award">是否通知全班学生</label>
+                </div>
+                
+            </div>
+        </div>
+        <div class="ljlbtn"><a href="#" id="goldBtn" moduleId="1"  subModuleId="@((int)EnumActivityModule.奖励金币)" actionType="@((int)EnumActivityAction.学生奖励金币)" datatype="0">确 认</a></div>
+    </div>
+</div>
+<input id="hidden_schoolid" type="hidden" value="" />
+<!-- 1:全体学生 2单个学生 -->
+<input id="current_all" type="hidden" value="" />
+<!-- 当前班级 -->
+<input id="current_classid" type="hidden" value="" />
+<!-- 当前学生 -->
+<input id="current_studentid" type="hidden" value="" />
+<!-- 当前监控模块 1:提问 2:预警 3:学情 -->
+<input id="current_moduletype" type="hidden" value="" />
+<input id="current_courseid" type="hidden" value="" />
+<input id="current_week" type="hidden" value="" />
+<input id="current_day" type="hidden" value="" />
+<input id="current_start" type="hidden" value="" />
+<input id="current_end" type="hidden" value="" />
+<input id="current_delay" type="hidden" value="" />
+
+
+<script type="text/javascript" src="~/Scripts/monitor/main.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())"></script>
+<script>
+    var click = 0;
+    $(function () {
+        webLogReg(".weblog");
+        webLogRegs(".weblogtab");
+        webLogReg('#goldBtn')
+        $('#goldBtn').click(function () {
+            if (click == 1) {
+                alert('点击太快了')
+                return;
+            }
+            if ($('.content28 .ftitlte span').text() != '') {
+                //layer.msg($('.content28 .ftitlte span').text().substr(1,$('.content28 .ftitlte span').text().length-2));
+                return;
+            }
+            var classId = $('#current_classid').val();
+            var studentId = $('#current_studentid').val();
+            var select = 0;
+            var isSend = 0;
+            if ($(".content28 .goldcheckbox span").eq(0).hasClass('yes') > 0) {
+                select = 1;
+            }
+            if ($(".content28 .msgcheckbox span").eq(0).hasClass('yes') > 0) {
+                isSend = 1;
+            }
+            var gold = $("#goldCount").val();
+            if (gold == 0) {
+                layer.msg('请选择金币数量');
+                return;
+            }
+            var remark = $('#goldtext').val();
+            if (remark == '') {
+                layer.msg('请输入老师寄语');
+                return;
+            }
+            if (remark.length > 50) {
+                layer.msg('老师寄语最长50个字');
+                return;
+            }
+            if (remark.length < 5) {
+                layer.msg('老师寄语最少5个字');
+                return;
+            }
+            click = 1;
+            $.ajax({
+                url: '/Student/AddGold',
+                type: "post",
+                dataType: "json",
+                data: { classId: classId, studentId: studentId, gold: (select == 1 ? gold : -gold), isSend: isSend, remark: remark, courseId: $('#current_courseid').val() },
+                success: function (data) {
+                    click = 0;
+                    if (data.code == 200) {
+                       
+                        layer.closeAll();
+                        layer.msg('操作成功', {
+                            icon: 1,
+                            time: 1500 //2秒关闭（如果不配置，默认是3秒）
+                        }, function () {                          
+                            layer.closeAll();
+                        });
+                    } else {
+                        layer.msg(data.message);
+                    }
+                },
+                error: function (errorMsg) {
+                    click = 0;
+                    layer.msg("Err:" + JSON.stringify(errorMsg));
+                },
+                complete: function (XMLHttpRequest, status) {
+                    click = 0;
+                }
+            });
+        });
+    })
+    function webLogReg(className) {
+        $(className).off('click').on('click',function () {
+            var moduleId = $(this).attr('moduleid');
+            var subModuleId = $(this).attr('submoduleid');
+            var actionType = $(this).attr('actiontype');
+            var dataType = $(this).attr('datatype');
+            var actionValue = $(this).attr('actionvalue');
+            console.log(moduleId + "," + subModuleId + "," + actionType + "," + dataType);
+            $.ajax({
+                url: '/api/message/weblog',
+                type: "post",
+                dataType: "json",
+                data: { moduleId: moduleId, subModuleId: subModuleId, actionType: actionType, dataType: dataType, classId: $("#current_classid").val(), studentId: $("#current_studentid").val(), actionValue: actionValue, courseId: $('#current_courseid').val()},
+                success: function (data) {
+                    if (data.code == 200) {
+                        console.log('操作成功')
+
+                    } else {
+
+                        layer.msg("出错了，请刷新再尝试");
+                    }
+                },
+                error: function (errorMsg) {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            });
+        })
+    }
+    function webLogRegs(className) {
+        $(className).click(function () {
+            var moduleId = $(this).attr('moduleid');
+            var subModuleId = $(this).attr('submoduleid');
+            var actionType = $(this).attr('actiontype');
+            var dataType = $(this).attr('datatype');
+            var actionValue = $(this).attr('actionvalue');
+            console.log(moduleId + "," + subModuleId + "," + actionType + "," + dataType);
+            $.ajax({
+                url: '/api/message/weblog',
+                type: "post",
+                dataType: "json",
+                data: { moduleId: moduleId, subModuleId: subModuleId, actionType: actionType, dataType: dataType, classId: $("#current_classid").val(), studentId: $("#current_studentid").val(), actionValue: actionValue, courseId: $('#current_courseid').val() },
+                success: function (data) {
+                    if (data.code == 200) {
+                        console.log('操作成功')
+
+                    } else {
+
+                        layer.msg("出错了，请刷新再尝试");
+                    }
+                },
+                error: function (errorMsg) {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            });
+        })
+    }
+
+</script>

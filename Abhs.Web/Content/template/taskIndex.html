@@ -1,0 +1,1902 @@
+﻿<div class="content7">
+    <div class="contbox">
+        <div class="label fl">创建任务</div>
+    </div>
+</div>
+<div class="content11">
+    <div class="fl label" id="followTitle"><i>班级：</i><span></span><i>老师：</i><span></span></div>
+    <div class="stepbox">
+        <div class="stepcnt">
+            <a href="#" class="def">任务信息</a>
+            <a href="#">任务内容</a>
+            <a href="#" class="laststep">完成创建</a>
+        </div>
+    </div>
+</div>
+<div class="content8">
+    <div class="niceScrollbox" id="rtl-test">
+        <div class="content9 content71">
+            <div class="contbox">
+                <div class="contitle" id="contentTitle">
+                    创建 七年级同步课 课后任务
+
+                </div>
+                <div class="infotext infotext1">
+                    <div class="fl label" id="thisTitle">
+                        <i>班级：</i><span></span>丨 <i>老师：</i><span></span>
+                    </div>
+                    <div class="stepbox">
+                        <div class="stepcnt">
+                            <a href="#" class="def">任务信息</a>
+                            <a href="#">任务内容</a>
+                            <a href="#" class="laststep">完成创建</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="infotext">
+                    <div class="fl label" id="stepInfo">第1步：任务信息</div>
+
+                </div>
+            </div>
+        </div>
+        <!-- 任务信息 -->
+        <div class="content10 content72">
+            <div class="listbox">
+                <div class="inp">
+                    <div class="label fl"><i class="requre_i">*&nbsp;</i>任务名称：</div>
+                    <div class="inputbox">
+                        <input type="text" placeholder="请输入任务名称"  id="taskName"/>
+                    </div>
+                </div>
+            </div>
+            <div class="listbox">
+                <div class="inp dateinp fl">
+                    <div class="label fl"><i class="requre_i">*&nbsp;</i>开始时间：</div>
+                    <div class="inputbox fl">
+                        <input id="starttime" type="text" placeholder="请选择时间" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="inp dateinp fl">
+                    <div class="label fl"><i class="requre_i">&nbsp;&nbsp;&nbsp;*&nbsp;</i>结束时间：</div>
+                    <div class="inputbox fl">
+                        <input id="endtime" type="text" placeholder="请选择时间" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+            <div class="listbox">
+                <div class="inp studentlist">
+                    <div class="label fl"><i class="requre_i">*&nbsp;</i>选择学生：</div>
+                    <div class="inputbox">
+                        <div class="inpdiv" id="studentsbox">
+                           
+                            <div class="addstudents adds"><span>选择学生</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="listbox">
+                <div class="inp studentlist worklist">
+                    <div class="label fl"><i class="requre_i">*&nbsp;</i>任务范围：</div>
+                    <div class="inputbox">
+                        <div class="inpdiv" id="lessonbox">
+                           
+                            <div class="addstudents addwork"><span>选择任务</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ljlbtnpage">
+                <a href="#" class="ljlactive" onclick="saveStep1()">下一步</a>
+            </div>
+        </div>
+        <!-- 任务内容 -->
+        <div id="rangeTemp" style="display:none">
+            <li>
+                <div class="objtitle">
+                    <div>
+                        <span class="line1" lessonid="_{2}_" index="_{3}_">_{0}_</span>
+                    </div>
+
+                </div>
+                <div class="objcont">                  
+                    _{1}_
+                </div>
+            </li>
+        </div>
+        <div id="rangeDetailTemp" style="display:none">
+            <div class="cnitem">
+                <div class="itemname"><em >&nbsp;</em><span class="line1" itemtype="_{2}_" itemid="_{3}_" code="_{4}_"  lessonid="_{5}_" desc="_{6}_">_{0}_</span></div>
+                <div class="iteminfo">
+                    <div class="labelnum" _{7}_>
+                        <label>_{1}_</label>
+                        
+                        <div class="hovershow">
+                            <div class="studentsname">
+                                <div class="icon"></div>
+                                <div class="studentinfo">
+                                    _{8}_
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="selectVideoTemp" style="display:none">
+            <div class="listbox">
+                <div class="listitem">
+                    <span class="line1">_{0}_</span>
+                    <div class="inpbox">
+                        <div class="delebtn fl"><i lessonid="_{1}_" code="_{2}_" itemid="_{3}_"></i></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="selectQuestionTemp" style="display:none">
+            <div class="listbox">
+                <div class="listitem">
+                    <span class="line1">_{0}_ </span>
+                    <div class="inpbox">
+                        <div class="layui-form fl">
+                            <select lay-verify="required" name="level" lay-filter="level">
+                              
+                                _{5}_
+                            </select>
+                        </div>
+                        <div class="layui-form fl numinput" style="width:110px">
+                            <select name="questionCount" lay-verify="required" lay-filter="questionCount">
+                                _{6}_
+                            </select>
+                           
+                        </div>
+                        <div class="delebtn fl"><i lessonid="_{1}_" code="_{2}_" itemid="_{3}_"></i></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="content75" style="display: none;">
+            <div class="contbox">
+                <table>
+                    <tr>
+                        <td style="width: 420px;">
+                            <div class="contleft">
+                                <div class="tit">
+                                    <span>选择任务内容</span>
+                                    <div><em style="display:none">智能选择</em></div>
+                                </div>
+                                <ul id="lessonUlList">
+                                
+                                    
+                                </ul>
+                            </div>
+                        </td>
+                        <td style="width: 10px;background: none;"></td>
+                        <td style="width: calc(100% - 430px);">
+                            <div class="contright">
+                                <div class="hasselect">
+                                    <div class="tit">
+                                        <span>已选任务内容</span>
+                                    </div>
+                                    <ul>
+                                        <li class="videobox">
+                                            <div class="studycontenttitle">
+                                                <div class="studytitle fl">基础学习（<img src="/Content/images/videoico.png" style="width: 20px;height: 18px; margin-top: -2px;margin: -3px 3px 0" />视频）</div>
+                                                <div class="config"><em>清空</em></div>
+                                            </div>
+                                           
+                                        </li>
+                                        <li class="objtype">
+                                            <div class="studycontenttitle">
+                                                <div class="studytitle fl">设置题型及数量</div>
+                                                <div class="config"><em>清空</em></div>
+                                            </div>
+                                                                                      
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="ljlbtnpage">
+                    <a href="#" onclick="step1()">上一步</a>
+                    <a href="#" class="ljlactive" onclick="saveStep2()">下一步</a>
+                </div>
+            </div>
+        </div>
+      
+            <div class="stucnt" id="videoBoxTemp" style="display:none">
+                <div class="stucnttitle">
+                    <span>&nbsp;</span>
+                    <!--<span>更新：2021-05-25</span>
+            <em>|</em>
+            <span>使用：52次</span>-->
+                    <div class="stuconfig">
+                        <a href="javascript:void(0)">删除</a>
+                    </div>
+                </div>
+                <div class="subtitle"></div>
+                <div class="subvideo"></div>
+            </div>
+        <div class="stucnt" id="questionBoxTemp" style="display:none">
+            <div class="stucnttitle">
+                <!--<span>更新：2021-05-25</span>
+                <em>|</em>-->
+                <span>                                      
+                </span>
+                <em>|</em>
+                <span>题型：</span>
+                <span></span>
+                <div class="stuconfig">
+                    <a href="javascript:void(0)">换题</a>
+                    <em>|</em>
+                    <a href="javascript:void(0)" class="delebtn">删除</a>
+                </div>
+            </div>
+            <div class="subtitle">1、关于20×15，45×10，12×56这三个式子的计算结果，下列选项正确的是（ ） </div>
+            <div class="choicequestion">
+                <div class="inlintbox">
+                    <div class="optionitem">
+                        <label class="itemlabel">A：</label>
+                    </div>
+                    <div class="optionitem">
+                        <label class="itemlabel">B：</label>
+                    </div>
+                    <div class="optionitem">
+                        <label class="itemlabel">C：</label>
+                    </div>
+                    <div class="optionitem">
+                        <label class="itemlabel">D：</label>
+                    </div>
+                </div>
+                <div class="analysisbox">
+                    <div class="analysistitle"><span class="showanalysis" style="cursor:pointer">查看解析</span></div>
+                    <div class="analysiscnt" style="display:none">
+                        <div class="analysislabel fl">解析：</div>
+                        <div class="analysistext">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 任务确认 -->
+        <div class="content76" style="display:none">
+            <div class="contbox">
+                <div class="listitem">
+                    <label class="fl label">任务名称：</label>
+                    <div class="listcnt taskName">
+                        
+                    </div>
+                </div>
+                <div class="listitem timebox">
+                    <label class="fl label">开始时间：</label>
+                    <div class="listcnt fl">
+                        2021-1-26 08:00
+                    </div>
+                    <label class="fl label" style="margin-left: 50px;">结束时间：</label>
+                    <div class="listcnt fl">
+                        2021-1-26 08:00
+                    </div>
+                </div>
+                <div class="listitem">
+                    <label class="fl label">任务学生：</label>
+                    <div class="listcnt" id="taskStudent">
+                       
+                    </div>
+                </div>
+                <div class="listitem" id="baseStudy" style="display:none">
+                    <label class="label">基础学习：</label>
+                     
+                    
+                </div>
+                <div class="listitem" id="questionStudy">
+                    <label class="label">题型及数量：</label>
+                </div>
+            </div>
+            <div class="ljlbtnpage">
+                <a href="#" onclick="step2()">上一步</a>
+                <a href="#" class="ljlactive" id="step3Btn"  moduleId="2"  subModuleId="46" actionType="461" datatype="1">完 成</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 学生列表 -->
+<div class="content73 content91">
+    <div class="maskbox"></div>
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl">选择学生</label>
+            <span></span>
+        </div>
+        <div class="contbox">
+            <div class="searchbox" style="display:none">
+                <div class="layui-form fl">
+                    <input class="layui-input" type="text" placeholder="按学号/姓名搜索" />
+
+                </div>
+                <div class="layui-form fl">
+                    <select>
+                        <option value="">全部性别</option>
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </div>
+                <div class="layui-form fl">
+                    <select>
+                        <option value="">全部年级</option>
+                        <option value="1">一年级</option>
+                        <option value="2">二年级</option>
+                        <option value="3">三年级</option>
+                        <option value="4">四年级</option>
+                        <option value="5">五年级</option>
+                    </select>
+                </div>
+                <div class="layui-form fl">
+                    <select>
+                        <option value="">全部等级</option>
+                        <option value="1">一星</option>
+                        <option value="2">二星</option>
+                        <option value="3">三星</option>
+                        <option value="4">四星</option>
+                        <option value="5">五星</option>
+                    </select>
+                </div>
+            </div>
+            <div class="datebox" id="myscorll">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th><span class="selspan"></span></th>
+                            <th>学号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年级</th>
+                            <th>等级</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+                        
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="ljlbtn">
+                <a href="#" id="studentCancle">取 消</a>
+                <a href="#" class="ljlactive" id="studentBtn">确 定</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 课时列表 -->
+<div class="content80">
+    <div class="maskbox"></div>
+    <div class="box">
+        <div class="ftitle">
+            <label class="fl">选择任务范围</label>
+            <span></span>
+        </div>
+        <div class="contbox">
+
+            <div class="datebox" id="myscorlls">
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th width="40"><span class="selspan"></span></th>
+                            <th width="140">课时</th>
+                            <th>课时名称</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="ljlbtn">
+                <a href="#"  id="lessonCancle">取 消</a>
+                <a href="#" class="ljlactive" id="lessonBtn">确 定</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="/Scripts/ckplayer/ckplayer.js?t=20210414"></script>
+<!--公式识别-->
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [["$", "$"]],   //行内公式选择$
+        displayMath: [["$$", "$$"]]    //段内公式选择$$
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],   //避开某些标签
+        ignoreHtmlClass: "comment-content" | "head-class",   //避开含该Class的标签，用|隔开
+        processHtmlClass: 'tex2jax_process'
+    }
+};
+</script>
+<script src='/Scripts/Mathjax-full-3.1/es5/tex-chtml.js'></script>
+<script>
+    var now = '';
+    var taskId = 0;
+    var curQid = 0;
+    var isEnd = false;
+    var step = 0;
+    var selectQid = new Array();
+    $(function () {
+        webLogReg("#step3Btn");
+        inits();
+        $("#studentBtn").click(function () {
+            selectStudent();
+        })
+        $("#studentCancle").click(function () {
+            $('.content73 .ftitle span').click();
+        })
+        $("#lessonBtn").click(function () {
+            selectLesson();
+        })
+        $("#lessonCancle").click(function () {
+            $('.content80 .ftitle span').click();
+        })
+        $(".contright .videobox .config em").click(function () {
+            
+            $(".contright .videobox .listbox").remove();
+            ClearSelect(1)
+        })
+        $(".contright .objtype .config em").click(function () {
+
+            $(".contright .objtype .listbox").remove();
+            ClearSelect(2)
+        })
+        $("#step3Btn").click(function () {
+            getTimeLength();
+        })
+        $('.content8 .niceScrollbox').niceScroll({
+            cursorcolor: "#000000", //#CC0071 光标颜色
+            cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+            touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+            cursorwidth: "3px", //像素光标的宽度
+            cursorborder: "3px solid #000000", // 游标边框css定义
+            cursorborderradius: "3px", //以像素为光标边界半径
+            autohidemode: false, //是否隐藏滚动条
+            railpadding: {
+                top: 0,
+                right: 0,
+                left: 0,
+                bottom: 0
+            }, //滚动条的位置
+
+        });
+        $('.content8 .niceScrollbox').scroll(function (e) {
+            var scroH = $('.content8 .niceScrollbox').scrollTop();  //滚动高度
+            if (scroH > 90) {
+                $('.content11').show();
+            } else {
+                $('.content11').hide();
+            }
+        });
+        setInterval(function () {
+            console.log("videoLength:" + videoLength)
+            getVideoLength();
+        }, 1000);
+    })
+    //清空已经选定的课时
+    function ClearSelect(itemType) {
+       
+        var li = $("#lessonUlList").find("li");
+        $(li).each(function () {
+            var emm = $(this).find(".objcont").find("em");
+            $(emm).each(function () {
+                if ($(this).hasClass('ljlactive') > 0) {
+
+                    if ($(this).next().attr("itemtype") == itemType) {
+                        var code = $(this).next().attr("code");
+                        var itemId = $(this).next().attr("itemid");
+                        deleteSession(code, itemId);
+                        $(this).removeClass("ljlactive")
+                    }
+                }
+            })
+            return;
+        })
+    }
+    //更新缓存
+    function changeCount(obj) {        
+        if ($(obj).val() > 3 || $(obj).val() < 1) {
+            layer.msg('请选择题数1~3');
+            $(obj).val(1);
+        }
+        var p = $(obj).parents(".inpbox").find('.delebtn').find('i');
+        updateSession(p.attr("code"), p.attr("itemid"), $(obj).parents(".inpbox").find("select[name='level']").val(), $(obj).val())
+    }
+    function updateSession(code, itemId, level, count) {
+        var dataStr = sessionStorage.getItem('data');
+        if (dataStr != null && dataStr != "") {
+            var data = JSON.parse(dataStr);
+            for (let i in data) {
+                if (data[i].code == code && data[i].itemId == itemId) {
+                    data[i].level = level;
+                    if(count>0)
+                        data[i].count = count;
+                    else
+                        data[i].count = data[i].count - 1;
+                    if (data[i].count < 0)
+                        data[i].count = 0;
+                    sessionStorage.setItem('data', JSON.stringify(data))
+                    return;
+                }
+            }
+        }
+    }
+    //删除缓存
+    function deleteSession(code,itemId) {
+        var dataStr = sessionStorage.getItem('data');
+        if (dataStr != null && dataStr != "") {
+            var data = JSON.parse(dataStr);
+            for (let i in data) {
+                if (data[i].code == code && data[i].itemId == itemId) {
+                    data.splice(i, 1);
+                    sessionStorage.setItem('data',JSON.stringify(data))
+                    return;
+                }
+            }
+        }
+    }
+    //更新选定数据
+    function updateSelectData(code, itemId,qid) {
+        var selectDataStr = sessionStorage.getItem('select');
+        var unSelectDataStr = sessionStorage.getItem('unselect');
+        var unSelectArray = new Array();
+        if (selectDataStr != null && selectDataStr != "") {
+            if (unSelectDataStr != null && unSelectDataStr != "") {
+                unSelectArray = JSON.parse(unSelectDataStr);
+            }
+            var data = JSON.parse(selectDataStr);
+            for (let i in data) {
+                if (data[i].code == code && data[i].itemId == itemId && data[i].qid == qid) {
+                    unSelectArray.push(data[i]);
+                    data.splice(i, 1);
+                    sessionStorage.setItem('select', JSON.stringify(data));
+                    sessionStorage.setItem('unselect', JSON.stringify(unSelectArray));
+                }
+            }
+            var res = 0;
+            //计算code数量
+            for (let i in data) {
+                if (data[i].code == code && data[i].itemId == itemId) {
+                    res++;
+                }
+            }
+            return res;
+        }
+        return 0;
+    }
+    function updateUnSelectData(code, itemId, qid) {
+        var selectDataStr = sessionStorage.getItem('select');
+        var unSelectDataStr = sessionStorage.getItem('unselect');
+        var selectArray = new Array();
+        if (unSelectDataStr != null && unSelectDataStr != "") {
+            if (selectDataStr != null && selectDataStr != "") {
+                selectArray = JSON.parse(selectDataStr);
+            }
+            var data = JSON.parse(unSelectDataStr);
+            for (let i in data) {
+                if (data[i].code == code && data[i].itemId == itemId && data[i].qid == qid) {
+                    selectArray.push(data[i]);
+                    data.splice(i, 1);
+                    sessionStorage.setItem('unselect', JSON.stringify(data));
+                    sessionStorage.setItem('select', JSON.stringify(selectArray));
+                    return;
+                }
+            }
+        }
+    }
+    function getUnSelectData(code, itemId,qid) {
+        var dataStr = sessionStorage.getItem('unselect');
+        if (dataStr != null && dataStr != "") {
+            var data = JSON.parse(dataStr);
+            for (let i in data) {
+                if (data[i].code == code && data[i].itemId == itemId && data[i].qid!=qid) {
+                    if (selectQid.indexOf(data[i].qid) < 0) {
+                        return data[i];
+                    }
+                }
+            }
+            //满了的话，清空重来一次
+            selectQid = new Array();
+            for (let i in data) {
+                if (data[i].code == code && data[i].itemId == itemId && data[i].qid != qid) {
+                    return data[i];
+                }
+            }
+        }
+        return null
+    }
+    //获取session
+    function getSession(code, itemId) {
+        var dataStr = sessionStorage.getItem('data');
+        if (dataStr != null && dataStr != "") {
+            var data = JSON.parse(dataStr);
+            for (let i in data) {
+                if (data[i].code == code && data[i].itemId == itemId) {
+                    return data[i];
+                }
+            }
+        }
+        return null
+    }
+    function getSessionList(name) {
+        var dataStr = sessionStorage.getItem(name);
+        if (dataStr != null && dataStr != "") {
+            return JSON.parse(dataStr);
+        }
+        return null
+    }
+    //初始化
+    function inits() {
+        $.ajax({
+            url: '/Task/TaskInit',
+            type: "post",
+            dataType: "json",
+            data: { classId: curClassId },
+            success: function (data) {
+                if (data.code == 200) {
+                    now = data.serverTime;
+                    var task=data.data.task;
+                    if (task != null) {
+                        step = 1;
+                    }
+                    //$("#followTitle").find("span").eq(0).text(data.data.className);
+                    //$("#followTitle").find("span").eq(1).text(data.data.teacherName);
+                    //$("#thisTitle").find("span").eq(0).text(data.data.className);
+                    //$("#thisTitle").find("span").eq(1).text(data.data.teacherName);
+                    //$("#contentTitle").text('创建 ' + data.data.packName + ' 课后任务');
+                    $("#myscorll .layui-table tbody tr").empty();
+                    $(data.data.students).each(function (index, element) {
+                        var level = "";
+                        for (var i = 1; i <=5; i++) {
+                            if (i <= element.level)
+                                level = level + ' <img src="/Content/images/actstar.png" />';
+                            else
+                                level = level + ' <img src="/Content/images/actstar1.png" />';
+
+                        }
+                        var txt = $("<tr>"
+                        + "<td><span class=\"selspan\" studentid=\"" + element.studentId + "\"></span></td>"
+                        + "<td>" + element.studentId + "</td>"
+                        + "<td>" + element.studentName + "</td>"
+                        + "<td>" + element.sex + "</td>"
+                        + "<td>" + element.grade + "</td>"
+                        + "<td>" + level + "</td>"
+                        +"</tr>");
+                        $("#myscorll .layui-table tbody").append(txt);
+                    })
+                    //绑定任务学生
+                    StudentListBind();
+                    $("#myscorlls .layui-table tbody tr").empty();
+                    $(data.data.lessons).each(function (index, element) {
+                        
+                        var txt = $("<tr>"
+                        + "<td><span class=\"" + (element.lessonType !=3 ? "selspan" : "defspan") + "\" lessonid=\"" + element.lessonId + "\"></span></td>"
+                        + "<td>第" + element.index + "课时</td>"
+                        + "<td align='left'>&nbsp;" + element.lessonName + "</td>"
+                        + "</tr>");
+                        $("#myscorlls .layui-table tbody").append(txt);
+                       
+                    })
+                    //绑定选择任务范围
+                    LessonListBind();
+                    if (task != null) {
+                        InitTaskCache(task)
+                    } else {
+                        if (curStudentId > 0) {
+                            setStudentSelect(curStudentId)
+                        }
+                    }
+                   
+                } else {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    }
+    function setStudentSelect(studentIds) {
+        //绑定学生
+        var studentIds = studentIds.split(',');
+        var studentTr = $("#myscorll .layui-table tbody tr")
+        $(studentTr).each(function () {
+            var span = $(this).find('td span');
+            if (studentIds.indexOf(span.attr("studentid")) != -1) {
+                span.addClass("activepsan");
+            }
+        })
+        if ($('#myscorll .layui-table tbody span.activepsan').length < $('#myscorll .layui-table tbody span.selspan').length) {
+            $('#myscorll .layui-table thead span.selspan').removeClass('activepsan');
+        } else {
+            $('#myscorll .layui-table thead span.selspan').addClass('activepsan');
+        }
+        $("#studentBtn").click();
+        $('.content73 .ftitle span').click();
+    }
+    function InitTaskCache(task) {
+        taskId = task.taskId;
+        $("#taskName").val(task.taskName);
+        $("#starttime").val(task.beginTime);
+        $("#endtime").val(task.endTime);
+        //绑定学生
+        setStudentSelect(task.studentIds);
+        //绑定课时
+        var lessonIds = task.lessonIds.split(',')
+        var lessonTr = $("#myscorlls .layui-table tbody tr");
+        $(lessonTr).each(function () {
+            var span = $(this).find('td span');             
+            var lessonid = span.attr("lessonid")
+            if (lessonIds.indexOf(lessonid) != -1) {
+                span.addClass("activepsan");
+            }
+        })
+        if ($('#myscorlls .layui-table tbody span.activepsan').length < $('#myscorlls .layui-table tbody span.selspan').length) {
+            $('#myscorlls .layui-table thead span.selspan').removeClass('activepsan');
+        } else {
+            $('#myscorlls .layui-table thead span.selspan').addClass('activepsan');
+        } lessonBtn
+        $("#lessonBtn").click();
+        $('.content80 .ftitle span').click();
+    }
+    //选择学生
+    function selectStudent() {
+        var trs = $("#myscorll .layui-table tbody tr")
+        var html = "";
+        $(trs).each(function () {
+            var span = $(this).find('td span');
+            var td = $(this).find('td');
+            if (span.hasClass("activepsan")>0)
+            {
+                html =html+ "<div class=\"studentsbox\" studentid=\"" + span.attr("studentid") + "\">"
+                     + "<span>" + td.eq(2).text() + "</span>"
+                     + "("
+                     + td.eq(5).html()
+                     + ")"
+                    + " <i>&nbsp;</i>"
+                    +"</div>"
+            }           
+        })
+      
+        $("#studentsbox").find(".studentsbox").remove();
+        $('#studentsbox .adds').before(html);
+        $('#studentsbox .studentsbox i').click(function () {
+            $(this).parents('.studentsbox').remove();
+        })
+        $('.content73 .ftitle span').click();
+    }
+    //选择课时
+    function selectLesson() {
+        var trs = $("#myscorlls .layui-table tbody tr")
+        var html = "";
+        $(trs).each(function () {
+            var span = $(this).find('td span');
+            var td = $(this).find('td');
+            if (span.hasClass("activepsan") > 0) {
+                html = html + "<div class=\"studentsbox\" lessonid=\"" + span.attr("lessonid") + "\">"
+                     + "<em><span>" + td.eq(2).text() + "</span><i>&nbsp;</i></em>"
+                    + "</div>"
+            }
+        })
+        $("#lessonbox").find(".studentsbox").remove();
+        $('#lessonbox .addwork').before(html);
+        $('#lessonbox .studentsbox i').click(function () {
+            $(this).parents('.studentsbox').remove();
+        })
+        $('.content80 .ftitle span').click();
+    }
+     
+    //第二步选择课时内容
+    function selectItem() {      
+        var em = $('.content75 .objcont .cnitem em'); 
+        var data = new Array();
+        $(em).each(function () {
+            if ($(this).hasClass('ljlactive') > 0) {
+                //itemtype 1:视频，2：题型,selectVideoTemp,selectQuestionTemp
+                var itemType=$(this).next().attr("itemtype");
+                var itemId = $(this).next().attr("itemid");
+                var code = $(this).next().attr("code");
+                var lessonId = $(this).next().attr("lessonid");
+                var obj = getSession(code, itemId);
+                if (obj == null) {
+                    obj = {};
+                    obj.code = code
+                    obj.itemType = itemType;
+                    obj.itemId = itemId;
+                    obj.lessonId = lessonId;
+                    obj.level = 0;
+                    obj.count = '';
+                }
+                data.push(obj)                              
+            }
+        })
+        sessionStorage.setItem('data', JSON.stringify(data));       
+        showSelect();        
+    }
+    var form;
+	layui.use(['form', 'layedit', 'laydate', 'table'], function() {
+		form = layui.form,
+			layer = layui.layer,
+			layedit = layui.layedit,
+			laydate = layui.laydate;
+		form.render('select');
+		laydate.render({
+			elem: '#starttime',
+			type: 'datetime',
+			value: getDay(),
+			min: getDay(),
+			format: 'yyyy-MM-dd HH:mm',
+			done: function (value) {
+			    var start = new Date(value);
+			    var startDate = start.getTime();
+			    var endTime = new Date($('#endtime').val()).getTime();
+			    if (endTime < startDate) {
+			        this.value = '';
+			        $(this.elem).val('');
+			        layer.msg('开始时间不能大于结束时间');
+			        return;
+			    } else {
+			       var dateSpan = endTime - startDate;
+			       var iDays = dateSpan / (24 * 3600 * 1000);
+			       if (iDays < 1) {
+			           layer.msg('至少要间隔1天');
+			           return;
+			       }
+			    }
+			}
+		});
+		laydate.render({
+			elem: '#endtime',
+			type: 'datetime',
+			min: getDay(),
+			format: 'yyyy-MM-dd HH:mm',
+			done: function (value) {
+	 
+			    var end = new Date(value);
+			    var startDate = new Date($('#starttime').val()).getTime();
+			    var endTime = end.getTime();
+			    var nowTime = new Date(now).getTime();
+
+			    if (endTime < nowTime) {
+			        layer.msg('结束时间不能小于当前时间');
+			        this.value = '';
+			        this.elem.val('');
+			        return;
+			    }
+			    if (endTime < startDate) {
+			        layer.msg('结束时间不能小于开始时间');
+			        this.value = '';
+			        this.elem.val('');
+			        return;
+			    }
+			    var dateSpan = endTime - startDate;
+			    var iDays = dateSpan / (24 * 3600 * 1000);
+			    if (iDays < 1) {
+			        layer.msg('至少要间隔1天');
+			        return;
+			    }
+			}
+		});
+	});
+	function getDay() {
+	    var today = new Date();
+	    //var targetday_milliseconds=today.getTime() + 1000*60*60*24*day;
+	    //today.setTime(targetday_milliseconds);
+	    var tYear = today.getFullYear();
+	    var tMonth = today.getMonth() + 1;
+	    var tDate = today.getDate();
+	    var tHour = today.getHours();
+	    if (tHour == 0) {
+	        tHour = 1;
+	    }
+	    return tYear + "-" + (tMonth < 10 ? "0" + tMonth : tMonth) + "-" + (tDate < 10 ? "0" + tDate : tDate) + " " + (tHour < 10 ? "0" + tHour : tHour) + ":00";
+	}
+    //学生事件绑定
+	function StudentListBind() {
+		$('.content72 .adds span').click(function () {
+			$('.content73').toggleClass('content73_1');
+			$('.content73 .maskbox').toggle();
+			var trs = $("#myscorll .layui-table tbody tr");
+			var box = $("#studentsbox").find(".studentsbox");
+			$(trs).each(function () {			           
+			    var span = $(this).find('td span');
+			    span.removeClass("activepsan");
+			    var studentId=span.attr("studentid")
+			    $(box).each(function () {
+			        if ($(this).attr("studentid") == studentId) {
+			            span.addClass("activepsan");
+			        }
+			    })
+			})
+			if ($('#myscorll .layui-table tbody span.activepsan').length < $('#myscorll .layui-table tbody span.selspan').length) {
+			    $('#myscorll .layui-table thead span.selspan').removeClass('activepsan');
+			} else {
+			    $('#myscorll .layui-table thead span.selspan').addClass('activepsan');
+			}
+		})
+		$('.content73 .maskbox').click(function () {
+			$('.content73').toggleClass('content73_1');
+			$('.content73 .maskbox').toggle();
+		})
+		$('.content73 .ftitle span').click(function () {
+			$('.content73').toggleClass('content73_1');
+			$('.content73 .maskbox').toggle();
+		});
+		$('.content73 thead span.selspan').click(function () {
+			if ($(this).hasClass('activepsan')) {
+			    $('.content73 span.selspan').removeClass('activepsan');
+			} else {
+			    $('.content73 span.selspan').addClass('activepsan');
+			}
+		});
+		$('.content73 td .selspan').click(function () {
+			$(this).toggleClass('activepsan');
+			if ($('.content73 tbody span.activepsan').length < $('.content73 tbody span.selspan').length) {
+			    $('.content73 thead span.selspan').removeClass('activepsan');
+			} else {
+			    $('.content73 thead span.selspan').addClass('activepsan');
+			}
+		})
+	}
+    //课时事件绑定
+	function LessonListBind() {
+		$('.content72 .addwork span').click(function () {
+			$('.content80').toggleClass('content80_1');
+			$('.content80 .maskbox').toggle();
+			var trs = $("#myscorlls .layui-table tbody tr");
+			var box = $("#lessonbox").find(".studentsbox");
+			$(trs).each(function () {
+			    var span = $(this).find('td span');
+			    span.removeClass("activepsan");
+			    var lessonid = span.attr("lessonid")
+			    $(box).each(function () {
+			        if ($(this).attr("lessonid") == lessonid) {
+			            span.addClass("activepsan");
+			        }
+			    })
+			})
+			if ($('#myscorlls .layui-table tbody span.activepsan').length < $('#myscorlls .layui-table tbody span.selspan').length) {
+			    $('#myscorlls .layui-table thead span.selspan').removeClass('activepsan');
+			} else {
+			    $('#myscorlls .layui-table thead span.selspan').addClass('activepsan');
+			}
+		})
+		$('.content80 .maskbox').click(function () {
+			$('.content80').toggleClass('content80_1');
+			$('.content80 .maskbox').toggle();
+		})
+		$('.content80 .ftitle span').click(function () {
+			$('.content80').toggleClass('content80_1');
+			$('.content80 .maskbox').toggle();
+		});
+		$('.content80 thead span.selspan').click(function () {
+			if ($(this).hasClass('activepsan')) {
+			    $('.content80 span.selspan').removeClass('activepsan');
+			} else {
+			    $('.content80 span.selspan').addClass('activepsan');
+			}
+		});
+		$('.content80 td .selspan').click(function () {
+			$(this).toggleClass('activepsan');
+			if ($('.content80 tbody span.activepsan').length < $('.content80 tbody span.selspan').length) {
+			    $('.content80 thead span.selspan').removeClass('activepsan');
+			} else {
+			    $('.content80 thead span.selspan').addClass('activepsan');
+			}
+		})
+	}
+    //保存第一步
+	function saveStep1() {
+	    var taskName = $("#taskName").val();
+	    if (taskName == null || taskName == "" || taskName.length == 0) {
+	        layer.msg("请输入任务名称");
+	        return;
+	    }
+	    if (taskName.length < 5 || taskName.length >30) {
+	        layer.msg("任务名称长度在5-30之间");
+	        return;
+	    }
+	    var beginTime = $("#starttime").val();
+	    if (beginTime == null || beginTime == "" || beginTime.length == 0) {
+	        layer.msg("请选择开始时间");
+	        return;
+	    }
+	    var endTime = $("#endtime").val();
+	    if (endTime == null || endTime == "" || endTime.length == 0) {
+	        layer.msg("请选择结束时间");
+	        return;
+	    }
+	    var end = new Date(endTime);
+	    var startDate = new Date(beginTime).getTime();
+	    var endDate = end.getTime();
+	    
+	    var dateSpan = endDate - startDate;
+	    var iDays = dateSpan / (24 * 3600 * 1000);
+	    if (iDays < 1) {
+	        layer.msg('至少要间隔1天');
+	        return;
+	    }
+	    var nowTime = new Date(now).getTime();
+	    //if (startDate < nowTime) {
+	    //    layer.msg('开始时间不能小于当前时间');
+	    //    return;
+	    //}
+	    if (endDate < nowTime) {
+	        layer.msg('结束时间不能小于当前时间');
+	        return;
+	    }
+	    var studentIds = new Array();        
+	    var studentBox = $("#studentsbox").find(".studentsbox");
+	    $(studentBox).each(function () {
+	        studentIds.push($(this).attr("studentid"))
+	    })
+	    if (studentIds.length == 0) {
+	        layer.msg('请选择学生');
+	        return;
+	    }
+	    var lessonIds = new Array();
+	    var lessonBox = $("#lessonbox").find(".studentsbox");
+	    $(lessonBox).each(function () {
+	        lessonIds.push($(this).attr("lessonid"))
+	    })
+	    if (lessonIds.length == 0) {
+	        layer.msg('请选择课时');
+	        return;
+	    }
+	    var win = 0;
+	    $.ajax({
+	        url: '/Task/SaveFirstStep',
+	        type: "post",
+	        dataType: "json",
+	        data: { classId: curClassId, taskName: taskName, beginTime: beginTime, endTime: endTime, studentIds: studentIds, lessonIds: lessonIds, taskId: taskId },
+	        beforeSend: function () {
+	            win=layer.load(1, {
+	                shade: [0.5, '#fff'] //0.1透明度的白色背景
+	            });
+	        },
+	        success: function (data) {
+	            if (data.code == 200) {
+	                //layer.msg("保存成功", { icon: 1, time: 1000 }, function () {
+	                    
+	                    
+	                //});
+	                taskId = data.data.taskId;
+	                var rangeData = data.data.range;
+	                console.log(data.data.range);
+	                var html = "";
+	                $(rangeData).each(function (index, element) {
+	                    var tempHtml = $("#rangeTemp").html();
+	                    tempHtml = tempHtml.replace("_{0}_", "第" + element.index + "课时 " + element.lessonName);
+	                    var detailHtml = "";
+	                    $(element.itemList).each(function (i, e) {
+	                        var tempDetailHtml = $("#rangeDetailTemp").html();
+	                        var videoImg = '<img src="/Content/images/videoico.png" style="width: 20px;height: 18px; margin-top: -2px;margin-left: 7px;" />';
+	                        if (e.itemType != 1) {
+	                            videoImg = "";
+	                        }
+	                        tempDetailHtml = tempDetailHtml.replace("_{0}_", videoImg+"【" + e.itemTypeName + "】" + e.name);
+	                        tempDetailHtml = tempDetailHtml.replace("_{1}_", e.desciption == null || e.desciption == "" ? "" : "(" + e.desciption + ")");
+	                        tempDetailHtml = tempDetailHtml.replace("_{2}_", e.itemType);
+	                        tempDetailHtml = tempDetailHtml.replace("_{3}_", e.itemId);
+	                        tempDetailHtml = tempDetailHtml.replace("_{4}_", e.code);
+	                        tempDetailHtml = tempDetailHtml.replace("_{5}_", element.lessonId);
+	                        tempDetailHtml = tempDetailHtml.replace("_{6}_", e.desciption);
+	                        tempDetailHtml = tempDetailHtml.replace("_{7}_", e.desciption == "" ? "style='display:none'" : "");
+	                        if (e.desciption != "") {
+	                            var html = '';
+	                            $(e.students).each(function (m, n) {
+	                                html = html + '<div class="studentitem">';
+	                                if (e.itemType == 1) {
+	                                    html = html + '<span>' + n.studentName + '：'+n.desciption+'</span>';
+	                                    
+	                                } else {
+	                                    html = html + '<span>' + n.studentName + '：应到</span>';
+	                                    html = html + '<em>' + getLevel(n.shouldLevel) + '</em>';
+	                                    html = html + '<span>&nbsp;当前</span>';
+	                                    if (n.currentLevel > 0) {
+	                                        html = html + '<em>' + getLevel(n.currentLevel) + '</em>';
+	                                    } else {
+	                                        html = html + '<em>未学习</em>';
+	                                    }
+	                                }
+	                                html = html + "</div>";
+	                            })
+
+	                            tempDetailHtml = tempDetailHtml.replace("_{8}_", html);
+	                        } else {
+	                            tempDetailHtml = tempDetailHtml.replace("_{8}_", "");
+	                        }
+
+
+	                        detailHtml = detailHtml + tempDetailHtml;
+	                    });
+	                    tempHtml = tempHtml.replace("_{1}_", detailHtml);
+	                    tempHtml = tempHtml.replace("_{2}_", element.lessonId);
+	                    tempHtml = tempHtml.replace("_{3}_", element.index);
+	                    html = html + tempHtml;
+	                })
+	                $("#lessonUlList").html(html);
+	                $('.content75 .objtitle span').click(function () {
+	                    $(this).parents('li').find('.objcont').toggle();
+	                })
+	                $('.content75 .objcont .cnitem em').click(function () {
+	                    if ($(this).hasClass('ljlactive') > 0) {
+	                        $(this).removeClass("ljlactive")
+	                    } else {
+	                        $(this).addClass("ljlactive")
+	                    }
+	                    selectItem();
+	                    $('.content8 .niceScrollbox').getNiceScroll().resize();
+	                })
+
+	                showSelect();
+
+	                step2();
+	                step = 1;
+	                
+	            } else {
+	                layer.msg(data.message);
+	            }
+	        },
+	        error: function (errorMsg) {
+	            layer.msg("出错了，请刷新再尝试");
+	        },
+	        complete: function (XMLHttpRequest, status) {
+	            layer.close(win);
+	        }
+	    });
+	}
+	function getSaveData(){
+	    var data = {};
+	    data.taskId = taskId;
+	    var sessionData = getSessionList('data');
+	    if (sessionData == null) {
+	        layer.msg('请选择视频和题型');
+	        return null;
+	    }
+	    var li = $("#lessonUlList").find("li");
+	    var lessonList = new Array();
+	    var isCheck = true;
+	    var isExistQuestion = false;
+	    $(li).each(function () {
+	        var span = $(this).find(".objtitle").find("span");
+	        var lesson = {};
+	        lesson.lessonId = span.attr("lessonid");
+	        lesson.index = span.attr("index");
+	        lesson.lessonName = span.text();
+	        var itemList = new Array();
+	        var itemSpan = $(this).find(".objcont").find("span");
+	        $(itemSpan).each(function () {
+	            var itemThis = $(this);
+	            var item = {};
+	            item.lessonId = span.attr("lessonid");
+	            item.itemId = itemThis.attr("itemid");
+	            item.itemType = itemThis.attr("itemtype"); 
+	            item.name = itemThis.text().substr(5);
+	            item.desciption = itemThis.attr("desc");
+	            item.itemTypeName = item.itemType == 1 ? "视频" : "题型";
+	            item.code = itemThis.attr("code");
+	            var selectData = getSession(item.code, item.itemId);
+	            var status = 0;
+	            var level = 0;
+	            var counts = 0
+	            if (selectData != null) {
+	                status = 1;
+	                level = selectData.level;
+	                counts = selectData.count;
+	                if (item.itemType == 2) {
+	                    isExistQuestion = true;
+	                }
+	                if (item.itemType != 1) {
+	                    if (counts == 0) {
+	                        isCheck = false;
+	                    }
+	                    if (level == 0) {
+	                        isCheck = false;
+	                    }
+	                }
+	            }
+	            item.status = status;
+	            item.level = level;
+	            item.counts = counts;
+	            if(item.itemId!=undefined)
+	            itemList.push(item);
+
+	        })
+	        lesson.itemList = itemList;
+	        lessonList.push(lesson)
+	    })
+	    data.list = lessonList;
+	    if (isExistQuestion == false) {
+	        layer.msg('题型必须选择');
+	        return null;
+	    }
+	    if (!isCheck) {
+	        layer.msg('题型难度和题型数量必填');
+	        return null;
+	    }
+	    console.log(data);
+	    return data;
+        
+	}
+    //保存第二步
+	function saveStep2() {
+	    var data = getSaveData();
+	    if (data == null)
+	        return;
+	    var winIndex = 0;
+	    $.ajax({
+	        url: '/Task/SaveSecondStep',
+	        type: "post",
+	        dataType: "json",
+	        data: data,
+	        beforeSend: function () {
+	            winIndex=layer.load(1, {
+	                shade: [0.5, '#fff'] //0.1透明度的白色背景
+	            });
+	        },
+	        success: function (data) {
+	            if (data.code == 200) {
+	                videoLength = 0;
+	                videoList = new Array();
+	                if ($(".videobox .delebtn").length > 0) {
+	                    $("#baseStudy").show();
+	                    $("#baseStudy .stucnt").remove();
+	                    var vbTemp = $("#videoBoxTemp")[0];
+                        //绑定视频
+	                    $($(".videobox .delebtn")).each(function () {
+	                        var obj = $(this).find('i');
+	                        var temp = vbTemp.cloneNode(true);
+	                        $(temp).show();
+	                        var id=obj.attr('itemid')+'_'+obj.attr('code');
+	                        $(temp).removeAttr("id");
+	                        var delBtn = $(temp).find(".stuconfig a");
+	                        delBtn.attr("lessonid", obj.attr('lessonid'));
+	                        delBtn.attr("code", obj.attr('code'));
+	                        delBtn.attr("itemid", obj.attr('itemid'));
+	                        //删除
+	                        delBtn.off('click').on("click", function () {
+	                            videoLength = 0;
+	                            var delObj = $(this);
+	                            var winIndex = layer.confirm('确认要删除吗？', {
+	                                btn: ['否', '是'] //按钮
+	                            }, function () {
+	                                layer.close(winIndex);
+	                            }, function () {
+	                                var code = delObj.attr("code");
+	                                var itemId = delObj.attr("itemId");
+	                                //界面删除
+	                                delObj.parents(".stucnt").remove();
+	                                //删除视频
+	                                deleteSession(code, itemId);
+	                                var li = $("#lessonUlList").find("li");
+	                                $(li).each(function () {
+	                                    var emm = $(this).find(".objcont").find("em");
+	                                    $(emm).each(function () {
+	                                        if ($(this).hasClass('ljlactive') > 0) {
+	                                            var spanCode = $(this).next().attr("code");
+	                                            var spanItemId = $(this).next().attr("itemid");
+	                                            if (code == spanCode && spanItemId == itemId) {
+	                                                $(this).click();
+	                                            }
+	                                        }
+	                                    })
+	                                    return;
+	                                })
+	                                showSelect();
+	                                if ($("#baseStudy .stucnt").length == 0) {
+	                                    $("#baseStudy").hide();
+	                                }
+	                            });
+	                            
+	                        });
+	                        $(temp).find(".stucnttitle span").eq(0).text(obj.parents(".listitem").find(".line1").text());
+	                        var url = "";
+	                        $(data.data).each(function (index, element) {
+	                            if (element.lessonId == obj.attr('lessonid') && element.code == obj.attr('code') && element.itemId == obj.attr('itemid') && element.itemType == 1) {
+	                                url = element.videoUrl;
+	                                return;
+	                            }
+	                        })
+	                        $(temp).find(".subvideo").attr("id",id);	                       
+	                        $("#baseStudy").append($(temp)[0]);
+	                        loadVideo(url, '#' + id, id);
+	                    })
+	                }
+	                var qbTemp = $("#questionBoxTemp")[0];
+	                var selectData = new Array();
+	                var unSelectData = new Array();
+	                var idNo = 1;
+	                //绑定题型
+	                $("#questionStudy").show();
+	                $("#questionStudy .stucnt").remove();
+	                $(data.data).each(function (index, element) {
+	                    var counts = element.count;
+	                    var level = element.level;
+	                    $(element.questions).each(function (m, e) {
+	                        if (m < counts) {
+	                            var select = {};
+	                            select.lessonId = element.element;
+	                            select.code = element.code;
+	                            select.itemId = element.itemId;
+	                            select.qid = e.questionId;
+	                            select.question = e;
+	                            selectData.push(select);	                            
+	                            $("#questionStudy").append(loadQuetion(e, idNo, level, element.code, element.codeName, element.itemId));
+	                            idNo++;
+	                        } else {
+	                            var unSelect = {};
+	                            unSelect.lessonId = element.element;
+	                            unSelect.code = element.code;
+	                            unSelect.itemId = element.itemId;
+	                            unSelect.qid = e.questionId;
+	                            unSelect.question = e;
+	                            unSelectData.push(unSelect);
+	                        }
+
+	                    })
+                        
+	                })
+	                sessionStorage.setItem('select', JSON.stringify(selectData))
+	                sessionStorage.setItem('unselect', JSON.stringify(unSelectData))
+	                // 重新渲染
+	                MathJax.typeset();
+	                ShowInput3();
+	                step3Init();
+	                step3();
+	                $('.showanalysis').off('click').on("click", function () {
+	                    $(this).parents('.analysisbox').find('.analysiscnt').slideToggle(300, function () {
+	                        $('.content8 .niceScrollbox').getNiceScroll().resize();
+	                    });
+	                    $(this).toggleClass('degspan');
+
+	                })
+	                //MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("#questionStudy")[0]], function () {
+	                //     ShowAnswer($("#questionStudy")[0]);
+	                //    step3Init();
+	                //    step3();
+	                //    $('.showanalysis').off('click').on("click", function () {
+	                //        $(this).parents('.analysisbox').find('.analysiscnt').slideToggle(300, function () {
+	                //            $('.content8 .niceScrollbox').getNiceScroll().resize();
+	                //        });
+	                //        $(this).toggleClass('degspan');
+	                       
+	                //    })
+	                //});
+	                step = 2;
+	               
+	            } else {
+	                layer.msg("出错了，请刷新再尝试");
+	            }
+	        },
+	        error: function (errorMsg) {
+	            layer.msg("出错了，请刷新再尝试");
+	        },
+	        complete: function (XMLHttpRequest, status) {
+	            layer.closeAll();
+	        }
+	    });
+        
+	}
+    //加载题目并绑定事件
+	function loadQuetion(e, idNo,level,code,codeName,itemId) {
+	    var qbTemp = $("#questionBoxTemp")[0];
+	    var temp = qbTemp.cloneNode(true);
+	    $(temp).show();
+	    $(temp).removeAttr("id");
+	    $(temp).find('.stucnttitle span').eq(0).html("难度：" + getLevel(level));
+	    $(temp).find('.stucnttitle span').eq(2).html(codeName);
+	    $(temp).find(".subtitle").html("【"+idNo + "】" + e.questionTitle);
+	    $(temp).find(".subtitle").attr("qt", e.questionTitle);
+	    $(temp).find(".stucnttitle .stuconfig a").eq(1).attr("code", code);
+	    $(temp).find(".stucnttitle .stuconfig a").eq(1).attr("codeName", codeName);
+	    $(temp).find(".stucnttitle .stuconfig a").eq(1).attr("itemId", itemId);
+	    $(temp).find(".stucnttitle .stuconfig a").eq(1).attr("level", level);
+	    $(temp).find(".stucnttitle .stuconfig a").eq(1).attr("qid", e.questionId);
+	    $(temp).find(".stucnttitle .stuconfig a").eq(1).attr("no", idNo);
+	    $(temp).find(".stucnttitle .stuconfig a").eq(0).off('click').on("click", function () {
+	        
+	        var delBtn = $(this).parents('.stuconfig').find('.delebtn');
+	        var code = delBtn.attr("code");
+	        var codeName = delBtn.attr("codeName");
+	        var itemId = delBtn.attr("itemId");
+	        var qid = delBtn.attr("qid");
+	        var level = delBtn.attr("level");
+	        var no = delBtn.attr("no");
+	        if (curQid != qid) {
+	            curQid = qid;
+	            selectQid = new Array();
+	        }
+	        //从未选择的里面取一个,并且放入选择缓存
+	        var newQue = getUnSelectData(code, itemId, qid);
+	        if (newQue != null) {
+	            selectQid.push(qid);
+	            //现有的去掉
+	            updateSelectData(code, itemId, qid);
+                //未选定的去掉
+	            updateUnSelectData(code, itemId, newQue.qid);
+	            selectQid.push(newQue.qid);
+	            //界面删除
+	            //$(this).parents(".stucnt").remove();
+	            var newNode =$(loadQuetion(newQue.question, no, level, code,codeName, itemId));
+	            
+	            //MathJax.Hub.Queue(["Typeset", MathJax.Hub, newNode[0]], function () {
+	            //    ShowAnswer(newNode[0]);
+	            //});
+	           
+	            $(this).parents(".stucnt").replaceWith(newNode);
+
+	            // 重新渲染
+	            MathJax.typeset();
+	            ShowInput3();
+	            $('.content8 .niceScrollbox').getNiceScroll().resize();
+	        }
+	        $('.showanalysis').off('click').on("click", function () {
+	            $(this).parents('.analysisbox').find('.analysiscnt').slideToggle();
+	        })
+
+	    });
+        //删除
+	    $(temp).find(".stucnttitle .stuconfig a").eq(1).off('click').on("click", function () {
+	        var delObj = $(this);
+	        var winIndex = layer.confirm('确认要删除吗？', {
+	            btn: ['否', '是'] //按钮
+	        }, function () {
+	            layer.close(winIndex);
+	        }, function () {
+	            var code = delObj.attr("code");
+	            var itemId = delObj.attr("itemId");
+	            var qid = delObj.attr("qid");
+	            var level = delObj.attr("level");
+	            //界面删除
+	            var obj = delObj.parents('.stucnt');
+	            obj.animate({ height: '0', paddingBottom: '0', marginTop: '0' }, function () {
+	                obj.remove();
+	                //更新缓存,返回题型数量
+	                var count = updateSelectData(code, itemId, qid);
+	                if (count == 0) {
+	                    //删除题型
+	                    deleteSession(code, itemId);
+	                    var li = $("#lessonUlList").find("li");
+	                    $(li).each(function () {
+	                        var emm = $(this).find(".objcont").find("em");
+	                        $(emm).each(function () {
+	                            if ($(this).hasClass('ljlactive') > 0) {
+
+	                                var spanCode = $(this).next().attr("code");
+	                                var spanItemId = $(this).next().attr("itemid");
+	                                if (code == spanCode && spanItemId == itemId) {
+	                                    $(this).click();
+	                                }
+	                            }
+	                        })
+	                        return;
+	                    })
+	                } else {
+	                    //更新题目数量
+	                    updateSession(code, itemId, level, 0)
+	                }
+	                showSelect();
+	                if ($("#questionStudy .stucnt").length == 0) {
+	                    $("#questionStudy").hide();
+	                } else {
+                        //重置标题，就是为了重置序号，其他不需要
+	                    $($("#questionStudy .subtitle")).each(function (index) {
+	                        var title = $(this).attr("qt");
+	                        $(this).html('【' + (index + 1) + '】' + title)
+                            //换题的时候需要读取这个no
+	                        $(this).parents('.stucnt').find(".stucnttitle .stuconfig a").eq(1).attr("no", index + 1);
+	                    })
+	                    //MathJax.Hub.Queue(["Typeset", MathJax.Hub, $("#questionStudy")[0]], function () {
+	                    //    ShowAnswer($("#questionStudy")[0]);
+	                    //});
+	                    // 重新渲染
+	                    MathJax.typeset();
+	                    ShowInput3()
+	                }
+	            })
+	            
+	        });
+	       
+	    });
+	    //1选择，2填空
+	    if (e.questionType == 1) {
+
+	        if (e.optionA != null && e.optionA != "") {
+	            $(temp).find('.optionitem').eq(0).append("<div class=\"optioncont\">" + e.optionA + "</div>");
+	        } else {
+	            $(temp).find('.optionitem').eq(0).remove();
+	        }
+	        if (e.optionB != null && e.optionB != "") {
+	            $(temp).find('.optionitem').eq(1).append("<div class=\"optioncont\">" + e.optionB + "</div>");
+	        } else {
+	            $(temp).find('.optionitem').eq(1).remove();
+	        }
+	        if (e.optionC != null && e.optionC != "") {
+	            $(temp).find('.optionitem').eq(2).append("<div class=\"optioncont\">" + e.optionC + "</div>");
+	        } else {
+	            $(temp).find('.optionitem').eq(2).remove();
+	        }
+	        if (e.optionD != null && e.optionD != "") {
+	            $(temp).find('.optionitem').eq(3).append("<div class=\"optioncont\">" + e.optionD + "</div>");
+	        } else {
+	            $(temp).find('.optionitem').eq(3).remove();
+	        }	        
+	    } else {
+	        $(temp).find('.inlintbox').empty();
+	    }
+	    $(temp).find('.analysistext').html(e.answerExplain);
+	    return $(temp)[0];
+	    
+	}
+	var videoList = new Array();
+    //加载视频
+	function loadVideo(videoUrl, container, id) {
+	    var newVideoObject = {
+	        container: container, //容器的ID或className
+	        variable: 'player', //播放函数名称
+	        //loaded: 'loadedHandler', //当播放器加载后执行的函数
+	        loop: true, //播放结束是否循环播放
+	        config: '', //指定配置函数
+	        debug: true, //是否开启调试模式
+	        drag: 'start', //拖动的属性
+	        seek: 0, //默认跳转的时间
+	        videoId: id,
+	        videoList: videoList,
+	        video: videoUrl,
+	        stopOther: function () {
+	            var curVid = id;
+	            if (videoList != undefined && videoList != null && videoList.length > 0) {
+	                $(videoList).each(function (index, element) {
+	                    if (element.id != curVid) {
+	                        var player = element.player;
+	                        player.videoPause();
+	                    }
+	                })
+	            }
+	        }
+	    }
+	    var player = new ckplayer(newVideoObject);
+	    console.log(player.CB['timeText'].innerHTML)
+	    var obj = {};
+	    obj.id = id;
+	    obj.player = player;
+	    obj.timeCounts = player.CB['timeText'].innerHTML;
+	    videoList.push(obj)
+	}
+	var videoLength = 0;
+
+    function getVideoLength() {
+        var time = 0;
+        var isEnd = true;
+ 
+	    $(videoList).each(function (index, element) {
+	        var player = element.player;
+	        if ($('#' + element.id).length > 0) {
+	            if (player.CB['timeText'].innerHTML != '00:00 / 00:00') {
+	                var timeHtml = player.CB['timeText'].innerHTML;
+	                var timeArray = timeHtml.split('/');
+	                var times = timeArray[1];
+
+	                var t = times.split(':');
+
+	                time = time + parseInt(t[0]) + 1;
+	            } else {
+	                isEnd = false;
+	            }
+	        }  
+	    })
+	    
+	    if (isEnd) {
+	        videoLength = time;
+	        console.log("isEnd:" + videoLength)
+	    }
+	}
+    //视频暂停
+	function videoPause(id) {
+	    $(videoList).each(function (index, element) {
+	        if (element.id == id) {
+	            var player = element.player;
+	            player.videoPause();
+	        }
+	    })
+	}
+    //第三步初始化
+	function step3Init() {
+	    //任务名称
+	    $(".content76 .taskName").text($("#taskName").val())
+	    //开始时间
+	    $(".content76 .timebox .listcnt").eq(0).text($("#starttime").val());
+	    //结束时间
+	    $(".content76 .timebox .listcnt").eq(1).text($("#endtime").val());
+
+	    //任务学生
+	    var trs = $("#myscorll .layui-table tbody tr")
+	    var html = "";
+	    $(trs).each(function () {
+	        var span = $(this).find('td span');
+	        var td = $(this).find('td');
+	        if (span.hasClass("activepsan") > 0) {
+	            html = html + "<em>"
+                     + "<span>" + td.eq(2).text() + "</span>"
+                     + "("
+                     + td.eq(5).html()
+                     + ")"
+                    + "</em>"
+	        }
+	    })
+	    $("#taskStudent").html(html)
+	   
+	}
+    //获取选项
+	function getOption(value) {
+	    var html = "";
+	    html = html + '<option value="" ' + (value == 0 || value == '' ? 'selected="selected"' : '') + '>选择题目难度</option>';
+	    html = html + '<option value="2" ' + (value == 2 ? 'selected="selected"' : '') + '>2星</option>';
+	    html = html + '<option value="3" ' + (value == 3 ? 'selected="selected"' : '') + '>3星</option>';
+	    html = html + '<option value="4" ' + (value == 4 ? 'selected="selected"' : '') + '>4星</option>';
+	    html = html + '<option value="5" ' + (value == 5 ? 'selected="selected"' : '') + '>5星</option>';
+	    return html;
+	}
+	function getQueOption(value) {
+	    var html = "";
+	    html = html + '<option value="" ' + (value == 0 || value == '' ? 'selected="selected"' : '') + '>选择题目数量</option>';
+	    html = html + '<option value="1" ' + (value == 1? 'selected="selected"' : '') + '>1</option>';
+	    html = html + '<option value="2" ' + (value == 2 ? 'selected="selected"' : '') + '>2</option>';
+	    html = html + '<option value="3" ' + (value == 3 ? 'selected="selected"' : '') + '>3</option>';
+	    return html;
+	}
+	 //重置数据
+	function showSelect() {
+	    //清空 
+	    $(".contright .videobox .listbox").remove();
+	    $(".contright .objtype .listbox").remove();
+	    var selectDataStr = sessionStorage.getItem('data');
+
+	    if (selectDataStr != null && selectDataStr != "") {
+	        var selectData = JSON.parse(selectDataStr);
+	        var em = $('.content75 .objcont .cnitem em');
+	        var videoHtml = "";
+	        var questionHtml = "";
+	        //生成选定状态
+	        $(em).each(function () {
+	            var obj = $(this);
+	            var span = obj.next();
+	            var code = span.attr("code");
+	            $.each(selectData, function (index, value) {
+
+	                if (value.code == code) {
+	                    var itemType = value.itemType;
+	                    var itemId = value.itemId;
+	                    var lessonId = value.lessonId
+	                    obj.addClass("ljlactive");
+	                    if (itemType == 1) {
+	                        var temp = $("#selectVideoTemp").html();
+	                        temp = temp.replace("_{0}_", obj.next().text())
+	                        temp = temp.replace("_{1}_", lessonId)
+	                        temp = temp.replace("_{2}_", code)
+	                        temp = temp.replace("_{3}_", itemId)
+	                        videoHtml = videoHtml + temp;
+	                    } else {
+	                        var temp = $("#selectQuestionTemp").html();
+	                        temp = temp.replace("_{0}_", obj.next().text())
+	                        temp = temp.replace("_{1}_", lessonId)
+	                        temp = temp.replace("_{2}_", code)
+	                        temp = temp.replace("_{3}_", itemId)
+	                        temp = temp.replace("_{4}_", value.count)
+	                        temp = temp.replace("_{5}_", getOption(value.level))
+	                        temp = temp.replace("_{6}_", getQueOption(value.count))
+	                        questionHtml = questionHtml + temp;
+	                    }
+	                }
+	            });
+
+	        })
+	        $(".contright .videobox .studycontenttitle").after(videoHtml)
+	        $(".contright .objtype .studycontenttitle").after(questionHtml)
+	        form.render('select');
+	        form.on('select(level)', function (data) {	    
+	            var p = $(data.othis).parents(".inpbox").find('.delebtn').find('i');
+	            updateSession(p.attr("code"), p.attr("itemid"), data.value, $(data.othis).parents(".inpbox").find('.numinput .layui-input').val())
+	            form.render('select');
+	        });
+	        form.on('select(questionCount)', function (data) {
+	            var p = $(data.othis).parents(".inpbox").find('.delebtn').find('i');
+	            updateSession(p.attr("code"), p.attr("itemid"), $(data.othis).parents(".inpbox").find("select[name='level']").val(), data.value)
+	            form.render('select');
+	        });
+	        //绑定删除事件
+	        $(".contright .delebtn i").click(function () {
+	            var parent = $(this).parents(".listbox");
+	            parent.remove();
+	            var itemId = $(this).attr("itemid");
+	            var code = $(this).attr("code");
+	            var li = $("#lessonUlList").find("li");
+	            $(li).each(function () {
+	                var emm = $(this).find(".objcont").find("em");
+	                $(emm).each(function () {
+	                    if ($(this).hasClass('ljlactive') > 0) {
+
+	                        var obj = $(this).next();
+	                        if (obj.attr("code") == code && obj.attr("itemid") == itemId) {
+
+	                            $(this).removeClass("ljlactive")
+	                            deleteSession(code, itemId)
+	                        }
+	                    }
+	                })
+	                return;
+	            })
+
+	        })
+	    }
+	}
+	function getFinalData() {
+	    var obj = {};
+	    obj.taskId = taskId;
+	    var objData = getSaveData();
+	    obj.data = objData;	   
+	    obj.list = getQuestion();
+	    return obj;
+	}
+	function getQuestion() {
+	    var question = new Array();
+	    var selectData = getSessionList('select');
+	    $(selectData).each(function (index, element) {
+	        var select = {};
+	        var code = element.code;
+	        var itemId = element.itemId;
+	        var qid = element.qid;
+	        select.itemId = itemId;
+	        select.code = code;
+	        var questionIds = new Array();
+	        var x = -1;
+	        $(question).each(function (m, e) {
+	            if (e.itemId == itemId && e.code == code) {
+	                select = e;
+	                questionIds = e.questionIds;
+	                x = m;
+	                return;
+	            }
+	        })
+	        questionIds.push(qid);
+	        select.questionIds = questionIds;
+	        if (x > -1) {
+	            question.splice(x, 1);
+	        }
+	        question.push(select);
+
+	    })
+	    return question;
+	}
+	function getTimeLength() {
+	    $.ajax({
+	        url: '/Task/GetTimeLength',
+	        type: "post",
+	        dataType: "json",
+	        data: {list:getQuestion()},
+	        success: function (data) {
+	            if (data.code == 200) {
+	                confirmSave(data.data)
+	            } else {
+	                layer.msg(data.msg);
+	            }
+	        },
+	        error: function (errorMsg) {
+	            layer.msg("Err:" + JSON.stringify(errorMsg));
+	        },
+	        complete: function (XMLHttpRequest, status) {
+	            
+	        }
+	    });
+	}
+    //最终确认保存
+	function confirmSave(count) {
+	    var winIndex = layer.confirm('根据任务内容，完成本次课后任务预计需要：' + (count + videoLength) + '分钟。确定创建任务吗？', {
+	        btn: ['否', '是'] //按钮
+	    }, function () {
+	        layer.close(winIndex);
+	    }, function () {	        
+	        $.ajax({
+	            url: '/Task/SaveThirdStep',
+	            type: "post",
+	            dataType: "json",
+	            data: getFinalData(),
+	            beforeSend: function () {
+	                 layer.load(1, {
+	                    shade: [0.5, '#fff'] //0.1透明度的白色背景
+	                });
+	            },
+	            success: function (data) {
+	                if (data.code == 200) {
+	                    layer.msg("保存成功", { icon: 1, time: 1000 }, function () {
+	                        sessionStorage.clear();	                        
+	                        LoadHtml(lastLoadIndex)
+	                        layer.closeAll();
+	                    });	                 
+	                } else {
+	                    layer.msg(data.msg);
+	                }
+	            },
+	            error: function (errorMsg) {
+	                layer.msg("Err:" + JSON.stringify(errorMsg));
+	            },
+	            complete: function (XMLHttpRequest, status) {
+	                //layer.closeAll();
+	            }
+	        });
+	    });
+	}
+	function step1() {
+	    $("#stepInfo").text("第1步：任务信息");
+		$(".content72").show();
+		$(".content75").hide();
+		$(".content76").hide();
+		$('.content8 .niceScrollbox').getNiceScroll().resize();
+		stepAll(0)
+	}
+	function step2() {
+	    $("#stepInfo").text("第2步：任务内容");
+		$(".content72").hide();
+		$(".content75").show();
+		$(".content76").hide();
+		$('.content8 .niceScrollbox').getNiceScroll().resize();
+		stepAll(1)
+	}
+	function step3() {
+	    $("#stepInfo").text("第3步：完成创建");
+		$(".content72").hide();
+		$(".content75").hide();
+		$(".content76").show();
+		$('.content8 .niceScrollbox').getNiceScroll().resize();
+		stepAll(2)
+	}
+	function stepAll(btnIndex) {
+	    console.log(btnIndex)
+	    for (var i = 0; i < 3; i++) {
+	        if (i == btnIndex) {
+	            $(".content9 .stepcnt").find("a").eq(i).removeClass("defk")
+	            $(".content11 .stepcnt").find("a").eq(i).removeClass("defk")
+	            $(".content9 .stepcnt").find("a").eq(i).addClass("def")
+	            $(".content11 .stepcnt").find("a").eq(i).addClass("def")
+	        } else {
+	            if (!isEnd && i > step) {	               
+	                return;
+	            }
+	            $(".content9 .stepcnt").find("a").eq(i).removeClass("def")
+	            $(".content11 .stepcnt").find("a").eq(i).removeClass("def")
+	            $(".content9 .stepcnt").find("a").eq(i).addClass("defk")
+	            $(".content11 .stepcnt").find("a").eq(i).addClass("defk")
+	        }
+	    }
+	}
+	// 显示答案
+	function ShowAnswer(dom) {
+	    $(dom).find(".mrow").each(function () {
+	        if ((/^\[:[^:]+?:\]$/).test($(this).text()) && $(this).html().indexOf("input type") == -1) {
+	            var w = $(this).width();
+	            if (w == 0) {
+	                w = 60;
+	            }
+	            var input = "<input type='text' value=''  style='width:" + w + "px;border-bottom:1px solid #000000;text-align:center;background:#FFF0E5' readonly />"
+	            $(this).html(input);
+	        }
+	    });
+
+	}
+
+</script>

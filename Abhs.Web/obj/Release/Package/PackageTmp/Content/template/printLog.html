@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>123</title>
+    <link href="/Content/css/style.css" rel="stylesheet" />
+    <script src="/Scripts/jquery.js"></script>
+    <script src="/Scripts/base/base.js"></script>
+    <script src="/Scripts/plug-in/plug-in.js"></script>
+    <script>
+        function doprint() {
+            window.parent.newTitles();
+            if(isShow)
+               HideSpaceAnswer();
+            window.print();
+            window.parent.oldTitles();
+            if(isShow)
+               ShowSpaceAnswer()
+        }
+        function gotop() {
+            //$('.content88_1 .layui-layer-content').animate({scrollTop: 0},200);
+        }
+    </script>
+    <style media="print">
+        .content88 {
+            padding: 0 !important;
+        }
+
+            .content88 .choicequestion .optionitem {
+                padding: 0 !important;
+            }
+
+            .content88 .contbox {
+                padding: 0 !important;
+            }
+
+        body {
+            margin: 0;
+        }
+
+        .printtitle {
+            padding: 10px 0 0 !important;
+            font-size: 80px;
+            background: #ff0000;
+            margin: 0;
+        }
+
+        .content88 .listitem .stucnt {
+            margin-top: 0;
+            padding-bottom: 0;
+        }
+
+        .blankspace {
+            font-size: 10px!important;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!--startprint-->
+    <div class="content88" id="PrintArea">
+        <div class="contbox">
+
+            <div class="listitem">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="stucnt" id="printTemp" style="display:none">
+        <div class="subtitle">1、关于20×15，45×10，12×56这三个式子的计算结果，下列选项正确的是（ ） </div>
+        <div class="choicequestion">
+            <div class="inlintbox">
+                <div class="optionitem">
+                    <label class="itemlabel">A：</label>
+                    <div class="optioncont">2，4，5</div>
+                </div>
+                <div class="optionitem">
+                    <label class="itemlabel">B：</label>
+                    <div class="optioncont">2，4，5</div>
+                </div>
+                <div class="optionitem">
+                    <label class="itemlabel">C：</label>
+                    <div class="optioncont">2，4，5</div>
+                </div>
+                <div class="optionitem">
+                    <label class="itemlabel">D：</label>
+                    <div class="optioncont">具有相反意义的量中在一对具有相反意义的量中在一</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="subjectanalysis" style="display:none">
+            <label class="subtitle1 fl" style="font-size:14px;line-height:30px"><b>题目解析：</b></label>
+            <div class="subjectanalysistext" style="font-size:14px;line-height:30px">互为邻补角的两个角一定互补，但互补的两个角不一定是邻补角.</div>
+        </div>
+    </div>
+
+    <!--endprint-->
+</body>
+</html>
+<!--公式识别-->
+<script>
+window.MathJax = {
+    tex: {
+        inlineMath: [["$", "$"]],   //行内公式选择$
+        displayMath: [["$$", "$$"]]    //段内公式选择$$
+    },
+    options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a'],   //避开某些标签
+        ignoreHtmlClass: "comment-content" | "head-class",   //避开含该Class的标签，用|隔开
+        processHtmlClass: 'tex2jax_process'
+    }
+};
+</script>
+<script src='/Scripts/Mathjax-full-3.1/es5/tex-chtml.js'></script>
+<script>
+    var selectData = new Array();
+    var spaceData = new Array();
+    var answerData = new Array();
+    $(function () {
+  
+        //$(document).attr("title", getQueryVariable('name') + "的错题本");
+        $.ajax({
+            url: '/Task/GetPrintLogInfo',
+            type: "post",
+            dataType: "json",
+            data: { logId: getQueryVariable('id') },
+            success: function (data) {
+                if (data.code == 200) {
+                    $(".listitem").empty();
+                    if (data.data.select != null) {
+                        $(".listitem").append(' <div class="printtitle">选择题：<span>(共' + data.data.select.length + '题)</span></div>')
+                        $(data.data.select).each(function (index, element) {
+                            selectData.push(element.qid);
+                            var node = getWrongNode(index, element);
+                            $(".listitem").append(node);
+                        })
+
+                    }
+                    if (data.data.space != null) {
+                        $(".listitem").append(' <div class="printtitle">填空题：<span>(共' + data.data.space.length + '题)</span></div>')
+                        $(data.data.space).each(function (index, element) {
+                            var node = getWrongNode(index, element)
+                            $(".listitem").append(node);
+                            spaceData.push(element.qid);
+                        })
+
+                    }
+                    if (data.data.answer != null) {
+                        $(".listitem").append(' <div class="printtitle">解答题：<span>(共' + data.data.answer.length + '题)</span></div>')
+                        $(data.data.answer).each(function (index, element) {
+                            var node = getWrongNode(index, element)
+                            $(".listitem").append(node);
+                            answerData.push(element.qid);
+                        })
+                    }
+                    MathJax.typeset();
+                    ShowInput3();
+                } else {
+                    layer.msg("出错了，请刷新再尝试");
+                }
+            },
+            error: function (errorMsg) {
+                layer.msg("出错了，请刷新再尝试");
+            }
+        });
+    })
+    var isShow = false;
+    function viewAnswer() {
+        if (isShow) {
+            isShow = false;
+            $(".subjectanalysis").hide();
+        }
+        else {
+            isShow = true;
+            $(".subjectanalysis").show();
+        }
+        if (isShow) {
+            ShowSpaceAnswer();
+        } else {
+            HideSpaceAnswer();
+        }
+    }
+    function ShowSpaceAnswer() {
+        $(".printanswer").show();
+        $(".listitem .stucnt").each(function () {
+            var attr = $(this).find(".subtitle").attr("qType");
+
+            if (attr != 1) {
+                var answerList = $(this).find(".subtitle").find(".spanflagAnswers").text().split(",");
+                var span = $(this).find('.blankspace');
+                console.log("span:" + span.length)
+                var index = 0;
+                span.each(function () {
+                    console.log("index:" + index)
+                    var answer = answerList[index];
+                    index++;
+                    var text = AES.Decrypt(answer);
+                    $(this).html(text);
+                    $(this).css({ "font-size": "12px", "line-height": "26px", "vertical-align": "middle", "text-align": "center" })
+                  
+                })
+                var div = $(this).find('.quizPutTag');
+
+                div.each(function () {
+                    var answer = AES.Decrypt($(this).attr("answer"));
+                    $(this).css({ "font-size": "12px", "line-height": "26px", "vertical-align": "middle", "text-align": "center" })
+                    $(this).html(answer);
+                })
+
+            }
+        });
+        MathJax.typeset();
+        ShowInput3();
+    }
+    function HideSpaceAnswer() {
+        $(".printanswer").hide();
+        $(".listitem .stucnt").each(function () {
+            var attr = $(this).find(".subtitle").attr("qType");
+
+            if (attr != 1) {
+
+                var span = $(this).find('.blankspace');
+                span.each(function () {
+                    $(this).html('');
+                })
+                var div = $(this).find('.quizPutTag');
+                div.each(function () {
+                    $(this).html('');
+                })
+            }
+        });
+    }
+    function getWrongNode(index, element) {
+
+        var wrongTemp = $("#printTemp")[0];
+        var temp = wrongTemp.cloneNode(true);
+        $(temp).show();
+
+        $(temp).find(".subtitle").attr("index", index + 1);
+        $(temp).find(".subtitle").attr("qTitle", element.qTitle);
+        $(temp).find(".subtitle").attr("qType", element.qType);
+        $(temp).find(".subtitle").attr("answer", element.answer);
+        $(temp).removeAttr("id");
+        $(temp).find(".subtitle").html("【" + (index + 1) + "】" + element.qTitle);
+        $(temp).find(".choicequestion").empty();
+
+        if (element.qType == 1) {
+            if (element.optionA != null && element.optionA != "")
+                $(temp).find(".choicequestion").append('<div class="optionitem"><label class="itemlabel">A：</label><div class="optioncont">'+element.optionA+'</div></div>');
+            if (element.optionB != null && element.optionB != "")
+                $(temp).find(".choicequestion").append('<div class="optionitem"><label class="itemlabel">B：</label><div class="optioncont">' + element.optionB + '</div></div>');
+            if (element.optionC != null && element.optionC != "")
+                $(temp).find(".choicequestion").append('<div class="optionitem"><label class="itemlabel">C：</label><div class="optioncont">' + element.optionC + '</div></div>');
+            if (element.optionD != null && element.optionD != "")
+                $(temp).find(".choicequestion").append('<div class="optionitem"><label class="itemlabel">D：</label><div class="optioncont">' + element.optionD + '</div></div>');
+            if (element.optionE != null && element.optionE != "")
+                $(temp).find(".choicequestion").append('<div class="optionitem"><label class="itemlabel">E：</label><div class="optioncont">' + element.optionE + '</div></div>');
+            if (element.answer != null && element.answer != "")
+                $(temp).find(".choicequestion").append('<div class="optionitem printanswer" style="display:none"><label class="itemlabel">正确答案：</label><div class="optioncont">' + element.answer + '</div></div>');
+        } else {
+            $(temp).find(".choicequestion").hide();
+            $(temp).find(".subtitle").addClass('blankobj');
+        }
+        $(temp).find(".subjectanalysistext").html(element.answerExplain);
+        return $(temp)[0];
+    }
+ 
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) { return pair[1]; }
+        }
+        return (false);
+    }
+</script>

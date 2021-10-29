@@ -1,0 +1,75 @@
+
+a {
+    text-decoration: none;
+}
+
+
+
+/*MathJax*/
+.MathJax {outline: 0;}
+.MathJax span {font-size: 20px;}
+.MathJax_Display {overflow-x: auto;overflow-y: hidden;}
+
+.fillblanks{ font-size: 16px;background-color:#d2e9ff;text-align: center; border-color: #878787; border-style: solid; border-top-width: 0px;border-right-width: 0px; border-bottom-width: 1px;border-left-width: 0px;width:40px;}
+.inputRight{background-color: #CCFF99!important;}
+.inputError{background-color: #FF9999!important;}
+.hide{width: 1px; height: 1px;overflow: hidden;}
+
+
+
+
+#in_char {
+    background: #ddd;
+    position: absolute;
+    border: solid 1px #d7d7d7;
+    border: solid 1px #d7d7d7;
+    background: #fff;
+    padding-bottom: 6px;
+    box-shadow: black 0px 0px 10px;
+    z-index: 999;
+}
+
+.char_screen {
+    overflow: hidden;
+    padding-left: 3px;
+    border-bottom: solid 1px #eeeeee;
+}
+
+    .char_screen a {
+        float: left;
+        color: #969696;
+        padding: 2px 12.6px 5px 12.6px;
+        text-align: center;
+        border-bottom: none;
+        width: 40%;
+    }
+
+        .char_screen a:hover {
+            color: #969696;
+        }
+
+    .char_screen .shar {
+        color: #404040;
+        border-bottom: solid 2px green;
+    }
+
+.char_a_le1 {
+    padding: 10px;
+    overflow: hidden;
+
+    font-size: 17px !important;
+}
+
+    .char_a_le1 a {
+        float: left;
+        float: left;
+        width: 45px;
+        margin: 1px;
+        border: solid 1px #eeeeee;
+        text-align: center;
+            line-height: 35px !important;
+    }
+
+        .char_a_le1 a:hover {
+            color: #c92436;
+        }

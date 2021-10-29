@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.72, user-scalable=0.72, minimum-scale=0.72, maximum-scale=0.72,user-scalable=no">
+		<title>课程展示</title>
+		<link href="Content/css/animate.min.css" rel="stylesheet" />
+		<link href="Content/css/reset.css" rel="stylesheet" />
+		<link href="Scripts/layui/css/layui.css" rel="stylesheet" />
+		<link href="Content/css/style.css" rel="stylesheet" />
+		<script src="Scripts/jquery.js"></script>
+		<script src="Scripts/layer.js"></script>
+		<script src="Scripts/layui/layui.js"></script>
+		<script src="Scripts/jquery.nicescroll.js"></script>
+		<script src="Scripts/wow.js"></script>
+		<script>
+			$(function() {
+				//左一栏滚动条
+				$('.content4 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 18,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+
+				//左一栏列表点击事件
+				$('.content58 li').click(function() {
+					$(this).addClass('ljlactive').siblings().removeClass('ljlactive');
+				})
+				//左二栏滚动条
+				$('.content5 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 32,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+				});
+			$('.content6 .niceScrollbox').niceScroll({
+					cursorcolor: "#000000", //#CC0071 光标颜色
+					cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+					touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+					cursorwidth: "3px", //像素光标的宽度
+					cursorborder: "3px solid #000000", // 游标边框css定义
+					cursorborderradius: "3px", //以像素为光标边界半径
+					autohidemode: true, //是否隐藏滚动条
+					railpadding: {
+						top: 0,
+						right: 0,
+						left: 0,
+						bottom: 0
+					}, //滚动条的位置
+
+				});
+				$('.content59').niceScroll({
+						cursorcolor: "#000000", //#CC0071 光标颜色
+						cursoropacitymax: .3, //改变不透明度非常光标处于活动状态（scrollabar“可见”状态），范围从1到0
+						touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+						cursorwidth: "3px", //像素光标的宽度
+						cursorborder: "3px solid #000000", // 游标边框css定义
+						cursorborderradius: "3px", //以像素为光标边界半径
+						autohidemode: true, //是否隐藏滚动条
+						railpadding: {
+							top: 0,
+							right: 0,
+							left: 0,
+							bottom: 0
+						}, //滚动条的位置
+				
+					});
+				$('.content6 .niceScrollbox').scroll(function(e) {
+					var scroH = $('.content6 .niceScrollbox').scrollTop(); //滚动高度
+					var scroH1 = $('.content61 .btn').offset().top; //滚动高度
+					console.log(scroH1);
+					if (scroH > scroH1) {
+						
+					} else {
+						
+					}
+				});
+				//左二栏点击事件
+				$('.content60 li').click(function() {
+					$(this).addClass('ljlactive').siblings().removeClass('ljlactive');
+				})
+				$('.content59').hover(function() {
+					$('.content59').show();
+				}, function() {
+					$('.content59').hide();
+				})
+				$('.content59 a').click(function() {
+					$('.content59').hide();
+				})
+				$('.content5 .onlinebox').hover(function(){
+					$('.content59').show();
+				},function(){
+					$('.content59').hide();
+				})
+				
+			})
+		</script>
+		<style>
+			body {
+				background: #1D2732;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content59">
+			<div class="studentstatus">
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+				<a href="#">人教版</a>
+				<a href="#">科教版</a>
+				<a href="#">苏教版</a>
+			</div>
+		</div>
+		<!-- 头部 -->
+		<div class="content2">
+			<div class="contbox">
+				<div class="loginimg fl"><img src="Content/images/adminlogo.png" /></div>
+				<div class="headernav fl">
+					<div class="ljlactive" href="#">课前备课</div>
+					<div class="lessonspage">
+						<div class="lessonscont">
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon1.png" /></div>
+								<div class="label">课前备课</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon2.png" /></div>
+								<div class="label">上课管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon3.png" /></div>
+								<div class="label">课后任务</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon4.png" /></div>
+								<div class="label">班级管理</div>
+							</a>
+							<a href="#" class="fl">
+								<div class="navicon"><img src="Content/images/navicon5.png" /></div>
+								<div class="label">售后</div>
+							</a>
+							<div class="icon"></div>
+						</div>
+					</div>
+				</div>
+				<div class="configbox">
+					<div class="quit fr"><img src="Content/images/quit.png" /></div>
+					<div class="navbox fr">
+						<img src="Content/images/nav.png" />
+						<div class="listbox">
+							<div>
+								<a href="#">学生管理</a>
+								<a href="#">全部课程</a>
+							</div>
+						</div>
+					</div>
+					<div class="username fr">张三丰</div>
+					<div class="userimg fr"><img src="Content/images/userimg.png" /></div>
+				</div>
+			</div>
+		</div>
+		<!-- 背景色 -->
+		<div class="content3">
+			<div class="contbox"></div>
+		</div>
+		<!-- 左一栏列表 -->
+		<div class="content4">
+			<div class="ljltitle">年级</div>
+			<div class="niceScrollbox">
+				<div class="content58">
+					<div class="contbox">
+						<ul>
+							<li class="ljlactive ">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classtime">七年级</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classtime">八年级</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classtime">九年级</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classtime">初一年级</div>
+								</a>
+							</li>
+							<li class="lihover">
+								<a href="#">
+									<div class="righticon"><img src="Content/images/rightico.png" /></div>
+									<div class="classtime">初二年级</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 左二栏列表 -->
+		<div class="content5">
+			<div class="ljltitle">
+				<span class="fl">课程</span>
+				<div class="onlinebox fr">
+					<label class="textbox">全部版本</label>
+				</div>
+			</div>
+			<div class="niceScrollbox">
+				<div class="content60">
+					<div class="contbox">
+						<div class="listbox">
+							<ul>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label">八年级同步班</div>
+											<div class="conf">课程版本：人教版</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label">八年级同步班</div>
+											<div class="conf">课程版本：人教版</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label">八年级同步班</div>
+											<div class="conf">课程版本：人教版</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label">八年级同步班</div>
+											<div class="conf">课程版本：人教版</div>
+										</div>
+									</a>
+								</li>
+								<li class="lihover">
+									<a href="#">
+										<div class="righticon"><img src="Content/images/rightico.png" /></div>
+										<div class="studentinfo">
+											<div class="label">八年级同步班</div>
+											<div class="conf">课程版本：人教版</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 左三栏内容 -->
+		<div class="content6">
+			<!-- 全屏功能 -->
+			<div class="content7">
+				<div class="contbox">
+					<div class="label fl">详情</div>
+					<a href="#">创建班级</a>
+				</div>
+			</div>
+				<div class="content63">
+					<div class="niceScrollbox">
+			<div class="content61">
+				<div class="contbox">
+					<div class="contl fl">
+						<img src="Content/images/fm.png" />
+					</div>
+					<div class="contr">
+						<div class="titl">
+							<div class="label fl">同步课</div>
+							<div class="textbox">2021年寒假普教鲁四版寒假课（共20课时）</div>
+						</div>
+						<!-- <div class="list">
+							<div class="label fl">上课时间:</div>
+							<div class="textbox">周六10:00~12:00、周日14:00~16:00</div>
+						</div> -->
+						<div class="list">
+							<div class="lb fl">教材版本:<span>人教版</span></div>
+							<div class="lb fl">校区老师:<span>李老师</span></div>
+							<div class="lb fl">校区班级:<span>三年级春季班</span></div>
+						</div>
+						<div class="list">
+							<div class="label fl">课程描述:</div>
+							<div class="textbox textbox1 line2">课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述课程描述
+								课程描述课程描述课程描述课程描述课程描述课课课课课。</div>
+						</div>
+						<div class="list">
+							<div class="lb fl">学生数量:<span>人教版</span></div>
+							<div class="lb fl">已建班级:<span>七年级同步1班、七年级2班</span></div>
+						</div>
+						<a href="#" class="btn">创建班级</a>
+					</div>
+				</div>
+			</div>
+			<div class="content62">
+				<div class="contbox">
+					<div class="list userlist active">
+						<div class="objname">
+							<div class="nametext line1">第1课时&nbsp;&nbsp;课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称课时名称</div>
+							<a href="#">试学</a>
+						</div>
+					</div>
+					<div class="list">
+						<div class="objname">
+							<div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+						</div>	
+					</div>
+					<div class="list">
+						<div class="objname">
+							<div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+						</div>
+					</div>
+					<div class="list">
+						<div class="objname">
+							<div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+						</div>	
+					</div>
+					<div class="list">
+						<div class="objname">
+							<div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+						</div>
+					</div>
+					<div class="list">
+						<div class="objname">
+							<div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+						</div>	
+					</div>
+					<div class="list">
+						<div class="objname">
+							<div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+						</div>
+					</div>
+					<div class="list">
+						<div class="objname">
+							<div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+						</div>	
+					</div>
+					<div class="list">
+						<div class="objname">
+							<div class="nametext">第1课时&nbsp;&nbsp;课时名称</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+		</div>
+		<div class="content32"></div>
+	</body>
+</html>

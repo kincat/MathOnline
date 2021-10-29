@@ -1,0 +1,1967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_NewBackgroundProfile>True</_NewBackgroundProfile>
+    <_PublishTargetUrl>D:\Web发布\SmartMathSchool4.0</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="abhs.ico">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/HelpPage.css">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Api.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ApiGroup.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/CollectionModelDescription.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ComplexTypeModelDescription.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/DictionaryModelDescription.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/EnumTypeModelDescription.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/HelpPageApiModel.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ImageSample.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/InvalidSample.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/KeyValuePairModelDescription.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/ModelDescriptionLink.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Parameters.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/Samples.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/SimpleTypeModelDescription.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/DisplayTemplates/TextSample.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/Index.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Help/ResourceModel.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Shared/_Layout.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/Web.config">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="Areas/HelpPage/Views/_ViewStart.cshtml">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="bin/Abhs.Application.dll">
+      <publishTime>09/18/2021 13:46:29</publishTime>
+    </File>
+    <File Include="bin/Abhs.Application.dll.config">
+      <publishTime>02/01/2021 22:27:41</publishTime>
+    </File>
+    <File Include="bin/Abhs.Cache.dll">
+      <publishTime>09/18/2021 13:46:27</publishTime>
+    </File>
+    <File Include="bin/Abhs.Common.dll">
+      <publishTime>09/18/2021 13:46:27</publishTime>
+    </File>
+    <File Include="bin/Abhs.Common.dll.config">
+      <publishTime>11/24/2020 22:32:30</publishTime>
+    </File>
+    <File Include="bin/Abhs.Data.dll">
+      <publishTime>09/18/2021 13:46:28</publishTime>
+    </File>
+    <File Include="bin/Abhs.Data.dll.config">
+      <publishTime>07/19/2021 11:18:14</publishTime>
+    </File>
+    <File Include="bin/Abhs.ES.dll">
+      <publishTime>09/18/2021 13:46:28</publishTime>
+    </File>
+    <File Include="bin/Abhs.ES.dll.config">
+      <publishTime>02/01/2021 22:27:42</publishTime>
+    </File>
+    <File Include="bin/Abhs.Model.dll">
+      <publishTime>09/18/2021 13:46:27</publishTime>
+    </File>
+    <File Include="bin/Abhs.Model.dll.config">
+      <publishTime>07/19/2021 11:18:14</publishTime>
+    </File>
+    <File Include="bin/Abhs.Web.dll">
+      <publishTime>09/18/2021 13:46:30</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="bin/BouncyCastle.Crypto.dll">
+      <publishTime>07/19/2021 11:19:27</publishTime>
+    </File>
+    <File Include="bin/CSRedisCore.dll">
+      <publishTime>07/19/2021 11:18:18</publishTime>
+    </File>
+    <File Include="bin/Elasticsearch.Net.dll">
+      <publishTime>07/19/2021 11:18:19</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>07/19/2021 11:18:28</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>07/19/2021 11:18:24</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>07/19/2021 11:19:24</publishTime>
+    </File>
+    <File Include="bin/JWT.dll">
+      <publishTime>07/19/2021 11:18:28</publishTime>
+    </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>07/19/2021 11:18:31</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>07/19/2021 11:18:41</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>07/19/2021 11:18:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>07/19/2021 11:18:41</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>07/19/2021 11:18:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>07/19/2021 11:18:41</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>07/19/2021 11:18:41</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>07/19/2021 11:18:33</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>07/19/2021 11:18:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>07/19/2021 11:18:42</publishTime>
+    </File>
+    <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
+      <publishTime>07/19/2021 11:18:49</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
+      <publishTime>07/19/2021 11:18:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/19/2021 11:18:51</publishTime>
+    </File>
+    <File Include="bin/Nest.dll">
+      <publishTime>07/19/2021 11:19:04</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>07/19/2021 11:19:05</publishTime>
+    </File>
+    <File Include="bin/NPinyin.dll">
+      <publishTime>07/19/2021 11:19:08</publishTime>
+    </File>
+    <File Include="bin/NPOI.dll">
+      <publishTime>07/19/2021 11:19:11</publishTime>
+    </File>
+    <File Include="bin/Quartz.dll">
+      <publishTime>07/19/2021 11:19:22</publishTime>
+    </File>
+    <File Include="bin/StructureMap.dll">
+      <publishTime>07/19/2021 11:19:26</publishTime>
+    </File>
+    <File Include="bin/StructureMap.Net4.dll">
+      <publishTime>07/19/2021 11:19:25</publishTime>
+    </File>
+    <File Include="bin/StructureMap.Web.dll">
+      <publishTime>07/19/2021 11:19:27</publishTime>
+    </File>
+    <File Include="bin/System.Buffers.dll">
+      <publishTime>07/19/2021 11:19:28</publishTime>
+    </File>
+    <File Include="bin/System.Diagnostics.DiagnosticSource.dll">
+      <publishTime>07/19/2021 11:19:29</publishTime>
+    </File>
+    <File Include="bin/System.Memory.dll">
+      <publishTime>07/19/2021 11:19:29</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>07/19/2021 11:18:44</publishTime>
+    </File>
+    <File Include="bin/System.Numerics.Vectors.dll">
+      <publishTime>07/19/2021 11:19:32</publishTime>
+    </File>
+    <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
+      <publishTime>07/19/2021 11:19:31</publishTime>
+    </File>
+    <File Include="bin/System.ValueTuple.dll">
+      <publishTime>07/19/2021 11:19:32</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>07/19/2021 11:18:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/19/2021 11:18:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.Cors.dll">
+      <publishTime>07/19/2021 11:18:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>07/19/2021 11:18:45</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>07/19/2021 11:18:47</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>07/19/2021 11:18:43</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>07/19/2021 11:18:44</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/19/2021 11:18:43</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/19/2021 11:18:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/19/2021 11:18:48</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/19/2021 11:18:48</publishTime>
+    </File>
+    <File Include="bin/WebActivatorEx.dll">
+      <publishTime>07/19/2021 11:19:32</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>07/19/2021 11:19:33</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.resources.dll">
+      <publishTime>07/19/2021 11:18:24</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/EntityFramework.SqlServer.resources.dll">
+      <publishTime>07/19/2021 11:18:24</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.AspNet.Identity.Core.resources.dll">
+      <publishTime>07/19/2021 11:18:42</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/Microsoft.AspNet.Identity.EntityFramework.resources.dll">
+      <publishTime>07/19/2021 11:18:43</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>07/19/2021 11:18:44</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
+      <publishTime>07/19/2021 11:18:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>07/19/2021 11:18:45</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>07/19/2021 11:18:47</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
+      <publishTime>07/19/2021 11:18:43</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
+      <publishTime>07/19/2021 11:18:44</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
+      <publishTime>07/19/2021 11:18:43</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
+      <publishTime>07/19/2021 11:18:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
+      <publishTime>07/19/2021 11:18:48</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
+      <publishTime>07/19/2021 11:18:48</publishTime>
+    </File>
+    <File Include="configs/log4net.config">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Content/css/animate.min.css">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/css/base.css">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/css/reset.css">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/css/style.css">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/actstar.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/actstar1.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/add.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/add1.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/adminlogo.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/bewu.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/bj.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/boy.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/close.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/code.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/codebj.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/cont15icon1.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/cont15icon2.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/cont15icon3.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/cont15icon33.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/cont15icon4.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/cont2icon.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/d.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/dateimg.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/dd.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/defk.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/defsek.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/del.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/delico.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/dk.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/dp1.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/dp2.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/dp3.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/dp4.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/dp5.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/dp6.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/dp7.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/editicon.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/editiconactive.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/elogo.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/errorljl.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/female.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/fm.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/girl.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/gold.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/hd.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/hhjt.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/hjt.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/hljt.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/hljt1.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/hxl.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/hxx.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/hyljt.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/indexbj.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/kec.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/laststep.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/lhjt.jpg">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/lhjt.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/ljlsuccess.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/ljt.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/lljt.png">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Content/images/loading.gif">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/login.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/loginbg.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="Content/images/loginbj.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/loginlight.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/loginlight_1.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/logo.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/lsk.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/lx.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/male.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/nav.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/navicon1.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/navicon2.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/navicon3.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/navicon4.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/navicon5.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/newicon.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/nomsg.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/not.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/noyujing.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/nq.jpg">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/nq.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/pagenodate.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/pagetitle.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/pass.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/printlog.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/qbk.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/quit.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/quithover.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/rightico.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/rw.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/seachicon.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/sjt.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/spanbj.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/step.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/stepbj.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/stepdef.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/stephover.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/stu.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/stu1.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/stu2.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/tel.gif">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/user.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/userimg.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/videoico.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/warnicon.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/xl.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/xl1.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/xlbtn.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/xlbtnactive.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/images/xlsel.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/xx.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/xx1.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/yes.png">
+      <publishTime>02/01/2021 22:27:44</publishTime>
+    </File>
+    <File Include="Content/images/yj.png">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Content/template/classLog.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/template/classProcess.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/template/classProcessDetail.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/template/printLog.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/template/studentClassLog.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/template/studentProcess.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/template/studentStudyWrong.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/template/studentTaskLog.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Content/template/taskIndex.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Content/template/taskLog.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Content/template/window.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="count.html">
+      <publishTime>07/19/2021 11:18:15</publishTime>
+    </File>
+    <File Include="Error.html">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/24/2020 22:32:32</publishTime>
+    </File>
+    <File Include="html/afterclass.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/afterclass_kaoshi.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/allafterclass.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/allafterclass_index.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/allclassManagement.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/classManagement - 副本.html">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/classManagement.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/css/animate.min.css">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/css/reset.css">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/css/style.css">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/actstar.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/actstar1.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/add.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/add1.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/adminlogo.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/bewu.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/bj.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/close.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/code.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/codebj.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/cont15icon1.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/cont15icon2.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/cont15icon3.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/cont15icon4.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/cont2icon.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/d.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dateimg.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dd.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/defk.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/defsek.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/del.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/delico.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/dk.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dp1.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dp2.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dp3.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dp4.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dp5.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dp6.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/dp7.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/editicon.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/editiconactive.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/elogo.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/errorljl.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/fm.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/gold.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/hd.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/hhjt.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/hjt.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/hljt.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/hljt1.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/hxl.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/hxx.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/hyljt.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/indexbj.png">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Content/images/kec.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/laststep.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/ljlsuccess.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/ljt.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/lljt.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/login.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/loginbg.png">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Content/images/loginbj.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/loginlight.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/loginlight_1.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/logo.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/lx.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/nav.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/navicon1.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/navicon2.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/navicon3.png">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/Content/images/navicon4.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/navicon5.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/newicon.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/nomsg.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/not.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/noyujing.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/nq.jpg">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/nq.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/pagenodate.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/pagetitle.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/pass.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/quit.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/rightico.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/rw.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/seachicon.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/sjt.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/spanbj.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/step.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/stepbj.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/stepdef.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/stephover.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/stu.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/stu1.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/tel.gif">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/user.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/userimg.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/videoico.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/warnicon.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/xl.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/xl1.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/xlbtn.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/xlbtnactive.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Content/images/xlsel.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/xx.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/xx1.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/yes.png">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Content/images/yj.png">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/coursepresentation.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/index.html">
+      <publishTime>02/01/2021 22:27:45</publishTime>
+    </File>
+    <File Include="html/login.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Personalrecords.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Personalrecords_errorbook.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/prepareLessons.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Scripts/jquery.js">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Scripts/jquery.nicescroll.js">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Scripts/layer.js">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/formSelects-v4.css">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/layui.css">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/layui.mobile.css">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/modules/code.css">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/modules/laydate/default/laydate.css">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/modules/layer/default/icon-ext.png">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/modules/layer/default/icon.png">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/modules/layer/default/layer.css">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/modules/layer/default/loading-0.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/modules/layer/default/loading-1.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/css/modules/layer/default/loading-2.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/data/table.json">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/data/table1.json">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/font/iconfont.eot">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/font/iconfont.svg">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/font/iconfont.ttf">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/font/iconfont.woff">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/font/iconfont.woff2">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/0.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/1.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/10.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/11.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/12.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/13.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/14.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/15.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/16.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/17.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/18.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/19.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/2.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/20.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/21.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/22.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/23.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/24.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/25.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/26.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/27.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/28.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/29.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/3.gif">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/30.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/31.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/32.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/33.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/34.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/35.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/36.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/37.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/38.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/39.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/4.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/40.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/41.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/42.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/43.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/44.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/45.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/46.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/47.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/48.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/49.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/5.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/50.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/51.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/52.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/53.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/54.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/55.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/56.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/57.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/58.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/59.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/6.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/60.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/61.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/62.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/63.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/64.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/65.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/66.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/67.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/68.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/69.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/7.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/70.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/71.gif">
+      <publishTime>02/01/2021 22:27:48</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/8.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/images/face/9.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/index.html">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/carousel.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/code.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/colorpicker.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/element.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/flow.js">
+      <publishTime>02/01/2021 22:27:52</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/form.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/formSelects-v4.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/jquery.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/laydate.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/layedit.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/layer.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/laypage.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/laytpl.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/mobile.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/rate.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/slider.js">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/table.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/transfer.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/tree.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/upload.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/util.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/lay/modules/xm-select.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/layui.all.js">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/layui/layui.js">
+      <publishTime>02/01/2021 22:27:47</publishTime>
+    </File>
+    <File Include="html/Scripts/theme/default/icon-ext.png">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/theme/default/icon.png">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/theme/default/layer.css">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/theme/default/loading-0.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/theme/default/loading-1.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/theme/default/loading-2.gif">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="html/Scripts/wow.js">
+      <publishTime>02/01/2021 22:27:46</publishTime>
+    </File>
+    <File Include="html/studentsmanagement.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="html/windwo.html">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Scripts/ai.0.22.9-build00167.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/ai.0.22.9-build00167.min.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/base/base.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/ckplayer/ckplayer.js">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/ckplayer/ckplayer.min.js">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/ckplayer/ckplayer.swf">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/ckplayer/ckplayer.xml">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/ckplayer/language.xml">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/ckplayer/packageCkPlayer.js">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/ckplayer/style.xml">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/common/md5.js">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/common/shared.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/common/UseTime.js">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="Scripts/jquery.nicescroll.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/layer.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/dropdown.css">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/formSelects-v4.css">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/layui.css">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/layui.mobile.css">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/modules/code.css">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/modules/laydate/default/laydate.css">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/modules/layer/default/icon-ext.png">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/modules/layer/default/icon.png">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/modules/layer/default/layer.css">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/modules/layer/default/loading-0.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/modules/layer/default/loading-1.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/css/modules/layer/default/loading-2.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/data/table.json">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/font/iconfont.eot">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/font/iconfont.svg">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/font/iconfont.ttf">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/font/iconfont.woff">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/font/iconfont.woff2">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/0.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/1.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/10.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/11.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/12.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/13.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/14.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/15.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/16.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/17.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/18.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/19.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/2.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/20.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/21.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/22.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/23.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/24.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/25.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/26.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/27.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/28.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/29.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/3.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/30.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/31.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/32.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/33.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/34.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/35.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/36.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/37.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/38.gif">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/39.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/4.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/40.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/41.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/42.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/43.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/44.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/45.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/46.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/47.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/48.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/49.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/5.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/50.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/51.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/52.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/53.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/54.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/55.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/56.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/57.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/58.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/59.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/6.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/60.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/61.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/62.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/63.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/64.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/65.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/66.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/67.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/68.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/69.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/7.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/70.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/71.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/8.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/images/face/9.gif">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/index.html">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/carousel.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/code.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/colorpicker.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/dropdown.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/element.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/flow.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/form.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/jquery.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/laydate.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/layedit.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/layer.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/laypage.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/laytpl.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/mobile.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/rate.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/slider.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/table.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/transfer.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/tree.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/upload.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/util.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/lay/modules/xm-select.js">
+      <publishTime>02/01/2021 22:27:51</publishTime>
+    </File>
+    <File Include="Scripts/layui/layui.all.js">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/layui/layui.js">
+      <publishTime>02/01/2021 22:27:50</publishTime>
+    </File>
+    <File Include="Scripts/model/class/classManage.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/model/course/course.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/model/prepare/prepare.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/model/prepare/step.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/model/student/student.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/model/task/classlog.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/model/task/studentclass.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/monitor/main.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/pagination/css/pagination.css">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/pagination/js/jquery.pagination.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/plug-in/plug-in.js">
+      <publishTime>02/01/2021 22:35:50</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Scripts/theme/default/icon-ext.png">
+      <publishTime>02/01/2021 22:35:50</publishTime>
+    </File>
+    <File Include="Scripts/theme/default/icon.png">
+      <publishTime>02/01/2021 22:35:50</publishTime>
+    </File>
+    <File Include="Scripts/theme/default/layer.css">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Scripts/theme/default/loading-0.gif">
+      <publishTime>02/01/2021 22:35:50</publishTime>
+    </File>
+    <File Include="Scripts/theme/default/loading-1.gif">
+      <publishTime>02/01/2021 22:35:50</publishTime>
+    </File>
+    <File Include="Scripts/theme/default/loading-2.gif">
+      <publishTime>02/01/2021 22:35:50</publishTime>
+    </File>
+    <File Include="Scripts/wow.js">
+      <publishTime>02/01/2021 22:27:49</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="t.html">
+      <publishTime>02/01/2021 22:27:43</publishTime>
+    </File>
+    <File Include="Views/Class/Index.cshtml">
+      <publishTime>07/19/2021 11:18:16</publishTime>
+    </File>
+    <File Include="Views/Course/Index.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Home/Login.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Monitor/Index.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Prepare/Index.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Prepare/Step.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>02/01/2021 22:35:50</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutMain.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutTask.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Student/Index.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Task/Index.cshtml">
+      <publishTime>07/19/2021 11:18:17</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>11/24/2020 22:32:33</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/16/2021 09:20:14</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

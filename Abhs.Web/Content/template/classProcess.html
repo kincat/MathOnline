@@ -1,0 +1,171 @@
+﻿<div class="content7">
+    <div class="contbox">
+        <div class="label fl">详情</div>
+    </div>
+</div>
+<div class="content8">
+    <div class="niceScrollbox" id="rtl-test">
+        <div class="content9 content77">
+            <div class="contbox">
+                <div class="contitle">
+                    <span></span>
+
+                </div>
+                <div class="infotext infotext1">
+                    <div class="fl label">
+                        <i>开课日期：</i>丨<i>年级：</i>丨<i>老师：</i>丨<i>状态</i>：
+                    </div>
+                </div>
+                <div class="goldbox">
+                    <!--<div class="gold1 fr" id="getgold">
+                        <div class="imgbox"><img src="/Content/images/gold.png"></div>
+                        <div class="infotext">奖惩金币</div>
+                    </div>-->
+                    <div class="gold1 fr" id="focusone">
+                        <div class="imgbox">
+                            <img src="/Content/images/rw.png">
+
+                        </div>
+                        <div class="infotext">创建任务</div>
+                    </div>
+                    <div class="gold1 fr" id="qbk" onclick="window.location = '/Prepare/Index?classId=' + curClassId">
+                        <div class="imgbox">
+                            <img src="/Content/images/qbk.png">
+                            <img src="/Content/images/qbk.png">
+                        </div>
+                        <div class="infotext">去备课</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content78 content81">
+            <div class="contbox">
+                <div class="tabbox fl">
+                    <a href="#" onclick="LoadHtml(0)">上课记录</a>
+                    <a href="#" onclick="LoadHtml(1)">任务记录</a>
+                    <a href="#" class="ljlactive"  onclick="LoadHtml(2)">课时进度</a>
+                </div>
+                
+            </div>
+            <div class="mytable" id="mytable">
+                <table align="center" class="layui-table" id="tableGrid"></table>
+            </div>
+            
+        </div>
+        <!-- 任务信息 -->
+        <!-- 任务确认 -->
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.content78 .tabbox a').click(function () {
+            $(this).addClass('ljlactive').siblings().removeClass('ljlactive')
+        })
+                    
+    })
+
+    layui.use(['table', 'form'], function () {
+        var table = layui.table;
+        var form = layui.form;
+        form.render('select');
+        table.render({
+            elem: '#tableGrid',
+            url: '/Task/GetClassProcess',
+            height: 'full-360',
+            cellMinWidth: 80,
+            method: 'post',
+            limit: 15,
+            page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                layout: ['prev', 'page', 'next', 'count'], //自定义分页布局
+                curr: 1, //设定初始在第 5 页
+                groups: 5,//只显示 1 个连续页码
+                //first: true,//不显示首页
+                //last: true, //不显示尾页
+                next: '下一页',
+                prev: '上一页'
+
+            }, where: {
+                classId: curClassId
+            },
+            done: function () {
+                webLogReg(".weblog");
+            },
+            cols: [
+                [{
+                    field: 'id',
+                    width: 80,
+                    title: 'lessonId',
+                    hide:true
+
+                }, {
+                    field: 'subLesson',
+                    width: 100,
+                    title: '课时',
+                    align: 'center',
+                    hide: true
+                }, {
+                    field: 'lessonName',
+                    minWidth: 80,
+                    title: '名称',
+                    templet: function (d) {
+                        if (d.prepareStatus == 1) {
+                            return '<label class="haslessons">备</label>' + d.subLesson + "&nbsp;" + d.lessonName;
+                        } else {
+                            return '<label class="nolessons">备</label>' + d.subLesson + "&nbsp;" + d.lessonName;
+                        }
+                    }
+                }, {
+                    field: 'finish',
+                    width: 110,
+                    title: '完成学习',
+                    align:'center'
+                }, {
+                    field: 'finishRate',
+                    title: '学习完成率',
+                    width: 120,
+                    align: 'center'
+                }, {
+                    field: 'increase',
+                    width: 130,
+                    title: '达成提升目标',
+                    align: 'center',
+                    hide:true
+                }, {
+                    field: 'increaseRate',
+                    width: 110,
+                    title: '目标达成率',
+                    align: 'center',
+                    hide: true
+                }, {
+                    field: 'finishTask',
+                    width: 110,
+                    title: '完成作业',
+                    align: 'center'
+                }, {
+                    field: 'finishTaskRate',
+                    width: 110,
+                    title: '作业完成率',
+                    align: 'center'
+                },  
+                {
+                    field: 'wealth',
+                    width: 100,
+                    title: '操作',
+                    align:"center",
+                    templet: function (d) {
+                        if (d.prepareStatus == 1) {
+                            return '<a class="divideclass weblog" href="javascript:;"  moduleId="2"  subModuleId="33" actionType="330" datatype="1"  actionvalue=""  onclick="viewDetail(' + d.lessonId + ')">查看</a>';
+                        }
+                        return '<a class="divideclass" href="/Prepare/Index?classId=' + curClassId + '">去备课</a>';
+                    }
+                }]
+            ],
+        });
+    });
+    function viewDetail(lessonId) {
+        htmlParm = lessonId;
+        LoadHtml(8)
+    }
+</script>

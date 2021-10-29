@@ -1,0 +1,296 @@
+﻿
+@{
+    ViewBag.Title = "学生管理";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+@section Head{
+<link href="/Scripts/layui/css/layui.css" rel="stylesheet" />
+<script src="/Scripts/layui/layui.js"></script>
+<script src="/Scripts/jquery.nicescroll.js"></script>
+<script src="/Scripts/wow.js"></script>
+
+<style>
+    body {
+        background: #1D2732;
+    }
+     body .layui-layer-btn .layui-layer-btn0 {
+            border-color: #E6E3E6;
+            background-color: #ffffff;
+            color: black;
+        }
+       body .layui-layer-btn1 {
+            border-color: #cccccc;
+            background-color: #3cc9ae;
+            color: #fff;
+        }
+  .tablist .layu-dropdown-root .layu-dropdown-content .layu-dropdown-menu-wrap .layu-dropdown-menu .layu-menu-item-wrap .layu-menu-item a:hover {
+            background-color:#fff
+        }
+
+</style>
+}
+<script>
+    //默认全部年级
+    var grade = 0;
+    //默认性别
+    var sex = 0;
+    //默认全部状态
+    var status = -1;
+    //默认已分配
+    var allot = 1;
+    //默认教材
+    var bookId = 0;
+    //默认年级
+    var gradeId = 0;
+    //班级选择分配
+    var classAllot = -1
+    var studentId = 0;
+</script>
+<div class="content3">
+    <div class="contbox"></div>
+</div>
+@{ 
+    var studentCount = (Abhs.Model.ViewModel.StudentCountView)ViewBag.StudentCount;
+    var gradeList = (List<Abhs.Model.ViewModel.CourseGradeYearView>)ViewBag.GradeList;
+    var bookList = (List<Abhs.Model.ViewModel.CommonKeyValueView>)ViewBag.Book;
+}
+<script>
+    var gradeData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(gradeList));    
+</script>
+<div class="content4">
+    <div class="ljltitle">学生分类</div>
+    <div class="niceScrollbox">
+        <div class="content48">
+            <div class="contbox">
+                <ul>
+                    <li class="ljlactive">
+                        <a href="#">
+                            <div class="righticon"><img src="~/Content/images/rightico.png"></div>
+                            <div class="studenttype">已分班学生</div>
+                            <div class="studenttype1">
+                                <span user="@(studentCount.allotCount)">总共：@(studentCount.allotCount)人</span>
+                                <em user="@(studentCount.allotTimeOut)" @(studentCount.allotTimeOut==0?"style=display:none":"")>将到期：@(studentCount.allotTimeOut)人</em>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#">
+                            <div class="righticon"><img src="~/Content/images/rightico.png"></div>
+                            <div class="studenttype">未分班学生</div>
+                            <div class="studenttype1">
+                                <span user="@(studentCount.notAllotCount)">(总共：@(studentCount.notAllotCount)人)</span>
+                                <em user="@(studentCount.notAllotTimeOut)" @(studentCount.notAllotTimeOut == 0?"style=display:none":"")>(将到期：@(studentCount.notAllotTimeOut)人)</em>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content6 content49">
+    <div class="content7">
+        <div class="contbox">
+            <div class="label fl">已分班学生列表</div>
+            @*<a href="#">全屏备课</a>*@
+        </div>
+    </div>
+    <div class="content50">
+        <div class="contbox">
+            <div class="ftitle">
+                总共:<em>@(studentCount.allotCount)</em>人<i @(studentCount.allotTimeOut==0?"style=display:none":"")>丨即将到期：<span>@(studentCount.allotTimeOut)人</span></i>
+                @*<a href="#">刷新列表</a>*@
+            </div>
+            <div class="seachbox">
+                <div class="ljllist">
+                    <div class="inpbox dateinp">
+                        <input id="registerdate" type="text" placeholder="选择注册日期"  autocomplete="off" readonly="readonly"/>
+                        <span class="iconspan"><img src="~/Content/images/dateimg.png" /></span>
+                    </div>
+                </div>
+                <div class="ljllist">
+                    <div class="inpbox dateinp">
+                        <input id="expiredate" type="text" placeholder="选择到期日期" autocomplete="off" readonly="readonly"/>
+                        <span class="iconspan"><img src="~/Content/images/dateimg.png" /></span>
+                    </div>
+                </div>
+                <div class="ljllist">
+                    <div class="inpbox seachselect">
+                        <input type="text" placeholder="按账号/姓名搜索" id="key"  autocomplete="off"/>
+                        @*<span class="iconspan"><img src="~/Content/images/seachicon.png" /></span>*@
+                    </div>
+                </div>
+                <div class="ljllist">
+                    <div class="inpbox vselect classtime">
+                        <input class="isclick" type="text" placeholder="全部学段" style="cursor:pointer" readonly="readonly" />
+                        <ul>
+                            <li class="isclick" name="grade" value="0">全部学段</li>
+                            <li class="isclick" name="grade" value="1">小学</li>
+                            <li class="isclick" name="grade" value="2">初中</li>
+                            <li class="isclick" name="grade" value="3">高中</li>
+                        </ul>
+                        <span class="iconspan isclick"><img src="~/Content/images/hxl.png" /></span>
+                    </div>
+                </div>
+                <div class="ljllist">
+                    <div class="inpbox vselect classtime">
+                        <input class="isclick" type="text" placeholder="全部性别" style="cursor:pointer" readonly="readonly"/>
+                        <ul>
+                            <li class="isclick" name="sex" value="0">全部性别</li>
+                            <li class="isclick" name="sex" value="1">男</li>
+                            <li class="isclick" name="sex" value="2">女</li>
+                        </ul>
+                        <span class="iconspan isclick"><img src="~/Content/images/hxl.png" /></span>
+                    </div>
+                </div>
+                <div class="ljllist">
+                    <div class="inpbox vselect classtime">
+                        <input class="isclick" type="text" placeholder="全部状态" style="cursor:pointer" readonly="readonly"/>
+                        <ul>
+                            <li class="isclick" name="status" value="-1">全部状态</li>
+                            <li class="isclick" name="status" value="1">正常</li>
+                            <li class="isclick" name="status" value="0">停用</li>
+                            <li class="isclick" name="status" value="2">到期</li>
+                        </ul>
+                        <span class="iconspan isclick"><img src="~/Content/images/hxl.png" /></span>
+                    </div>
+                </div>
+                <div class="ljllist">
+                    <a class="subbtn" href="#" id="search">搜 索</a>
+
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="mytable  tablist">
+                <table align="center" class="layui-table" lay-filter="studentList" id="studentList"></table>
+             
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content51">
+    <div class="box">
+        <div class="ftitle"><label class="fl">分配班级</label><span></span></div>
+        <div class="contbox">
+            <div class="userpic">
+                <img src="/Content/images/userimg.png">
+            </div>
+            <div class="userinfo fl">
+                <div class="username">
+                    
+                </div>
+                <div class="userconfig">
+                    <i>注册时间：</i><span></span>  丨   <i>到期时间：</i><em></em>
+                </div>
+            </div>
+        </div>
+        <div class="inplist">
+            <div class="ljllist">
+                <div class="inpbox vselect classtime">
+                    <input class="isclick" type="text" placeholder="全部年级" />
+                    <ul id="gradeul">
+                        <li class="isclick" name="gradeId" value="0">全部年级</li>
+                        @foreach (var item in gradeList)
+                        {
+                           <li class="isclick" name="gradeId" value="@item.gradeYearValue">@item.gradeYearName</li>
+                        }
+                    </ul>
+                    <span class="iconspan isclick"><img src="/Content/images/hxl.png" /></span>
+                </div>
+            </div>
+            <div class="ljllist">
+                <div class="inpbox vselect classtime">
+                    <input class="isclick" type="text" placeholder="全部版本" />
+                    <ul>
+                        <li class="isclick" name="book" value="0">全部版本</li>
+                        @foreach (var item in bookList)
+                        {
+                            <li class="isclick" name="book" value="@item.id">@item.name</li>
+                        }
+                    </ul>
+                    <span class="iconspan isclick"><img src="/Content/images/hxl.png" /></span>
+                </div>
+            </div>
+            <div class="ljllist">
+                <div class="inpbox vselect classtime">
+                    <input class="isclick" type="text" placeholder="全部班级" />
+                    <ul>
+                        <li class="isclick" name="classAllot" value="-1">全部班级</li>
+                        <li class="isclick" name="classAllot" value="1">已分配</li>
+                        <li class="isclick" name="classAllot" value="0">未分配</li>
+                    </ul>
+                    <span class="iconspan isclick"><img src="/Content/images/hxl.png" /></span>
+                </div>
+            </div>
+        </div>
+        <div class="niceScrollbox">
+            <div class="classbox">
+                 
+            </div>
+            <div id="classListTemp" style="display:none">
+                <div class="classlist {13}">
+                    <div class="classname">
+                        <label class="fl {11}">ID:{0}</label>
+                        <div class="line1">{1}（{2}~{3}）</div>
+                    </div>
+                    <div class="studytime tname">
+                        <label class="fl">校区老师：</label>
+                        <div class="studytimelist">
+                            {4}
+                        </div>
+                    </div>
+                    <div class="classinfo">
+                        <div class="infotext">
+                            <span><i>课程名称：</i>{5}（{6}课时）</span><span><i>教材版本：</i>{7}</span>
+                        </div>
+                    </div>
+                    <div class="studytime">
+                        <label class="fl">上课时间：</label>
+                        <div class="studytimelist">
+                            {8}
+                        </div>
+                    </div>
+                    <div class="classinfo classinfo1">
+                        <div class="infotext">
+                            <span><i>班级人数：</i>{9}人</span>
+                            <a href="#" onclick="joinClass({10},this,{14})">{12}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content32"></div>
+<script type="text/html" id="statusTpl">
+    {{#  if(d.statusName!='到期'){ }}
+    <input type="checkbox" name="isAble" value={{d.isAble}} lay-skin="switch" lay-text="开启|关闭" mid={{d.id}} lay-filter="isAble" {{ d.isAble == '0' ? 'checked' : '' }}>
+    {{#  } else{}}
+    -
+    {{#  }}}
+</script>
+<script type="text/html" id="barDemo">
+    
+
+    {{#  if(d.status==1){ }}
+    <a class="divideclass" lay-event="stop" style="cursor:pointer">停用</a>
+    {{#  } else{}}
+        {{#  if(d.statusName=='到期'){ }}
+           <a class="divideclass" style="color:#ccc" lay-event="start" style="cursor:pointer">启用</a>
+        {{#  } else{}}
+           <a class="divideclass" lay-event="start" style="cursor:pointer">启用</a>
+        {{#  }}}
+    {{#  }}}
+
+    <a class="divideclass" lay-event="allotClass" style="cursor:pointer">分配班级</a>
+    @*{{#  if(d.isAble=='1'){ }}
+    <a class="divideclass"   lay-event="startTest" style="cursor:pointer">启用训练</a>
+    {{#  } else{}}
+    <a class="divideclass" lay-event="stopTest" style="cursor:pointer">禁用训练</a>
+    {{#  }}}*@
+
+    @*<a class="divideclass" lay-dropdown="{align:'right',menus:[{txt:'{{#if(d.isAble==1){}}启用计算训练{{#  } else {}}禁用计算训练{{#  }}}',event:'{{#if(d.isAble==1){}}startTest{{#  } else  {}}stopTest{{#  }}}'}]}">更多...</a>*@
+</script>
+
+ <script type="text/javascript" src="~/Scripts/model/student/student.js?version=@(Abhs.Model.Common.PublicData.GetFileVersion())" > </script>
