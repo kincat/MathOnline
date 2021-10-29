@@ -87,11 +87,11 @@ namespace Abhs.Web.Controllers
 
             // 得到绑定数据
             var weChat = weChatBindService.GetWeChatBindByOpenId(openId);
-            if(weChat == null)
+            if (weChat == null)
             {
-                var token = weChatBindService.AddWeChatBind(openId,"t1");
+                var token = weChatBindService.AddWeChatBind(openId, "t1");
 
-                if(!string.IsNullOrEmpty(token))
+                if (!string.IsNullOrEmpty(token))
                 {
                     return new MathResponse(PublicKey.SUCCESS_REGISTER, "注册成功！", token);
                 }
@@ -129,12 +129,12 @@ namespace Abhs.Web.Controllers
 
             pwd = Encrypt.MD5(pwd);
             var student = studentService.Queryable().FirstOrDefault(o => o.s_LoginId == loginId && o.s_Password == pwd);
-            if(student == null)
+            if (student == null)
             {
                 return new MathResponse(PublicKey.FAIL_CODE, "账号密码错误！", "");
             }
 
-            if(weChatBindService.BindWeChatBind(weChat.uc_OpenId, student.s_ID))
+            if (weChatBindService.BindWeChatBind(weChat.uc_OpenId, student.s_ID))
             {
                 return new MathResponse(PublicKey.SUCCESS_LOGIN, "绑定成功！", "");
             }
@@ -169,5 +169,8 @@ namespace Abhs.Web.Controllers
                 }
             }
         }
+
+        public void aa ()
+            {}
     }
 }
